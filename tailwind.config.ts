@@ -52,6 +52,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				automotive: {
+					gold: 'hsl(var(--automotive-gold))',
+					silver: 'hsl(var(--automotive-silver))',
+					red: 'hsl(var(--automotive-red))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -67,6 +72,18 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-accent': 'var(--gradient-accent)'
+			},
+			boxShadow: {
+				'automotive': 'var(--shadow-automotive)',
+				'glow': 'var(--shadow-glow)'
+			},
+			transitionProperty: {
+				'premium': 'var(--transition-premium)'
 			},
 			keyframes: {
 				'accordion-down': {
