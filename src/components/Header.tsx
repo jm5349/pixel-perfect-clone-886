@@ -23,12 +23,10 @@ const Header = () => {
     return () => clearInterval(interval);
   }, [announcements.length]);
 
-  const socialLinks = [
-    { icon: '📘', href: '#', label: 'Facebook' },
-    { icon: '🐦', href: '#', label: 'Twitter' },
-    { icon: '📷', href: '#', label: 'Instagram' },
-    { icon: '📺', href: '#', label: 'YouTube' },
-    { icon: '🎵', href: '#', label: 'TikTok' },
+  const businessInfo = [
+    { label: 'Business Hours', value: 'Mon-Fri 8AM-6PM EST' },
+    { label: 'Warranty', value: '2 Year Guarantee' },
+    { label: 'Support', value: 'US-Based Customer Service' }
   ];
 
   const navItems = [
@@ -58,28 +56,25 @@ const Header = () => {
       <div className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center">
-              <h1 className="text-2xl font-automotive text-foreground tracking-wider">
+            {/* Business Information - Left */}
+            <div className="hidden lg:flex flex-col space-y-1">
+              {businessInfo.map((info, index) => (
+                <div key={index} className="text-xs">
+                  <span className="text-muted-foreground">{info.label}:</span>
+                  <span className="text-foreground font-medium ml-1">{info.value}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Logo - Center */}
+            <div className="flex items-center justify-center flex-1 lg:flex-initial">
+              <h1 className="text-2xl font-automotive text-foreground tracking-wider text-center">
                 ETERNA
                 <span className="text-primary">MOTORWORKS</span>
               </h1>
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
-              {navItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
-                >
-                  {item}
-                </a>
-              ))}
-            </nav>
-
-            {/* Actions */}
+            {/* Actions - Right */}
             <div className="flex items-center space-x-4">
               <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
                 <Search className="h-5 w-5" />
@@ -100,6 +95,31 @@ const Header = () => {
               >
                 {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
+            </div>
+          </div>
+
+          {/* Desktop Navigation - Below main header */}
+          <nav className="hidden lg:flex items-center justify-center space-x-8 mt-4 pt-4 border-t border-border">
+            {navItems.map((item, index) => (
+              <a
+                key={index}
+                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
+
+          {/* Mobile Business Info */}
+          <div className="lg:hidden mt-4 pt-4 border-t border-border">
+            <div className="grid grid-cols-1 gap-2 text-center">
+              {businessInfo.map((info, index) => (
+                <div key={index} className="text-xs">
+                  <span className="text-muted-foreground">{info.label}:</span>
+                  <span className="text-foreground font-medium ml-1">{info.value}</span>
+                </div>
+              ))}
             </div>
           </div>
 
