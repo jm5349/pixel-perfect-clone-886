@@ -46,16 +46,10 @@ const Header = () => {
       <div className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0">
         <div className="w-full max-w-none px-6 py-4">
           <div className="flex items-center justify-between">
-            {/* Expandable Search Bar - Left */}
+            {/* Search Bar - Left */}
             <div className="flex items-center">
               <div className="relative flex items-center">
-                <div 
-                  className={`flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow ${
-                    isSearchExpanded ? 'w-64 pr-4' : 'w-12 hover:w-64 hover:pr-4'
-                  }`}
-                  onMouseEnter={() => setIsSearchExpanded(true)}
-                  onMouseLeave={() => setIsSearchExpanded(false)}
-                >
+                <div className="flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow w-64 pr-4">
                   <Button 
                     variant="ghost" 
                     size="icon" 
@@ -66,9 +60,7 @@ const Header = () => {
                   <input
                     type="text"
                     placeholder="Search parts, brands, models..."
-                    className={`bg-transparent text-foreground placeholder:text-muted-foreground border-none outline-none flex-1 transition-all duration-300 ${
-                      isSearchExpanded ? 'opacity-100 w-full' : 'opacity-0 w-0'
-                    }`}
+                    className="bg-transparent text-foreground placeholder:text-muted-foreground border-none outline-none flex-1 w-full"
                   />
                 </div>
               </div>
