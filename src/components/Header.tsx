@@ -41,27 +41,47 @@ const Header = () => {
       <div className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            {/* Business Information - Left */}
-            <div className="hidden lg:flex flex-col space-y-1">
-              {businessInfo.map((info, index) => <div key={index} className="text-xs">
-                  <span className="text-muted-foreground">{info.label}:</span>
-                  <span className="text-foreground font-medium ml-1">{info.value}</span>
-                </div>)}
-            </div>
-
-            {/* Logo - Center */}
-            <div className="flex items-center justify-center flex-1 lg:flex-initial">
-              <h1 className="text-2xl font-automotive text-foreground tracking-wider text-center">
-                ETERNA
-                <span className="text-primary">MOTORWORKS</span>
-              </h1>
-            </div>
-
-            {/* Actions - Right */}
-            <div className="flex items-center space-x-4">
+            {/* Search - Left */}
+            <div className="flex items-center">
               <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
                 <Search className="h-5 w-5" />
               </Button>
+            </div>
+
+            {/* Logo - Center */}
+            <div className="flex items-center justify-center flex-1">
+              <div className="text-center">
+                <h1 className="text-2xl font-automotive text-foreground tracking-wider">
+                  ETERNA
+                  <span className="text-primary">MOTORWORKS</span>
+                </h1>
+                {/* Business Information - Below Logo */}
+                <div className="hidden lg:flex justify-center space-x-6 mt-2">
+                  {businessInfo.map((info, index) => (
+                    <div key={index} className="text-xs">
+                      <span className="text-muted-foreground">{info.label}:</span>
+                      <span className="text-foreground font-medium ml-1">{info.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Actions & Menu - Right */}
+            <div className="flex items-center space-x-4">
+              {/* Desktop Navigation Menu */}
+              <nav className="hidden lg:flex items-center space-x-6">
+                {navItems.map((item, index) => (
+                  <a
+                    key={index}
+                    href={`#${item.toLowerCase().replace(' ', '-')}`}
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </nav>
+              
               <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
                 <ShoppingCart className="h-5 w-5" />
               </Button>
@@ -75,9 +95,6 @@ const Header = () => {
               </Button>
             </div>
           </div>
-
-          {/* Desktop Navigation - Below main header */}
-          
 
           {/* Mobile Business Info */}
           <div className="lg:hidden mt-4 pt-4 border-t border-border">
