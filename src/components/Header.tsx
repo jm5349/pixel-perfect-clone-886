@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
@@ -69,18 +75,26 @@ const Header = () => {
 
             {/* Actions & Menu - Right */}
             <div className="flex items-center space-x-4">
-              {/* Desktop Navigation Menu */}
-              <nav className="hidden lg:flex items-center space-x-6">
-                {navItems.map((item, index) => (
-                  <a
-                    key={index}
-                    href={`#${item.toLowerCase().replace(' ', '-')}`}
-                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
-                  >
-                    {item}
-                  </a>
-                ))}
-              </nav>
+              {/* Desktop Navigation Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild className="hidden lg:flex">
+                  <Button variant="ghost" className="text-muted-foreground hover:text-primary">
+                    Menu <ChevronDown className="ml-1 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
+                  {navItems.map((item, index) => (
+                    <DropdownMenuItem key={index} asChild>
+                      <a
+                        href={`#${item.toLowerCase().replace(' ', '-')}`}
+                        className="text-sm font-medium text-foreground hover:text-primary transition-colors tracking-wider cursor-pointer"
+                      >
+                        {item}
+                      </a>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               
               <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
                 <ShoppingCart className="h-5 w-5" />
@@ -99,23 +113,36 @@ const Header = () => {
           {/* Mobile Business Info */}
           <div className="lg:hidden mt-4 pt-4 border-t border-border">
             <div className="grid grid-cols-1 gap-2 text-center">
-              {businessInfo.map((info, index) => <div key={index} className="text-xs">
+              {businessInfo.map((info, index) => (
+                <div key={index} className="text-xs">
                   <span className="text-muted-foreground">{info.label}:</span>
                   <span className="text-foreground font-medium ml-1">{info.value}</span>
-                </div>)}
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Mobile Navigation */}
-          {isMobileMenuOpen && <nav className="lg:hidden mt-4 pt-4 border-t border-border">
+          {isMobileMenuOpen && (
+            <nav className="lg:hidden mt-4 pt-4 border-t border-border">
               <div className="flex flex-col space-y-4">
-                {navItems.map((item, index) => <a key={index} href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider" onClick={() => setIsMobileMenuOpen(false)}>
+                {navItems.map((item, index) => (
+                  <a
+                    key={index}
+                    href={`#${item.toLowerCase().replace(' ', '-')}`}
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     {item}
-                  </a>)}
+                  </a>
+                ))}
               </div>
-            </nav>}
+            </nav>
+          )}
         </div>
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Header;
