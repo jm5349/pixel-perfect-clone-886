@@ -1,24 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Search, ShoppingCart, User, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
-  
-  const announcements = [
-    "🚗 Free shipping on orders over $500 - Limited time offer", 
-    "🏁 New Performance Parts Collection Now Available", 
-    "⚡ 15% OFF All Aesthetic Modifications This Month", 
-    "🛠️ Professional Installation Services Available Nationwide"
-  ];
-
+  const announcements = ["🚗 Free shipping on orders over $500 - Limited time offer", "🏁 New Performance Parts Collection Now Available", "⚡ 15% OFF All Aesthetic Modifications This Month", "🛠️ Professional Installation Services Available Nationwide"];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentAnnouncementIndex(prev => (prev + 1) % announcements.length);
@@ -26,26 +13,18 @@ const Header = () => {
 
     return () => clearInterval(interval);
   }, [announcements.length]);
-
-  const businessInfo = [
-    {
-      label: 'Business Hours',
-      value: 'Mon-Fri 8AM-6PM EST'
-    }, 
-    {
-      label: 'Warranty',
-      value: '2 Year Guarantee'
-    }, 
-    {
-      label: 'Support',
-      value: 'US-Based Customer Service'
-    }
-  ];
-
+  const businessInfo = [{
+    label: 'Business Hours',
+    value: 'Mon-Fri 8AM-6PM EST'
+  }, {
+    label: 'Warranty',
+    value: '2 Year Guarantee'
+  }, {
+    label: 'Support',
+    value: 'US-Based Customer Service'
+  }];
   const navItems = ['AESTHETICS', 'PERFORMANCE', 'WHEELS', 'ACCESSORIES', 'BESPOKE SERVICES'];
-
-  return (
-    <header className="relative z-50">
+  return <header className="relative z-50">
       {/* Auto-rotating Announcement Banner */}
       <div className="bg-primary text-primary-foreground border-b border-border">
         <div className="w-full max-w-none px-6 py-3">
@@ -75,24 +54,19 @@ const Header = () => {
               <div className="text-center">
                 <h1 className="text-2xl font-automotive text-foreground tracking-wider">
                   ETERNA
-                  <span className="text-primary">MOTORWORKS</span>
+                  <span className="text-primary"></span>
                 </h1>
                 {/* Business Information - Below Logo */}
                 <div className="hidden lg:flex justify-center space-x-8 mt-3">
-                  {businessInfo.map((info, index) => (
-                    <div 
-                      key={index} 
-                      className="text-xs bg-gradient-to-b from-background to-muted/20 border border-border/60 
+                  {businessInfo.map((info, index) => <div key={index} className="text-xs bg-gradient-to-b from-background to-muted/20 border border-border/60 
                                  rounded-lg px-4 py-3 backdrop-blur-sm hover:border-primary/40 
                                  transition-all duration-300 shadow-sm hover:shadow-md 
-                                 hover:bg-gradient-to-b hover:from-primary/5 hover:to-primary/10"
-                    >
+                                 hover:bg-gradient-to-b hover:from-primary/5 hover:to-primary/10">
                       <div className="flex flex-col items-center space-y-1">
                         <span className="text-muted-foreground text-[10px] uppercase tracking-wider font-medium">{info.label}</span>
                         <span className="text-foreground font-semibold text-xs">{info.value}</span>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </div>
@@ -107,16 +81,11 @@ const Header = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
-                  {navItems.map((item, index) => (
-                    <DropdownMenuItem key={index} asChild>
-                      <a
-                        href={`#${item.toLowerCase().replace(' ', '-')}`}
-                        className="text-sm font-medium text-foreground hover:text-primary transition-colors tracking-wider cursor-pointer"
-                      >
+                  {navItems.map((item, index) => <DropdownMenuItem key={index} asChild>
+                      <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-foreground hover:text-primary transition-colors tracking-wider cursor-pointer">
                         {item}
                       </a>
-                    </DropdownMenuItem>
-                  ))}
+                    </DropdownMenuItem>)}
                 </DropdownMenuContent>
               </DropdownMenu>
               
@@ -128,12 +97,7 @@ const Header = () => {
               </Button>
               
               {/* Mobile Menu Button */}
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="lg:hidden text-muted-foreground hover:text-primary" 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
+              <Button variant="ghost" size="icon" className="lg:hidden text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                 {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>
@@ -142,42 +106,26 @@ const Header = () => {
           {/* Mobile Business Info */}
           <div className="lg:hidden mt-4 pt-4 border-t border-border">
             <div className="grid grid-cols-1 gap-3 text-center">
-              {businessInfo.map((info, index) => (
-                <div 
-                  key={index} 
-                  className="text-xs bg-gradient-to-b from-background to-muted/20 border border-border/60 
-                             rounded-lg px-4 py-3 hover:border-primary/40 transition-all duration-300 shadow-sm"
-                >
+              {businessInfo.map((info, index) => <div key={index} className="text-xs bg-gradient-to-b from-background to-muted/20 border border-border/60 
+                             rounded-lg px-4 py-3 hover:border-primary/40 transition-all duration-300 shadow-sm">
                   <div className="flex flex-col items-center space-y-1">
                     <span className="text-muted-foreground text-[10px] uppercase tracking-wider font-medium">{info.label}</span>
                     <span className="text-foreground font-semibold">{info.value}</span>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
 
           {/* Mobile Navigation */}
-          {isMobileMenuOpen && (
-            <nav className="lg:hidden mt-4 pt-4 border-t border-border">
+          {isMobileMenuOpen && <nav className="lg:hidden mt-4 pt-4 border-t border-border">
               <div className="flex flex-col space-y-4">
-                {navItems.map((item, index) => (
-                  <a
-                    key={index}
-                    href={`#${item.toLowerCase().replace(' ', '-')}`}
-                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
+                {navItems.map((item, index) => <a key={index} href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wider" onClick={() => setIsMobileMenuOpen(false)}>
                     {item}
-                  </a>
-                ))}
+                  </a>)}
               </div>
-            </nav>
-          )}
+            </nav>}
         </div>
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Header;
