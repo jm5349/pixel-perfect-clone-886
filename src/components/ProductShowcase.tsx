@@ -37,8 +37,8 @@ const ProductShowcase = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           
-          <h2 className="text-4xl md:text-5xl font-automotive text-foreground mb-4 tracking-tight">
-            New Release Section
+          <h2 className="text-4xl md:text-6xl font-automotive text-foreground mb-4 tracking-tight">
+            NEW RELEASE SECTION
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
             Built to Perform, Designed to Impress
