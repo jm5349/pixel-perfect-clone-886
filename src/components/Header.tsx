@@ -82,13 +82,14 @@ const Header = () => {
                   {businessInfo.map((info, index) => (
                     <div 
                       key={index} 
-                      className="text-xs bg-primary/10 border border-primary/20 rounded-full px-4 py-2 backdrop-blur-sm 
-                                 hover:bg-primary/20 hover:scale-105 transition-all duration-300 
-                                 shadow-lg hover:shadow-xl hover:shadow-primary/20"
+                      className="text-xs bg-gradient-to-b from-background to-muted/20 border border-border/60 
+                                 rounded-lg px-4 py-3 backdrop-blur-sm hover:border-primary/40 
+                                 transition-all duration-300 shadow-sm hover:shadow-md 
+                                 hover:bg-gradient-to-b hover:from-primary/5 hover:to-primary/10"
                     >
                       <div className="flex flex-col items-center space-y-1">
-                        <span className="text-muted-foreground text-[10px] uppercase tracking-wider">{info.label}</span>
-                        <span className="text-foreground font-medium text-xs">{info.value}</span>
+                        <span className="text-muted-foreground text-[10px] uppercase tracking-wider font-medium">{info.label}</span>
+                        <span className="text-foreground font-semibold text-xs">{info.value}</span>
                       </div>
                     </div>
                   ))}
@@ -144,12 +145,12 @@ const Header = () => {
               {businessInfo.map((info, index) => (
                 <div 
                   key={index} 
-                  className="text-xs bg-primary/10 border border-primary/20 rounded-full px-4 py-2 
-                             hover:bg-primary/20 transition-all duration-300 shadow-sm"
+                  className="text-xs bg-gradient-to-b from-background to-muted/20 border border-border/60 
+                             rounded-lg px-4 py-3 hover:border-primary/40 transition-all duration-300 shadow-sm"
                 >
                   <div className="flex flex-col items-center space-y-1">
-                    <span className="text-muted-foreground text-[10px] uppercase tracking-wider">{info.label}</span>
-                    <span className="text-foreground font-medium">{info.value}</span>
+                    <span className="text-muted-foreground text-[10px] uppercase tracking-wider font-medium">{info.label}</span>
+                    <span className="text-foreground font-semibold">{info.value}</span>
                   </div>
                 </div>
               ))}
