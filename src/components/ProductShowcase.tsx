@@ -38,7 +38,7 @@ const ProductShowcase = () => {
         <div className="text-center mb-16">
           
           <h2 className="text-4xl md:text-6xl font-automotive text-foreground mb-4 tracking-tight">
-            NEW RELEASE SECTION
+            NEW PRODUCT RELEASE
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
             Built to Perform, Designed to Impress
