@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '@/components/Header';
 
 import Categories from '@/components/Categories';
-import BrandCarousel from '@/components/BrandCarousel';
 import ProductShowcase from '@/components/ProductShowcase';
 import About from '@/components/About';
 import InstagramFeed from '@/components/InstagramFeed';
@@ -14,7 +13,6 @@ const Index = () => {
       <Header />
       
       <Categories />
-      <BrandCarousel />
       <ProductShowcase />
       <About />
       <InstagramFeed />
