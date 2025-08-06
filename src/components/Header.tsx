@@ -54,38 +54,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Top Banner */}
-      <div className="bg-card border-b border-border">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-6 text-muted-foreground">
-              <a href="#" className="hover:text-primary transition-colors">
-                Apply here to join as an affiliate
-              </a>
-              <a href="#" className="hover:text-primary transition-colors">
-                Shipping Policy
-              </a>
-              <a href="#" className="hover:text-primary transition-colors">
-                Refund & Return Policy
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Header */}
       <div className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0">
         <div className="container mx-auto px-4 py-4">
