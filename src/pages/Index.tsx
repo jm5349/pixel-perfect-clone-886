@@ -3,7 +3,6 @@ import Header from '@/components/Header';
 
 import Categories from '@/components/Categories';
 import BrandCarousel from '@/components/BrandCarousel';
-import FeaturedModels from '@/components/FeaturedModels';
 import ProductShowcase from '@/components/ProductShowcase';
 import About from '@/components/About';
 import BespokeServices from '@/components/BespokeServices';
@@ -17,7 +16,6 @@ const Index = () => {
       
       <Categories />
       <BrandCarousel />
-      <FeaturedModels />
       <ProductShowcase />
       <About />
       <BespokeServices />
