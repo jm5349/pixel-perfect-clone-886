@@ -8,18 +8,18 @@ Premium dark theme with automotive-grade precision
 
 @layer base {
   :root {
-    /* Core automotive colors - dark theme by default */
-    --background: 0 0% 5%;
+    /* Core automotive colors - red, black, white theme */
+    --background: 0 0% 2%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 8%;
+    --card: 0 0% 5%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 8%;
+    --popover: 0 0% 5%;
     --popover-foreground: 0 0% 98%;
 
-    /* Premium automotive accent - deep blue */
-    --primary: 220 100% 60%;
+    /* Premium automotive accent - racing red */
+    --primary: 0 84% 60%;
     --primary-foreground: 0 0% 98%;
 
     /* Subtle secondary tones */
@@ -37,7 +37,7 @@ Premium dark theme with automotive-grade precision
 
     --border: 0 0% 20%;
     --input: 0 0% 15%;
-    --ring: 220 100% 60%;
+    --ring: 0 84% 60%;
 
     /* Automotive design elements */
     --automotive-gold: 45 100% 70%;
@@ -45,13 +45,13 @@ Premium dark theme with automotive-grade precision
     --automotive-red: 0 84% 60%;
     
     /* Premium gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(0 0% 15%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 8%) 0%, hsl(0 0% 12%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(220 100% 60%) 0%, hsl(220 100% 70%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 2%) 0%, hsl(0 0% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 5%) 0%, hsl(0 0% 10%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(0 84% 70%) 100%);
     
     /* Shadows and effects */
-    --shadow-automotive: 0 25px 50px -12px hsl(0 0% 0% / 0.8);
-    --shadow-glow: 0 0 30px hsl(220 100% 60% / 0.3);
+    --shadow-automotive: 0 25px 50px -12px hsl(0 0% 0% / 0.9);
+    --shadow-glow: 0 0 30px hsl(0 84% 60% / 0.4);
     
     /* Animation transitions */
     --transition-premium: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);

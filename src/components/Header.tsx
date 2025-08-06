@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
+
+  const announcements = [
+    "🚗 Free shipping on orders over $500 - Limited time offer",
+    "🏁 New Performance Parts Collection Now Available",
+    "⚡ 15% OFF All Aesthetic Modifications This Month",
+    "🛠️ Professional Installation Services Available Nationwide"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentAnnouncementIndex((prev) => 
+        (prev + 1) % announcements.length
+      );
+    }, 4000); // Rotate every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [announcements.length]);
 
   const socialLinks = [
     { icon: '📘', href: '#', label: 'Facebook' },
@@ -23,6 +41,19 @@ const Header = () => {
 
   return (
     <header className="relative z-50">
+      {/* Auto-rotating Announcement Banner */}
+      <div className="bg-primary text-primary-foreground border-b border-border">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-center">
+            <div className="text-center transition-all duration-500 ease-in-out">
+              <p className="text-sm font-medium">
+                {announcements[currentAnnouncementIndex]}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Top Banner */}
       <div className="bg-card border-b border-border">
         <div className="container mx-auto px-4 py-2">
