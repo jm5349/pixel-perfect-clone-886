@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
   const announcements = ["🚗 Free shipping on orders over $500 - Limited time offer", "🏁 New Performance Parts Collection Now Available", "⚡ 15% OFF All Aesthetic Modifications This Month", "🛠️ Professional Installation Services Available Nationwide"];
   useEffect(() => {
@@ -45,15 +46,32 @@ const Header = () => {
       <div className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0">
         <div className="w-full max-w-none px-6 py-4">
           <div className="flex items-center justify-between">
-            {/* Enhanced Search Button - Left */}
+            {/* Expandable Search Bar - Left */}
             <div className="flex items-center">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 text-sm font-semibold tracking-wide shadow-glow transition-all duration-300 hover:shadow-glow hover:scale-105 animate-pulse"
-              >
-                <Search className="h-5 w-5 mr-2" />
-                SEARCH PARTS
-              </Button>
+              <div className="relative flex items-center">
+                <div 
+                  className={`flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow ${
+                    isSearchExpanded ? 'w-64 pr-4' : 'w-12 hover:w-64 hover:pr-4'
+                  }`}
+                  onMouseEnter={() => setIsSearchExpanded(true)}
+                  onMouseLeave={() => setIsSearchExpanded(false)}
+                >
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="h-12 w-12 text-primary hover:text-primary hover:bg-primary/20 rounded-full flex-shrink-0"
+                  >
+                    <Search className="h-5 w-5" />
+                  </Button>
+                  <input
+                    type="text"
+                    placeholder="Search parts, brands, models..."
+                    className={`bg-transparent text-foreground placeholder:text-muted-foreground border-none outline-none flex-1 transition-all duration-300 ${
+                      isSearchExpanded ? 'opacity-100 w-full' : 'opacity-0 w-0'
+                    }`}
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Logo - Center */}
