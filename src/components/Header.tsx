@@ -52,9 +52,15 @@ const Header = () => {
             {/* Logo - Center */}
             <div className="flex items-center justify-center flex-1">
               <div className="text-center">
-                <h1 className="text-2xl font-automotive text-foreground tracking-wider">
+                {/* Replace with your logo image */}
+                <img 
+                  src="/path-to-your-logo.png" 
+                  alt="Company Logo" 
+                  className="h-12 w-auto mx-auto"
+                />
+                {/* Fallback text logo - remove this when you add your image */}
+                <h1 className="text-2xl font-automotive text-foreground tracking-wider mt-2">
                   ETERNA
-                  <span className="text-primary"></span>
                 </h1>
                 {/* Business Information - Below Logo */}
                 <div className="hidden lg:flex justify-center space-x-8 mt-3">
