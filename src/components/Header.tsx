@@ -94,8 +94,8 @@ const Header = () => {
               {/* Desktop Navigation Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild className="hidden lg:flex">
-                  <Button variant="ghost" className="text-muted-foreground hover:text-primary">
-                    Menu <ChevronDown className="ml-1 h-4 w-4" />
+                  <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
+                    <Menu className="h-5 w-5" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
