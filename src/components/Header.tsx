@@ -45,10 +45,14 @@ const Header = () => {
       <div className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0">
         <div className="w-full max-w-none px-6 py-4">
           <div className="flex items-center justify-between">
-            {/* Search - Left */}
+            {/* Enhanced Search Button - Left */}
             <div className="flex items-center">
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                <Search className="h-5 w-5" />
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 text-sm font-semibold tracking-wide shadow-glow transition-all duration-300 hover:shadow-glow hover:scale-105 animate-pulse"
+              >
+                <Search className="h-5 w-5 mr-2" />
+                SEARCH PARTS
               </Button>
             </div>
 
