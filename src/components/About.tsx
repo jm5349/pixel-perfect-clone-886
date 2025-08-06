@@ -1,18 +1,12 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-
 const About = () => {
-  return (
-    <section className="py-20 bg-background">
+  return <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           {/* Hero Image */}
           <div className="mb-16">
-            <img 
-              src="https://images.unsplash.com/photo-1617654112329-d9a11d7faa37?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-              alt="Premium BMW M4 with custom aero"
-              className="w-full h-96 object-cover rounded-2xl shadow-automotive"
-            />
+            
           </div>
 
           {/* Company Title */}
@@ -42,16 +36,11 @@ const About = () => {
           </p>
 
           {/* CTA Button */}
-          <Button 
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold tracking-wide shadow-glow transition-all duration-300 hover:shadow-glow hover:scale-105"
-          >
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold tracking-wide shadow-glow transition-all duration-300 hover:shadow-glow hover:scale-105">
             JOIN THE TEAM
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
