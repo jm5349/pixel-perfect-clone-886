@@ -10,22 +10,22 @@ const Categories = () => {
     {
       title: "BODY KIT",
       image: aestheticsImage,
-      description: "Premium body kits, carbon fiber components, and aesthetic enhancements",
+      description: "Front Bumper Lip, Side Skirt Extension & Rear Diffuser",
     },
     {
-      title: "PERFORMANCE",
+      title: "Spoiler",
       image: performanceImage,
-      description: "Turbochargers, exhaust systems, and performance upgrades",
+      description: "Rear Roof Spoiler & Trunk Wing",
     },
     {
-      title: "WHEELS",
+      title: "Mirror Caps",
       image: wheelsImage,
-      description: "Luxury wheels, rims, and high-performance tire solutions",
+      description: "Direct Add-on Overlay & Replacement Mirror Covers",
     },
     {
-      title: "ACCESSORIES",
+      title: "DRLs & Others",
       image: accessoriesImage,
-      description: "Premium tools, lighting, and interior accessories",
+      description: "Sequential DRLs & other Accessories",
     },
   ];
 
