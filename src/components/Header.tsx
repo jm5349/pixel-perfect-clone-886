@@ -48,7 +48,7 @@ const Header = () => {
     <header className="relative z-50">
       {/* Auto-rotating Announcement Banner */}
       <div className="bg-primary text-primary-foreground border-b border-border">
-        <div className="container mx-auto px-4 py-3">
+        <div className="w-full max-w-none px-6 py-3">
           <div className="flex items-center justify-center">
             <div className="text-center transition-all duration-500 ease-in-out">
               <p className="text-sm font-medium">
@@ -61,7 +61,7 @@ const Header = () => {
 
       {/* Main Header */}
       <div className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0">
-        <div className="container mx-auto px-4 py-4">
+        <div className="w-full max-w-none px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Search - Left */}
             <div className="flex items-center">
@@ -78,11 +78,18 @@ const Header = () => {
                   <span className="text-primary">MOTORWORKS</span>
                 </h1>
                 {/* Business Information - Below Logo */}
-                <div className="hidden lg:flex justify-center space-x-6 mt-2">
+                <div className="hidden lg:flex justify-center space-x-8 mt-3">
                   {businessInfo.map((info, index) => (
-                    <div key={index} className="text-xs">
-                      <span className="text-muted-foreground">{info.label}:</span>
-                      <span className="text-foreground font-medium ml-1">{info.value}</span>
+                    <div 
+                      key={index} 
+                      className="text-xs bg-primary/10 border border-primary/20 rounded-full px-4 py-2 backdrop-blur-sm 
+                                 hover:bg-primary/20 hover:scale-105 transition-all duration-300 
+                                 shadow-lg hover:shadow-xl hover:shadow-primary/20"
+                    >
+                      <div className="flex flex-col items-center space-y-1">
+                        <span className="text-muted-foreground text-[10px] uppercase tracking-wider">{info.label}</span>
+                        <span className="text-foreground font-medium text-xs">{info.value}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -133,11 +140,17 @@ const Header = () => {
 
           {/* Mobile Business Info */}
           <div className="lg:hidden mt-4 pt-4 border-t border-border">
-            <div className="grid grid-cols-1 gap-2 text-center">
+            <div className="grid grid-cols-1 gap-3 text-center">
               {businessInfo.map((info, index) => (
-                <div key={index} className="text-xs">
-                  <span className="text-muted-foreground">{info.label}:</span>
-                  <span className="text-foreground font-medium ml-1">{info.value}</span>
+                <div 
+                  key={index} 
+                  className="text-xs bg-primary/10 border border-primary/20 rounded-full px-4 py-2 
+                             hover:bg-primary/20 transition-all duration-300 shadow-sm"
+                >
+                  <div className="flex flex-col items-center space-y-1">
+                    <span className="text-muted-foreground text-[10px] uppercase tracking-wider">{info.label}</span>
+                    <span className="text-foreground font-medium">{info.value}</span>
+                  </div>
                 </div>
               ))}
             </div>
