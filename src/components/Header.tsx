@@ -49,7 +49,7 @@ const Header = () => {
             {/* Search Bar - Left */}
             <div className="flex items-center">
               <div className="relative flex items-center">
-                <div className="flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow w-64 pr-4">
+                <div className="flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow w-80 pr-4">
                   <Button 
                     variant="ghost" 
                     size="icon" 
@@ -67,7 +67,7 @@ const Header = () => {
             </div>
 
             {/* Logo - Center */}
-            <div className="flex items-center justify-center flex-1">
+            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
               <div className="text-center">
                 <img 
                   src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
