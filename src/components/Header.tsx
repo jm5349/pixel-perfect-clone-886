@@ -55,7 +55,7 @@ const Header = () => {
                 <img 
                   src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
                   alt="Custom Tuning Company Logo" 
-                  className="h-12 w-auto mx-auto"
+                  className="h-20 lg:h-24 w-auto max-w-md mx-auto"
                 />
                 {/* Business Information - Below Logo */}
                 <div className="hidden lg:flex justify-center space-x-8 mt-3">
