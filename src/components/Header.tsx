@@ -53,7 +53,7 @@ const Header = () => {
             <div className="flex items-center justify-center flex-1">
               <div className="text-center">
                 <img 
-                  src="/lovable-uploads/9c3a6696-3fa1-48b3-a64e-5e1937f3852c.png" 
+                  src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
                   alt="Custom Tuning Company Logo" 
                   className="h-12 w-auto mx-auto"
                 />
