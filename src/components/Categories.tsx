@@ -8,7 +8,7 @@ import accessoriesImage from '@/assets/accessories-category.jpg';
 const Categories = () => {
   const categories = [
     {
-      title: "AESTHETICS",
+      title: "BODY KIT",
       image: aestheticsImage,
       description: "Premium body kits, carbon fiber components, and aesthetic enhancements",
     },
