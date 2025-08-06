@@ -82,17 +82,22 @@ const Header = () => {
                   alt="Custom Tuning Company Logo" 
                   className="h-20 lg:h-24 w-auto max-w-md mx-auto"
                 />
-                {/* Business Information - Below Logo */}
-                <div className="hidden lg:flex justify-center space-x-8 mt-3">
-                  {businessInfo.map((info, index) => <div key={index} className="text-xs bg-gradient-to-b from-background to-muted/20 border border-border/60 
-                                 rounded-lg px-4 py-3 backdrop-blur-sm hover:border-primary/40 
-                                 transition-all duration-300 shadow-sm hover:shadow-md 
-                                 hover:bg-gradient-to-b hover:from-primary/5 hover:to-primary/10">
-                      <div className="flex flex-col items-center space-y-1">
-                        <span className="text-muted-foreground text-[10px] uppercase tracking-wider font-medium">{info.label}</span>
-                        <span className="text-foreground font-semibold text-xs">{info.value}</span>
+                {/* Professional Business Information - Below Logo */}
+                <div className="hidden lg:flex justify-center items-center space-x-6 mt-4">
+                  {businessInfo.map((info, index) => (
+                    <div key={index} className="flex items-center space-x-2 px-4 py-2 bg-card border-l-2 border-primary 
+                                               hover:bg-card/80 transition-all duration-200 group">
+                      <div className="w-2 h-2 bg-primary rounded-full group-hover:scale-110 transition-transform duration-200"></div>
+                      <div className="text-left">
+                        <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-medium">
+                          {info.label}
+                        </div>
+                        <div className="text-xs font-semibold text-foreground leading-tight">
+                          {info.value}
+                        </div>
                       </div>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -131,14 +136,20 @@ const Header = () => {
 
           {/* Mobile Business Info */}
           <div className="lg:hidden mt-4 pt-4 border-t border-border">
-            <div className="grid grid-cols-1 gap-3 text-center">
-              {businessInfo.map((info, index) => <div key={index} className="text-xs bg-gradient-to-b from-background to-muted/20 border border-border/60 
-                             rounded-lg px-4 py-3 hover:border-primary/40 transition-all duration-300 shadow-sm">
-                  <div className="flex flex-col items-center space-y-1">
-                    <span className="text-muted-foreground text-[10px] uppercase tracking-wider font-medium">{info.label}</span>
-                    <span className="text-foreground font-semibold">{info.value}</span>
+            <div className="grid grid-cols-2 gap-3">
+              {businessInfo.map((info, index) => (
+                <div key={index} className="flex items-center space-x-2 px-3 py-2 bg-card border-l-2 border-primary">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                  <div className="text-left">
+                    <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-medium">
+                      {info.label}
+                    </div>
+                    <div className="text-xs font-semibold text-foreground leading-tight">
+                      {info.value}
+                    </div>
                   </div>
-                </div>)}
+                </div>
+              ))}
             </div>
           </div>
 
