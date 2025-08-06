@@ -7,10 +7,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
-  const announcements = ["🚗 Free shipping on orders over $500 - Limited time offer", "🏁 New Performance Parts Collection Now Available", "⚡ 15% OFF All Aesthetic Modifications This Month", "🛠️ Professional Installation Services Available Nationwide"];
+  
+  const announcements = [
+    "🚗 Free shipping on orders over $500 - Limited time offer", 
+    "🏁 New Performance Parts Collection Now Available", 
+    "⚡ 15% OFF All Aesthetic Modifications This Month", 
+    "🛠️ Professional Installation Services Available Nationwide"
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentAnnouncementIndex(prev => (prev + 1) % announcements.length);
@@ -18,18 +26,26 @@ const Header = () => {
 
     return () => clearInterval(interval);
   }, [announcements.length]);
-  const businessInfo = [{
-    label: 'Business Hours',
-    value: 'Mon-Fri 8AM-6PM EST'
-  }, {
-    label: 'Warranty',
-    value: '2 Year Guarantee'
-  }, {
-    label: 'Support',
-    value: 'US-Based Customer Service'
-  }];
+
+  const businessInfo = [
+    {
+      label: 'Business Hours',
+      value: 'Mon-Fri 8AM-6PM EST'
+    }, 
+    {
+      label: 'Warranty',
+      value: '2 Year Guarantee'
+    }, 
+    {
+      label: 'Support',
+      value: 'US-Based Customer Service'
+    }
+  ];
+
   const navItems = ['AESTHETICS', 'PERFORMANCE', 'WHEELS', 'ACCESSORIES', 'BESPOKE SERVICES'];
-  return <header className="relative z-50">
+
+  return (
+    <header className="relative z-50">
       {/* Auto-rotating Announcement Banner */}
       <div className="bg-primary text-primary-foreground border-b border-border">
         <div className="container mx-auto px-4 py-3">
@@ -104,7 +120,12 @@ const Header = () => {
               </Button>
               
               {/* Mobile Menu Button */}
-              <Button variant="ghost" size="icon" className="lg:hidden text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="lg:hidden text-muted-foreground hover:text-primary" 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
                 {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>
