@@ -38,8 +38,7 @@ const ProductShowcase = () => {
         <div className="text-center mb-16">
           
           <h2 className="text-4xl md:text-5xl font-automotive text-foreground mb-4 tracking-tight">
-            ADRO BMW G90 M5
-            <span className="block text-primary">CARBON FIBER AERO PROGRAM</span>
+            New Release Section
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
             Built to Perform, Designed to Impress
