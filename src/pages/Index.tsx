@@ -5,7 +5,6 @@ import Categories from '@/components/Categories';
 import BrandCarousel from '@/components/BrandCarousel';
 import ProductShowcase from '@/components/ProductShowcase';
 import About from '@/components/About';
-import BespokeServices from '@/components/BespokeServices';
 import InstagramFeed from '@/components/InstagramFeed';
 import Footer from '@/components/Footer';
 
@@ -18,7 +17,6 @@ const Index = () => {
       <BrandCarousel />
       <ProductShowcase />
       <About />
-      <BespokeServices />
       <InstagramFeed />
       <Footer />
     </div>
