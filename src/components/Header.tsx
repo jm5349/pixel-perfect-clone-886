@@ -22,6 +22,9 @@ const Header = () => {
   }, {
     label: 'Support',
     value: 'US-Based Customer Service'
+  }, {
+    label: 'Shipping',
+    value: 'Ship From US Warehouse'
   }];
   const navItems = ['AESTHETICS', 'PERFORMANCE', 'WHEELS', 'ACCESSORIES', 'BESPOKE SERVICES'];
   return <header className="relative z-50">
