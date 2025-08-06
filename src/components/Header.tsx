@@ -52,16 +52,11 @@ const Header = () => {
             {/* Logo - Center */}
             <div className="flex items-center justify-center flex-1">
               <div className="text-center">
-                {/* Replace with your logo image */}
                 <img 
-                  src="/path-to-your-logo.png" 
-                  alt="Company Logo" 
+                  src="/lovable-uploads/9c3a6696-3fa1-48b3-a64e-5e1937f3852c.png" 
+                  alt="Custom Tuning Company Logo" 
                   className="h-12 w-auto mx-auto"
                 />
-                {/* Fallback text logo - remove this when you add your image */}
-                <h1 className="text-2xl font-automotive text-foreground tracking-wider mt-2">
-                  ETERNA
-                </h1>
                 {/* Business Information - Below Logo */}
                 <div className="hidden lg:flex justify-center space-x-8 mt-3">
                   {businessInfo.map((info, index) => <div key={index} className="text-xs bg-gradient-to-b from-background to-muted/20 border border-border/60 
