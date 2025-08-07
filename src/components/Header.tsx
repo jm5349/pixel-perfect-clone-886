@@ -35,17 +35,8 @@ const Header = () => {
           <div className="flex items-center justify-between">
             {/* Mobile Layout */}
             <div className="lg:hidden flex items-center justify-between w-full">
-              {/* Logo - Center */}
-              <div className="flex items-center justify-center flex-1">
-                <img 
-                  src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
-                  alt="Custom Tuning Company Logo" 
-                  className="h-16 w-auto max-w-[200px]"
-                />
-              </div>
-              
-              {/* Actions - Right */}
-              <div className="flex items-center space-x-2">
+              {/* Hamburger Menu - Left */}
+              <div className="flex items-center">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
@@ -62,6 +53,19 @@ const Header = () => {
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
+              </div>
+              
+              {/* Logo - Center */}
+              <div className="flex items-center justify-center flex-1">
+                <img 
+                  src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
+                  alt="Custom Tuning Company Logo" 
+                  className="h-16 w-auto max-w-[200px]"
+                />
+              </div>
+              
+              {/* Actions - Right */}
+              <div className="flex items-center space-x-2">
                 <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
                   <ShoppingCart className="h-5 w-5" />
                 </Button>
