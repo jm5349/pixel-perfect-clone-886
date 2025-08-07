@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '@/components/Header';
-
+import BusinessInfo from '@/components/BusinessInfo';
 import Categories from '@/components/Categories';
 import ProductShowcase from '@/components/ProductShowcase';
 import About from '@/components/About';
@@ -11,7 +11,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+      <BusinessInfo />
       <Categories />
       <ProductShowcase />
       <About />
