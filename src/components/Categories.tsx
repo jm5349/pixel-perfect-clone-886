@@ -8,7 +8,7 @@ import accessoriesImage from '@/assets/accessories-category.jpg';
 const Categories = () => {
   const categories = [
     {
-      title: "BODY KIT",
+      title: "Body Kit",
       image: aestheticsImage,
       description: "Front Bumper Lip, Side Skirt Extension & Rear Diffuser",
     },
@@ -26,11 +26,6 @@ const Categories = () => {
       title: "DRLs & Others",
       image: accessoriesImage,
       description: "Sequential DRLs & other Accessories",
-    },
-    {
-      title: "Yofer Design®",
-      image: "/lovable-uploads/0f062cb7-f12f-45a4-9eae-c35a32d8dffe.png",
-      description: "Authentic Yofer Design Parts",
     },
   ];
 
