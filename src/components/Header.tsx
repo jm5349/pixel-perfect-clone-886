@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingCart, User, Menu, X, ChevronDown, Instagram, Facebook, Twitter } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, ChevronDown, Instagram, Facebook } from 'lucide-react';
+import TikTok from './icons/TikTok';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 const Header = () => {
@@ -85,8 +86,8 @@ const Header = () => {
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
                   <Facebook className="h-5 w-5" />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  <Twitter className="h-5 w-5" />
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                  <TikTok className="h-5 w-5" />
                 </a>
               </div>
 
