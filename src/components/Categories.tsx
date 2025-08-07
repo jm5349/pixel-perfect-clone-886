@@ -4,43 +4,33 @@ import aestheticsImage from '@/assets/aesthetics-category.jpg';
 import performanceImage from '@/assets/performance-category.jpg';
 import wheelsImage from '@/assets/wheels-category.jpg';
 import accessoriesImage from '@/assets/accessories-category.jpg';
-
 const Categories = () => {
-  const categories = [
-    {
-      title: "Body Kit",
-      image: aestheticsImage,
-      description: "Front Bumper Lip, Side Skirt Extension & Rear Diffuser",
-    },
-    {
-      title: "Spoiler",
-      image: performanceImage,
-      description: "Rear Roof Spoiler & Trunk Wing",
-    },
-    {
-      title: "Mirror Caps",
-      image: wheelsImage,
-      description: "Direct Add-on Overlay & Replacement Mirror Covers",
-    },
-    {
-      title: "DRLs & Others",
-      image: accessoriesImage,
-      description: "Sequential DRLs & other Accessories",
-    },
-    {
-      title: "Yofer Design®",
-      image: "/lovable-uploads/0f062cb7-f12f-45a4-9eae-c35a32d8dffe.png",
-      description: "Authentic Yofer Design Parts",
-    },
-    {
-      title: "GF Bodykit®",
-      image: aestheticsImage,
-      description: "Premium GF Design Products",
-    },
-  ];
-
-  return (
-    <section className="py-8 bg-background">
+  const categories = [{
+    title: "Body Kit",
+    image: aestheticsImage,
+    description: "Front Bumper Lip, Side Skirt Extension & Rear Diffuser"
+  }, {
+    title: "Spoiler",
+    image: performanceImage,
+    description: "Rear Roof Spoiler & Trunk Wing"
+  }, {
+    title: "Mirror Caps",
+    image: wheelsImage,
+    description: "Direct Add-on Overlay & Replacement Mirror Covers"
+  }, {
+    title: "DRLs & Others",
+    image: accessoriesImage,
+    description: "Sequential DRLs & other Accessories"
+  }, {
+    title: "Yofer Design®",
+    image: "/lovable-uploads/0f062cb7-f12f-45a4-9eae-c35a32d8dffe.png",
+    description: "Authentic Yofer Design Parts"
+  }, {
+    title: "GF Bodykit®",
+    image: aestheticsImage,
+    description: "Premium GF Design Products"
+  }];
+  return <section className="py-8 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-3 mb-6">
@@ -56,9 +46,7 @@ const Categories = () => {
             </span>
           </h2>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Discover our premium collection of automotive enhancements
-          </p>
+          
           
           {/* Decorative Line */}
           <div className="flex items-center justify-center mt-8">
@@ -69,18 +57,10 @@ const Categories = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
-          {categories.map((category, index) => (
-            <Card 
-              key={index}
-              className="group relative overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 cursor-pointer h-48 md:h-80"
-            >
+          {categories.map((category, index) => <Card key={index} className="group relative overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 cursor-pointer h-48 md:h-80">
               {/* Background Image */}
               <div className="absolute inset-0">
-                <img 
-                  src={category.image}
-                  alt={category.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <img src={category.image} alt={category.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
               </div>
@@ -98,12 +78,9 @@ const Categories = () => {
 
               {/* Hover Effect Overlay */}
               <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Categories;
