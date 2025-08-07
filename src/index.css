@@ -153,4 +153,17 @@ Premium dark theme with automotive-grade precision
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary;
   }
+
+  /* Ensure sticky positioning works */
+  html, body {
+    overflow-x: visible !important;
+  }
+  
+  /* Fix sticky header issue */
+  .sticky-header {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+  }
 }

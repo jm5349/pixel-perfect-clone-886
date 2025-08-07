@@ -30,7 +30,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="bg-background backdrop-blur-md border-b border-border" style={{ position: 'sticky', top: 0, zIndex: 100 }}>
+      <div className="bg-background backdrop-blur-md border-b border-border sticky-header">
         <div className="w-full max-w-none px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Mobile Layout */}
