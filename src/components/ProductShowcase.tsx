@@ -68,11 +68,6 @@ const ProductShowcase = () => {
                   
                   {/* Content Container */}
                   <div className="relative z-10 p-8 h-full flex flex-col">
-                    {/* Product Badge */}
-                    <div className="absolute top-6 right-6 px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
-                      NEW ARRIVAL
-                    </div>
-                    
                     {/* Shopify Buy Button Integration */}
                     <ShopifyBuyButton productId={productId} className="w-full flex-1 min-h-[400px]" />
                   </div>
