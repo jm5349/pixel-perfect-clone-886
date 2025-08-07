@@ -58,9 +58,13 @@ const ProductShowcase = () => {
                 </div>
                 
                 {/* Main Product Card */}
-                <div className="relative bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl border border-border/30 rounded-2xl overflow-hidden hover:border-primary/40 transition-all duration-700 shadow-xl hover:shadow-2xl group-hover:shadow-primary/10 min-h-[600px] flex flex-col">
-                  {/* Card Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl overflow-hidden hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[600px] flex flex-col">
+                  {/* Enhanced Automotive Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-premium"></div>
+                  
+                  {/* Premium accent lines */}
+                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
                   
                   {/* Content Container */}
                   <div className="relative z-10 p-8 h-full flex flex-col">
