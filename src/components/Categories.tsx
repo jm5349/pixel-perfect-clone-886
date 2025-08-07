@@ -63,7 +63,7 @@ const Categories = () => {
                 <h3 className="text-lg md:text-3xl font-automotive text-foreground mb-2 md:mb-3 tracking-wide group-hover:text-primary transition-colors duration-300">
                   {category.title}
                 </h3>
-                <p className="text-muted-foreground mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-muted-foreground mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden lg:block">
                   {category.description}
                 </p>
                 <div className="w-12 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
