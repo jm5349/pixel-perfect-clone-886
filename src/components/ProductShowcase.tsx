@@ -69,9 +69,9 @@ const ProductShowcase = () => {
                   {/* Content Container */}
                   <div className="relative z-10 p-4 h-full flex flex-col max-h-[400px]">
                     
-                    {/* Shopify Buy Button Integration */}
+                    {/* Using existing ShopifyBuyButton component */}
                     {index === 0 ? (
-                      <ShopifyProductComponent />
+                      <ShopifyBuyButton productId="9928841036069" className="w-full h-full flex flex-col max-h-[350px]" />
                     ) : (
                       <ShopifyBuyButton productId={productId} className="shopify-product-card w-full h-full flex flex-col" />
                     )}
