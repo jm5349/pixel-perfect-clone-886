@@ -73,13 +73,11 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "line-height": "1.4",
                     "color": "hsl(var(--foreground))",
                     "margin-bottom": "12px",
-                    "display": "block",
-                    "white-space": "normal",
-                    "overflow": "visible",
-                    "text-overflow": "clip",
-                    "min-height": "0",
-                    "word-break": "break-word",
-                    "overflow-wrap": "anywhere"
+                    "display": "-webkit-box",
+                    "-webkit-line-clamp": "2",
+                    "-webkit-box-orient": "vertical",
+                    "overflow": "hidden",
+                    "min-height": "44px"
                   },
                   "price": {
                     "font-family": "var(--font-automotive), -apple-system, BlinkMacSystemFont, sans-serif",
