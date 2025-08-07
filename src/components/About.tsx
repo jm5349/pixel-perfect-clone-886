@@ -11,7 +11,7 @@ const About = () => {
 
           {/* Company Title */}
           <h2 className="text-4xl md:text-5xl font-automotive text-foreground mb-8 tracking-tight">
-            Eterna Motorworks
+            Cuztomtuning
           </h2>
 
           {/* Main Description */}
