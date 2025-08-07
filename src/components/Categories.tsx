@@ -33,7 +33,7 @@ const Categories = () => {
       description: "Authentic Yofer Design Parts",
     },
     {
-      title: "GF Design®",
+      title: "GF Bodykit®",
       image: aestheticsImage,
       description: "Premium GF Design Products",
     },
