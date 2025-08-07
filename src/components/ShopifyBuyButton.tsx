@@ -56,29 +56,32 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                   },
                   "img": {
                     "width": "100%",
-                    "height": "200px",
+                    "height": "240px",
                     "object-fit": "cover",
-                    "border-radius": "8px",
-                    "margin-bottom": "12px"
+                    "border-radius": "12px",
+                    "margin-bottom": "16px",
+                    "transition": "transform 0.3s ease",
+                    "box-shadow": "0 4px 12px rgba(0,0,0,0.1)"
                   },
                   "title": {
                     "font-family": "var(--font-automotive), -apple-system, BlinkMacSystemFont, sans-serif",
                     "font-weight": "600",
-                    "font-size": "14px",
+                    "font-size": "16px",
                     "line-height": "1.4",
                     "color": "hsl(var(--foreground))",
-                    "margin-bottom": "8px",
+                    "margin-bottom": "12px",
                     "display": "-webkit-box",
                     "-webkit-line-clamp": "2",
                     "-webkit-box-orient": "vertical",
-                    "overflow": "hidden"
+                    "overflow": "hidden",
+                    "min-height": "44px"
                   },
                   "price": {
                     "font-family": "var(--font-automotive), -apple-system, BlinkMacSystemFont, sans-serif",
-                    "font-size": "18px",
+                    "font-size": "24px",
                     "font-weight": "700",
                     "color": "hsl(var(--primary))",
-                    "margin-bottom": "12px"
+                    "margin-bottom": "20px"
                   },
                   "compareAt": {
                     "font-size": "14px",
@@ -87,23 +90,33 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "margin-left": "8px"
                   },
                   "button": {
-                    "background-color": "hsl(var(--primary))",
-                    "color": "hsl(var(--primary-foreground))",
-                    "border": "none",
-                    "border-radius": "6px",
-                    "padding": "10px 20px",
-                    "font-size": "14px",
-                    "font-weight": "500",
+                    "background": "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)/0.8) 100%)",
+                    "color": "white",
+                    "border": "2px solid hsl(var(--primary))",
+                    "border-radius": "12px",
+                    "padding": "14px 28px",
+                    "font-size": "16px",
+                    "font-weight": "600",
                     "cursor": "pointer",
                     "width": "100%",
-                    "transition": "all 0.2s ease",
+                    "text-transform": "uppercase",
+                    "letter-spacing": "0.5px",
+                    "transition": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    "box-shadow": "0 4px 14px 0 hsl(var(--primary)/0.3), 0 2px 4px 0 rgba(0,0,0,0.1)",
+                    "position": "relative",
+                    "overflow": "hidden",
                     ":hover": {
-                      "background-color": "hsl(var(--primary) / 0.9)",
-                      "transform": "translateY(-1px)"
+                      "background": "linear-gradient(135deg, hsl(var(--primary)/0.9) 0%, hsl(var(--primary)/0.7) 100%)",
+                      "transform": "translateY(-2px) scale(1.02)",
+                      "box-shadow": "0 8px 25px 0 hsl(var(--primary)/0.4), 0 4px 8px 0 rgba(0,0,0,0.15)",
+                      "border-color": "hsl(var(--primary)/0.8)"
+                    },
+                    ":active": {
+                      "transform": "translateY(0) scale(0.98)"
                     },
                     ":focus": {
-                      "outline": "2px solid hsl(var(--ring))",
-                      "outline-offset": "2px"
+                      "outline": "none",
+                      "box-shadow": "0 0 0 3px hsl(var(--primary)/0.3), 0 4px 14px 0 hsl(var(--primary)/0.3)"
                     }
                   }
                 },
