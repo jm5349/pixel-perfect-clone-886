@@ -26,7 +26,7 @@ const BusinessInfo = () => {
   ];
 
   return (
-    <section className="bg-background border-b border-border py-6 lg:py-8 py-4">
+    <section className="bg-background border-b border-border py-3 lg:py-4">
       <div className="w-full max-w-none px-8 lg:px-8 px-4">
         {/* Desktop Business Info */}
         <div className="hidden lg:flex justify-center items-center space-x-8">
