@@ -57,6 +57,8 @@ Premium dark theme with automotive-grade precision
     --transition-premium: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.75rem;
+    /* Typography token */
+    --font-automotive: 'Inter';
 
     --sidebar-background: 0 0% 98%;
 
