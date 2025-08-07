@@ -83,30 +83,12 @@ const Header = () => {
                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
                           </a>
                         </DropdownMenuItem>
-                        
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#services" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                            SERVICES
-                          </a>
-                        </DropdownMenuItem>
-                        
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#merch" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                            MERCH
-                          </a>
-                        </DropdownMenuItem>
-                        
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#financing" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                            FINANCING
-                          </a>
-                        </DropdownMenuItem>
-                        
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#affiliate" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                            AFFILIATE PROGRAM
-                          </a>
-                        </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#affiliate" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
+                             AFFILIATE PROGRAM
+                           </a>
+                         </DropdownMenuItem>
                         
                         <DropdownMenuItem asChild className="cursor-pointer">
                           <a href="#faq" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
@@ -254,24 +236,6 @@ const Header = () => {
                            <a href="#top-brands" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
                              TOP BRANDS
                              <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
-                           </a>
-                         </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#services" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                             SERVICES
-                           </a>
-                         </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#merch" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                             MERCH
-                           </a>
-                         </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#financing" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                             FINANCING
                            </a>
                          </DropdownMenuItem>
                          
