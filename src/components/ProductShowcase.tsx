@@ -7,7 +7,7 @@ const ProductShowcase = () => {
   // Toyota Camry front lip splitter
   '9928832876837' // Second product
   ];
-  return <section className="relative py-14 md:py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
+  return <section className="relative py-24 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.03)_0%,transparent_50%)]"></div>
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-20"></div>
@@ -15,7 +15,7 @@ const ProductShowcase = () => {
       
       <div className="relative container mx-auto px-6 lg:px-8">
         {/* Enhanced Header Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-20">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary"></div>
             <span className="text-sm font-semibold text-primary uppercase tracking-[3px]">Featured Products</span>
@@ -50,7 +50,7 @@ const ProductShowcase = () => {
             </div>
           </div>
           
-          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
             {featuredProductIds.map((productId, index) => <div key={`${productId}-${index}`} className="group relative">
                 {/* Product Number Badge */}
                 <div className="absolute -top-4 -left-4 z-10 w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
@@ -58,7 +58,7 @@ const ProductShowcase = () => {
                 </div>
                 
                 {/* Main Product Card */}
-                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[640px] flex flex-col">
+                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl overflow-hidden hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[500px] flex flex-col">
                   {/* Enhanced Automotive Glow Effect */}
                   <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-premium"></div>
                   
@@ -67,14 +67,14 @@ const ProductShowcase = () => {
                   <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
                   
                   {/* Content Container */}
-                  <div className="relative z-10 p-8 flex flex-col">
+                  <div className="relative z-10 p-8 h-full flex flex-col">
                     {/* Product Badge */}
                     <div className="absolute top-6 right-6 px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
                       NEW ARRIVAL
                     </div>
                     
                     {/* Shopify Buy Button Integration */}
-                    <ShopifyBuyButton productId={productId} className="w-full" />
+                    <ShopifyBuyButton productId={productId} className="w-full flex-1 min-h-[400px]" />
                   </div>
                   
                   {/* Corner Accents */}
@@ -86,7 +86,7 @@ const ProductShowcase = () => {
         </div>
 
         {/* Enhanced CTA Section */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-24">
           <div className="relative inline-block">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 blur-xl"></div>
             <Button size="lg" className="relative bg-gradient-to-r from-primary via-primary/90 to-primary hover:from-primary/90 hover:via-primary hover:to-primary/90 text-white px-12 py-6 text-lg font-bold tracking-wider shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:scale-105 border-2 border-primary/20 hover:border-primary/40">
