@@ -71,9 +71,22 @@ const Header = () => {
               {/* Logo - Center with Search */}
               <div className="flex items-center justify-center flex-1">
                 <div className="flex items-center space-x-4">
-                  <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                    <Search className="h-5 w-5" />
-                  </Button>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
+                        <Menu className="h-5 w-5" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
+                      {navItems.map((item, index) => (
+                        <DropdownMenuItem key={index} asChild>
+                          <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-foreground hover:text-primary transition-colors tracking-wider cursor-pointer">
+                            {item}
+                          </a>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                   <img 
                     src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
                     alt="Custom Tuning Company Logo" 
