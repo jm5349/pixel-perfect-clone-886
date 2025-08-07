@@ -68,14 +68,32 @@ const ProductShowcase = () => {
                   
                   {/* Content Container - Increased height for better display */}
                   <div className="relative z-10 p-6 h-full flex flex-col min-h-[500px] max-h-[600px]">
-                    {/* Debug info */}
-                    <div className="mb-4 text-sm text-muted-foreground">
-                      Product ID: {productId} | Index: {index}
+                    {/* Enhanced Debug info */}
+                    <div className="mb-4 p-3 bg-muted/20 rounded text-sm text-muted-foreground border">
+                      <div>Product ID: {productId}</div>
+                      <div>Index: {index}</div>
+                      <div>Component Key: {`${productId}-${index}`}</div>
+                      <div>Time: {new Date().toLocaleTimeString()}</div>
                     </div>
-                    <ShopifyBuyButton 
-                      productId={productId} 
-                      className="w-full h-full flex flex-col min-h-[400px]" 
-                    />
+                    
+                    {/* Fallback content while Shopify loads */}
+                    <div className="flex-1 bg-background/50 rounded-lg border-2 border-dashed border-muted-foreground/30 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-lg font-semibold mb-2">Loading Product...</div>
+                        <div className="text-sm text-muted-foreground">Product ID: {productId}</div>
+                        <div className="mt-4">
+                          <div className="animate-spin h-6 w-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Shopify Component - Positioned absolutely to overlay */}
+                    <div className="absolute inset-6 z-10">
+                      <ShopifyBuyButton 
+                        productId={productId} 
+                        className="w-full h-full flex flex-col min-h-[400px]" 
+                      />
+                    </div>
                   </div>
                   
                   {/* Corner Accents */}
