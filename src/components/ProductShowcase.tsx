@@ -18,7 +18,7 @@ const ProductShowcase = () => {
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary"></div>
-            <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <span className="text-sm font-semibold text-primary uppercase tracking-[3px]">Featured Products</span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary"></div>
           </div>
           
