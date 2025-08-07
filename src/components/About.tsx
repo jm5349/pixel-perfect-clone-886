@@ -17,7 +17,7 @@ const About = () => {
           {/* Main Description */}
           <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed mb-8">
             <p className="text-xl mb-6">
-              Eterna Motorworks is more than a brand, it's the standard in premium aftermarket automotive parts and services. With over a decade of hands-on experience in the automotive industry, we've earned the trust of thousands of car enthusiasts and professional builders worldwide by delivering unmatched quality, precision fitment, and long-term credibility.
+              Cuztomtuning is more than a brand, it's the standard in premium aftermarket automotive parts and services. With over a decade of hands-on experience in the automotive industry, we've earned the trust of thousands of car enthusiasts and professional builders worldwide by delivering unmatched quality, precision fitment, and long-term credibility.
             </p>
             
             <p className="text-lg mb-6">
