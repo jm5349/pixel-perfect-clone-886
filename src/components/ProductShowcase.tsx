@@ -58,7 +58,7 @@ const ProductShowcase = () => {
                 </div>
                 
                 {/* Main Product Card */}
-                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl overflow-hidden hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[500px] flex flex-col">
+                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[640px] flex flex-col">
                   {/* Enhanced Automotive Glow Effect */}
                   <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-premium"></div>
                   
@@ -67,14 +67,14 @@ const ProductShowcase = () => {
                   <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
                   
                   {/* Content Container */}
-                  <div className="relative z-10 p-8 h-full flex flex-col">
+                  <div className="relative z-10 p-8 flex flex-col">
                     {/* Product Badge */}
                     <div className="absolute top-6 right-6 px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
                       NEW ARRIVAL
                     </div>
                     
                     {/* Shopify Buy Button Integration */}
-                    <ShopifyBuyButton productId={productId} className="w-full flex-1 min-h-[400px]" />
+                    <ShopifyBuyButton productId={productId} className="w-full" />
                   </div>
                   
                   {/* Corner Accents */}
