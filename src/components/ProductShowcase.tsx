@@ -39,11 +39,50 @@ const ProductShowcase = () => {
           </div>
         </div>
 
-        {/* Products */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {featuredProductIds.map((productId, index) => (
-            <ShopifyBuyButton key={`${productId}-${index}`} productId={productId} className="w-full" />
-          ))}
+        {/* Enhanced Products Grid */}
+        <div className="relative">
+          {/* Grid Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="grid grid-cols-8 h-full">
+              {Array.from({
+              length: 8
+            }).map((_, i) => <div key={i} className="border-l border-primary/20"></div>)}
+            </div>
+          </div>
+          
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+            {featuredProductIds.map((productId, index) => <div key={`${productId}-${index}`} className="group relative">
+                {/* Product Number Badge */}
+                <div className="absolute -top-4 -left-4 z-10 w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                
+                {/* Main Product Card */}
+                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl overflow-hidden hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[500px] flex flex-col">
+                  {/* Enhanced Automotive Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-premium"></div>
+                  
+                  {/* Premium accent lines */}
+                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+                  
+                  {/* Content Container */}
+                  <div className="relative z-10 p-8 h-full flex flex-col">
+                    {/* Product Badge */}
+                    <div className="absolute top-6 right-6 px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
+                      NEW ARRIVAL
+                    </div>
+                    
+                    {/* Shopify Buy Button Integration */}
+                    <ShopifyBuyButton productId={productId} className="w-full flex-1 min-h-[400px]" />
+                  </div>
+                  
+                  {/* Corner Accents */}
+                  <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/20 rounded-tl-2xl"></div>
+                  <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-primary/20 rounded-br-2xl"></div>
+                </div>
+              </div>)}
+          </div>
         </div>
 
         {/* Enhanced CTA Section */}
