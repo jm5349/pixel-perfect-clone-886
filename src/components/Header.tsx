@@ -30,7 +30,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="bg-background backdrop-blur-md">
+      <div className="bg-gradient-to-b from-background to-background/95 backdrop-blur-md">
         <div className="w-full max-w-none px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Mobile Layout */}
@@ -139,6 +139,9 @@ const Header = () => {
           )}
         </div>
       </div>
+      
+      {/* Gradient transition separator */}
+      <div className="h-8 bg-gradient-to-b from-background/95 to-transparent"></div>
     </header>;
 };
 export default Header;
