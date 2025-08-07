@@ -30,7 +30,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="bg-background backdrop-blur-md pb-4">
+      <div className="bg-background backdrop-blur-md pb-2">
         <div className="w-full max-w-none px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Mobile Layout */}
