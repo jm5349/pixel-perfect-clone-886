@@ -3,12 +3,11 @@ import { Button } from '@/components/ui/button';
 import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
   // Your actual Shopify product IDs
-  const featuredProductIds = [
-    '9928841036069', // Toyota Camry front lip splitter
-    '9928832876837'  // Second product
+  const featuredProductIds = ['9928841036069',
+  // Toyota Camry front lip splitter
+  '9928832876837' // Second product
   ];
-  return (
-    <section className="relative py-24 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
+  return <section className="relative py-24 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.03)_0%,transparent_50%)]"></div>
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-20"></div>
@@ -30,9 +29,7 @@ const ProductShowcase = () => {
             </span>
           </h2>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Built to Perform, Designed to Impress
-          </p>
+          
           
           {/* Decorative Line */}
           <div className="flex items-center justify-center mt-8">
@@ -47,15 +44,14 @@ const ProductShowcase = () => {
           {/* Grid Background Pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="grid grid-cols-8 h-full">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="border-l border-primary/20"></div>
-              ))}
+              {Array.from({
+              length: 8
+            }).map((_, i) => <div key={i} className="border-l border-primary/20"></div>)}
             </div>
           </div>
           
           <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
-            {featuredProductIds.map((productId, index) => (
-              <div key={`${productId}-${index}`} className="group relative">
+            {featuredProductIds.map((productId, index) => <div key={`${productId}-${index}`} className="group relative">
                 {/* Product Number Badge */}
                 <div className="absolute -top-4 -left-4 z-10 w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                   {String(index + 1).padStart(2, '0')}
@@ -73,18 +69,14 @@ const ProductShowcase = () => {
                       NEW ARRIVAL
                     </div>
                     
-                    <ShopifyBuyButton 
-                      productId={productId} 
-                      className="shopify-product-card w-full h-full flex flex-col"
-                    />
+                    <ShopifyBuyButton productId={productId} className="shopify-product-card w-full h-full flex flex-col" />
                   </div>
                   
                   {/* Corner Accents */}
                   <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/20 rounded-tl-2xl"></div>
                   <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-primary/20 rounded-br-2xl"></div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
 
@@ -101,7 +93,6 @@ const ProductShowcase = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
 export default ProductShowcase;
