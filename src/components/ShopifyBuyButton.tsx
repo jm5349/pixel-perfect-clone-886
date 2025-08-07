@@ -71,7 +71,7 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "font-weight": "600",
                     "font-size": "16px",
                     "line-height": "1.4",
-                    "color": "hsl(var(--foreground))",
+                    "color": "hsl(var(--primary-foreground))",
                     "margin-bottom": "12px",
                     "display": "-webkit-box",
                     "-webkit-line-clamp": "2",
