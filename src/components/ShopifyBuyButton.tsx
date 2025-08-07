@@ -73,19 +73,17 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "line-height": "1.4",
                     "color": "hsl(var(--foreground))",
                     "margin-bottom": "12px",
-                    "display": "block",
-                    "white-space": "normal",
-                    "overflow": "visible",
-                    "text-overflow": "clip",
-                    "min-height": "0",
-                    "word-break": "break-word",
-                    "overflow-wrap": "anywhere"
+                    "display": "-webkit-box",
+                    "-webkit-line-clamp": "2",
+                    "-webkit-box-orient": "vertical",
+                    "overflow": "hidden",
+                    "min-height": "44px"
                   },
                   "price": {
                     "font-family": "var(--font-automotive), -apple-system, BlinkMacSystemFont, sans-serif",
                     "font-size": "24px",
                     "font-weight": "700",
-                    "color": "hsl(var(--primary))",
+                    "color": "#dc2626",
                     "margin-bottom": "20px"
                   },
                   "compareAt": {
@@ -94,36 +92,36 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "text-decoration": "line-through",
                     "margin-left": "8px"
                   },
-                  "button": {
-                    "background": "linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%)",
-                    "color": "white",
-                    "border": "2px solid #dc2626",
-                    "border-radius": "12px",
-                    "padding": "16px 32px",
-                    "font-size": "16px",
-                    "font-weight": "700",
-                    "cursor": "pointer",
-                    "width": "100%",
-                    "text-transform": "uppercase",
-                    "letter-spacing": "1px",
-                    "transition": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    "box-shadow": "0 6px 20px 0 rgba(220, 38, 38, 0.4), 0 2px 6px 0 rgba(0,0,0,0.1)",
-                    "margin-top": "auto",
-                    "min-height": "56px",
-                    ":hover": {
-                      "background": "linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%)",
-                      "transform": "translateY(-3px) scale(1.02)",
-                      "box-shadow": "0 10px 30px 0 rgba(220, 38, 38, 0.5), 0 4px 12px 0 rgba(0,0,0,0.15)",
-                      "border-color": "#ef4444"
-                    },
-                    ":active": {
-                      "transform": "translateY(-1px) scale(0.98)"
-                    },
-                    ":focus": {
-                      "outline": "none",
-                      "box-shadow": "0 0 0 4px rgba(220, 38, 38, 0.3), 0 6px 20px 0 rgba(220, 38, 38, 0.4)"
+                    "button": {
+                      "background": "linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%)",
+                      "color": "white",
+                      "border": "2px solid #dc2626",
+                      "border-radius": "12px",
+                      "padding": "16px 32px",
+                      "font-size": "16px",
+                      "font-weight": "700",
+                      "cursor": "pointer",
+                      "width": "100%",
+                      "text-transform": "uppercase",
+                      "letter-spacing": "1px",
+                      "transition": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      "box-shadow": "0 6px 20px 0 rgba(220, 38, 38, 0.4), 0 2px 6px 0 rgba(0,0,0,0.1)",
+                      "margin-top": "auto",
+                      "min-height": "56px",
+                      ":hover": {
+                        "background": "linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%)",
+                        "transform": "translateY(-3px) scale(1.02)",
+                        "box-shadow": "0 10px 30px 0 rgba(220, 38, 38, 0.5), 0 4px 12px 0 rgba(0,0,0,0.15)",
+                        "border-color": "#ef4444"
+                      },
+                      ":active": {
+                        "transform": "translateY(-1px) scale(0.98)"
+                      },
+                      ":focus": {
+                        "outline": "none",
+                        "box-shadow": "0 0 0 4px rgba(220, 38, 38, 0.3), 0 6px 20px 0 rgba(220, 38, 38, 0.4)"
+                      }
                     }
-                  }
                 },
                 "contents": {
                   "img": true,
