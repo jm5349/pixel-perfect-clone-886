@@ -144,15 +144,32 @@ const ShopifyProductComponent = () => {
                       '@media (min-width: 601px)': {
                         'max-width': '100%',
                         'margin-left': '0px',
-                        'margin-bottom': '0px'
+                        'margin-bottom': '0px',
+                        'max-height': '450px'
                       }
                     },
                     button: {
                       'background-color': '#dc2626',
                       'color': '#ffffff',
+                      'font-weight': 'bold',
+                      'padding': '12px 24px',
+                      'border-radius': '8px',
                       ':hover': {
                         'background-color': '#991b1b'
                       }
+                    },
+                    img: {
+                      'max-height': '200px',
+                      'object-fit': 'cover'
+                    },
+                    title: {
+                      'font-size': '1.1rem',
+                      'font-weight': '600'
+                    },
+                    price: {
+                      'font-size': '1.2rem',
+                      'font-weight': 'bold',
+                      'color': '#dc2626'
                     }
                   },
                   text: {
@@ -177,7 +194,7 @@ const ShopifyProductComponent = () => {
   }, []);
 
   return (
-    <div id="product-component-1754598975360" className="w-full h-full flex flex-col min-h-[400px]"></div>
+    <div id="product-component-1754598975360" className="w-full h-full flex flex-col max-h-[500px] overflow-hidden"></div>
   );
 };
 
