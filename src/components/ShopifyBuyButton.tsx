@@ -35,6 +35,9 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
         window.ShopifyBuy.UI.onReady(client).then((ui: any) => {
           const targetNode = document.getElementById(componentId);
           if (!targetNode) return;
+          if (targetNode.hasChildNodes()) {
+            targetNode.innerHTML = '';
+          }
 
           ui.createComponent('product', {
             id: productId,
@@ -52,10 +55,7 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "text-align": "left",
                     "background-color": "transparent",
                     "border": "none",
-                    "padding": "0",
-                    "display": "flex",
-                    "flex-direction": "column",
-                    "height": "100%"
+                    "padding": "0"
                   },
                   "img": {
                     "width": "100%",
@@ -217,6 +217,12 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
     };
 
     loadShopifyBuyButton();
+
+    return () => {
+      if (componentRef.current) {
+        componentRef.current.innerHTML = '';
+      }
+    };
   }, [productId]);
 
   return <div ref={componentRef} className={className}></div>;
