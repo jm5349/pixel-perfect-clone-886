@@ -58,7 +58,7 @@ const ProductShowcase = () => {
                 </div>
                 
                 {/* Main Product Card */}
-                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl overflow-hidden hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow max-h-[400px] h-[400px] flex flex-col">
+                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl overflow-visible hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[600px] h-auto flex flex-col">
                   {/* Enhanced Automotive Glow Effect */}
                   <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-premium"></div>
                   
@@ -66,11 +66,15 @@ const ProductShowcase = () => {
                   <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
                   
-                  {/* Content Container */}
-                  <div className="relative z-10 p-4 h-full flex flex-col max-h-[400px]">
+                  {/* Content Container - Increased height for better display */}
+                  <div className="relative z-10 p-6 h-full flex flex-col min-h-[500px] max-h-[600px]">
+                    {/* Debug info */}
+                    <div className="mb-4 text-sm text-muted-foreground">
+                      Product ID: {productId} | Index: {index}
+                    </div>
                     <ShopifyBuyButton 
                       productId={productId} 
-                      className="w-full h-full flex flex-col" 
+                      className="w-full h-full flex flex-col min-h-[400px]" 
                     />
                   </div>
                   
