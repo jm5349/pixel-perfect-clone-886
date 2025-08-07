@@ -80,15 +80,21 @@ const Header = () => {
             <div className="hidden lg:flex items-center w-full sticky-header relative">
               {/* Social Media Icons - Left */}
               <div className="flex items-center space-x-4 absolute left-0">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  <TikTok className="h-5 w-5" />
-                </a>
+                <Button variant="ghost" size="icon" asChild>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="ghost" size="icon" asChild>
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                    <Facebook className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="ghost" size="icon" asChild>
+                  <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                    <TikTok className="h-5 w-5" />
+                  </a>
+                </Button>
               </div>
 
               {/* Logo - Center */}
