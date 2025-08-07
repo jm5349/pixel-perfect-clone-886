@@ -30,7 +30,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="bg-background backdrop-blur-md border-b border-border sticky-header">
+      <div className="bg-background backdrop-blur-md border-b border-border">
         <div className="w-full max-w-none px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Mobile Layout */}
@@ -72,7 +72,7 @@ const Header = () => {
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden lg:flex items-center justify-between w-full">
+            <div className="hidden lg:flex items-center justify-between w-full sticky-header">
               {/* Search Bar - Left */}
               <div className="flex items-center flex-1">
                 <div className="relative flex items-center">
