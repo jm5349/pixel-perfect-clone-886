@@ -54,17 +54,28 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "border": "none",
                     "padding": "0"
                   },
+                  "img": {
+                    "width": "100%",
+                    "height": "200px",
+                    "object-fit": "cover",
+                    "border-radius": "8px",
+                    "margin-bottom": "12px"
+                  },
                   "title": {
                     "font-family": "var(--font-automotive), -apple-system, BlinkMacSystemFont, sans-serif",
                     "font-weight": "600",
-                    "font-size": "16px",
+                    "font-size": "14px",
                     "line-height": "1.4",
                     "color": "hsl(var(--foreground))",
-                    "margin-bottom": "8px"
+                    "margin-bottom": "8px",
+                    "display": "-webkit-box",
+                    "-webkit-line-clamp": "2",
+                    "-webkit-box-orient": "vertical",
+                    "overflow": "hidden"
                   },
                   "price": {
                     "font-family": "var(--font-automotive), -apple-system, BlinkMacSystemFont, sans-serif",
-                    "font-size": "20px",
+                    "font-size": "18px",
                     "font-weight": "700",
                     "color": "hsl(var(--primary))",
                     "margin-bottom": "12px"
@@ -72,17 +83,19 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                   "compareAt": {
                     "font-size": "14px",
                     "color": "hsl(var(--muted-foreground))",
-                    "text-decoration": "line-through"
+                    "text-decoration": "line-through",
+                    "margin-left": "8px"
                   },
                   "button": {
                     "background-color": "hsl(var(--primary))",
                     "color": "hsl(var(--primary-foreground))",
                     "border": "none",
                     "border-radius": "6px",
-                    "padding": "10px 16px",
+                    "padding": "10px 20px",
                     "font-size": "14px",
                     "font-weight": "500",
                     "cursor": "pointer",
+                    "width": "100%",
                     "transition": "all 0.2s ease",
                     ":hover": {
                       "background-color": "hsl(var(--primary) / 0.9)",
@@ -95,7 +108,7 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                   }
                 },
                 "contents": {
-                  "img": false,
+                  "img": true,
                   "title": true,
                   "price": true,
                   "description": false
