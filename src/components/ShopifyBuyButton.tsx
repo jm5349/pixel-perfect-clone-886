@@ -52,7 +52,10 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "text-align": "left",
                     "background-color": "transparent",
                     "border": "none",
-                    "padding": "0"
+                    "padding": "0",
+                    "display": "flex",
+                    "flex-direction": "column",
+                    "height": "100%"
                   },
                   "img": {
                     "width": "100%",
@@ -90,33 +93,33 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "margin-left": "8px"
                   },
                   "button": {
-                    "background": "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)/0.8) 100%)",
+                    "background": "linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%)",
                     "color": "white",
-                    "border": "2px solid hsl(var(--primary))",
+                    "border": "2px solid #dc2626",
                     "border-radius": "12px",
-                    "padding": "14px 28px",
+                    "padding": "16px 32px",
                     "font-size": "16px",
-                    "font-weight": "600",
+                    "font-weight": "700",
                     "cursor": "pointer",
                     "width": "100%",
                     "text-transform": "uppercase",
-                    "letter-spacing": "0.5px",
+                    "letter-spacing": "1px",
                     "transition": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    "box-shadow": "0 4px 14px 0 hsl(var(--primary)/0.3), 0 2px 4px 0 rgba(0,0,0,0.1)",
-                    "position": "relative",
-                    "overflow": "hidden",
+                    "box-shadow": "0 6px 20px 0 rgba(220, 38, 38, 0.4), 0 2px 6px 0 rgba(0,0,0,0.1)",
+                    "margin-top": "auto",
+                    "min-height": "56px",
                     ":hover": {
-                      "background": "linear-gradient(135deg, hsl(var(--primary)/0.9) 0%, hsl(var(--primary)/0.7) 100%)",
-                      "transform": "translateY(-2px) scale(1.02)",
-                      "box-shadow": "0 8px 25px 0 hsl(var(--primary)/0.4), 0 4px 8px 0 rgba(0,0,0,0.15)",
-                      "border-color": "hsl(var(--primary)/0.8)"
+                      "background": "linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%)",
+                      "transform": "translateY(-3px) scale(1.02)",
+                      "box-shadow": "0 10px 30px 0 rgba(220, 38, 38, 0.5), 0 4px 12px 0 rgba(0,0,0,0.15)",
+                      "border-color": "#ef4444"
                     },
                     ":active": {
-                      "transform": "translateY(0) scale(0.98)"
+                      "transform": "translateY(-1px) scale(0.98)"
                     },
                     ":focus": {
                       "outline": "none",
-                      "box-shadow": "0 0 0 3px hsl(var(--primary)/0.3), 0 4px 14px 0 hsl(var(--primary)/0.3)"
+                      "box-shadow": "0 0 0 4px rgba(220, 38, 38, 0.3), 0 6px 20px 0 rgba(220, 38, 38, 0.4)"
                     }
                   }
                 },
