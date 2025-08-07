@@ -2,9 +2,10 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
-  // Your actual Shopify product ID - showing only one product
+  // Your actual Shopify product IDs
   const featuredProductIds = [
-    '9928841036069' // Your Toyota Camry front lip splitter
+    '9928841036069', // Toyota Camry front lip splitter
+    '9928832876837'  // Second product
   ];
   return <section className="py-20 bg-card/30">
       <div className="container mx-auto px-4">
@@ -19,14 +20,16 @@ const ProductShowcase = () => {
           </p>
         </div>
 
-        {/* Single Product Display */}
-        <div className="flex justify-center max-w-7xl mx-auto">
-          <div className="group bg-background border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg w-full max-w-sm">
-            <ShopifyBuyButton 
-              productId="9928841036069" 
-              className="shopify-product-card w-full h-full p-4"
-            />
-          </div>
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {featuredProductIds.map((productId, index) => (
+            <div key={`${productId}-${index}`} className="group bg-background border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg">
+              <ShopifyBuyButton 
+                productId={productId} 
+                className="shopify-product-card w-full h-full p-4"
+              />
+            </div>
+          ))}
         </div>
 
         {/* CTA Section */}
