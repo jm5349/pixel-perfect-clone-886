@@ -3,8 +3,8 @@ import React from 'react';
 const BusinessInfo = () => {
   const businessInfo = [
     {
-      label: 'Business Hours',
-      value: 'Mon-Fri 10AM-5PM PST'
+      label: 'Local Business',
+      value: 'City of Industry, CA'
     },
     {
       label: 'Warranty',
@@ -15,8 +15,8 @@ const BusinessInfo = () => {
       value: 'US-Based Customer Service'
     },
     {
-      label: 'Shipping',
-      value: 'Ship From US Warehouse'
+      label: 'Fast Shipping',
+      value: 'Same Day or Next Day Shipping'
     }
   ];
 
