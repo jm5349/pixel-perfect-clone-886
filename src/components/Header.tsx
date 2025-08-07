@@ -65,38 +65,57 @@ const Header = () => {
 
             {/* Desktop Layout */}
             <div className="hidden lg:flex items-center justify-between w-full">
-              {/* Empty Left Space */}
-              <div className="flex-1"></div>
+              {/* Search Bar - Left */}
+              <div className="flex items-center flex-1">
+                <div className="relative flex items-center">
+                  <div className="flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow w-80 pr-4">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="h-12 w-12 text-primary hover:text-primary hover:bg-primary/20 rounded-full flex-shrink-0"
+                    >
+                      <Search className="h-5 w-5" />
+                    </Button>
+                    <input
+                      type="text"
+                      placeholder="Search parts, brands, models..."
+                      className="bg-transparent text-foreground placeholder:text-muted-foreground border-none outline-none flex-1 w-full"
+                    />
+                  </div>
+                </div>
+              </div>
 
-              {/* Logo - Center with Search */}
+              {/* Logo - Center */}
               <div className="flex items-center justify-center flex-1">
-                <div className="flex items-center space-x-4">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                        <Menu className="h-5 w-5" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
-                      {navItems.map((item, index) => (
-                        <DropdownMenuItem key={index} asChild>
-                          <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-foreground hover:text-primary transition-colors tracking-wider cursor-pointer">
-                            {item}
-                          </a>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                <div className="text-center">
                   <img 
                     src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
                     alt="Custom Tuning Company Logo" 
-                    className="h-28 lg:h-32 w-auto max-w-md"
+                    className="h-28 lg:h-32 w-auto max-w-md mx-auto"
                   />
                 </div>
               </div>
 
-              {/* Actions - Right */}
+              {/* Actions & Menu - Right */}
               <div className="flex items-center space-x-4 flex-1 justify-end">
+                {/* Desktop Navigation Dropdown */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
+                      <Menu className="h-5 w-5" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
+                    {navItems.map((item, index) => (
+                      <DropdownMenuItem key={index} asChild>
+                        <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-foreground hover:text-primary transition-colors tracking-wider cursor-pointer">
+                          {item}
+                        </a>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                
                 <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
                   <ShoppingCart className="h-5 w-5" />
                 </Button>
