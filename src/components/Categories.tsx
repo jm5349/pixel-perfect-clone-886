@@ -42,13 +42,30 @@ const Categories = () => {
   return (
     <section className="py-8 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-6xl font-automotive text-foreground mb-3 md:mb-4 tracking-tight">
-            SHOP BY CATEGORY
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary"></div>
+            <span className="text-sm font-semibold text-primary uppercase tracking-[3px]">Browse Categories</span>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary"></div>
+          </div>
+          
+          <h2 className="text-4xl md:text-7xl font-automotive text-foreground mb-6 tracking-tight leading-tight">
+            SHOP BY 
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary/60">
+              CATEGORY
+            </span>
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Discover our premium collection of automotive enhancements
           </p>
+          
+          {/* Decorative Line */}
+          <div className="flex items-center justify-center mt-8">
+            <div className="h-px w-20 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+            <div className="w-2 h-2 bg-primary rounded-full mx-4"></div>
+            <div className="h-px w-20 bg-gradient-to-l from-transparent via-primary/50 to-transparent"></div>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
