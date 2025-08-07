@@ -55,7 +55,8 @@ const Header = () => {
                       background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
                       backdropFilter: 'blur(20px)',
                       WebkitBackdropFilter: 'blur(20px)',
-                      boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)'
+                      boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)',
+                      borderLeft: '3px solid hsl(var(--primary))'
                     }}
                     align="start"
                     sideOffset={8}
@@ -63,58 +64,58 @@ const Header = () => {
                     <div className="py-4">
                       {/* Main Navigation Items */}
                       <div className="space-y-1 px-2">
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#shop-by-vehicle" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
-                            SHOP BY VEHICLE
-                            <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
-                          </a>
-                        </DropdownMenuItem>
-                        
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#shop-by-category" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
-                            SHOP BY CATEGORY
-                            <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
-                          </a>
-                        </DropdownMenuItem>
-                        
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#top-brands" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
-                            TOP BRANDS
-                            <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
-                          </a>
-                        </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#affiliate" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                             AFFILIATE PROGRAM
+                         <DropdownMenuItem asChild className="cursor-pointer group">
+                           <a href="#shop-by-vehicle" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                             SHOP BY VEHICLE
+                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                            </a>
                          </DropdownMenuItem>
                         
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#faq" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                            FAQ
-                          </a>
-                        </DropdownMenuItem>
+                         <DropdownMenuItem asChild className="cursor-pointer group">
+                           <a href="#shop-by-category" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                             SHOP BY CATEGORY
+                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                           </a>
+                         </DropdownMenuItem>
                         
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#contact" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                            CONTACT US
-                          </a>
-                        </DropdownMenuItem>
+                         <DropdownMenuItem asChild className="cursor-pointer group">
+                           <a href="#top-brands" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                             TOP BRANDS
+                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#affiliate" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                             AFFILIATE PROGRAM
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#faq" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                             FAQ
+                           </a>
+                         </DropdownMenuItem>
                         
-                        <DropdownMenuItem asChild className="cursor-pointer">
-                          <a href="#help" className="flex items-center px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-accent/50 hover:text-foreground rounded-md transition-colors">
-                            DIDN'T FIND WHAT YOU NEED?
-                          </a>
-                        </DropdownMenuItem>
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#contact" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                             CONTACT US
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#help" className="flex items-center px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-primary/10 hover:text-foreground rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                             DIDN'T FIND WHAT YOU NEED?
+                           </a>
+                         </DropdownMenuItem>
                       </div>
                       
                       {/* Bottom Section */}
                       <div className="mt-6 pt-4 border-t border-border px-6">
-                        {/* Login Button */}
-                        <Button className="w-full mb-4 bg-foreground text-background hover:bg-foreground/90 font-medium">
-                          Login
-                        </Button>
+                         {/* Login Button */}
+                         <Button className="w-full mb-4 bg-primary text-primary-foreground hover:bg-primary/90 font-medium shadow-lg shadow-primary/25">
+                           Login
+                         </Button>
                         
                         {/* Social Media Icons */}
                         <div className="flex items-center justify-center space-x-4">
@@ -210,7 +211,8 @@ const Header = () => {
                        background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
                        backdropFilter: 'blur(20px)',
                        WebkitBackdropFilter: 'blur(20px)',
-                       boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)'
+                       boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)',
+                       borderLeft: '3px solid hsl(var(--primary))'
                      }}
                      align="end"
                      sideOffset={8}
@@ -218,58 +220,58 @@ const Header = () => {
                      <div className="py-4">
                        {/* Main Navigation Items */}
                        <div className="space-y-1 px-2">
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#shop-by-vehicle" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
-                             SHOP BY VEHICLE
-                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
-                           </a>
-                         </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#shop-by-category" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
-                             SHOP BY CATEGORY
-                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
-                           </a>
-                         </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#top-brands" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
-                             TOP BRANDS
-                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
-                           </a>
-                         </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#affiliate" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                             AFFILIATE PROGRAM
-                           </a>
-                         </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#faq" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                             FAQ
-                           </a>
-                         </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#contact" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
-                             CONTACT US
-                           </a>
-                         </DropdownMenuItem>
-                         
-                         <DropdownMenuItem asChild className="cursor-pointer">
-                           <a href="#help" className="flex items-center px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-accent/50 hover:text-foreground rounded-md transition-colors">
-                             DIDN'T FIND WHAT YOU NEED?
-                           </a>
-                         </DropdownMenuItem>
-                       </div>
-                       
-                       {/* Bottom Section */}
-                       <div className="mt-6 pt-4 border-t border-border px-6">
-                         {/* Login Button */}
-                         <Button className="w-full mb-4 bg-foreground text-background hover:bg-foreground/90 font-medium">
-                           Login
-                         </Button>
+                          <DropdownMenuItem asChild className="cursor-pointer group">
+                            <a href="#shop-by-vehicle" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                              SHOP BY VEHICLE
+                              <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </a>
+                          </DropdownMenuItem>
+                          
+                          <DropdownMenuItem asChild className="cursor-pointer group">
+                            <a href="#shop-by-category" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                              SHOP BY CATEGORY
+                              <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </a>
+                          </DropdownMenuItem>
+                          
+                          <DropdownMenuItem asChild className="cursor-pointer group">
+                            <a href="#top-brands" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                              TOP BRANDS
+                              <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </a>
+                          </DropdownMenuItem>
+                          
+                          <DropdownMenuItem asChild className="cursor-pointer">
+                            <a href="#affiliate" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                              AFFILIATE PROGRAM
+                            </a>
+                          </DropdownMenuItem>
+                          
+                          <DropdownMenuItem asChild className="cursor-pointer">
+                            <a href="#faq" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                              FAQ
+                            </a>
+                          </DropdownMenuItem>
+                          
+                          <DropdownMenuItem asChild className="cursor-pointer">
+                            <a href="#contact" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                              CONTACT US
+                            </a>
+                          </DropdownMenuItem>
+                          
+                          <DropdownMenuItem asChild className="cursor-pointer">
+                            <a href="#help" className="flex items-center px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-primary/10 hover:text-foreground rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                              DIDN'T FIND WHAT YOU NEED?
+                            </a>
+                          </DropdownMenuItem>
+                        </div>
+                        
+                        {/* Bottom Section */}
+                        <div className="mt-6 pt-4 border-t border-border px-6">
+                          {/* Login Button */}
+                          <Button className="w-full mb-4 bg-primary text-primary-foreground hover:bg-primary/90 font-medium shadow-lg shadow-primary/25">
+                            Login
+                          </Button>
                          
                          {/* Social Media Icons */}
                          <div className="flex items-center justify-center space-x-4">
