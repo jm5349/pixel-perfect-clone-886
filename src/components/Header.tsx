@@ -77,26 +77,6 @@ const Header = () => {
 
             {/* Desktop Layout */}
             <div className="hidden lg:flex items-center justify-between w-full sticky-header">
-              {/* Search Bar - Left */}
-              <div className="flex items-center flex-1">
-                <div className="relative flex items-center">
-                  <div className="flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow w-80 pr-4">
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      className="h-12 w-12 text-primary hover:text-primary hover:bg-primary/20 rounded-full flex-shrink-0"
-                    >
-                      <Search className="h-5 w-5" />
-                    </Button>
-                    <input
-                      type="text"
-                      placeholder="Search parts, brands, models..."
-                      className="bg-transparent text-foreground placeholder:text-muted-foreground border-none outline-none flex-1 w-full"
-                    />
-                  </div>
-                </div>
-              </div>
-
               {/* Logo - Center */}
               <div className="flex items-center justify-center flex-1">
                 <div className="text-center">
@@ -139,23 +119,6 @@ const Header = () => {
           </div>
 
 
-          {/* Mobile Search Bar */}
-          <div className="lg:hidden mt-4">
-            <div className="flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow pr-4">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="h-10 w-10 text-primary hover:text-primary hover:bg-primary/20 rounded-full flex-shrink-0"
-              >
-                <Search className="h-4 w-4" />
-              </Button>
-              <input
-                type="text"
-                placeholder="Search parts, brands, models..."
-                className="bg-transparent text-foreground placeholder:text-muted-foreground border-none outline-none flex-1 w-full text-sm"
-              />
-            </div>
-          </div>
 
           {/* Mobile Navigation */}
           {isMobileMenuOpen && (
