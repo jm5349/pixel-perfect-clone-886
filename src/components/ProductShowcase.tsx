@@ -104,9 +104,13 @@ const ProductShowcase = () => {
 // Separate component for the first Shopify product
 const ShopifyProductComponent = () => {
   useEffect(() => {
+    console.log('ShopifyProductComponent mounted');
+    
     const loadShopifyScript = () => {
+      console.log('Loading Shopify script...');
       // Check if script already exists
       if (document.getElementById('shopify-buy-script')) {
+        console.log('Script already exists, initializing UI');
         initializeShopifyUI();
         return;
       }
@@ -115,20 +119,36 @@ const ShopifyProductComponent = () => {
       script.id = 'shopify-buy-script';
       script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
       script.async = true;
-      script.onload = initializeShopifyUI;
+      script.onload = () => {
+        console.log('Shopify script loaded successfully');
+        initializeShopifyUI();
+      };
+      script.onerror = () => {
+        console.error('Failed to load Shopify script');
+      };
       document.head.appendChild(script);
     };
 
     const initializeShopifyUI = () => {
+      console.log('Initializing Shopify UI...');
+      console.log('ShopifyBuy available:', !!window.ShopifyBuy);
+      
       if (window.ShopifyBuy && window.ShopifyBuy.UI) {
+        console.log('Building Shopify client...');
         const client = window.ShopifyBuy.buildClient({
           domain: 'd31c8d-3.myshopify.com',
           storefrontAccessToken: 'd49b034ec729dadfb98376a9f41b7a63',
         });
 
+        console.log('Client built, waiting for UI ready...');
         window.ShopifyBuy.UI.onReady(client).then((ui) => {
+          console.log('UI ready, looking for target node...');
           const targetNode = document.getElementById('product-component-1754598975360');
+          console.log('Target node found:', !!targetNode);
+          console.log('Target node has children:', targetNode?.hasChildNodes());
+          
           if (targetNode && !targetNode.hasChildNodes()) {
+            console.log('Creating product component...');
             ui.createComponent('product', {
               id: '9928841036069',
               node: targetNode,
@@ -191,14 +211,27 @@ const ShopifyProductComponent = () => {
                   }
                 }
               }
+            }).then((component) => {
+              console.log('Product component created successfully:', component);
+            }).catch((error) => {
+              console.error('Error creating product component:', error);
             });
+          } else {
+            console.log('Target node not available or already has content');
           }
+        }).catch((error) => {
+          console.error('Error with Shopify UI:', error);
         });
+      } else {
+        console.log('ShopifyBuy or ShopifyBuy.UI not available');
       }
     };
 
-    // Small delay to ensure DOM is ready
-    setTimeout(loadShopifyScript, 100);
+    // Longer delay to ensure DOM is fully ready
+    setTimeout(() => {
+      console.log('Starting Shopify script load after timeout');
+      loadShopifyScript();
+    }, 500);
   }, []);
 
   return (
