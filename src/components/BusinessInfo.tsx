@@ -35,7 +35,7 @@ const BusinessInfo = () => {
             return (
               <div key={index} className="flex items-center space-x-3 px-6 py-4 bg-card border-l-2 border-primary 
                                          hover:bg-card/80 transition-all duration-200 group">
-                <IconComponent className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-200" />
+                <IconComponent className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-200" />
                 <div className="text-left">
                   <div className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
                     {info.label}
@@ -56,7 +56,7 @@ const BusinessInfo = () => {
               const IconComponent = info.icon;
               return (
                 <div key={index} className="flex items-start space-x-2 px-2 py-2 bg-card border-l-2 border-primary">
-                  <IconComponent className="w-3 h-3 text-primary flex-shrink-0 mt-0.5" />
+                  <IconComponent className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                   <div className="text-left min-w-0 flex-1">
                     <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-medium leading-tight">
                       {info.label}
