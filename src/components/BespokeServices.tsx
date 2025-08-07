@@ -42,7 +42,7 @@ const BespokeServices = () => {
 
           {/* Right Column - Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-automotive text-foreground mb-6 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-automotive text-foreground mb-4 md:mb-6 tracking-tight">
               BESPOKE
               <span className="block text-primary">SERVICES</span>
             </h2>

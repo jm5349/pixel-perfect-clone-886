@@ -42,14 +42,14 @@ const InstagramFeed = () => {
     <section className="py-20 bg-card/20">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Instagram className="h-8 w-8 text-primary" />
+        <div className="text-center mb-12 md:mb-16">
+          <div className="flex items-center justify-center gap-3 mb-3 md:mb-4">
+            <Instagram className="h-6 md:h-8 w-6 md:w-8 text-primary" />
             <h2 className="text-3xl md:text-4xl font-automotive text-foreground tracking-tight">
               FOLLOW US ON INSTAGRAM
             </h2>
           </div>
-          <p className="text-lg text-primary font-semibold tracking-wider">
+          <p className="text-base md:text-lg text-primary font-semibold tracking-wider">
             #BUILTBYETERNA
           </p>
         </div>

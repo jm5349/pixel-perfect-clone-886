@@ -35,12 +35,12 @@ const ProductShowcase = () => {
   return <section className="py-20 bg-card/30">
       <div className="container mx-auto px-4">
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16">
           
-          <h2 className="text-4xl md:text-6xl font-automotive text-foreground mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-6xl font-automotive text-foreground mb-3 md:mb-4 tracking-tight">
             NEW PRODUCT RELEASE
           </h2>
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8">
             Built to Perform, Designed to Impress
           </p>
         </div>

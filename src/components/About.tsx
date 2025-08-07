@@ -10,7 +10,7 @@ const About = () => {
           </div>
 
           {/* Company Title */}
-          <h2 className="text-4xl md:text-5xl font-automotive text-foreground mb-8 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-automotive text-foreground mb-6 md:mb-8 tracking-tight">
             CUZTOMTUNING
           </h2>
 
