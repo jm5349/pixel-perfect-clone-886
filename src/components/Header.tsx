@@ -76,9 +76,9 @@ const Header = () => {
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden lg:flex items-center justify-between w-full sticky-header">
+            <div className="hidden lg:flex items-center w-full sticky-header">
               {/* Logo - Center */}
-              <div className="flex items-center justify-center flex-1">
+              <div className="flex items-center justify-center w-full">
                 <div className="text-center">
                   <img 
                     src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
@@ -89,7 +89,7 @@ const Header = () => {
               </div>
 
               {/* Actions & Menu - Right */}
-              <div className="flex items-center space-x-4 flex-1 justify-end">
+              <div className="flex items-center space-x-4 absolute right-0">
                 {/* Desktop Navigation Dropdown */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
