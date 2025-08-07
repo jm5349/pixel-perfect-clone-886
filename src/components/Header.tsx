@@ -41,7 +41,7 @@ const Header = () => {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                      <Menu className="h-6 w-6" />
+                      <Menu className="h-7 w-7" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
@@ -67,12 +67,12 @@ const Header = () => {
               
               {/* Actions - Right */}
               <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                  <ShoppingCart className="h-6 w-6" />
-                </Button>
-                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                  <User className="h-6 w-6" />
-                </Button>
+                 <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
+                   <ShoppingCart className="h-7 w-7" />
+                 </Button>
+                 <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
+                   <User className="h-7 w-7" />
+                 </Button>
               </div>
             </div>
 
@@ -82,17 +82,17 @@ const Header = () => {
               <div className="flex items-center space-x-4 absolute left-0">
                 <Button variant="ghost" size="icon" asChild>
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                    <Instagram className="h-6 w-6" />
-                  </a>
-                </Button>
-                <Button variant="ghost" size="icon" asChild>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                    <Facebook className="h-6 w-6" />
-                  </a>
-                </Button>
-                <Button variant="ghost" size="icon" asChild>
-                  <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                    <TikTok className="h-6 w-6" />
+                     <Instagram className="h-7 w-7" />
+                   </a>
+                 </Button>
+                 <Button variant="ghost" size="icon" asChild>
+                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                     <Facebook className="h-7 w-7" />
+                   </a>
+                 </Button>
+                 <Button variant="ghost" size="icon" asChild>
+                   <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                     <TikTok className="h-7 w-7" />
                   </a>
                 </Button>
               </div>
@@ -114,26 +114,26 @@ const Header = () => {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                      <Menu className="h-6 w-6" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
-                    {navItems.map((item, index) => (
-                      <DropdownMenuItem key={index} asChild>
-                        <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-foreground hover:text-primary transition-colors tracking-wider cursor-pointer">
-                          {item}
-                        </a>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                
-                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                  <ShoppingCart className="h-6 w-6" />
-                </Button>
-                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                  <User className="h-6 w-6" />
-                </Button>
+                       <Menu className="h-7 w-7" />
+                     </Button>
+                   </DropdownMenuTrigger>
+                   <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
+                     {navItems.map((item, index) => (
+                       <DropdownMenuItem key={index} asChild>
+                         <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-foreground hover:text-primary transition-colors tracking-wider cursor-pointer">
+                           {item}
+                         </a>
+                       </DropdownMenuItem>
+                     ))}
+                   </DropdownMenuContent>
+                 </DropdownMenu>
+                 
+                 <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
+                   <ShoppingCart className="h-7 w-7" />
+                 </Button>
+                 <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
+                   <User className="h-7 w-7" />
+                 </Button>
               </div>
             </div>
           </div>
