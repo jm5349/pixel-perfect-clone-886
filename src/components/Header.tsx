@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingCart, User, Menu, X, ChevronDown } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, ChevronDown, Instagram, Facebook, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 const Header = () => {
@@ -76,7 +76,20 @@ const Header = () => {
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden lg:flex items-center w-full sticky-header">
+            <div className="hidden lg:flex items-center w-full sticky-header relative">
+              {/* Social Media Icons - Left */}
+              <div className="flex items-center space-x-3 absolute left-0">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                  <Twitter className="h-5 w-5" />
+                </a>
+              </div>
+
               {/* Logo - Center */}
               <div className="flex items-center justify-center w-full">
                 <div className="text-center">
