@@ -210,14 +210,105 @@ const Header = () => {
                        <Menu className="h-7 w-7" />
                      </Button>
                    </DropdownMenuTrigger>
-                   <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
-                     {navItems.map((item, index) => (
-                       <DropdownMenuItem key={index} asChild>
-                         <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-foreground hover:text-primary transition-colors tracking-wider cursor-pointer">
-                           {item}
-                         </a>
-                       </DropdownMenuItem>
-                     ))}
+                   <DropdownMenuContent 
+                     className="w-72 bg-background border border-border shadow-xl z-50 p-0 mt-2 rounded-lg" 
+                     align="end"
+                     sideOffset={8}
+                   >
+                     <div className="py-4">
+                       {/* Main Navigation Items */}
+                       <div className="space-y-1 px-2">
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#shop-by-vehicle" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
+                             SHOP BY VEHICLE
+                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#shop-by-category" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
+                             SHOP BY CATEGORY
+                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#top-brands" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors group">
+                             TOP BRANDS
+                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#services" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
+                             SERVICES
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#merch" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
+                             MERCH
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#financing" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
+                             FINANCING
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#affiliate" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
+                             AFFILIATE PROGRAM
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#faq" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
+                             FAQ
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#contact" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors">
+                             CONTACT US
+                           </a>
+                         </DropdownMenuItem>
+                         
+                         <DropdownMenuItem asChild className="cursor-pointer">
+                           <a href="#help" className="flex items-center px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-accent/50 hover:text-foreground rounded-md transition-colors">
+                             DIDN'T FIND WHAT YOU NEED?
+                           </a>
+                         </DropdownMenuItem>
+                       </div>
+                       
+                       {/* Bottom Section */}
+                       <div className="mt-6 pt-4 border-t border-border px-6">
+                         {/* Login Button */}
+                         <Button className="w-full mb-4 bg-foreground text-background hover:bg-foreground/90 font-medium">
+                           Login
+                         </Button>
+                         
+                         {/* Social Media Icons */}
+                         <div className="flex items-center justify-center space-x-4">
+                           <Button variant="ghost" size="icon" asChild className="h-8 w-8">
+                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                               <Facebook className="h-4 w-4" />
+                             </a>
+                           </Button>
+                           <Button variant="ghost" size="icon" asChild className="h-8 w-8">
+                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                               <Instagram className="h-4 w-4" />
+                             </a>
+                           </Button>
+                           <Button variant="ghost" size="icon" asChild className="h-8 w-8">
+                             <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                               <TikTok className="h-4 w-4" />
+                             </a>
+                           </Button>
+                         </div>
+                       </div>
+                     </div>
                    </DropdownMenuContent>
                  </DropdownMenu>
                  
