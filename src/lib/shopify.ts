@@ -1,9 +1,9 @@
 import Client from 'shopify-buy';
 
-// Replace with your shop's domain and storefront access token
+// Your actual Shopify store credentials
 const client = Client.buildClient({
-  domain: 'your-shop-name.myshopify.com', // Replace with your shop domain
-  storefrontAccessToken: 'your-storefront-access-token' // Replace with your token
+  domain: 'd31c8d-3.myshopify.com',
+  storefrontAccessToken: 'd49b034ec729dadfb98376a9f41b7a63'
 });
 
 export default client;
