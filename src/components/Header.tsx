@@ -18,16 +18,18 @@ const Header = () => {
   const navItems = ['AESTHETICS', 'PERFORMANCE', 'WHEELS', 'ACCESSORIES', 'BESPOKE SERVICES'];
   return <header className="relative z-50 w-full">
       {/* Auto-rotating Announcement Banner */}
-      <div className="bg-primary text-primary-foreground border-b border-border">
-        <div className="w-full max-w-none px-6 py-3">
+      <div className="relative overflow-hidden" style={{ background: 'var(--gradient-accent)' }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+        <div className="w-full max-w-none px-6 py-4 relative">
           <div className="flex items-center justify-center">
             <div className="text-center transition-all duration-500 ease-in-out">
-              <p className="text-sm font-medium">
+              <p className="text-sm font-semibold tracking-wide text-white/95 drop-shadow-sm">
                 {announcements[currentAnnouncementIndex]}
               </p>
             </div>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       </div>
 
       {/* Main Header */}
