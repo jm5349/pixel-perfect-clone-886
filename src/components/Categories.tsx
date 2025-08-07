@@ -28,7 +28,7 @@ const Categories = () => {
       description: "Sequential DRLs & other Accessories",
     },
     {
-      title: "Yofer Design",
+      title: "Yofer Design®",
       image: "/lovable-uploads/0f062cb7-f12f-45a4-9eae-c35a32d8dffe.png",
       description: "Authentic Yofer Design Parts",
     },
