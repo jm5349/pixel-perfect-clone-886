@@ -19,16 +19,14 @@ const ProductShowcase = () => {
           </p>
         </div>
 
-        {/* Products Grid */}
+        {/* Single Product Display */}
         <div className="flex justify-center max-w-7xl mx-auto">
-          {featuredProductIds.map((productId, index) => (
-            <div key={`${productId}-${index}`} className="group bg-background border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg w-full max-w-sm">
-              <ShopifyBuyButton 
-                productId={productId} 
-                className="shopify-product-card w-full h-full p-4"
-              />
-            </div>
-          ))}
+          <div className="group bg-background border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg w-full max-w-sm">
+            <ShopifyBuyButton 
+              productId="9928841036069" 
+              className="shopify-product-card w-full h-full p-4"
+            />
+          </div>
         </div>
 
         {/* CTA Section */}
