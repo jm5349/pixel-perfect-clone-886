@@ -58,7 +58,7 @@ const ProductShowcase = () => {
                 </div>
                 
                 {/* Main Product Card */}
-                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl overflow-visible hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[600px] h-auto flex flex-col">
+                <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-2xl overflow-hidden hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[600px] flex flex-col">
                   {/* Enhanced Automotive Glow Effect */}
                   <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-premium"></div>
                   
@@ -66,34 +66,19 @@ const ProductShowcase = () => {
                   <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
                   
-                  {/* Content Container - Increased height for better display */}
-                  <div className="relative z-10 p-6 h-full flex flex-col min-h-[500px] max-h-[600px]">
-                    {/* Enhanced Debug info */}
-                    <div className="mb-4 p-3 bg-muted/20 rounded text-sm text-muted-foreground border">
-                      <div>Product ID: {productId}</div>
-                      <div>Index: {index}</div>
-                      <div>Component Key: {`${productId}-${index}`}</div>
-                      <div>Time: {new Date().toLocaleTimeString()}</div>
+                  {/* Content Container */}
+                  <div className="relative z-10 p-8 h-full flex flex-col">
+                    {/* Product Badge */}
+                    <div className="absolute top-6 right-6 px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
+                      NEW ARRIVAL
                     </div>
                     
-                    {/* Fallback content while Shopify loads */}
-                    <div className="flex-1 bg-background/50 rounded-lg border-2 border-dashed border-muted-foreground/30 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-lg font-semibold mb-2">Loading Product...</div>
-                        <div className="text-sm text-muted-foreground">Product ID: {productId}</div>
-                        <div className="mt-4">
-                          <div className="animate-spin h-6 w-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Shopify Component - Positioned absolutely to overlay */}
-                    <div className="absolute inset-6 z-10">
-                      <ShopifyBuyButton 
-                        productId={productId} 
-                        className="w-full h-full flex flex-col min-h-[400px]" 
-                      />
-                    </div>
+                    {/* Shopify Buy Button Integration */}
+                    {index === 0 ? (
+                      <ShopifyProductComponent />
+                    ) : (
+                      <ShopifyBuyButton productId={productId} className="shopify-product-card w-full h-full flex flex-col" />
+                    )}
                   </div>
                   
                   {/* Corner Accents */}
@@ -123,13 +108,9 @@ const ProductShowcase = () => {
 // Separate component for the first Shopify product
 const ShopifyProductComponent = () => {
   useEffect(() => {
-    console.log('ShopifyProductComponent mounted');
-    
     const loadShopifyScript = () => {
-      console.log('Loading Shopify script...');
       // Check if script already exists
       if (document.getElementById('shopify-buy-script')) {
-        console.log('Script already exists, initializing UI');
         initializeShopifyUI();
         return;
       }
@@ -138,36 +119,20 @@ const ShopifyProductComponent = () => {
       script.id = 'shopify-buy-script';
       script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
       script.async = true;
-      script.onload = () => {
-        console.log('Shopify script loaded successfully');
-        initializeShopifyUI();
-      };
-      script.onerror = () => {
-        console.error('Failed to load Shopify script');
-      };
+      script.onload = initializeShopifyUI;
       document.head.appendChild(script);
     };
 
     const initializeShopifyUI = () => {
-      console.log('Initializing Shopify UI...');
-      console.log('ShopifyBuy available:', !!window.ShopifyBuy);
-      
       if (window.ShopifyBuy && window.ShopifyBuy.UI) {
-        console.log('Building Shopify client...');
         const client = window.ShopifyBuy.buildClient({
           domain: 'd31c8d-3.myshopify.com',
           storefrontAccessToken: 'd49b034ec729dadfb98376a9f41b7a63',
         });
 
-        console.log('Client built, waiting for UI ready...');
         window.ShopifyBuy.UI.onReady(client).then((ui) => {
-          console.log('UI ready, looking for target node...');
           const targetNode = document.getElementById('product-component-1754598975360');
-          console.log('Target node found:', !!targetNode);
-          console.log('Target node has children:', targetNode?.hasChildNodes());
-          
           if (targetNode && !targetNode.hasChildNodes()) {
-            console.log('Creating product component...');
             ui.createComponent('product', {
               id: '9928841036069',
               node: targetNode,
@@ -176,47 +141,35 @@ const ShopifyProductComponent = () => {
                 product: {
                   styles: {
                     product: {
-                      'max-height': '350px !important',
-                      'overflow': 'visible !important',
-                      'display': 'flex !important',
-                      'flex-direction': 'column !important',
                       '@media (min-width: 601px)': {
-                        'max-width': '100% !important',
-                        'margin-left': '0px !important',
-                        'margin-bottom': '0px !important'
+                        'max-width': '100%',
+                        'margin-left': '0px',
+                        'margin-bottom': '0px',
+                        'max-height': '450px'
+                      }
+                    },
+                    button: {
+                      'background-color': '#dc2626',
+                      'color': '#ffffff',
+                      'font-weight': 'bold',
+                      'padding': '12px 24px',
+                      'border-radius': '8px',
+                      ':hover': {
+                        'background-color': '#991b1b'
                       }
                     },
                     img: {
-                      'max-height': '150px !important',
-                      'width': '100% !important',
-                      'object-fit': 'cover !important',
-                      'border-radius': '8px !important'
+                      'max-height': '200px',
+                      'object-fit': 'cover'
                     },
                     title: {
-                      'font-size': '1rem !important',
-                      'font-weight': '600 !important',
-                      'margin': '8px 0 4px 0 !important',
-                      'line-height': '1.3 !important'
+                      'font-size': '1.1rem',
+                      'font-weight': '600'
                     },
                     price: {
-                      'font-size': '1.1rem !important',
-                      'font-weight': 'bold !important',
-                      'color': '#dc2626 !important',
-                      'margin': '4px 0 8px 0 !important'
-                    },
-                    button: {
-                      'background-color': '#dc2626 !important',
-                      'color': '#ffffff !important',
-                      'font-weight': 'bold !important',
-                      'padding': '10px 20px !important',
-                      'border-radius': '8px !important',
-                      'border': 'none !important',
-                      'cursor': 'pointer !important',
-                      'margin-top': 'auto !important',
-                      'width': '100% !important',
-                      ':hover': {
-                        'background-color': '#991b1b !important'
-                      }
+                      'font-size': '1.2rem',
+                      'font-weight': 'bold',
+                      'color': '#dc2626'
                     }
                   },
                   text: {
@@ -230,58 +183,18 @@ const ShopifyProductComponent = () => {
                   }
                 }
               }
-            }).then((component) => {
-              console.log('Product component created successfully:', component);
-            }).catch((error) => {
-              console.error('Error creating product component:', error);
             });
-          } else {
-            console.log('Target node not available or already has content');
           }
-        }).catch((error) => {
-          console.error('Error with Shopify UI:', error);
         });
-      } else {
-        console.log('ShopifyBuy or ShopifyBuy.UI not available');
       }
     };
 
-    // Longer delay to ensure DOM is fully ready
-    setTimeout(() => {
-      console.log('Starting Shopify script load after timeout');
-      loadShopifyScript();
-    }, 500);
+    // Small delay to ensure DOM is ready
+    setTimeout(loadShopifyScript, 100);
   }, []);
 
   return (
-    <div id="product-component-1754598975360" className="w-full h-full flex flex-col max-h-[350px]">
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          #product-component-1754598975360 .shopify-buy__product {
-            max-height: 350px !important;
-            display: flex !important;
-            flex-direction: column !important;
-          }
-          #product-component-1754598975360 .shopify-buy__product-img-wrapper {
-            max-height: 150px !important;
-            overflow: hidden !important;
-          }
-          #product-component-1754598975360 .shopify-buy__product-img {
-            max-height: 150px !important;
-            width: 100% !important;
-            object-fit: cover !important;
-          }
-          #product-component-1754598975360 .shopify-buy__btn {
-            margin-top: auto !important;
-            background-color: #dc2626 !important;
-            color: white !important;
-            font-weight: bold !important;
-            padding: 10px 20px !important;
-            border-radius: 8px !important;
-          }
-        `
-      }} />
-    </div>
+    <div id="product-component-1754598975360" className="w-full h-full flex flex-col max-h-[500px] overflow-hidden"></div>
   );
 };
 
