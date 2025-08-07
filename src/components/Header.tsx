@@ -6,7 +6,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
-  const announcements = ["🚗 Free shipping on All Orders - Limited time offer", "🏁 New Collection Now Available", "⚡ 10% OFF New Customers", "🛠️ Ship Internationally"];
+  const announcements = ["🚗 Free shipping on All Orders - Limited Time Offer", "🏁 New Collection Now Available", "⚡ 10% OFF New Customers", "🛠️ Ship Internationally"];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentAnnouncementIndex(prev => (prev + 1) % announcements.length);

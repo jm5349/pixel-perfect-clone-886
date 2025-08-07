@@ -4,11 +4,11 @@ const BusinessInfo = () => {
   const businessInfo = [
     {
       label: 'Business Hours',
-      value: 'Mon-Fri 8AM-6PM EST'
+      value: 'Mon-Fri 10AM-5PM PST'
     },
     {
       label: 'Warranty',
-      value: '2 Year Guarantee'
+      value: '1 Year Guarantee'
     },
     {
       label: 'Support',
