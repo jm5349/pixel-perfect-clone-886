@@ -47,11 +47,15 @@ const Header = () => {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
-                    className="w-72 border border-border shadow-xl z-50 p-0 mt-2 rounded-lg animate-slide-in-left" 
+                    className="w-72 border border-border shadow-xl z-50 p-0 mt-2 rounded-lg
+                               data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
+                               data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
+                               data-[state=open]:duration-300 data-[state=closed]:duration-200" 
                     style={{
                       background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
                       backdropFilter: 'blur(20px)',
-                      WebkitBackdropFilter: 'blur(20px)'
+                      WebkitBackdropFilter: 'blur(20px)',
+                      boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)'
                     }}
                     align="start"
                     sideOffset={8}
@@ -216,11 +220,15 @@ const Header = () => {
                      </Button>
                    </DropdownMenuTrigger>
                    <DropdownMenuContent 
-                     className="w-72 border border-border shadow-xl z-50 p-0 mt-2 rounded-lg animate-slide-in-left" 
+                     className="w-72 border border-border shadow-xl z-50 p-0 mt-2 rounded-lg
+                                data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
+                                data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
+                                data-[state=open]:duration-300 data-[state=closed]:duration-200" 
                      style={{
                        background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
                        backdropFilter: 'blur(20px)',
-                       WebkitBackdropFilter: 'blur(20px)'
+                       WebkitBackdropFilter: 'blur(20px)',
+                       boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)'
                      }}
                      align="end"
                      sideOffset={8}
