@@ -49,27 +49,56 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                       "margin-left": "0px",
                       "margin-bottom": "0px"
                     },
-                    "text-align": "left"
+                    "text-align": "left",
+                    "background-color": "transparent",
+                    "border": "none",
+                    "padding": "0"
                   },
                   "title": {
-                    "font-family": "var(--font-automotive), Arial, sans-serif",
+                    "font-family": "var(--font-automotive), -apple-system, BlinkMacSystemFont, sans-serif",
                     "font-weight": "600",
-                    "color": "hsl(var(--foreground))"
+                    "font-size": "16px",
+                    "line-height": "1.4",
+                    "color": "hsl(var(--foreground))",
+                    "margin-bottom": "8px"
                   },
                   "price": {
-                    "font-family": "var(--font-automotive), Arial, sans-serif",
-                    "font-size": "18px",
-                    "color": "hsl(var(--primary))"
+                    "font-family": "var(--font-automotive), -apple-system, BlinkMacSystemFont, sans-serif",
+                    "font-size": "20px",
+                    "font-weight": "700",
+                    "color": "hsl(var(--primary))",
+                    "margin-bottom": "12px"
                   },
                   "compareAt": {
-                    "font-size": "15px",
-                    "color": "hsl(var(--muted-foreground))"
+                    "font-size": "14px",
+                    "color": "hsl(var(--muted-foreground))",
+                    "text-decoration": "line-through"
+                  },
+                  "button": {
+                    "background-color": "hsl(var(--primary))",
+                    "color": "hsl(var(--primary-foreground))",
+                    "border": "none",
+                    "border-radius": "6px",
+                    "padding": "10px 16px",
+                    "font-size": "14px",
+                    "font-weight": "500",
+                    "cursor": "pointer",
+                    "transition": "all 0.2s ease",
+                    ":hover": {
+                      "background-color": "hsl(var(--primary) / 0.9)",
+                      "transform": "translateY(-1px)"
+                    },
+                    ":focus": {
+                      "outline": "2px solid hsl(var(--ring))",
+                      "outline-offset": "2px"
+                    }
                   }
                 },
                 "contents": {
                   "img": false,
                   "title": true,
-                  "price": true
+                  "price": true,
+                  "description": false
                 },
                 "text": {
                   "button": "Add to Cart"
@@ -110,11 +139,13 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                   "total": "Subtotal",
                   "button": "Checkout"
                 },
+                "popup": false,
                 "styles": {
                   "button": {
                     "background-color": "hsl(var(--primary))",
+                    "color": "hsl(var(--primary-foreground))",
                     ":hover": {
-                      "background-color": "hsl(var(--primary)/0.9)"
+                      "background-color": "hsl(var(--primary) / 0.9)"
                     }
                   }
                 }
@@ -123,8 +154,9 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                 "styles": {
                   "toggle": {
                     "background-color": "hsl(var(--primary))",
+                    "color": "hsl(var(--primary-foreground))",
                     ":hover": {
-                      "background-color": "hsl(var(--primary)/0.9)"
+                      "background-color": "hsl(var(--primary) / 0.9)"
                     }
                   }
                 }

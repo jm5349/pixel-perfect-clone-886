@@ -23,13 +23,15 @@ const ProductShowcase = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
           {featuredProductIds.map((productId, index) => (
-            <div key={`${productId}-${index}`} className="bg-background border border-border rounded-lg p-4 hover:border-primary/50 transition-all duration-500 min-h-[400px] flex flex-col">
-              <ShopifyBuyButton 
-                productId={productId} 
-                className="flex-1 flex flex-col justify-between"
-              />
+            <div key={`${productId}-${index}`} className="group bg-background border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg">
+              <div className="p-6">
+                <ShopifyBuyButton 
+                  productId={productId} 
+                  className="shopify-product-card w-full"
+                />
+              </div>
             </div>
           ))}
         </div>
