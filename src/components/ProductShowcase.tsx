@@ -2,12 +2,9 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
-  // Your actual Shopify product IDs - replace with your product IDs
+  // Your actual Shopify product ID - showing only one product
   const featuredProductIds = [
-    '9928841036069', // Your current product ID
-    '9928841036069', // Duplicate for demo - replace with other product IDs
-    '9928841036069', // Replace with actual product IDs
-    '9928841036069'  // Replace with actual product IDs
+    '9928841036069' // Your Toyota Camry front lip splitter
   ];
   return <section className="py-20 bg-card/30">
       <div className="container mx-auto px-4">
@@ -23,9 +20,9 @@ const ProductShowcase = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="flex justify-center max-w-7xl mx-auto">
           {featuredProductIds.map((productId, index) => (
-            <div key={`${productId}-${index}`} className="group bg-background border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg">
+            <div key={`${productId}-${index}`} className="group bg-background border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg w-full max-w-sm">
               <ShopifyBuyButton 
                 productId={productId} 
                 className="shopify-product-card w-full h-full p-4"
