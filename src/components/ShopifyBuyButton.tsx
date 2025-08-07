@@ -67,7 +67,7 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                     "box-shadow": "0 4px 12px rgba(0,0,0,0.1)"
                   },
                   "title": {
-                    "font-family": "var(--font-automotive), -apple-system, BlinkMacSystemFont, sans-serif",
+                      "font-family": "inherit",
                     "font-weight": "600",
                     "font-size": "16px",
                     "line-height": "1.4",
