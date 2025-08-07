@@ -47,7 +47,12 @@ const Header = () => {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
-                    className="w-72 bg-background border border-border shadow-xl z-50 p-0 mt-2 rounded-lg" 
+                    className="w-72 border border-border shadow-xl z-50 p-0 mt-2 rounded-lg animate-slide-in-left" 
+                    style={{
+                      background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)'
+                    }}
                     align="start"
                     sideOffset={8}
                   >
@@ -211,7 +216,12 @@ const Header = () => {
                      </Button>
                    </DropdownMenuTrigger>
                    <DropdownMenuContent 
-                     className="w-72 bg-background border border-border shadow-xl z-50 p-0 mt-2 rounded-lg" 
+                     className="w-72 border border-border shadow-xl z-50 p-0 mt-2 rounded-lg animate-slide-in-left" 
+                     style={{
+                       background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
+                       backdropFilter: 'blur(20px)',
+                       WebkitBackdropFilter: 'blur(20px)'
+                     }}
                      align="end"
                      sideOffset={8}
                    >
