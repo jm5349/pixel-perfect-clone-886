@@ -45,13 +45,13 @@ const BusinessInfo = () => {
         <div className="lg:hidden">
           <div className="grid grid-cols-2 gap-2">
             {businessInfo.map((info, index) => (
-              <div key={index} className="flex items-center space-x-2 px-2 py-2 bg-card border-l-2 border-primary">
-                <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></div>
-                <div className="text-left min-w-0">
-                  <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-medium">
+              <div key={index} className="flex items-start space-x-2 px-2 py-2 bg-card border-l-2 border-primary">
+                <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0 mt-1"></div>
+                <div className="text-left min-w-0 flex-1">
+                  <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-medium leading-tight">
                     {info.label}
                   </div>
-                  <div className="text-xs font-semibold text-foreground leading-tight">
+                  <div className="text-xs font-semibold text-foreground leading-tight mt-0.5">
                     {info.value}
                   </div>
                 </div>
