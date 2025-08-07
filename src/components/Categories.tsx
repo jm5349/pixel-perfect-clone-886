@@ -41,11 +41,11 @@ const Categories = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
           {categories.map((category, index) => (
             <Card 
               key={index}
-              className="group relative overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 cursor-pointer h-80"
+              className="group relative overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 cursor-pointer h-48 md:h-80"
             >
               {/* Background Image */}
               <div className="absolute inset-0">
@@ -59,8 +59,8 @@ const Categories = () => {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 h-full flex flex-col justify-end p-8">
-                <h3 className="text-3xl font-automotive text-foreground mb-3 tracking-wide group-hover:text-primary transition-colors duration-300">
+              <div className="relative z-10 h-full flex flex-col justify-end p-4 md:p-8">
+                <h3 className="text-lg md:text-3xl font-automotive text-foreground mb-2 md:mb-3 tracking-wide group-hover:text-primary transition-colors duration-300">
                   {category.title}
                 </h3>
                 <p className="text-muted-foreground mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

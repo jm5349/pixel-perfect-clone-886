@@ -46,11 +46,11 @@ const ProductShowcase = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto">
           {products.map((product, index) => <Card key={index} className="group bg-background border-border hover:border-primary/50 transition-all duration-500 overflow-hidden">
               {/* Product Image */}
               <div className="relative overflow-hidden">
-                <img src={product.image} alt={product.title} className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={product.image} alt={product.title} className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105" />
                 {product.isNew && <Badge className="absolute top-4 left-4 bg-automotive-red text-white">
                     NEW
                   </Badge>}
@@ -60,19 +60,19 @@ const ProductShowcase = () => {
               </div>
 
               {/* Product Info */}
-              <div className="p-6">
-                <p className="text-sm text-muted-foreground mb-2">
+              <div className="p-3 md:p-6">
+                <p className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">
                   Vendor: <span className="text-primary">{product.brand}</span>
                 </p>
-                <h3 className="text-lg font-semibold text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-sm md:text-lg font-semibold text-foreground mb-2 md:mb-4 line-clamp-2 group-hover:text-primary transition-colors duration-300">
                   {product.title}
                 </h3>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-automotive text-primary">
+                  <span className="text-lg md:text-2xl font-automotive text-primary">
                     {product.price}
                   </span>
-                  <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                  <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0 text-xs md:text-sm">
                     View
                   </Button>
                 </div>
