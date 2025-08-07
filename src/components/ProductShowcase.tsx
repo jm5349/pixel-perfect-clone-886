@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
@@ -75,101 +75,7 @@ const ProductShowcase = () => {
                     
                     {/* Shopify Buy Button Integration */}
                     {index === 0 ? (
-                      <>
-                        <div id='product-component-1754598975360' className="w-full h-full flex flex-col"></div>
-                        <script 
-                          type="text/javascript"
-                          dangerouslySetInnerHTML={{
-                            __html: `
-                              (function () {
-                                var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-                                if (window.ShopifyBuy) {
-                                  if (window.ShopifyBuy.UI) {
-                                    ShopifyBuyInit();
-                                  } else {
-                                    loadScript();
-                                  }
-                                } else {
-                                  loadScript();
-                                }
-                                function loadScript() {
-                                  var script = document.createElement('script');
-                                  script.async = true;
-                                  script.src = scriptURL;
-                                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-                                  script.onload = ShopifyBuyInit;
-                                }
-                                function ShopifyBuyInit() {
-                                  var client = ShopifyBuy.buildClient({
-                                    domain: 'd31c8d-3.myshopify.com',
-                                    storefrontAccessToken: 'd49b034ec729dadfb98376a9f41b7a63',
-                                  });
-                                  ShopifyBuy.UI.onReady(client).then(function (ui) {
-                                    ui.createComponent('product', {
-                                      id: '9928841036069',
-                                      node: document.getElementById('product-component-1754598975360'),
-                                      moneyFormat: '%24%7B%7Bamount%7D%7D',
-                                      options: {
-                                        "product": {
-                                          "styles": {
-                                            "product": {
-                                              "@media (min-width: 601px)": {
-                                                "max-width": "100%",
-                                                "margin-left": "0px",
-                                                "margin-bottom": "0px"
-                                              }
-                                            }
-                                          },
-                                          "text": {
-                                            "button": "Add to cart"
-                                          }
-                                        },
-                                        "productSet": {
-                                          "styles": {
-                                            "products": {
-                                              "@media (min-width: 601px)": {
-                                                "margin-left": "0px"
-                                              }
-                                            }
-                                          }
-                                        },
-                                        "modalProduct": {
-                                          "contents": {
-                                            "img": false,
-                                            "imgWithCarousel": true,
-                                            "button": false,
-                                            "buttonWithQuantity": true
-                                          },
-                                          "styles": {
-                                            "product": {
-                                              "@media (min-width: 601px)": {
-                                                "max-width": "100%",
-                                                "margin-left": "0px",
-                                                "margin-bottom": "0px"
-                                              }
-                                            }
-                                          },
-                                          "text": {
-                                            "button": "Add to cart"
-                                          }
-                                        },
-                                        "option": {},
-                                        "cart": {
-                                          "text": {
-                                            "total": "Subtotal",
-                                            "button": "Checkout"
-                                          }
-                                        },
-                                        "toggle": {}
-                                      },
-                                    });
-                                  });
-                                }
-                              })();
-                            `
-                          }}
-                        />
-                      </>
+                      <ShopifyProductComponent />
                     ) : (
                       <ShopifyBuyButton productId={productId} className="shopify-product-card w-full h-full flex flex-col" />
                     )}
@@ -198,4 +104,81 @@ const ProductShowcase = () => {
       </div>
     </section>;
 };
+
+// Separate component for the first Shopify product
+const ShopifyProductComponent = () => {
+  useEffect(() => {
+    const loadShopifyScript = () => {
+      // Check if script already exists
+      if (document.getElementById('shopify-buy-script')) {
+        initializeShopifyUI();
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.id = 'shopify-buy-script';
+      script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+      script.async = true;
+      script.onload = initializeShopifyUI;
+      document.head.appendChild(script);
+    };
+
+    const initializeShopifyUI = () => {
+      if (window.ShopifyBuy && window.ShopifyBuy.UI) {
+        const client = window.ShopifyBuy.buildClient({
+          domain: 'd31c8d-3.myshopify.com',
+          storefrontAccessToken: 'd49b034ec729dadfb98376a9f41b7a63',
+        });
+
+        window.ShopifyBuy.UI.onReady(client).then((ui) => {
+          const targetNode = document.getElementById('product-component-1754598975360');
+          if (targetNode && !targetNode.hasChildNodes()) {
+            ui.createComponent('product', {
+              id: '9928841036069',
+              node: targetNode,
+              moneyFormat: '%24%7B%7Bamount%7D%7D',
+              options: {
+                product: {
+                  styles: {
+                    product: {
+                      '@media (min-width: 601px)': {
+                        'max-width': '100%',
+                        'margin-left': '0px',
+                        'margin-bottom': '0px'
+                      }
+                    },
+                    button: {
+                      'background-color': '#dc2626',
+                      'color': '#ffffff',
+                      ':hover': {
+                        'background-color': '#991b1b'
+                      }
+                    }
+                  },
+                  text: {
+                    button: 'Add to cart'
+                  }
+                },
+                cart: {
+                  text: {
+                    total: 'Subtotal',
+                    button: 'Checkout'
+                  }
+                }
+              }
+            });
+          }
+        });
+      }
+    };
+
+    // Small delay to ensure DOM is ready
+    setTimeout(loadShopifyScript, 100);
+  }, []);
+
+  return (
+    <div id="product-component-1754598975360" className="w-full h-full flex flex-col min-h-[400px]"></div>
+  );
+};
+
 export default ProductShowcase;
