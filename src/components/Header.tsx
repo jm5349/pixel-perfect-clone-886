@@ -59,7 +59,7 @@ const Header = () => {
                 <img 
                   src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
                   alt="Custom Tuning Company Logo" 
-                  className="h-20 lg:h-24 w-auto max-w-md mx-auto"
+                  className="h-28 lg:h-32 w-auto max-w-md mx-auto"
                 />
               </div>
             </div>
