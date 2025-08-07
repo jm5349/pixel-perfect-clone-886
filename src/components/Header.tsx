@@ -15,7 +15,7 @@ const Header = () => {
     return () => clearInterval(interval);
   }, [announcements.length]);
   const navItems = ['AESTHETICS', 'PERFORMANCE', 'WHEELS', 'ACCESSORIES', 'BESPOKE SERVICES'];
-  return <header className="relative z-50">
+  return <header className="relative z-50 w-full">
       {/* Auto-rotating Announcement Banner */}
       <div className="bg-primary text-primary-foreground border-b border-border">
         <div className="w-full max-w-none px-6 py-3">
@@ -30,7 +30,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0">
+      <div className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0 z-50 w-full">
         <div className="w-full max-w-none px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Mobile Layout */}
