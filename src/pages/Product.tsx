@@ -116,6 +116,27 @@ const ProductPage: React.FC = () => {
 
   const priceLabel = variant ? currency(variant.price.amount, variant.price.currencyCode) : "—";
   const isAvailable = Boolean(variant?.available);
+  const productLd = useMemo(() => {
+    if (!product) return null;
+    const imgs = (product.images || []).map((i) => i.src).filter(Boolean);
+    const offer = variant ? {
+      "@type": "Offer",
+      priceCurrency: variant.price.currencyCode || "USD",
+      price: variant.price.amount,
+      availability: isAvailable ? "http://schema.org/InStock" : "http://schema.org/OutOfStock",
+      url: typeof window !== 'undefined' ? window.location.href : ''
+    } : undefined;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: product.title,
+      image: imgs,
+      description: (product as any).description || "",
+      brand: product.vendor ? { "@type": "Brand", name: product.vendor } : undefined,
+      sku: variant?.title || undefined,
+      offers: offer
+    } as any;
+  }, [product, variant, isAvailable]);
 
   const addToCart = async () => {
     if (!variant) return;
@@ -172,6 +193,9 @@ const ProductPage: React.FC = () => {
       <section className="relative py-10 md:py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.04)_0%,transparent_50%)]" />
         <div className="relative container mx-auto px-6 lg:px-8">
+          {productLd && (
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
+          )}
           {/* Breadcrumbs */}
           <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2">
