@@ -44,15 +44,27 @@ const ProductPage: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        let p: any;
+        let p: any = null;
         if (slugToIsNumericId(handle)) {
-          p = await client.product.fetch(handle);
+          const gid = `gid://shopify/Product/${handle}`;
+          try {
+            p = await (client as any).product.fetch(gid);
+          } catch {}
+          if (!p) {
+            try {
+              p = await (client as any).product.fetch(handle);
+            } catch {}
+          }
         } else if ((client as any).product?.fetchByHandle) {
-          p = await (client as any).product.fetchByHandle(handle);
-        } else {
-          // Fallback to search all if fetchByHandle is unavailable
-          p = await (client as any).product.fetchAll();
-          p = Array.isArray(p) ? p.find((it: any) => it.handle === handle) : null;
+          try {
+            p = await (client as any).product.fetchByHandle(handle);
+          } catch {}
+        }
+        if (!p && (client as any).product?.fetchAll) {
+          try {
+            const all = await (client as any).product.fetchAll();
+            p = Array.isArray(all) ? all.find((it: any) => it.handle === handle || String(it?.id || "").endsWith(`/${handle}`)) : null;
+          } catch {}
         }
         if (!p) throw new Error("Product not found");
         if (!cancelled) {
