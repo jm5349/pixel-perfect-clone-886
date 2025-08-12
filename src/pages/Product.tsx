@@ -83,8 +83,8 @@ const ProductPage: React.FC = () => {
       } catch (e: any) {
         console.error("Error loading product:", e);
         if (!cancelled) {
-          setError("无法加载该商品，请稍后再试。");
-          toast({ title: "加载失败", description: "商品信息获取失败", variant: "destructive" });
+          setError("Failed to load this product. Please try again later.");
+          toast({ title: "Load failed", description: "Unable to fetch product information", variant: "destructive" });
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -168,10 +168,10 @@ const ProductPage: React.FC = () => {
       ];
       const updatedCheckout = await client.checkout.addLineItems(checkout.id, lineItemsToAdd);
       window.open(updatedCheckout.webUrl, "_blank");
-      toast({ title: "已加入购物车", description: `${product?.title ?? "商品"} 已添加到购物车` });
+      toast({ title: "Added to cart", description: `${product?.title ?? "Product"} has been added to your cart` });
     } catch (e) {
       console.error("Add to cart error:", e);
-      toast({ title: "出错了", description: "添加到购物车失败", variant: "destructive" });
+      toast({ title: "Error", description: "Failed to add to cart", variant: "destructive" });
     } finally {
       setAddingToCart(false);
     }
@@ -196,10 +196,10 @@ const ProductPage: React.FC = () => {
   if (error || !product) {
     return (
       <section className="container mx-auto px-6 lg:px-8 py-24 text-center">
-        <h1 className="text-2xl md:text-4xl font-automotive text-foreground mb-4">未找到该商品</h1>
-        <p className="text-muted-foreground mb-8">请检查链接是否正确，或稍后再试。</p>
+        <h1 className="text-2xl md:text-4xl font-automotive text-foreground mb-4">Product not found</h1>
+        <p className="text-muted-foreground mb-8">Please verify the link or try again later.</p>
         <Button asChild>
-          <Link to="/">返回首页</Link>
+          <Link to="/">Back to Home</Link>
         </Button>
       </section>
     );
@@ -219,9 +219,9 @@ const ProductPage: React.FC = () => {
           {/* Breadcrumbs */}
           <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2">
-              <li><Link className="story-link" to="/">首页</Link></li>
+              <li><Link className="story-link" to="/">Home</Link></li>
               <li>/</li>
-              <li className="text-foreground">产品详情</li>
+              <li className="text-foreground">Product Details</li>
             </ol>
           </nav>
 
@@ -231,7 +231,7 @@ const ProductPage: React.FC = () => {
               <Card className="overflow-hidden bg-card border-border">
                 <img
                   src={mainImage}
-                  alt={`${product.title} 主图 - 汽车前唇配件`}
+                  alt={`${product.title} main image – front lip splitter`}
                   className="w-full h-72 md:h-[520px] object-cover"
                   loading="eager"
                 />
@@ -243,9 +243,9 @@ const ProductPage: React.FC = () => {
                       key={`${img.src}-${i}`}
                       onClick={() => setSelectedImage(i)}
                       className={`rounded-lg overflow-hidden border ${i === selectedImage ? "border-primary" : "border-border"}`}
-                      aria-label={`缩略图 ${i + 1}`}
+                      aria-label={`Thumbnail ${i + 1}`}
                     >
-                      <img src={img.src} alt={img.altText || `${product.title} 缩略图 ${i + 1}`} className="h-16 w-full object-cover" loading="lazy" />
+                      <img src={img.src} alt={img.altText || `${product.title} thumbnail ${i + 1}`} className="h-16 w-full object-cover" loading="lazy" />
                     </button>
                   ))}
                 </div>
@@ -255,20 +255,20 @@ const ProductPage: React.FC = () => {
             {/* Right: Info */}
             <div className="flex flex-col">
               <div className="mb-4">
-                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">{product.vendor || "旗舰店"}</Badge>
+                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">{product.vendor || "Flagship Store"}</Badge>
               </div>
               <h1 className="text-2xl md:text-4xl font-automotive text-foreground mb-3 leading-tight">
                 {product.title}
               </h1>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-2xl md:text-3xl font-automotive text-primary">{priceLabel}</span>
-                <span className="text-sm text-muted-foreground">{isAvailable ? "现货" : "缺货"}</span>
+                <span className="text-sm text-muted-foreground">{isAvailable ? "In stock" : "Out of stock"}</span>
               </div>
 
               {/* Variant selector (simple) */}
               {product.variants?.length > 1 && (
                 <div className="mb-4">
-                  <label className="block mb-2 text-sm text-muted-foreground">选择款式</label>
+                  <label className="block mb-2 text-sm text-muted-foreground">Select variant</label>
                   <select
                     className="w-full rounded-md border border-border bg-background px-3 py-2"
                     value={selectedVariantId ?? product.variants[0].id}
@@ -283,7 +283,7 @@ const ProductPage: React.FC = () => {
 
               {/* Quantity */}
               <div className="mb-6 flex items-center gap-3">
-                <label className="text-sm text-muted-foreground">数量</label>
+                <label className="text-sm text-muted-foreground">Quantity</label>
                 <input
                   type="number"
                   min={1}
@@ -300,15 +300,15 @@ const ProductPage: React.FC = () => {
                   disabled={!isAvailable || addingToCart}
                   className="bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
-                  {addingToCart ? "处理中..." : "加入购物车并结算"}
+                  {addingToCart ? "Processing..." : "Add to cart & checkout"}
                 </Button>
               </div>
 
               {/* Benefits / badges */}
               <ul className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm text-muted-foreground">
-                <li className="bg-muted/30 rounded-md px-3 py-2">支持快速发货</li>
-                <li className="bg-muted/30 rounded-md px-3 py-2">原厂兼容适配</li>
-                <li className="bg-muted/30 rounded-md px-3 py-2">售后支持</li>
+                <li className="bg-muted/30 rounded-md px-3 py-2">Fast shipping</li>
+                <li className="bg-muted/30 rounded-md px-3 py-2">OEM-compatible fitment</li>
+                <li className="bg-muted/30 rounded-md px-3 py-2">After-sales support</li>
               </ul>
             </div>
           </div>
@@ -317,9 +317,9 @@ const ProductPage: React.FC = () => {
           <div className="mt-12">
             <Tabs defaultValue="details" className="w-full">
               <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full">
-                <TabsTrigger value="details">详情</TabsTrigger>
-                <TabsTrigger value="specs">参数</TabsTrigger>
-                <TabsTrigger value="fitment">适配</TabsTrigger>
+                <TabsTrigger value="details">Details</TabsTrigger>
+                <TabsTrigger value="specs">Specifications</TabsTrigger>
+                <TabsTrigger value="fitment">Fitment</TabsTrigger>
                 <TabsTrigger value="faq">FAQ</TabsTrigger>
               </TabsList>
               <TabsContent value="details">
@@ -329,26 +329,26 @@ const ProductPage: React.FC = () => {
               </TabsContent>
               <TabsContent value="specs">
                 <div className="grid sm:grid-cols-3 gap-4">
-                  <Card className="p-4"><h3 className="font-medium mb-2">品牌</h3><p className="text-muted-foreground">{product.vendor || "—"}</p></Card>
-                  <Card className="p-4"><h3 className="font-medium mb-2">类型</h3><p className="text-muted-foreground">{product.productType || "—"}</p></Card>
+                  <Card className="p-4"><h3 className="font-medium mb-2">Brand</h3><p className="text-muted-foreground">{product.vendor || "—"}</p></Card>
+                  <Card className="p-4"><h3 className="font-medium mb-2">Type</h3><p className="text-muted-foreground">{product.productType || "—"}</p></Card>
                   <Card className="p-4"><h3 className="font-medium mb-2">SKU/Variant</h3><p className="text-muted-foreground">{variant?.title || product.variants?.[0]?.title || "—"}</p></Card>
                 </div>
               </TabsContent>
               <TabsContent value="fitment">
                 <div className="space-y-2 text-muted-foreground">
-                  <p>适配车型：丰田凯美瑞 2025-2026（示例，可根据商品实际信息调整）</p>
-                  <p>材质：碳纤维/FRP（以实际商品为准）</p>
+                  <p>Fitment: Toyota Camry 2025-2026 (example; adjust to actual product)</p>
+                  <p>Material: Carbon fiber/FRP (subject to actual product)</p>
                 </div>
               </TabsContent>
               <TabsContent value="faq">
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="item-1">
-                    <AccordionTrigger>是否支持到店安装？</AccordionTrigger>
-                    <AccordionContent>支持到店安装或邮寄到家自行安装（无分期模块）。</AccordionContent>
+                    <AccordionTrigger>Do you offer in-store installation?</AccordionTrigger>
+                    <AccordionContent>Yes. We can install in-store or ship to you for self-installation.</AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-2">
-                    <AccordionTrigger>发货时间多久？</AccordionTrigger>
-                    <AccordionContent>现货一般48小时内发出，定制件以客服通知为准。</AccordionContent>
+                    <AccordionTrigger>How long does shipping take?</AccordionTrigger>
+                    <AccordionContent>In-stock items ship within 48 hours. Custom items vary per confirmation.</AccordionContent>
                   </AccordionItem>
                 </Accordion>
               </TabsContent>
