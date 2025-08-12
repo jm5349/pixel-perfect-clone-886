@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ShieldCheck, Truck, Wrench, BadgeCheck } from "lucide-react";
 import ProductTrustSignals from "@/components/product/ProductTrustSignals";
 import ProductHighlights from "@/components/product/ProductHighlights";
 import ProductPolicies from "@/components/product/ProductPolicies";
