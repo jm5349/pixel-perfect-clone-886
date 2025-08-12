@@ -43,35 +43,43 @@ const ProductPage: React.FC = () => {
     const fetchProduct = async () => {
       setLoading(true);
       setError(null);
-      try {
-        let p: any = null;
-        if (slugToIsNumericId(handle)) {
-          const gid = `gid://shopify/Product/${handle}`;
-          try {
-            p = await (client as any).product.fetch(gid);
-          } catch {}
-          if (!p) {
+        try {
+          let p: any = null;
+          // Normalize route param and provide sensible fallback when visiting the literal template "/products/:handle"
+          let slug = (handle || "").trim();
+          if (!slug || slug === ":handle") {
+            // Fallback to the sample product (Home page first product)
+            slug = "for-2025-26-toyota-camry-se-xse-gf-bodykit-pearl-white-black-front-lip-splitter";
+          }
+          if (slugToIsNumericId(slug)) {
+            const gid = `gid://shopify/Product/${slug}`;
             try {
-              p = await (client as any).product.fetch(handle);
+              p = await (client as any).product.fetch(gid);
+            } catch {}
+            if (!p) {
+              try {
+                p = await (client as any).product.fetch(slug);
+              } catch {}
+            }
+          } else if ((client as any).product?.fetchByHandle) {
+            try {
+              p = await (client as any).product.fetchByHandle(slug);
             } catch {}
           }
-        } else if ((client as any).product?.fetchByHandle) {
-          try {
-            p = await (client as any).product.fetchByHandle(handle);
-          } catch {}
-        }
-        if (!p && (client as any).product?.fetchAll) {
-          try {
-            const all = await (client as any).product.fetchAll();
-            p = Array.isArray(all) ? all.find((it: any) => it.handle === handle || String(it?.id || "").endsWith(`/${handle}`)) : null;
-          } catch {}
-        }
-        if (!p) throw new Error("Product not found");
-        if (!cancelled) {
-          setProduct(p as ShopifyProduct);
-          setSelectedVariantId((p as ShopifyProduct).variants?.[0]?.id ?? null);
-          setSelectedImage(0);
-        }
+          if (!p && (client as any).product?.fetchAll) {
+            try {
+              const all = await (client as any).product.fetchAll();
+              p = Array.isArray(all)
+                ? all.find((it: any) => it.handle === slug || String(it?.id || "").endsWith(`/${slug}`))
+                : null;
+            } catch {}
+          }
+          if (!p) throw new Error("Product not found");
+          if (!cancelled) {
+            setProduct(p as ShopifyProduct);
+            setSelectedVariantId((p as ShopifyProduct).variants?.[0]?.id ?? null);
+            setSelectedImage(0);
+          }
       } catch (e: any) {
         console.error("Error loading product:", e);
         if (!cancelled) {
