@@ -6,33 +6,31 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import ProductTrustSignals from "@/components/product/ProductTrustSignals";
 import ProductHighlights from "@/components/product/ProductHighlights";
 import ProductPolicies from "@/components/product/ProductPolicies";
-
 const currency = (amount?: string, code?: string) => {
   if (!amount) return "—";
   const value = Number(amount);
   try {
-    return new Intl.NumberFormat(undefined, { style: "currency", currency: code || "USD" }).format(value);
+    return new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency: code || "USD"
+    }).format(value);
   } catch {
     return `$${value.toFixed(2)}`;
   }
 };
-
 const slugToIsNumericId = (s: string) => /^\d+$/.test(s.trim());
-
 const ProductPage: React.FC = () => {
-  const { handle = "" } = useParams();
-  const { toast } = useToast();
-
+  const {
+    handle = ""
+  } = useParams();
+  const {
+    toast
+  } = useToast();
   const [product, setProduct] = useState<ShopifyProduct | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -40,54 +38,55 @@ const ProductPage: React.FC = () => {
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
-
   useEffect(() => {
     let cancelled = false;
     const fetchProduct = async () => {
       setLoading(true);
       setError(null);
-        try {
-          let p: any = null;
-          // Normalize route param and provide sensible fallback when visiting the literal template "/products/:handle"
-          let slug = (handle || "").trim();
-          if (!slug || slug === ":handle") {
-            // Fallback to the sample product (Home page first product)
-            slug = "for-2025-26-toyota-camry-se-xse-gf-bodykit-pearl-white-black-front-lip-splitter";
-          }
-          if (slugToIsNumericId(slug)) {
-            const gid = `gid://shopify/Product/${slug}`;
+      try {
+        let p: any = null;
+        // Normalize route param and provide sensible fallback when visiting the literal template "/products/:handle"
+        let slug = (handle || "").trim();
+        if (!slug || slug === ":handle") {
+          // Fallback to the sample product (Home page first product)
+          slug = "for-2025-26-toyota-camry-se-xse-gf-bodykit-pearl-white-black-front-lip-splitter";
+        }
+        if (slugToIsNumericId(slug)) {
+          const gid = `gid://shopify/Product/${slug}`;
+          try {
+            p = await (client as any).product.fetch(gid);
+          } catch {}
+          if (!p) {
             try {
-              p = await (client as any).product.fetch(gid);
-            } catch {}
-            if (!p) {
-              try {
-                p = await (client as any).product.fetch(slug);
-              } catch {}
-            }
-          } else if ((client as any).product?.fetchByHandle) {
-            try {
-              p = await (client as any).product.fetchByHandle(slug);
+              p = await (client as any).product.fetch(slug);
             } catch {}
           }
-          if (!p && (client as any).product?.fetchAll) {
-            try {
-              const all = await (client as any).product.fetchAll();
-              p = Array.isArray(all)
-                ? all.find((it: any) => it.handle === slug || String(it?.id || "").endsWith(`/${slug}`))
-                : null;
-            } catch {}
-          }
-          if (!p) throw new Error("Product not found");
-          if (!cancelled) {
-            setProduct(p as ShopifyProduct);
-            setSelectedVariantId((p as ShopifyProduct).variants?.[0]?.id ?? null);
-            setSelectedImage(0);
-          }
+        } else if ((client as any).product?.fetchByHandle) {
+          try {
+            p = await (client as any).product.fetchByHandle(slug);
+          } catch {}
+        }
+        if (!p && (client as any).product?.fetchAll) {
+          try {
+            const all = await (client as any).product.fetchAll();
+            p = Array.isArray(all) ? all.find((it: any) => it.handle === slug || String(it?.id || "").endsWith(`/${slug}`)) : null;
+          } catch {}
+        }
+        if (!p) throw new Error("Product not found");
+        if (!cancelled) {
+          setProduct(p as ShopifyProduct);
+          setSelectedVariantId((p as ShopifyProduct).variants?.[0]?.id ?? null);
+          setSelectedImage(0);
+        }
       } catch (e: any) {
         console.error("Error loading product:", e);
         if (!cancelled) {
           setError("Failed to load this product. Please try again later.");
-          toast({ title: "Load failed", description: "Unable to fetch product information", variant: "destructive" });
+          toast({
+            title: "Load failed",
+            description: "Unable to fetch product information",
+            variant: "destructive"
+          });
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -104,7 +103,6 @@ const ProductPage: React.FC = () => {
     const prevTitle = document.title;
     const prevCanonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     let createdCanonical: HTMLLinkElement | null = null;
-
     if (product) {
       document.title = `${product.title} | Products`;
       const description = (product as any).description || "High-quality automotive accessory product page.";
@@ -115,7 +113,6 @@ const ProductPage: React.FC = () => {
         document.head.appendChild(meta);
       }
       meta.content = description.slice(0, 155);
-
       if (prevCanonical) {
         prevCanonical.href = window.location.href;
       } else {
@@ -131,17 +128,15 @@ const ProductPage: React.FC = () => {
       if (createdCanonical) document.head.removeChild(createdCanonical);
     };
   }, [product]);
-
   const variant = useMemo(() => {
     if (!product) return null;
     return product.variants.find(v => v.id === selectedVariantId) || product.variants[0] || null;
   }, [product, selectedVariantId]);
-
   const priceLabel = variant ? currency(variant.price.amount, variant.price.currencyCode) : "—";
   const isAvailable = Boolean(variant?.available);
   const productLd = useMemo(() => {
     if (!product) return null;
-    const imgs = (product.images || []).map((i) => i.src).filter(Boolean);
+    const imgs = (product.images || []).map(i => i.src).filter(Boolean);
     const offer = variant ? {
       "@type": "Offer",
       priceCurrency: variant.price.currencyCode || "USD",
@@ -155,55 +150,69 @@ const ProductPage: React.FC = () => {
       name: product.title,
       image: imgs,
       description: (product as any).description || "",
-      brand: product.vendor ? { "@type": "Brand", name: product.vendor } : undefined,
+      brand: product.vendor ? {
+        "@type": "Brand",
+        name: product.vendor
+      } : undefined,
       sku: variant?.title || undefined,
       offers: offer
     } as any;
   }, [product, variant, isAvailable]);
 
   // FAQ content used for both UI and structured data
-  const faqItems = [
-    { q: "Do you offer in-store installation?", a: "Yes. We can install in-store or ship to you for self-installation." },
-    { q: "How long does shipping take?", a: "In-stock items ship within 24–48 hours. Custom or back-ordered items vary; we’ll confirm by email." },
-    { q: "Will this fit my vehicle?", a: "Designed for Toyota Camry 2025–2026 SE/XSE (GF). Please verify your trim and bumper style." },
-    { q: "Can I return a painted or installed part?", a: "Please test-fit before paint/film. Painted or installed items are typically not returnable." }
-  ];
-
+  const faqItems = [{
+    q: "Do you offer in-store installation?",
+    a: "Yes. We can install in-store or ship to you for self-installation."
+  }, {
+    q: "How long does shipping take?",
+    a: "In-stock items ship within 24–48 hours. Custom or back-ordered items vary; we’ll confirm by email."
+  }, {
+    q: "Will this fit my vehicle?",
+    a: "Designed for Toyota Camry 2025–2026 SE/XSE (GF). Please verify your trim and bumper style."
+  }, {
+    q: "Can I return a painted or installed part?",
+    a: "Please test-fit before paint/film. Painted or installed items are typically not returnable."
+  }];
   const faqLd = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqItems.map((it) => ({
+    mainEntity: faqItems.map(it => ({
       "@type": "Question",
       name: it.q,
       acceptedAnswer: {
         "@type": "Answer",
-        text: it.a,
-      },
-    })),
+        text: it.a
+      }
+    }))
   }), []);
-
   const addToCart = async () => {
     if (!variant) return;
     setAddingToCart(true);
     try {
       const checkout = await client.checkout.create();
-      const lineItemsToAdd = [
-        { variantId: variant.id, quantity: Math.max(1, quantity) }
-      ];
+      const lineItemsToAdd = [{
+        variantId: variant.id,
+        quantity: Math.max(1, quantity)
+      }];
       const updatedCheckout = await client.checkout.addLineItems(checkout.id, lineItemsToAdd);
       window.open(updatedCheckout.webUrl, "_blank");
-      toast({ title: "Added to cart", description: `${product?.title ?? "Product"} has been added to your cart` });
+      toast({
+        title: "Added to cart",
+        description: `${product?.title ?? "Product"} has been added to your cart`
+      });
     } catch (e) {
       console.error("Add to cart error:", e);
-      toast({ title: "Error", description: "Failed to add to cart", variant: "destructive" });
+      toast({
+        title: "Error",
+        description: "Failed to add to cart",
+        variant: "destructive"
+      });
     } finally {
       setAddingToCart(false);
     }
   };
-
   if (loading) {
-    return (
-      <section className="container mx-auto px-6 lg:px-8 py-16">
+    return <section className="container mx-auto px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 gap-8">
           <div className="h-72 md:h-[480px] bg-muted animate-pulse rounded-xl" />
           <div className="space-y-4">
@@ -213,36 +222,29 @@ const ProductPage: React.FC = () => {
             <div className="h-12 bg-muted animate-pulse rounded w-full" />
           </div>
         </div>
-      </section>
-    );
+      </section>;
   }
-
   if (error || !product) {
-    return (
-      <section className="container mx-auto px-6 lg:px-8 py-24 text-center">
+    return <section className="container mx-auto px-6 lg:px-8 py-24 text-center">
         <h1 className="text-2xl md:text-4xl font-automotive text-foreground mb-4">Product not found</h1>
         <p className="text-muted-foreground mb-8">Please verify the link or try again later.</p>
         <Button asChild>
           <Link to="/">Back to Home</Link>
         </Button>
-      </section>
-    );
+      </section>;
   }
-
   const images = product.images || [];
   const mainImage = images[selectedImage]?.src || images[0]?.src || "";
-
-  return (
-    <main>
+  return <main>
       <section className="relative py-10 md:py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.04)_0%,transparent_50%)]" />
         <div className="relative container mx-auto px-6 lg:px-8">
-          {productLd && (
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
-          )}
-          {faqLd && (
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-          )}
+          {productLd && <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productLd)
+        }} />}
+          {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqLd)
+        }} />}
           {/* Breadcrumbs */}
           <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2">
@@ -256,27 +258,13 @@ const ProductPage: React.FC = () => {
             {/* Left: Gallery */}
             <div>
               <Card className="overflow-hidden bg-card border-border">
-                <img
-                  src={mainImage}
-                  alt={`${product.title} main image – front lip splitter`}
-                  className="w-full h-72 md:h-[520px] object-cover"
-                  loading="eager"
-                />
+                <img src={mainImage} alt={`${product.title} main image – front lip splitter`} className="w-full h-72 md:h-[520px] object-cover" loading="eager" />
               </Card>
-              {images.length > 1 && (
-                <div className="mt-3 grid grid-cols-5 gap-2">
-                  {images.map((img, i) => (
-                    <button
-                      key={`${img.src}-${i}`}
-                      onClick={() => setSelectedImage(i)}
-                      className={`rounded-lg overflow-hidden border ${i === selectedImage ? "border-primary" : "border-border"}`}
-                      aria-label={`Thumbnail ${i + 1}`}
-                    >
+              {images.length > 1 && <div className="mt-3 grid grid-cols-5 gap-2">
+                  {images.map((img, i) => <button key={`${img.src}-${i}`} onClick={() => setSelectedImage(i)} className={`rounded-lg overflow-hidden border ${i === selectedImage ? "border-primary" : "border-border"}`} aria-label={`Thumbnail ${i + 1}`}>
                       <img src={img.src} alt={img.altText || `${product.title} thumbnail ${i + 1}`} className="h-16 w-full object-cover" loading="lazy" />
-                    </button>
-                  ))}
-                </div>
-              )}
+                    </button>)}
+                </div>}
             </div>
 
             {/* Right: Info */}
@@ -293,49 +281,30 @@ const ProductPage: React.FC = () => {
               </div>
 
               {/* Variant selector (simple) */}
-              {product.variants?.length > 1 && (
-                <div className="mb-4">
+              {product.variants?.length > 1 && <div className="mb-4">
                   <label className="block mb-2 text-sm text-muted-foreground">Select variant</label>
-                  <select
-                    className="w-full rounded-md border border-border bg-background px-3 py-2"
-                    value={selectedVariantId ?? product.variants[0].id}
-                    onChange={(e) => setSelectedVariantId(e.target.value)}
-                  >
-                    {product.variants.map((v) => (
-                      <option key={v.id} value={v.id}>{v.title}</option>
-                    ))}
+                  <select className="w-full rounded-md border border-border bg-background px-3 py-2" value={selectedVariantId ?? product.variants[0].id} onChange={e => setSelectedVariantId(e.target.value)}>
+                    {product.variants.map(v => <option key={v.id} value={v.id}>{v.title}</option>)}
                   </select>
-                </div>
-              )}
+                </div>}
 
               {/* Quantity */}
               <div className="mb-6 flex items-center gap-3">
                 <label className="text-sm text-muted-foreground">Quantity</label>
-                <input
-                  type="number"
-                  min={1}
-                  value={quantity}
-                  onChange={(e) => setQuantity(Math.max(1, Number(e.target.value) || 1))}
-                  className="w-24 rounded-md border border-border bg-background px-3 py-2"
-                />
+                <input type="number" min={1} value={quantity} onChange={e => setQuantity(Math.max(1, Number(e.target.value) || 1))} className="w-24 rounded-md border border-border bg-background px-3 py-2" />
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button
-                  size="lg"
-                  onClick={addToCart}
-                  disabled={!isAvailable || addingToCart}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                >
+                <Button size="lg" onClick={addToCart} disabled={!isAvailable || addingToCart} className="bg-primary hover:bg-primary/90 text-primary-foreground">
                   {addingToCart ? "Processing..." : "Add to cart & checkout"}
                 </Button>
               </div>
 
               {/* Benefits / badges */}
               <ul className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm text-muted-foreground">
-                <li className="bg-muted/30 rounded-md px-3 py-2">Fast shipping</li>
-                <li className="bg-muted/30 rounded-md px-3 py-2">OEM-compatible fitment</li>
-                <li className="bg-muted/30 rounded-md px-3 py-2">After-sales support</li>
+                
+                
+                
               </ul>
             </div>
           </div>
@@ -351,7 +320,9 @@ const ProductPage: React.FC = () => {
               </TabsList>
               <TabsContent value="details">
                 <article className="prose prose-invert max-w-none text-foreground">
-                  <div dangerouslySetInnerHTML={{ __html: (product as any).descriptionHtml || (product as any).description || "" }} />
+                  <div dangerouslySetInnerHTML={{
+                  __html: (product as any).descriptionHtml || (product as any).description || ""
+                }} />
                 </article>
               </TabsContent>
               <TabsContent value="specs">
@@ -370,12 +341,10 @@ const ProductPage: React.FC = () => {
               </TabsContent>
               <TabsContent value="faq">
                 <Accordion type="single" collapsible className="w-full">
-                  {faqItems.map((item, idx) => (
-                    <AccordionItem key={idx} value={`item-${idx + 1}`}>
+                  {faqItems.map((item, idx) => <AccordionItem key={idx} value={`item-${idx + 1}`}>
                       <AccordionTrigger>{item.q}</AccordionTrigger>
                       <AccordionContent>{item.a}</AccordionContent>
-                    </AccordionItem>
-                  ))}
+                    </AccordionItem>)}
                 </Accordion>
               </TabsContent>
             </Tabs>
@@ -387,8 +356,6 @@ const ProductPage: React.FC = () => {
           </div>
         </div>
       </section>
-    </main>
-  );
+    </main>;
 };
-
 export default ProductPage;
