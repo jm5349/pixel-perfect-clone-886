@@ -300,12 +300,40 @@ const ProductPage: React.FC = () => {
                 </Button>
               </div>
 
-              {/* Benefits / badges */}
-              <ul className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm text-muted-foreground">
-                
-                
-                
-              </ul>
+              {/* Payment Information */}
+              <div className="mt-6 space-y-4">
+                <div className="border border-border rounded-lg p-4 bg-card/50">
+                  <h3 className="text-sm font-medium text-foreground mb-3">Secure Payment</h3>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <div className="w-8 h-5 bg-gradient-to-r from-blue-600 to-blue-400 rounded text-white flex items-center justify-center font-bold text-[8px]">VISA</div>
+                      <div className="w-8 h-5 bg-gradient-to-r from-red-600 to-orange-400 rounded text-white flex items-center justify-center font-bold text-[8px]">MC</div>
+                      <div className="w-8 h-5 bg-gradient-to-r from-blue-500 to-blue-300 rounded text-white flex items-center justify-center font-bold text-[8px]">AMEX</div>
+                      <div className="w-8 h-5 bg-gradient-to-r from-purple-600 to-purple-400 rounded text-white flex items-center justify-center font-bold text-[8px]">PP</div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground">SSL encrypted • Your payment info is secure</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span>Free shipping over $99</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span>30-day returns</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    <span>1-year warranty</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <span>Expert support</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
