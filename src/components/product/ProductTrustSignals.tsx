@@ -4,23 +4,23 @@ import { ShieldCheck, Truck, Wrench, BadgeCheck } from "lucide-react";
 const trustItems = [
   {
     icon: ShieldCheck,
-    title: "Fitment Guarantee",
-    desc: "Designed for OEM-like fit on supported trims",
+    title: "Professional Testing",
+    desc: "Every product tested for perfect OEM integration",
   },
   {
     icon: Truck,
-    title: "Fast Shipping",
-    desc: "In-stock items ship within 24–48 hours",
+    title: "Global Shipping",
+    desc: "Worldwide delivery with tracking included",
   },
   {
     icon: Wrench,
-    title: "Easy Installation",
-    desc: "Basic hand tools and mounting hardware included",
+    title: "Installation Guide",
+    desc: "Step-by-step video tutorials available",
   },
   {
     icon: BadgeCheck,
-    title: "Quality Materials",
-    desc: "Premium ABS/FRP or carbon fiber construction",
+    title: "Lifetime Support",
+    desc: "Ongoing technical assistance from our experts",
   },
 ];
 
