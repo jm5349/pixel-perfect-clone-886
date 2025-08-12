@@ -318,7 +318,7 @@ const ProductPage: React.FC = () => {
                 <div className="grid grid-cols-2 gap-3 text-xs">
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span>Free shipping over $99</span>
+                    <span>Free shipping </span>
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
