@@ -13,6 +13,9 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import ProductTrustSignals from "@/components/product/ProductTrustSignals";
+import ProductHighlights from "@/components/product/ProductHighlights";
+import ProductPolicies from "@/components/product/ProductPolicies";
 
 const currency = (amount?: string, code?: string) => {
   if (!amount) return "—";
@@ -158,6 +161,27 @@ const ProductPage: React.FC = () => {
     } as any;
   }, [product, variant, isAvailable]);
 
+  // FAQ content used for both UI and structured data
+  const faqItems = [
+    { q: "Do you offer in-store installation?", a: "Yes. We can install in-store or ship to you for self-installation." },
+    { q: "How long does shipping take?", a: "In-stock items ship within 24–48 hours. Custom or back-ordered items vary; we’ll confirm by email." },
+    { q: "Will this fit my vehicle?", a: "Designed for Toyota Camry 2025–2026 SE/XSE (GF). Please verify your trim and bumper style." },
+    { q: "Can I return a painted or installed part?", a: "Please test-fit before paint/film. Painted or installed items are typically not returnable." }
+  ];
+
+  const faqLd = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: it.a,
+      },
+    })),
+  }), []);
+
   const addToCart = async () => {
     if (!variant) return;
     setAddingToCart(true);
@@ -215,6 +239,9 @@ const ProductPage: React.FC = () => {
         <div className="relative container mx-auto px-6 lg:px-8">
           {productLd && (
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
+          )}
+          {faqLd && (
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
           )}
           {/* Breadcrumbs */}
           <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
@@ -336,23 +363,27 @@ const ProductPage: React.FC = () => {
               </TabsContent>
               <TabsContent value="fitment">
                 <div className="space-y-2 text-muted-foreground">
-                  <p>Fitment: Toyota Camry 2025-2026 (example; adjust to actual product)</p>
-                  <p>Material: Carbon fiber/FRP (subject to actual product)</p>
+                  <p>Compatibility: Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
+                  <p>Material/Finish: Premium ABS/FRP or carbon fiber depending on selected variant.</p>
+                  <p>Note: Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
                 </div>
               </TabsContent>
               <TabsContent value="faq">
                 <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>Do you offer in-store installation?</AccordionTrigger>
-                    <AccordionContent>Yes. We can install in-store or ship to you for self-installation.</AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>How long does shipping take?</AccordionTrigger>
-                    <AccordionContent>In-stock items ship within 48 hours. Custom items vary per confirmation.</AccordionContent>
-                  </AccordionItem>
+                  {faqItems.map((item, idx) => (
+                    <AccordionItem key={idx} value={`item-${idx + 1}`}>
+                      <AccordionTrigger>{item.q}</AccordionTrigger>
+                      <AccordionContent>{item.a}</AccordionContent>
+                    </AccordionItem>
+                  ))}
                 </Accordion>
               </TabsContent>
             </Tabs>
+            <div className="mt-10 space-y-8">
+              <ProductTrustSignals />
+              <ProductHighlights product={product} />
+              <ProductPolicies />
+            </div>
           </div>
         </div>
       </section>
