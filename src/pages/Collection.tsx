@@ -49,7 +49,8 @@ const CollectionPage: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        let h = (handle || "").trim() || "body-kit";
+        const rawHandle = (handle || "").trim();
+        let h = (!rawHandle || rawHandle.startsWith(":")) ? "body-kit" : rawHandle;
         // 1) Try fetch by handle to get collection id/title
         let col: any = null;
         try {
