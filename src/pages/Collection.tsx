@@ -297,7 +297,7 @@ const CollectionPage: React.FC = () => {
                               <img
                                 src={firstImg}
                                 alt={`${p.title} body kit product image`}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                className="w-full h-full object-contain bg-muted p-2 transition-transform duration-500 group-hover:scale-105"
                                 loading="lazy"
                               />
                             </div>

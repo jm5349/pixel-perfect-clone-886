@@ -59,10 +59,12 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                   },
                   "img": {
                     "width": "100%",
-                    "height": "240px",
-                    "object-fit": "cover",
+                    "height": "260px",
+                    "object-fit": "contain",
+                    "background-color": "hsl(var(--muted))",
                     "border-radius": "12px",
                     "margin-bottom": "16px",
+                    "padding": "8px",
                     "transition": "transform 0.3s ease",
                     "box-shadow": "0 4px 12px rgba(0,0,0,0.1)"
                   },
