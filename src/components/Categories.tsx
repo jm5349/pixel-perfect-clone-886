@@ -31,16 +31,16 @@ const Categories = () => {
     image: aestheticsImage,
     description: "Premium GF Design Products"
   }];
-  return <section className="py-8 bg-background">
+  return <section className="py-6 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary"></div>
             <div className="w-2 h-2 bg-primary rounded-full"></div>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary"></div>
           </div>
           
-          <h2 className="text-4xl md:text-7xl font-automotive text-foreground mb-6 tracking-tight leading-tight">
+          <h2 className="text-3xl md:text-5xl font-automotive text-foreground mb-6 tracking-tight leading-tight">
             SHOP BY 
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary/60">
               CATEGORY
@@ -50,7 +50,7 @@ const Categories = () => {
           
           
           {/* Decorative Line */}
-          <div className="flex items-center justify-center mt-8">
+          <div className="flex items-center justify-center mt-6">
             <div className="h-px w-20 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
             <div className="w-2 h-2 bg-primary rounded-full mx-4"></div>
             <div className="h-px w-20 bg-gradient-to-l from-transparent via-primary/50 to-transparent"></div>
@@ -61,7 +61,7 @@ const Categories = () => {
           {categories.map((category, index) => {
             const isBodyKit = category.title.toLowerCase() === "body kit";
             const content = (
-              <Card key={index} className="group relative overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 cursor-pointer h-48 md:h-80">
+              <Card key={index} className="group relative overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 cursor-pointer h-40 md:h-72">
                 {/* Background Image */}
                 <div className="absolute inset-0">
                   <img src={category.image} alt={category.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -70,8 +70,8 @@ const Categories = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 h-full flex flex-col justify-end p-4 md:p-8">
-                  <h3 className="text-lg md:text-3xl font-automotive text-foreground mb-2 md:mb-3 tracking-wide group-hover:text-primary transition-colors duration-300">
+                <div className="relative z-10 h-full flex flex-col justify-end p-3 md:p-6">
+                  <h3 className="text-base md:text-2xl font-automotive text-foreground mb-2 md:mb-3 tracking-wide group-hover:text-primary transition-colors duration-300">
                     {category.title}
                   </h3>
                   <p className="text-muted-foreground mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden lg:block">
