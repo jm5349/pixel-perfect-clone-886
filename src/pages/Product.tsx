@@ -15,6 +15,8 @@ import ProductPolicies from "@/components/product/ProductPolicies";
 import BeforeAfterCompare from "@/components/BeforeAfterCompare";
 import beforeImg from "@/assets/hero-car.jpg";
 import afterImg from "@/assets/aesthetics-category.jpg";
+import Header from "@/components/Header";
+import SearchBar from "@/components/SearchBar";
 const currency = (amount?: string, code?: string) => {
   if (!amount) return "—";
   const value = Number(amount);
@@ -216,7 +218,10 @@ const ProductPage: React.FC = () => {
     }
   };
   if (loading) {
-    return <section className="container mx-auto px-6 lg:px-8 py-16">
+    return <>
+      <Header />
+      <SearchBar />
+      <section className="container mx-auto px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 gap-8">
           <div className="h-72 md:h-[480px] bg-muted animate-pulse rounded-xl" />
           <div className="space-y-4">
@@ -226,20 +231,28 @@ const ProductPage: React.FC = () => {
             <div className="h-12 bg-muted animate-pulse rounded w-full" />
           </div>
         </div>
-      </section>;
+      </section>
+      </>;
   }
   if (error || !product) {
-    return <section className="container mx-auto px-6 lg:px-8 py-24 text-center">
+    return <>
+      <Header />
+      <SearchBar />
+      <section className="container mx-auto px-6 lg:px-8 py-24 text-center">
         <h1 className="text-2xl md:text-4xl font-automotive text-foreground mb-4">Product not found</h1>
         <p className="text-muted-foreground mb-8">Please verify the link or try again later.</p>
         <Button asChild>
           <Link to="/">Back to Home</Link>
         </Button>
-      </section>;
+      </section>
+      </>;
   }
   const images = product.images || [];
   const mainImage = images[selectedImage]?.src || images[0]?.src || "";
-  return <main>
+  return <>
+      <Header />
+      <SearchBar />
+      <main>
       <section className="relative py-10 md:py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.04)_0%,transparent_50%)]" />
         <div className="relative container mx-auto px-6 lg:px-8">
@@ -413,6 +426,7 @@ const ProductPage: React.FC = () => {
           </div>
         </div>
       </section>
-    </main>;
+    </main>
+      </>;
 };
 export default ProductPage;
