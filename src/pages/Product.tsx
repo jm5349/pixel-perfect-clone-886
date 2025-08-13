@@ -166,13 +166,13 @@ const ProductPage: React.FC = () => {
   // FAQ content used for both UI and structured data
   const faqItems = [{
     q: "Do you offer in-store installation?",
-    a: "Yes. We can install in-store or ship to you for self-installation."
+    a: "No. We don't offer in-store installation and we always recommend professional installation"
   }, {
     q: "How long does shipping take?",
-    a: "In-stock items ship within 24–48 hours. Custom or back-ordered items vary; we’ll confirm by email."
+    a: "In-stock items ship within 24–48 business hours. back-ordered items vary; we’ll confirm by email."
   }, {
     q: "Will this fit my vehicle?",
-    a: "Designed for Toyota Camry 2025–2026 SE/XSE (GF). Please verify your trim and bumper style."
+    a: "Designed for Toyota Camry 2025–2026 SE & XSE Models. You can always email us to verify your fitment."
   }, {
     q: "Can I return a painted or installed part?",
     a: "Please test-fit before paint/film. Painted or installed items are typically not returnable."
