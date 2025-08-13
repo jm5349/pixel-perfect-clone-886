@@ -3,6 +3,7 @@ import { Search, ShoppingCart, User, Menu, X, ChevronDown, Instagram, Facebook }
 import TikTok from './icons/TikTok';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Link } from 'react-router-dom';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
@@ -143,11 +144,13 @@ const Header = () => {
               
               {/* Logo - Center */}
               <div className="flex items-center justify-center flex-1">
-                <img 
-                  src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
-                  alt="Custom Tuning Company Logo" 
-                  className="h-16 w-auto max-w-[200px]"
-                />
+                <Link to="/" aria-label="Back to homepage">
+                  <img 
+                    src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
+                    alt="Custom Tuning Company Logo" 
+                    className="h-16 w-auto max-w-[200px]"
+                  />
+                </Link>
               </div>
               
               {/* Actions - Right */}
@@ -185,11 +188,13 @@ const Header = () => {
               {/* Logo - Center */}
               <div className="flex items-center justify-center w-full">
                 <div className="text-center">
-                  <img 
-                    src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
-                    alt="Custom Tuning Company Logo" 
-                    className="h-28 lg:h-32 w-auto max-w-md mx-auto"
-                  />
+                  <Link to="/" aria-label="Back to homepage">
+                    <img 
+                      src="/lovable-uploads/8e5d317a-b86d-44bf-859d-d1c8bfc9d23b.png" 
+                      alt="Custom Tuning Company Logo" 
+                      className="h-28 lg:h-32 w-auto max-w-md mx-auto"
+                    />
+                  </Link>
                 </div>
               </div>
 
