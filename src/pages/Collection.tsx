@@ -29,6 +29,11 @@ const getMinPrice = (p: any) => {
 
 const anyAvailable = (p: any) => (p?.variants || []).some((v: any) => !!v?.available);
 
+// Extra products to append by collection handle
+const EXTRA_PRODUCTS: Record<string, string[]> = {
+  'body-kit': ['9928841036069', '9928832876837']
+};
+
 const CollectionPage: React.FC = () => {
   const { handle = "" } = useParams();
 
@@ -65,7 +70,21 @@ const CollectionPage: React.FC = () => {
             colWithProducts = await (client as any).collection?.fetchWithProducts?.(col.id, { productsFirst: 50 });
           } catch {}
         }
-        const prods: any[] = (colWithProducts?.products || col?.products || []);
+        let prods: any[] = (colWithProducts?.products || col?.products || []);
+        const extraIds: string[] = EXTRA_PRODUCTS[h] || [];
+        if (extraIds.length) {
+          try {
+            const fetched = await Promise.all(
+              extraIds.map(id => (client as any).product?.fetch?.(id.startsWith('gid://') ? id : `gid://shopify/Product/${id}`))
+            );
+            const byId = new Set(prods.map((p: any) => p.id));
+            for (const item of fetched) {
+              if (item && !byId.has((item as any).id)) prods.push(item as any);
+            }
+          } catch (e) {
+            console.warn('Extra products fetch failed', e);
+          }
+        }
         if (!cancelled) {
           setProducts(prods as ShopifyProduct[]);
           setTitle(col?.title || (h.replace(/-/g, " ")).replace(/\b\w/g, c => c.toUpperCase()));
