@@ -393,6 +393,19 @@ const ProductPage: React.FC = () => {
                   afterLabel="After"
                   beforeAlt="升级前车辆外观"
                   afterAlt="升级后车辆外观"
+                  shopLabel="搭配购买"
+                  hotspots={[
+                    {
+                      id: "main-product",
+                      x: 72,
+                      y: 62,
+                      title: product.title,
+                      price: `${priceLabel}`,
+                      handle: (product as any).handle || (handle || ""),
+                      imageSrc: mainImage,
+                      description: "图中展示的主要改装部件，可直接前往购买页面。"
+                    }
+                  ]}
                 />
               </Card>
               <ProductPolicies />
