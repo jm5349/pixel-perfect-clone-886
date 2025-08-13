@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "@/components/Header";
+import BusinessInfo from "@/components/BusinessInfo";
 import SearchBar from "@/components/SearchBar";
 import client from "@/lib/shopify";
 import type { ShopifyProduct } from "@/lib/shopify";
@@ -221,6 +222,7 @@ const CollectionPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <BusinessInfo />
       <SearchBar />
       <main>
         <section className="py-10 md:py-16">

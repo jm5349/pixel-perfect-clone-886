@@ -16,6 +16,7 @@ import BeforeAfterCompare from "@/components/BeforeAfterCompare";
 import beforeImg from "@/assets/hero-car.jpg";
 import afterImg from "@/assets/aesthetics-category.jpg";
 import Header from "@/components/Header";
+import BusinessInfo from "@/components/BusinessInfo";
 import SearchBar from "@/components/SearchBar";
 const currency = (amount?: string, code?: string) => {
   if (!amount) return "—";
@@ -220,6 +221,7 @@ const ProductPage: React.FC = () => {
   if (loading) {
     return <>
       <Header />
+      <BusinessInfo />
       <SearchBar />
       <section className="container mx-auto px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 gap-8">
@@ -237,6 +239,7 @@ const ProductPage: React.FC = () => {
   if (error || !product) {
     return <>
       <Header />
+      <BusinessInfo />
       <SearchBar />
       <section className="container mx-auto px-6 lg:px-8 py-24 text-center">
         <h1 className="text-2xl md:text-4xl font-automotive text-foreground mb-4">Product not found</h1>
@@ -251,6 +254,7 @@ const ProductPage: React.FC = () => {
   const mainImage = images[selectedImage]?.src || images[0]?.src || "";
   return <>
       <Header />
+      <BusinessInfo />
       <SearchBar />
       <main>
       <section className="relative py-10 md:py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
