@@ -274,7 +274,7 @@ const ProductPage: React.FC = () => {
             {/* Right: Info */}
             <div className="flex flex-col">
               <div className="mb-4">
-                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">{product.vendor || "Flagship Store"}</Badge>
+                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">GF Bodykit®</Badge>
               </div>
               <h1 className="text-2xl md:text-4xl font-automotive text-foreground mb-3 leading-tight">
                 {product.title}
