@@ -12,6 +12,9 @@ import { ShieldCheck, Truck, Wrench, BadgeCheck } from "lucide-react";
 import ProductTrustSignals from "@/components/product/ProductTrustSignals";
 import ProductHighlights from "@/components/product/ProductHighlights";
 import ProductPolicies from "@/components/product/ProductPolicies";
+import BeforeAfterCompare from "@/components/BeforeAfterCompare";
+import beforeImg from "@/assets/hero-car.jpg";
+import afterImg from "@/assets/aesthetics-category.jpg";
 const currency = (amount?: string, code?: string) => {
   if (!amount) return "—";
   const value = Number(amount);
@@ -380,6 +383,18 @@ const ProductPage: React.FC = () => {
             <div className="mt-10 space-y-8">
               <ProductTrustSignals />
               <ProductHighlights product={product} />
+              <Card className="p-4 md:p-6 bg-card border-border">
+                <BeforeAfterCompare
+                  beforeSrc={beforeImg}
+                  afterSrc={afterImg}
+                  title="安装前后对比"
+                  description="通过拖动对比条，直观感受升级配件安装前后的视觉差异。"
+                  beforeLabel="Before"
+                  afterLabel="After"
+                  beforeAlt="升级前车辆外观"
+                  afterAlt="升级后车辆外观"
+                />
+              </Card>
               <ProductPolicies />
             </div>
           </div>
