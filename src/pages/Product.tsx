@@ -400,13 +400,13 @@ const ProductPage: React.FC = () => {
                 <BeforeAfterCompare
                   beforeSrc={beforeImg}
                   afterSrc={afterImg}
-                  title="安装前后对比"
-                  description="通过拖动对比条，直观感受升级配件安装前后的视觉差异。"
+                  title="Before & After Comparison"
+                  description="Drag the slider to see the difference before and after installing the upgrade."
                   beforeLabel="Before"
                   afterLabel="After"
-                  beforeAlt="升级前车辆外观"
-                  afterAlt="升级后车辆外观"
-                  shopLabel="搭配购买"
+                  beforeAlt="Vehicle appearance before upgrade"
+                  afterAlt="Vehicle appearance after upgrade"
+                  shopLabel="Shop the look"
                   hotspots={[
                     {
                       id: "main-product",
@@ -416,7 +416,7 @@ const ProductPage: React.FC = () => {
                       price: `${priceLabel}`,
                       handle: (product as any).handle || (handle || ""),
                       imageSrc: mainImage,
-                      description: "图中展示的主要改装部件，可直接前往购买页面。"
+                      description: "The main upgrade part shown can be purchased directly."
                     }
                   ]}
                 />
