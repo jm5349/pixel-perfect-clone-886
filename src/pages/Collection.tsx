@@ -290,17 +290,28 @@ const CollectionPage: React.FC = () => {
             {/* Mobile Product Type Filter Slider */}
             <div className="md:hidden mb-6">
               <h3 className="text-lg font-medium text-foreground mb-4">Product Type</h3>
-              <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
+              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+                {/* All Types Card */}
                 <button
                   onClick={() => setSelectedProductTypes([])}
-                  className={`flex-shrink-0 px-4 py-2 rounded-lg border-2 transition-all duration-200 ${
+                  className={`relative flex-shrink-0 w-48 h-32 rounded-xl overflow-hidden border-2 transition-all duration-300 ${
                     selectedProductTypes.length === 0
-                      ? 'border-primary bg-primary text-primary-foreground'
-                      : 'border-border bg-card text-muted-foreground hover:border-primary/50'
+                      ? 'border-primary shadow-lg shadow-primary/25'
+                      : 'border-border hover:border-primary/50'
                   }`}
                 >
-                  All Types
+                  <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted/60"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <h4 className="text-sm font-semibold text-foreground">ALL TYPES</h4>
+                    </div>
+                  </div>
+                  <div className="absolute top-2 right-2">
+                    <div className="w-2 h-2 rounded-full bg-primary opacity-75"></div>
+                  </div>
                 </button>
+
+                {/* Product Type Cards */}
                 {allProductTypes.map((type) => (
                   <button
                     key={type}
@@ -311,13 +322,30 @@ const CollectionPage: React.FC = () => {
                           : [...prev, type]
                       );
                     }}
-                    className={`flex-shrink-0 px-4 py-2 rounded-lg border-2 transition-all duration-200 whitespace-nowrap ${
+                    className={`relative flex-shrink-0 w-48 h-32 rounded-xl overflow-hidden border-2 transition-all duration-300 ${
                       selectedProductTypes.includes(type)
-                        ? 'border-primary bg-primary text-primary-foreground'
-                        : 'border-border bg-card text-muted-foreground hover:border-primary/50'
+                        ? 'border-primary shadow-lg shadow-primary/25'
+                        : 'border-border hover:border-primary/50'
                     }`}
                   >
-                    {type}
+                    <div className="absolute inset-0 bg-gradient-to-br from-card to-muted/40"></div>
+                    {/* Placeholder for product type image - can be customized per type */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                      <div className="w-16 h-16 rounded-lg bg-primary/20"></div>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center px-3">
+                        <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
+                          {type}
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="absolute top-2 right-2">
+                      <div className="w-2 h-2 rounded-full bg-primary opacity-75"></div>
+                    </div>
+                    {selectedProductTypes.includes(type) && (
+                      <div className="absolute inset-0 bg-primary/10 pointer-events-none"></div>
+                    )}
                   </button>
                 ))}
               </div>
