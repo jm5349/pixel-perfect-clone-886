@@ -32,7 +32,7 @@ const anyAvailable = (p: any) => (p?.variants || []).some((v: any) => !!v?.avail
 
 // Extra products to append by collection handle
 const EXTRA_PRODUCTS: Record<string, string[]> = {
-  'body-kit': ['9928841036069', '9928832876837']
+  'body-kit': ['9928841036069', '9928832876837', '9928328249637']
 };
 
 const CollectionPage: React.FC = () => {
