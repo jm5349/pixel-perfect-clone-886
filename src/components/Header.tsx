@@ -27,22 +27,22 @@ const Header = () => {
             <div className="flex items-center space-x-2">
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
-                  <Instagram className="h-4 w-4" />
+                  <Instagram className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
-                  <Facebook className="h-4 w-4" />
+                  <Facebook className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
                 <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
-                  <TikTok className="h-4 w-4" />
+                  <TikTok className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
                 <a href="mailto:info@company.com" className="text-white/80 hover:text-white transition-colors duration-200">
-                  <Mail className="h-4 w-4" />
+                  <Mail className="h-5 w-5" />
                 </a>
               </Button>
             </div>
@@ -184,10 +184,10 @@ const Header = () => {
               {/* Actions - Right */}
               <div className="flex items-center space-x-2">
                  <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
-                   <ShoppingCart className="h-9 w-9" />
+                   <ShoppingCart className="h-10 w-10" />
                  </Button>
                  <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
-                   <User className="h-9 w-9" />
+                   <User className="h-10 w-10" />
                  </Button>
               </div>
             </div>
@@ -199,7 +199,7 @@ const Header = () => {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
-                      <Menu className="h-9 w-9" />
+                      <Menu className="h-10 w-10" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
