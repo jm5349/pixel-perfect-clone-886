@@ -19,10 +19,10 @@ const Header = () => {
   const navItems = ['AESTHETICS', 'PERFORMANCE', 'WHEELS', 'ACCESSORIES', 'BESPOKE SERVICES'];
   return <header className="relative z-50 w-full">
       {/* Auto-rotating Announcement Banner */}
-      <div className="relative overflow-hidden" style={{ background: 'var(--gradient-accent)' }}>
+      <div className="relative overflow-hidden h-10" style={{ background: 'var(--gradient-accent)' }}>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
-        <div className="w-full max-w-none px-6 py-1 relative">
-          <div className="flex items-center justify-between">
+        <div className="w-full max-w-none px-6 py-1 relative h-full">
+          <div className="flex items-center justify-between h-full">
             {/* Social Media Icons - Left */}
             <div className="flex items-center space-x-2">
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
@@ -49,7 +49,7 @@ const Header = () => {
             
             {/* Announcement Text - Center */}
             <div className="text-center transition-all duration-500 ease-in-out flex-1">
-              <p className="text-sm font-semibold tracking-wide text-white/95 drop-shadow-sm">
+              <p className="text-sm font-semibold tracking-wide text-white/95 drop-shadow-sm truncate">
                 {announcements[currentAnnouncementIndex]}
               </p>
             </div>

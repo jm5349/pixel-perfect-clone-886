@@ -271,17 +271,55 @@ const CollectionPage: React.FC = () => {
                     <SelectItem value="newest">Newest</SelectItem>
                   </SelectContent>
                 </Select>
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="outline">Filters</Button>
-                  </SheetTrigger>
-                  <SheetContent side="right" className="w-full sm:max-w-sm">
-                    <SheetHeader>
-                      <SheetTitle>Filters</SheetTitle>
-                    </SheetHeader>
-                    <div className="mt-6">{Filters}</div>
-                  </SheetContent>
-                </Sheet>
+                <div className="hidden md:block">
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <Button variant="outline">Filters</Button>
+                    </SheetTrigger>
+                    <SheetContent side="right" className="w-full sm:max-w-sm">
+                      <SheetHeader>
+                        <SheetTitle>Filters</SheetTitle>
+                      </SheetHeader>
+                      <div className="mt-6">{Filters}</div>
+                    </SheetContent>
+                  </Sheet>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Product Type Filter Slider */}
+            <div className="md:hidden mb-6">
+              <h3 className="text-lg font-medium text-foreground mb-4">Product Type</h3>
+              <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
+                <button
+                  onClick={() => setSelectedProductTypes([])}
+                  className={`flex-shrink-0 px-4 py-2 rounded-lg border-2 transition-all duration-200 ${
+                    selectedProductTypes.length === 0
+                      ? 'border-primary bg-primary text-primary-foreground'
+                      : 'border-border bg-card text-muted-foreground hover:border-primary/50'
+                  }`}
+                >
+                  All Types
+                </button>
+                {allProductTypes.map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => {
+                      setSelectedProductTypes(prev => 
+                        prev.includes(type) 
+                          ? prev.filter(x => x !== type)
+                          : [...prev, type]
+                      );
+                    }}
+                    className={`flex-shrink-0 px-4 py-2 rounded-lg border-2 transition-all duration-200 whitespace-nowrap ${
+                      selectedProductTypes.includes(type)
+                        ? 'border-primary bg-primary text-primary-foreground'
+                        : 'border-border bg-card text-muted-foreground hover:border-primary/50'
+                    }`}
+                  >
+                    {type}
+                  </button>
+                ))}
               </div>
             </div>
 
