@@ -359,40 +359,51 @@ const ProductPage: React.FC = () => {
           </div>
 
           {/* Tabs: Details / Specs / Fitment / FAQ */}
-          <div className="mt-12">
+          <div className="mt-8 md:mt-12">
             <Tabs defaultValue="details" className="w-full">
-              <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full">
-                <TabsTrigger value="details">Details</TabsTrigger>
-                <TabsTrigger value="specs">Specifications</TabsTrigger>
-                <TabsTrigger value="fitment">Fitment</TabsTrigger>
-                <TabsTrigger value="faq">FAQ</TabsTrigger>
+              <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full max-w-full overflow-x-auto">
+                <TabsTrigger value="details" className="text-xs md:text-sm whitespace-nowrap">Details</TabsTrigger>
+                <TabsTrigger value="specs" className="text-xs md:text-sm whitespace-nowrap">Specifications</TabsTrigger>
+                <TabsTrigger value="fitment" className="text-xs md:text-sm whitespace-nowrap">Fitment</TabsTrigger>
+                <TabsTrigger value="faq" className="text-xs md:text-sm whitespace-nowrap">FAQ</TabsTrigger>
               </TabsList>
-              <TabsContent value="details">
+              <TabsContent value="details" className="mt-4 md:mt-6">
                 <article className="prose prose-invert max-w-none text-foreground">
-                  <div dangerouslySetInnerHTML={{
-                  __html: (product as any).descriptionHtml || (product as any).description || ""
-                }} />
+                  <div 
+                    className="text-sm md:text-base leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                    __html: (product as any).descriptionHtml || (product as any).description || ""
+                  }} />
                 </article>
               </TabsContent>
-              <TabsContent value="specs">
-                <div className="grid sm:grid-cols-3 gap-4">
-                  <Card className="p-4"><h3 className="font-medium mb-2">Brand</h3><p className="text-muted-foreground">{product.vendor || "—"}</p></Card>
-                  <Card className="p-4"><h3 className="font-medium mb-2">Type</h3><p className="text-muted-foreground">{product.productType || "—"}</p></Card>
-                  <Card className="p-4"><h3 className="font-medium mb-2">SKU/Variant</h3><p className="text-muted-foreground">{variant?.title || product.variants?.[0]?.title || "—"}</p></Card>
+              <TabsContent value="specs" className="mt-4 md:mt-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                  <Card className="p-3 md:p-4"><h3 className="font-medium mb-2 text-sm md:text-base">Brand</h3><p className="text-muted-foreground text-sm">{product.vendor || "—"}</p></Card>
+                  <Card className="p-3 md:p-4"><h3 className="font-medium mb-2 text-sm md:text-base">Type</h3><p className="text-muted-foreground text-sm">{product.productType || "—"}</p></Card>
+                  <Card className="p-3 md:p-4"><h3 className="font-medium mb-2 text-sm md:text-base">SKU/Variant</h3><p className="text-muted-foreground text-sm">{variant?.title || product.variants?.[0]?.title || "—"}</p></Card>
                 </div>
               </TabsContent>
-              <TabsContent value="fitment">
-                <div className="space-y-2 text-muted-foreground">
-                  <p>Compatibility: Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
-                  <p>Material/Finish: Premium ABS/FRP or carbon fiber depending on selected variant.</p>
-                  <p>Note: Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
+              <TabsContent value="fitment" className="mt-4 md:mt-6">
+                <div className="space-y-3 md:space-y-4 text-muted-foreground">
+                  <div className="bg-card border border-border rounded-lg p-3 md:p-4">
+                    <h4 className="font-medium text-foreground mb-2 text-sm md:text-base">Compatibility</h4>
+                    <p className="text-sm md:text-base">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
+                  </div>
+                  <div className="bg-card border border-border rounded-lg p-3 md:p-4">
+                    <h4 className="font-medium text-foreground mb-2 text-sm md:text-base">Material/Finish</h4>
+                    <p className="text-sm md:text-base">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
+                  </div>
+                  <div className="bg-card border border-border rounded-lg p-3 md:p-4">
+                    <h4 className="font-medium text-foreground mb-2 text-sm md:text-base">Installation Note</h4>
+                    <p className="text-sm md:text-base">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
+                  </div>
                 </div>
               </TabsContent>
-              <TabsContent value="faq">
+              <TabsContent value="faq" className="mt-4 md:mt-6">
                 <Accordion type="single" collapsible className="w-full">
                   {faqItems.map((item, idx) => <AccordionItem key={idx} value={`item-${idx + 1}`}>
-                      <AccordionTrigger>{item.q}</AccordionTrigger>
-                      <AccordionContent>{item.a}</AccordionContent>
+                      <AccordionTrigger className="text-sm md:text-base text-left">{item.q}</AccordionTrigger>
+                      <AccordionContent className="text-sm md:text-base text-muted-foreground">{item.a}</AccordionContent>
                     </AccordionItem>)}
                 </Accordion>
               </TabsContent>
