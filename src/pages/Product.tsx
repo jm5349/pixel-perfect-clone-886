@@ -358,145 +358,215 @@ const ProductPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Tabs: Details / Specs / Fitment / FAQ */}
+          {/* Product Information Sections */}
           <div className="mt-8 md:mt-12">
-            <Tabs defaultValue="details" className="w-full">
-              {/* Desktop Tabs */}
-              <TabsList className="hidden md:grid md:grid-cols-4 w-full">
-                <TabsTrigger value="details">Details</TabsTrigger>
-                <TabsTrigger value="specs">Specifications</TabsTrigger>
-                <TabsTrigger value="fitment">Fitment</TabsTrigger>
-                <TabsTrigger value="faq">FAQ</TabsTrigger>
-              </TabsList>
-              
-              {/* Mobile/Tablet Dropdown */}
-              <div className="md:hidden mb-4">
-                <select 
-                  className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
-                  onChange={(e) => {
-                    const tabs = document.querySelector('[role="tablist"]');
-                    const trigger = tabs?.querySelector(`[value="${e.target.value}"]`) as HTMLElement;
-                    trigger?.click();
-                  }}
-                  defaultValue="details"
-                >
-                  <option value="details">Product Details</option>
-                  <option value="specs">Specifications</option>
-                  <option value="fitment">Fitment Information</option>
-                  <option value="faq">Frequently Asked Questions</option>
-                </select>
-              </div>
-              
-              <TabsContent value="details" className="mt-4 md:mt-6">
-                <Card className="p-4 md:p-6 bg-card border-border">
-                  <h3 className="text-lg font-medium mb-4">Product Details</h3>
-                  <article className="prose prose-invert max-w-none text-foreground">
-                    <div 
-                      className="text-sm md:text-base leading-relaxed"
-                      dangerouslySetInnerHTML={{
-                      __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
-                    }} />
-                  </article>
-                </Card>
-              </TabsContent>
-              
-              <TabsContent value="specs" className="mt-4 md:mt-6">
-                <Card className="p-4 md:p-6 bg-card border-border">
-                  <h3 className="text-lg font-medium mb-4">Specifications</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
-                      <h4 className="font-medium mb-2 text-sm md:text-base">Brand</h4>
-                      <p className="text-muted-foreground text-sm">{product.vendor || "GF Bodykit"}</p>
+            {/* Desktop Tabs */}
+            <div className="hidden md:block">
+              <Tabs defaultValue="details" className="w-full">
+                <TabsList className="grid grid-cols-4 w-full">
+                  <TabsTrigger value="details">Details</TabsTrigger>
+                  <TabsTrigger value="specs">Specifications</TabsTrigger>
+                  <TabsTrigger value="fitment">Fitment</TabsTrigger>
+                  <TabsTrigger value="faq">FAQ</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="details" className="mt-6">
+                  <Card className="p-6 bg-card border-border">
+                    <h3 className="text-lg font-medium mb-4">Product Details</h3>
+                    <article className="prose prose-invert max-w-none text-foreground">
+                      <div 
+                        className="text-base leading-relaxed"
+                        dangerouslySetInnerHTML={{
+                        __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
+                      }} />
+                    </article>
+                  </Card>
+                </TabsContent>
+                
+                <TabsContent value="specs" className="mt-6">
+                  <Card className="p-6 bg-card border-border">
+                    <h3 className="text-lg font-medium mb-4">Specifications</h3>
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="bg-muted/30 rounded-lg p-4">
+                        <h4 className="font-medium mb-2">Brand</h4>
+                        <p className="text-muted-foreground text-sm">{product.vendor || "GF Bodykit"}</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-lg p-4">
+                        <h4 className="font-medium mb-2">Type</h4>
+                        <p className="text-muted-foreground text-sm">{product.productType || "Body Kit Component"}</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-lg p-4">
+                        <h4 className="font-medium mb-2">SKU/Variant</h4>
+                        <p className="text-muted-foreground text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
+                      </div>
                     </div>
-                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
-                      <h4 className="font-medium mb-2 text-sm md:text-base">Type</h4>
-                      <p className="text-muted-foreground text-sm">{product.productType || "Body Kit Component"}</p>
+                  </Card>
+                </TabsContent>
+                
+                <TabsContent value="fitment" className="mt-6">
+                  <Card className="p-6 bg-card border-border">
+                    <h3 className="text-lg font-medium mb-4">Fitment Information</h3>
+                    <div className="space-y-4">
+                      <div className="bg-muted/30 rounded-lg p-4">
+                        <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                          <BadgeCheck className="w-4 h-4 text-primary" />
+                          Compatibility
+                        </h4>
+                        <p className="text-muted-foreground">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-lg p-4">
+                        <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                          <Wrench className="w-4 h-4 text-primary" />
+                          Material & Finish
+                        </h4>
+                        <p className="text-muted-foreground">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-lg p-4">
+                        <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                          <ShieldCheck className="w-4 h-4 text-primary" />
+                          Installation Note
+                        </h4>
+                        <p className="text-muted-foreground">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
+                      </div>
                     </div>
-                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
-                      <h4 className="font-medium mb-2 text-sm md:text-base">SKU/Variant</h4>
-                      <p className="text-muted-foreground text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
-                    </div>
-                  </div>
-                </Card>
-              </TabsContent>
-              
-              <TabsContent value="fitment" className="mt-4 md:mt-6">
-                <Card className="p-4 md:p-6 bg-card border-border">
-                  <h3 className="text-lg font-medium mb-4">Fitment Information</h3>
-                  <div className="space-y-3 md:space-y-4">
-                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
-                      <h4 className="font-medium text-foreground mb-2 text-sm md:text-base flex items-center gap-2">
-                        <BadgeCheck className="w-4 h-4 text-primary" />
-                        Compatibility
-                      </h4>
-                      <p className="text-sm md:text-base text-muted-foreground">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
-                    </div>
-                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
-                      <h4 className="font-medium text-foreground mb-2 text-sm md:text-base flex items-center gap-2">
-                        <Wrench className="w-4 h-4 text-primary" />
-                        Material & Finish
-                      </h4>
-                      <p className="text-sm md:text-base text-muted-foreground">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
-                    </div>
-                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
-                      <h4 className="font-medium text-foreground mb-2 text-sm md:text-base flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-primary" />
-                        Installation Note
-                      </h4>
-                      <p className="text-sm md:text-base text-muted-foreground">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
-                    </div>
-                  </div>
-                </Card>
-              </TabsContent>
-              
-              <TabsContent value="faq" className="mt-4 md:mt-6">
-                <Card className="p-4 md:p-6 bg-card border-border">
-                  <h3 className="text-lg font-medium mb-4">Frequently Asked Questions</h3>
-                  <Accordion type="single" collapsible className="w-full">
-                    {faqItems.map((item, idx) => 
-                      <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-muted/30">
-                        <AccordionTrigger className="text-sm md:text-base text-left hover:text-primary">{item.q}</AccordionTrigger>
-                        <AccordionContent className="text-sm md:text-base text-muted-foreground">{item.a}</AccordionContent>
-                      </AccordionItem>
-                    )}
-                  </Accordion>
-                </Card>
-              </TabsContent>
-            </Tabs>
-            <div className="mt-10 space-y-8">
-              <ProductTrustSignals />
-              <ProductHighlights product={product} />
-              <Card className="p-4 md:p-6 bg-card border-border">
-                <BeforeAfterCompare
-                  beforeSrc={beforeImg}
-                  afterSrc={afterImg}
-                  title="Before & After Comparison"
-                  description="Drag the slider to see the difference before and after installing the upgrade."
-                  beforeLabel="Before"
-                  afterLabel="After"
-                  beforeAlt="Vehicle appearance before upgrade"
-                  afterAlt="Vehicle appearance after upgrade"
-                  shopLabel="Shop the look"
-                  hotspots={[
-                    {
-                      id: "main-product",
-                      x: 72,
-                      y: 62,
-                      title: product.title,
-                      price: `${priceLabel}`,
-                      handle: (product as any).handle || (handle || ""),
-                      imageSrc: mainImage,
-                      description: "The main upgrade part shown can be purchased directly."
-                    }
-                  ]}
-                />
-              </Card>
-              <ProductPolicies />
+                  </Card>
+                </TabsContent>
+                
+                <TabsContent value="faq" className="mt-6">
+                  <Card className="p-6 bg-card border-border">
+                    <h3 className="text-lg font-medium mb-4">Frequently Asked Questions</h3>
+                    <Accordion type="single" collapsible className="w-full">
+                      {faqItems.map((item, idx) => 
+                        <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-muted/30">
+                          <AccordionTrigger className="text-left hover:text-primary">{item.q}</AccordionTrigger>
+                          <AccordionContent className="text-muted-foreground">{item.a}</AccordionContent>
+                        </AccordionItem>
+                      )}
+                    </Accordion>
+                  </Card>
+                </TabsContent>
+              </Tabs>
             </div>
+
+            {/* Mobile/Tablet Stacked Layout */}
+            <div className="md:hidden space-y-6">
+              {/* Details Section */}
+              <Card className="p-4 bg-card border-border">
+                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  Product Details
+                </h3>
+                <div 
+                  className="text-sm leading-relaxed text-muted-foreground"
+                  dangerouslySetInnerHTML={{
+                  __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
+                }} />
+              </Card>
+
+              {/* Specifications Section */}
+              <Card className="p-4 bg-card border-border">
+                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  Specifications
+                </h3>
+                <div className="space-y-3">
+                  <div className="bg-muted/30 rounded-lg p-3">
+                    <h4 className="font-medium mb-1 text-sm">Brand</h4>
+                    <p className="text-muted-foreground text-sm">{product.vendor || "GF Bodykit"}</p>
+                  </div>
+                  <div className="bg-muted/30 rounded-lg p-3">
+                    <h4 className="font-medium mb-1 text-sm">Type</h4>
+                    <p className="text-muted-foreground text-sm">{product.productType || "Body Kit Component"}</p>
+                  </div>
+                  <div className="bg-muted/30 rounded-lg p-3">
+                    <h4 className="font-medium mb-1 text-sm">SKU/Variant</h4>
+                    <p className="text-muted-foreground text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Fitment Section */}
+              <Card className="p-4 bg-card border-border">
+                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  Fitment Information
+                </h3>
+                <div className="space-y-3">
+                  <div className="bg-muted/30 rounded-lg p-3">
+                    <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
+                      <BadgeCheck className="w-4 h-4 text-primary" />
+                      Compatibility
+                    </h4>
+                    <p className="text-muted-foreground text-sm">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
+                  </div>
+                  <div className="bg-muted/30 rounded-lg p-3">
+                    <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
+                      <Wrench className="w-4 h-4 text-primary" />
+                      Material & Finish
+                    </h4>
+                    <p className="text-muted-foreground text-sm">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
+                  </div>
+                  <div className="bg-muted/30 rounded-lg p-3">
+                    <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-primary" />
+                      Installation Note
+                    </h4>
+                    <p className="text-muted-foreground text-sm">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* FAQ Section */}
+              <Card className="p-4 bg-card border-border">
+                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  Frequently Asked Questions
+                </h3>
+                <Accordion type="single" collapsible className="w-full">
+                  {faqItems.map((item, idx) => 
+                    <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-muted/30">
+                      <AccordionTrigger className="text-left text-sm hover:text-primary">{item.q}</AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground text-sm">{item.a}</AccordionContent>
+                    </AccordionItem>
+                  )}
+                </Accordion>
+              </Card>
+            </div>
+          </div>
+          
+          <div className="mt-10 space-y-8">
+            <ProductTrustSignals />
+            <ProductHighlights product={product} />
+            <Card className="p-4 md:p-6 bg-card border-border">
+              <BeforeAfterCompare
+                beforeSrc={beforeImg}
+                afterSrc={afterImg}
+                title="Before & After Comparison"
+                description="Drag the slider to see the difference before and after installing the upgrade."
+                beforeLabel="Before"
+                afterLabel="After"
+                beforeAlt="Vehicle appearance before upgrade"
+                afterAlt="Vehicle appearance after upgrade"
+                shopLabel="Shop the look"
+                hotspots={[
+                  {
+                    id: "main-product",
+                    x: 72,
+                    y: 62,
+                    title: product.title,
+                    price: `${priceLabel}`,
+                    handle: (product as any).handle || (handle || ""),
+                    imageSrc: mainImage,
+                    description: "The main upgrade part shown can be purchased directly."
+                  }
+                ]}
+              />
+            </Card>
+            <ProductPolicies />
           </div>
         </div>
       </section>
     </main>
-      </>;
+  </>;
 };
 export default ProductPage;
