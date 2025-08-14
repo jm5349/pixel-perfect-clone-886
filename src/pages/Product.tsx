@@ -361,51 +361,106 @@ const ProductPage: React.FC = () => {
           {/* Tabs: Details / Specs / Fitment / FAQ */}
           <div className="mt-8 md:mt-12">
             <Tabs defaultValue="details" className="w-full">
-              <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full max-w-full overflow-x-auto">
-                <TabsTrigger value="details" className="text-xs md:text-sm whitespace-nowrap">Details</TabsTrigger>
-                <TabsTrigger value="specs" className="text-xs md:text-sm whitespace-nowrap">Specifications</TabsTrigger>
-                <TabsTrigger value="fitment" className="text-xs md:text-sm whitespace-nowrap">Fitment</TabsTrigger>
-                <TabsTrigger value="faq" className="text-xs md:text-sm whitespace-nowrap">FAQ</TabsTrigger>
+              {/* Desktop Tabs */}
+              <TabsList className="hidden md:grid md:grid-cols-4 w-full">
+                <TabsTrigger value="details">Details</TabsTrigger>
+                <TabsTrigger value="specs">Specifications</TabsTrigger>
+                <TabsTrigger value="fitment">Fitment</TabsTrigger>
+                <TabsTrigger value="faq">FAQ</TabsTrigger>
               </TabsList>
+              
+              {/* Mobile/Tablet Dropdown */}
+              <div className="md:hidden mb-4">
+                <select 
+                  className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                  onChange={(e) => {
+                    const tabs = document.querySelector('[role="tablist"]');
+                    const trigger = tabs?.querySelector(`[value="${e.target.value}"]`) as HTMLElement;
+                    trigger?.click();
+                  }}
+                  defaultValue="details"
+                >
+                  <option value="details">Product Details</option>
+                  <option value="specs">Specifications</option>
+                  <option value="fitment">Fitment Information</option>
+                  <option value="faq">Frequently Asked Questions</option>
+                </select>
+              </div>
+              
               <TabsContent value="details" className="mt-4 md:mt-6">
-                <article className="prose prose-invert max-w-none text-foreground">
-                  <div 
-                    className="text-sm md:text-base leading-relaxed"
-                    dangerouslySetInnerHTML={{
-                    __html: (product as any).descriptionHtml || (product as any).description || ""
-                  }} />
-                </article>
+                <Card className="p-4 md:p-6 bg-card border-border">
+                  <h3 className="text-lg font-medium mb-4">Product Details</h3>
+                  <article className="prose prose-invert max-w-none text-foreground">
+                    <div 
+                      className="text-sm md:text-base leading-relaxed"
+                      dangerouslySetInnerHTML={{
+                      __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
+                    }} />
+                  </article>
+                </Card>
               </TabsContent>
+              
               <TabsContent value="specs" className="mt-4 md:mt-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                  <Card className="p-3 md:p-4"><h3 className="font-medium mb-2 text-sm md:text-base">Brand</h3><p className="text-muted-foreground text-sm">{product.vendor || "—"}</p></Card>
-                  <Card className="p-3 md:p-4"><h3 className="font-medium mb-2 text-sm md:text-base">Type</h3><p className="text-muted-foreground text-sm">{product.productType || "—"}</p></Card>
-                  <Card className="p-3 md:p-4"><h3 className="font-medium mb-2 text-sm md:text-base">SKU/Variant</h3><p className="text-muted-foreground text-sm">{variant?.title || product.variants?.[0]?.title || "—"}</p></Card>
-                </div>
+                <Card className="p-4 md:p-6 bg-card border-border">
+                  <h3 className="text-lg font-medium mb-4">Specifications</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
+                      <h4 className="font-medium mb-2 text-sm md:text-base">Brand</h4>
+                      <p className="text-muted-foreground text-sm">{product.vendor || "GF Bodykit"}</p>
+                    </div>
+                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
+                      <h4 className="font-medium mb-2 text-sm md:text-base">Type</h4>
+                      <p className="text-muted-foreground text-sm">{product.productType || "Body Kit Component"}</p>
+                    </div>
+                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
+                      <h4 className="font-medium mb-2 text-sm md:text-base">SKU/Variant</h4>
+                      <p className="text-muted-foreground text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
+                    </div>
+                  </div>
+                </Card>
               </TabsContent>
+              
               <TabsContent value="fitment" className="mt-4 md:mt-6">
-                <div className="space-y-3 md:space-y-4 text-muted-foreground">
-                  <div className="bg-card border border-border rounded-lg p-3 md:p-4">
-                    <h4 className="font-medium text-foreground mb-2 text-sm md:text-base">Compatibility</h4>
-                    <p className="text-sm md:text-base">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
+                <Card className="p-4 md:p-6 bg-card border-border">
+                  <h3 className="text-lg font-medium mb-4">Fitment Information</h3>
+                  <div className="space-y-3 md:space-y-4">
+                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
+                      <h4 className="font-medium text-foreground mb-2 text-sm md:text-base flex items-center gap-2">
+                        <BadgeCheck className="w-4 h-4 text-primary" />
+                        Compatibility
+                      </h4>
+                      <p className="text-sm md:text-base text-muted-foreground">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
+                    </div>
+                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
+                      <h4 className="font-medium text-foreground mb-2 text-sm md:text-base flex items-center gap-2">
+                        <Wrench className="w-4 h-4 text-primary" />
+                        Material & Finish
+                      </h4>
+                      <p className="text-sm md:text-base text-muted-foreground">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
+                    </div>
+                    <div className="bg-muted/30 rounded-lg p-3 md:p-4">
+                      <h4 className="font-medium text-foreground mb-2 text-sm md:text-base flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-primary" />
+                        Installation Note
+                      </h4>
+                      <p className="text-sm md:text-base text-muted-foreground">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
+                    </div>
                   </div>
-                  <div className="bg-card border border-border rounded-lg p-3 md:p-4">
-                    <h4 className="font-medium text-foreground mb-2 text-sm md:text-base">Material/Finish</h4>
-                    <p className="text-sm md:text-base">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
-                  </div>
-                  <div className="bg-card border border-border rounded-lg p-3 md:p-4">
-                    <h4 className="font-medium text-foreground mb-2 text-sm md:text-base">Installation Note</h4>
-                    <p className="text-sm md:text-base">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
-                  </div>
-                </div>
+                </Card>
               </TabsContent>
+              
               <TabsContent value="faq" className="mt-4 md:mt-6">
-                <Accordion type="single" collapsible className="w-full">
-                  {faqItems.map((item, idx) => <AccordionItem key={idx} value={`item-${idx + 1}`}>
-                      <AccordionTrigger className="text-sm md:text-base text-left">{item.q}</AccordionTrigger>
-                      <AccordionContent className="text-sm md:text-base text-muted-foreground">{item.a}</AccordionContent>
-                    </AccordionItem>)}
-                </Accordion>
+                <Card className="p-4 md:p-6 bg-card border-border">
+                  <h3 className="text-lg font-medium mb-4">Frequently Asked Questions</h3>
+                  <Accordion type="single" collapsible className="w-full">
+                    {faqItems.map((item, idx) => 
+                      <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-muted/30">
+                        <AccordionTrigger className="text-sm md:text-base text-left hover:text-primary">{item.q}</AccordionTrigger>
+                        <AccordionContent className="text-sm md:text-base text-muted-foreground">{item.a}</AccordionContent>
+                      </AccordionItem>
+                    )}
+                  </Accordion>
+                </Card>
               </TabsContent>
             </Tabs>
             <div className="mt-10 space-y-8">
