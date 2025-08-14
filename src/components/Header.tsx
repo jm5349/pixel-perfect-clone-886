@@ -21,7 +21,7 @@ const Header = () => {
       {/* Auto-rotating Announcement Banner */}
       <div className="relative overflow-hidden" style={{ background: 'var(--gradient-accent)' }}>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
-        <div className="w-full max-w-none px-6 py-2 relative">
+        <div className="w-full max-w-none px-6 py-1 relative">
           <div className="flex items-center justify-between">
             {/* Social Media Icons - Left */}
             <div className="flex items-center space-x-2">
