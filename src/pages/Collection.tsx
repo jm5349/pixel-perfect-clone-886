@@ -46,6 +46,7 @@ const CollectionPage: React.FC = () => {
   // Filters
   const [inStockOnly, setInStockOnly] = useState(false);
   const [selectedVendors, setSelectedVendors] = useState<string[]>([]);
+  const [selectedProductTypes, setSelectedProductTypes] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
   const [sort, setSort] = useState<string>("featured");
 
@@ -132,6 +133,7 @@ const CollectionPage: React.FC = () => {
 
   // Derived data
   const allVendors = useMemo(() => Array.from(new Set(products.map((p: any) => p.vendor).filter(Boolean))), [products]);
+  const allProductTypes = useMemo(() => Array.from(new Set(products.map((p: any) => p.productType).filter(Boolean))), [products]);
   const minPrice = useMemo(() => (products.length ? Math.min(...products.map(p => getMinPrice(p))) : 0), [products]);
   const maxPrice = useMemo(() => (products.length ? Math.max(...products.map(p => getMinPrice(p))) : 1000), [products]);
   useEffect(() => {
@@ -144,6 +146,7 @@ const CollectionPage: React.FC = () => {
     let list: any[] = [...products];
     if (inStockOnly) list = list.filter(p => anyAvailable(p));
     if (selectedVendors.length) list = list.filter(p => selectedVendors.includes((p as any).vendor));
+    if (selectedProductTypes.length) list = list.filter(p => selectedProductTypes.includes((p as any).productType));
     list = list.filter(p => {
       const price = getMinPrice(p);
       return price >= priceRange[0] && price <= priceRange[1];
@@ -163,7 +166,7 @@ const CollectionPage: React.FC = () => {
         break;
     }
     return list as ShopifyProduct[];
-  }, [products, inStockOnly, selectedVendors, priceRange, sort]);
+  }, [products, inStockOnly, selectedVendors, selectedProductTypes, priceRange, sort]);
 
   // ItemList structured data
   const itemListLd = useMemo(() => ({
@@ -201,6 +204,22 @@ const CollectionPage: React.FC = () => {
               {v}
             </label>
           )) : <p className="text-xs text-muted-foreground">No brands detected</p>}
+        </div>
+      </div>
+      <div>
+        <h3 className="text-sm font-medium text-foreground mb-3">Product Type</h3>
+        <div className="space-y-2 max-h-48 overflow-auto pr-2">
+          {allProductTypes.length ? allProductTypes.map(type => (
+            <label key={type} className="flex items-center gap-3 text-sm text-muted-foreground">
+              <Checkbox
+                checked={selectedProductTypes.includes(type)}
+                onCheckedChange={(checked) => {
+                  setSelectedProductTypes(prev => checked ? [...prev, type] : prev.filter(x => x !== type));
+                }}
+              />
+              {type}
+            </label>
+          )) : <p className="text-xs text-muted-foreground">No product types detected</p>}
         </div>
       </div>
       <div>
