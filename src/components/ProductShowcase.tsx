@@ -91,7 +91,7 @@ const ProductShowcase = () => {
             </div>
           </div>
           
-          <div className="relative grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-2 lg:gap-16 max-w-3xl mx-auto">
+          <div className="relative grid grid-cols-2 gap-8 lg:gap-16 max-w-4xl mx-auto">
             {featuredProductIds.map((productId, index) => <div key={`${productId}-${index}`} className="group relative">
                 {/* Product Number Badge */}
                 <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 z-10 w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xs md:text-lg shadow-lg">
