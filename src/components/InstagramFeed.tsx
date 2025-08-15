@@ -32,15 +32,25 @@ All The Parts Are Available For Order @cuztomutuning. Please DM Us For Details.
       url: "https://www.instagram.com/p/C908LggNB6j/"
     },
     {
-      id: "sample2",
-      image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      caption: "Ferrari F12 TDF Conversion sitting pretty 💕 Looking to elevate your build? We've got you covered.",
-      fullDescription: "Ferrari F12 TDF Conversion sitting pretty 💕 Looking to elevate your build? We've got you covered. Our team specializes in premium automotive modifications that enhance both performance and aesthetics.",
+      id: "C_BfVnxtMqb",
+      image: "/lovable-uploads/efbe171a-865c-475b-bbb3-55b6bfacee9e.png",
+      caption: "Toyota GR86 (ZN8) CTM Design Carbon Fiber Aero Kit - Taking this build to the next level",
+      fullDescription: `Toyota GR86 (ZN8) CTM Design Carbon Fiber Aero Kit
+
+This stunning blue GR86 is equipped with our premium CTM Design Carbon Fiber Aero Kit, featuring:
+- Carbon fiber front lip spoiler
+- Carbon fiber side skirts
+- Carbon fiber rear diffuser
+- Aggressive styling that enhances both performance and aesthetics
+
+Transform your GR86 with our professional-grade aero components. Available for order now.
+
+#toyota #gr86 #zn8 #carbonfiber #aerokit #ctmdesign #sportscar #modified #tuning #jdm`,
       username: "eternamotorworks",
-      date: "July 20, 2024",
-      likes: "156",
-      hashtags: ["#ferrari", "#f12tdf", "#supercar", "#conversion"],
-      url: "#"
+      date: "August 10, 2024",
+      likes: "234",
+      hashtags: ["#toyota", "#gr86", "#zn8", "#carbonfiber", "#aerokit", "#ctmdesign"],
+      url: "https://www.instagram.com/p/C_BfVnxtMqb/?img_index=1"
     },
     {
       id: "sample3",
