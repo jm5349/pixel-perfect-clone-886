@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
   // Your actual Shopify product IDs
@@ -39,8 +40,48 @@ const ProductShowcase = () => {
           </div>
         </div>
 
-        {/* Enhanced Products Grid */}
-        <div className="relative">
+        {/* Mobile Carousel View */}
+        <div className="relative md:hidden">
+          <Carousel className="w-full max-w-sm mx-auto">
+            <CarouselContent>
+              {featuredProductIds.map((productId, index) => (
+                <CarouselItem key={`${productId}-${index}`}>
+                  <div className="group relative">
+                    {/* Product Number Badge */}
+                    <div className="absolute -top-3 -left-3 z-10 w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg">
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    
+                    {/* Main Product Card */}
+                    <div className="relative bg-gradient-card backdrop-blur-xl border border-border/30 rounded-xl overflow-hidden hover:border-primary/60 transition-premium shadow-automotive hover:shadow-glow min-h-[350px] flex flex-col">
+                      {/* Enhanced Automotive Glow Effect */}
+                      <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-premium"></div>
+                      
+                      {/* Premium accent lines */}
+                      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+                      
+                      {/* Content Container */}
+                      <div className="relative z-10 p-4 h-full flex flex-col">
+                        {/* Shopify Buy Button Integration */}
+                        <ShopifyBuyButton productId={productId} className="w-full flex-1 min-h-[280px]" />
+                      </div>
+                      
+                      {/* Corner Accents */}
+                      <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/20 rounded-tl-2xl"></div>
+                      <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-primary/20 rounded-br-2xl"></div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-2" />
+            <CarouselNext className="right-2" />
+          </Carousel>
+        </div>
+
+        {/* Desktop Grid View */}
+        <div className="relative hidden md:block">
           {/* Grid Background Pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="grid grid-cols-8 h-full">
