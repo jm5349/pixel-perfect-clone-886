@@ -9,7 +9,7 @@ const InstagramFeed = () => {
   const posts = [
     {
       id: "C908LggNB6j",
-      image: "/lovable-uploads/8814c500-adda-4008-a21b-6f35db82c482.png",
+      image: "/lovable-uploads/acura-integra-cropped.png",
       caption: "cuztomutuning Unveiling the GF Bodykit V1 Aero Program For Acura Integra (DE4). The Kit Includes The Following:",
       fullDescription: `Unveiling the GF Bodykit V1 Aero Program For Acura Integra (DE4).
 
