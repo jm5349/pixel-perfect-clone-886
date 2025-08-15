@@ -25,7 +25,7 @@ In Addition to the GF Body Kit V1 DE4 Kit, The Car in the Post is Equipped With 
 All The Parts Are Available For Order @cuztomutuning. Please DM Us For Details.
 
 #cuztomutuning #teggy #integra #de4 #de5 #acuraintegra #5thgenintegra #jdmcar #teggyclub #teggygang #teggyfam`,
-      username: "eternamotorworks",
+      username: "cuztomutuning",
       date: "July 24, 2024",
       likes: "91",
       hashtags: ["#cuztomutuning", "#teggy", "#integra", "#de4", "#de5", "#acuraintegra", "#5thgenintegra", "#jdmcar", "#teggyclub", "#teggygang", "#teggyfam"],
@@ -46,7 +46,7 @@ This stunning blue GR86 is equipped with our premium CTM Design Carbon Fiber Aer
 Transform your GR86 with our professional-grade aero components. Available for order now.
 
 #toyota #gr86 #zn8 #carbonfiber #aerokit #ctmdesign #sportscar #modified #tuning #jdm`,
-      username: "eternamotorworks",
+      username: "cuztomutuning",
       date: "August 10, 2024",
       likes: "234",
       hashtags: ["#toyota", "#gr86", "#zn8", "#carbonfiber", "#aerokit", "#ctmdesign"],
@@ -57,7 +57,7 @@ Transform your GR86 with our professional-grade aero components. Available for o
       image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "Your favorite E92 M3 is currently loading…..⏳ We offer a WIDE range of services.",
       fullDescription: "Your favorite E92 M3 is currently loading…..⏳ We offer a WIDE range of services including performance upgrades, aesthetic modifications, and complete vehicle transformations.",
-      username: "eternamotorworks",
+      username: "cuztomutuning",
       date: "July 18, 2024",
       likes: "203",
       hashtags: ["#bmw", "#e92m3", "#m3", "#performance"],
@@ -68,7 +68,7 @@ Transform your GR86 with our professional-grade aero components. Available for o
       image: "https://images.unsplash.com/photo-1617654112329-d9a11d7faa37?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "This Mercedes E450 came in for the full treatment. We completed a comprehensive makeover.",
       fullDescription: "This Mercedes E450 came in for the full treatment. We completed a comprehensive makeover including exterior styling, performance enhancements, and premium interior upgrades.",
-      username: "eternamotorworks",
+      username: "cuztomutuning",
       date: "July 15, 2024",
       likes: "178",
       hashtags: ["#mercedes", "#e450", "#luxury", "#makeover"],
@@ -79,7 +79,7 @@ Transform your GR86 with our professional-grade aero components. Available for o
       image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "A90 Supra in for a full maintenance overhaul and fresh tires. Ready for the road ahead.",
       fullDescription: "A90 Supra in for a full maintenance overhaul and fresh tires. Ready for the road ahead with enhanced performance and reliability upgrades.",
-      username: "eternamotorworks",
+      username: "cuztomutuning",
       date: "July 12, 2024",
       likes: "245",
       hashtags: ["#toyota", "#supra", "#a90", "#maintenance"],
@@ -90,7 +90,7 @@ Transform your GR86 with our professional-grade aero components. Available for o
       image: "https://images.unsplash.com/photo-1617704548623-340376564e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "The journey officially begins. We're proud to finally reveal this incredible build.",
       fullDescription: "The journey officially begins. We're proud to finally reveal this incredible build that showcases the pinnacle of automotive craftsmanship and attention to detail.",
-      username: "eternamotorworks",
+      username: "cuztomutuning",
       date: "July 10, 2024",
       likes: "312",
       hashtags: ["#build", "#reveal", "#craftsmanship", "#automotive"],
@@ -229,7 +229,7 @@ Transform your GR86 with our professional-grade aero components. Available for o
             className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-full font-semibold tracking-wide transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
             <Instagram className="h-5 w-5" />
-            Follow @eternamotorworks
+            Follow @cuztomutuning
           </a>
         </div>
       </div>
