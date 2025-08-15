@@ -10,7 +10,7 @@ const InstagramFeed = () => {
     {
       id: "C908LggNB6j",
       image: "/lovable-uploads/acura-integra-cropped.png",
-      caption: "cuztomutuning Unveiling the GF Bodykit V1 Aero Program For Acura Integra (DE4). The Kit Includes The Following:",
+      caption: "Unveiling the GF Bodykit V1 Aero Program For Acura Integra (DE4). The Kit Includes The Following:",
       fullDescription: `Unveiling the GF Bodykit V1 Aero Program For Acura Integra (DE4).
 
 The Kit Includes The Following:
@@ -25,7 +25,7 @@ In Addition to the GF Body Kit V1 DE4 Kit, The Car in the Post is Equipped With 
 All The Parts Are Available For Order @cuztomutuning. Please DM Us For Details.
 
 #cuztomutuning #teggy #integra #de4 #de5 #acuraintegra #5thgenintegra #jdmcar #teggyclub #teggygang #teggyfam`,
-      username: "cuztomutuning",
+      username: "eternamotorworks",
       date: "July 24, 2024",
       likes: "91",
       hashtags: ["#cuztomutuning", "#teggy", "#integra", "#de4", "#de5", "#acuraintegra", "#5thgenintegra", "#jdmcar", "#teggyclub", "#teggygang", "#teggyfam"],
@@ -33,10 +33,10 @@ All The Parts Are Available For Order @cuztomutuning. Please DM Us For Details.
     },
     {
       id: "sample2",
-      image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "Ferrari F12 TDF Conversion sitting pretty 💕 Looking to elevate your build? We've got you covered.",
       fullDescription: "Ferrari F12 TDF Conversion sitting pretty 💕 Looking to elevate your build? We've got you covered. Our team specializes in premium automotive modifications that enhance both performance and aesthetics.",
-      username: "cuztomutuning",
+      username: "eternamotorworks",
       date: "July 20, 2024",
       likes: "156",
       hashtags: ["#ferrari", "#f12tdf", "#supercar", "#conversion"],
@@ -44,10 +44,10 @@ All The Parts Are Available For Order @cuztomutuning. Please DM Us For Details.
     },
     {
       id: "sample3",
-      image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "Your favorite E92 M3 is currently loading…..⏳ We offer a WIDE range of services.",
       fullDescription: "Your favorite E92 M3 is currently loading…..⏳ We offer a WIDE range of services including performance upgrades, aesthetic modifications, and complete vehicle transformations.",
-      username: "cuztomutuning",
+      username: "eternamotorworks",
       date: "July 18, 2024",
       likes: "203",
       hashtags: ["#bmw", "#e92m3", "#m3", "#performance"],
@@ -55,10 +55,10 @@ All The Parts Are Available For Order @cuztomutuning. Please DM Us For Details.
     },
     {
       id: "sample4",
-      image: "https://images.unsplash.com/photo-1617654112329-d9a11d7faa37?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image: "https://images.unsplash.com/photo-1617654112329-d9a11d7faa37?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "This Mercedes E450 came in for the full treatment. We completed a comprehensive makeover.",
       fullDescription: "This Mercedes E450 came in for the full treatment. We completed a comprehensive makeover including exterior styling, performance enhancements, and premium interior upgrades.",
-      username: "cuztomutuning",
+      username: "eternamotorworks",
       date: "July 15, 2024",
       likes: "178",
       hashtags: ["#mercedes", "#e450", "#luxury", "#makeover"],
@@ -66,10 +66,10 @@ All The Parts Are Available For Order @cuztomutuning. Please DM Us For Details.
     },
     {
       id: "sample5",
-      image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "A90 Supra in for a full maintenance overhaul and fresh tires. Ready for the road ahead.",
       fullDescription: "A90 Supra in for a full maintenance overhaul and fresh tires. Ready for the road ahead with enhanced performance and reliability upgrades.",
-      username: "cuztomutuning",
+      username: "eternamotorworks",
       date: "July 12, 2024",
       likes: "245",
       hashtags: ["#toyota", "#supra", "#a90", "#maintenance"],
@@ -77,37 +77,15 @@ All The Parts Are Available For Order @cuztomutuning. Please DM Us For Details.
     },
     {
       id: "sample6",
-      image: "https://images.unsplash.com/photo-1617704548623-340376564e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image: "https://images.unsplash.com/photo-1617704548623-340376564e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "The journey officially begins. We're proud to finally reveal this incredible build.",
       fullDescription: "The journey officially begins. We're proud to finally reveal this incredible build that showcases the pinnacle of automotive craftsmanship and attention to detail.",
-      username: "cuztomutuning",
+      username: "eternamotorworks",
       date: "July 10, 2024",
       likes: "312",
       hashtags: ["#build", "#reveal", "#craftsmanship", "#automotive"],
       url: "#"
-    },
-    {
-      id: "sample7",
-      image: "https://images.unsplash.com/photo-1619067900965-2efb8642dd15?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      caption: "No matter the platform, style, or stage of the build, we get it done right.",
-      fullDescription: "No matter the platform, style, or stage of the build, we get it done right. Our expertise spans across all automotive brands and modification types.",
-      username: "cuztomutuning",
-      date: "July 8, 2024",
-      likes: "189",
-      hashtags: ["#expertise", "#allbrands", "#modifications", "#quality"],
-      url: "#"
-    },
-    {
-      id: "sample8",
-      image: "https://images.unsplash.com/photo-1617654112267-b634a7adba33?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      caption: "We're slowly dialing in this beautiful F30 340i, one detail at a time.",
-      fullDescription: "We're slowly dialing in this beautiful F30 340i, one detail at a time. Precision and patience are key to achieving the perfect balance of performance and style.",
-      username: "cuztomutuning",
-      date: "July 5, 2024",
-      likes: "167",
-      hashtags: ["#bmw", "#f30", "#340i", "#precision"],
-      url: "#"
-    },
+    }
   ];
 
   return (
@@ -127,7 +105,7 @@ All The Parts Are Available For Order @cuztomutuning. Please DM Us For Details.
         </div>
 
         {/* Instagram Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-4xl mx-auto">
           {posts.map((post, index) => (
             <Card 
               key={post.id}
