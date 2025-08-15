@@ -110,7 +110,7 @@ Transform your GR86 with our professional-grade aero components. Available for o
             </h2>
           </div>
           <p className="text-base md:text-lg text-primary font-semibold tracking-wider">
-            #BUILTBYETERNA
+            #Cuztomtuning
           </p>
         </div>
 
