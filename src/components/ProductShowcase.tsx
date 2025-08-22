@@ -81,10 +81,7 @@ const ProductShowcase = () => {
         </div>
 
         {/* Desktop and Tablet Grid View */}
-        <div className="relative hidden md:block">{/* Add debug info */}
-          <div className="text-center mb-4 text-sm text-muted-foreground">
-            Desktop/Tablet View - Product IDs: {featuredProductIds.join(', ')}
-          </div>
+        <div className="relative hidden md:block">
           {/* Grid Background Pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="grid grid-cols-8 h-full">
