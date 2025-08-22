@@ -15,6 +15,8 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
   const componentRef = useRef<HTMLDivElement>(null);
   const scriptLoadedRef = useRef(false);
 
+  console.log(`ShopifyBuyButton rendering for productId: ${productId}`);
+
   useEffect(() => {
     if (!componentRef.current) return;
 
