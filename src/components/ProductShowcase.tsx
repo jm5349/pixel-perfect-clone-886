@@ -3,12 +3,14 @@ import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
-  // Your actual Shopify product IDs - ensure these are different products
+  // Your actual Shopify product IDs
   const featuredProductIds = [
-    '9928841036069', // First product
-    // Add a different product ID here instead of duplicating
-    // '9928832876837' // Remove or replace with different product
-  ].filter(Boolean); // Remove any empty entries
+    '9928841036069', // Toyota Camry front lip splitter
+    '9928832876837'  // Second product
+  ];
+  
+  // For mobile, show one product per slide
+  const mobileProductIds = ['9928841036069']; // Single product for mobile carousel
   return <section className="relative py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.03)_0%,transparent_50%)]"></div>
@@ -45,7 +47,7 @@ const ProductShowcase = () => {
         <div className="relative md:hidden">
           <Carousel className="w-full max-w-sm mx-auto" opts={{ align: "center", loop: true }}>
             <CarouselContent className="-ml-2 md:-ml-4">
-              {featuredProductIds.map((productId, index) => (
+              {mobileProductIds.map((productId, index) => (
                 <CarouselItem key={`${productId}-${index}`} className="pl-2 md:pl-4 basis-full">
                   <div className="group relative">
                     {/* Product Number Badge */}
