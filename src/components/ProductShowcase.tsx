@@ -42,10 +42,10 @@ const ProductShowcase = () => {
 
         {/* Mobile Carousel View */}
         <div className="relative md:hidden">
-          <Carousel className="w-full max-w-sm mx-auto">
-            <CarouselContent>
+          <Carousel className="w-full max-w-sm mx-auto" opts={{ align: "center", loop: true }}>
+            <CarouselContent className="-ml-2 md:-ml-4">
               {featuredProductIds.map((productId, index) => (
-                <CarouselItem key={`${productId}-${index}`}>
+                <CarouselItem key={`${productId}-${index}`} className="pl-2 md:pl-4 basis-full">
                   <div className="group relative">
                     {/* Product Number Badge */}
                     <div className="absolute -top-3 -left-3 z-10 w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg">
