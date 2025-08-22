@@ -3,11 +3,12 @@ import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
-  // Your actual Shopify product IDs
-  const featuredProductIds = ['9928841036069',
-  // Toyota Camry front lip splitter
-  '9928832876837' // Second product
-  ];
+  // Your actual Shopify product IDs - ensure these are different products
+  const featuredProductIds = [
+    '9928841036069', // First product
+    // Add a different product ID here instead of duplicating
+    // '9928832876837' // Remove or replace with different product
+  ].filter(Boolean); // Remove any empty entries
   return <section className="relative py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.03)_0%,transparent_50%)]"></div>
