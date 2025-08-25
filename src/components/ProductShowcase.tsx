@@ -4,13 +4,10 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
   // Your actual Shopify product IDs
-  const featuredProductIds = [
-    '9928841036069', // Toyota Camry front lip splitter
-    '9928832876837'  // Second product
+  const featuredProductIds = ['9928841036069',
+  // Toyota Camry front lip splitter
+  '9928832876837' // Second product
   ];
-  
-  // For mobile, show one product per slide
-  const mobileProductIds = ['9928841036069']; // Single product for mobile carousel
   return <section className="relative py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.03)_0%,transparent_50%)]"></div>
@@ -45,10 +42,10 @@ const ProductShowcase = () => {
 
         {/* Mobile Carousel View */}
         <div className="relative md:hidden">
-          <Carousel className="w-full max-w-sm mx-auto" opts={{ align: "center", loop: true }}>
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {mobileProductIds.map((productId, index) => (
-                <CarouselItem key={`${productId}-${index}`} className="pl-2 md:pl-4 basis-full">
+          <Carousel className="w-full max-w-sm mx-auto">
+            <CarouselContent>
+              {featuredProductIds.map((productId, index) => (
+                <CarouselItem key={`${productId}-${index}`}>
                   <div className="group relative">
                     {/* Product Number Badge */}
                     <div className="absolute -top-3 -left-3 z-10 w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg">
@@ -83,7 +80,7 @@ const ProductShowcase = () => {
           </Carousel>
         </div>
 
-        {/* Desktop and Tablet Grid View */}
+        {/* Desktop Grid View */}
         <div className="relative hidden md:block">
           {/* Grid Background Pattern */}
           <div className="absolute inset-0 opacity-5">
@@ -94,7 +91,7 @@ const ProductShowcase = () => {
             </div>
           </div>
           
-          <div className="relative grid grid-cols-2 gap-8 lg:gap-16 max-w-4xl mx-auto">
+          <div className="relative grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-2 lg:gap-16 max-w-3xl mx-auto">
             {featuredProductIds.map((productId, index) => <div key={`${productId}-${index}`} className="group relative">
                 {/* Product Number Badge */}
                 <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 z-10 w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xs md:text-lg shadow-lg">

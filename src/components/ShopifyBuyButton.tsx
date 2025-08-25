@@ -15,11 +15,10 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
   const componentRef = useRef<HTMLDivElement>(null);
   const scriptLoadedRef = useRef(false);
 
-
   useEffect(() => {
-    if (!componentRef.current) return;
+    if (scriptLoadedRef.current || !componentRef.current) return;
 
-    const componentId = `product-component-${productId}-${Date.now()}`;
+    const componentId = `product-component-${productId}`;
     componentRef.current.id = componentId;
 
     const loadShopifyBuyButton = () => {
@@ -35,16 +34,12 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
 
         window.ShopifyBuy.UI.onReady(client).then((ui: any) => {
           const targetNode = document.getElementById(componentId);
-          if (!targetNode || !targetNode.parentNode) return;
-          
-          // Clear any existing content
-          targetNode.innerHTML = '';
-          
-          // Ensure the target node is properly mounted
-          if (!document.body.contains(targetNode)) return;
+          if (!targetNode) return;
+          if (targetNode.hasChildNodes()) {
+            targetNode.innerHTML = '';
+          }
 
-          try {
-            ui.createComponent('product', {
+          ui.createComponent('product', {
             id: productId,
             node: targetNode,
             moneyFormat: '%24%7B%7Bamount%7D%7D',
@@ -199,11 +194,6 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
               }
             },
           });
-          } catch (error) {
-            console.warn('Error creating Shopify Buy Button:', error);
-          }
-        }).catch((error: any) => {
-          console.warn('Error initializing Shopify Buy Button:', error);
         });
       };
 
