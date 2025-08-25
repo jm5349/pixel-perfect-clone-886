@@ -40,9 +40,8 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Company Info */}
             <div className="lg:col-span-1">
-              <h3 className="text-2xl font-automotive text-foreground mb-6 tracking-wider">
-                ETERNA
-                <span className="text-primary">MOTORWORKS</span>
+              <h3 className="text-2xl font-automotive text-primary mb-6 tracking-wider">
+                Cuztomtuning
               </h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 Premium aftermarket automotive parts and services. Setting the standard in automotive excellence for over a decade.
