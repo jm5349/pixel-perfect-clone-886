@@ -18,7 +18,7 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
   useEffect(() => {
     if (scriptLoadedRef.current || !componentRef.current) return;
 
-    const componentId = `product-component-${productId}`;
+    const componentId = `product-component-${productId}-${Date.now()}-${Math.random()}`;
     componentRef.current.id = componentId;
 
     const loadShopifyBuyButton = () => {
