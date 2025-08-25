@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Header from "@/components/Header";
 import BusinessInfo from "@/components/BusinessInfo";
 import SearchBar from "@/components/SearchBar";
+import Footer from "@/components/Footer";
 import client from "@/lib/shopify";
 import type { ShopifyProduct } from "@/lib/shopify";
 import { Button } from "@/components/ui/button";
@@ -407,6 +408,7 @@ const CollectionPage: React.FC = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 };

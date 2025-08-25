@@ -18,6 +18,7 @@ import afterImg from "@/assets/aesthetics-category.jpg";
 import Header from "@/components/Header";
 import BusinessInfo from "@/components/BusinessInfo";
 import SearchBar from "@/components/SearchBar";
+import Footer from "@/components/Footer";
 const currency = (amount?: string, code?: string) => {
   if (!amount) return "—";
   const value = Number(amount);
@@ -567,6 +568,7 @@ const ProductPage: React.FC = () => {
         </div>
       </section>
     </main>
+    <Footer />
   </>;
 };
 export default ProductPage;
