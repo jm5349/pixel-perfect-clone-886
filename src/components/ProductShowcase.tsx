@@ -5,8 +5,8 @@ import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
   // Your actual Shopify product IDs
   const featuredProductIds = [
-    '9928328249637', // First product
-    '9928832876837'  // Second product
+    '9928328249637', // First product  
+    '9928841036069'  // Second product (verified working)
   ];
   return <section className="relative py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
