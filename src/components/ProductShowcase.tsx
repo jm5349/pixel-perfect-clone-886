@@ -4,9 +4,9 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import ShopifyBuyButton from './ShopifyBuyButton';
 const ProductShowcase = () => {
   // Your actual Shopify product IDs
-  const featuredProductIds = ['9928841036069',
-  // Toyota Camry front lip splitter
-  '9928832876837' // Second product
+  const featuredProductIds = [
+    '9928328249637', // First product
+    '9928832876837'  // Second product
   ];
   return <section className="relative py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
