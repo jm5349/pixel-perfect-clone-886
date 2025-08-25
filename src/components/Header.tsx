@@ -23,8 +23,8 @@ const Header = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
         <div className="w-full max-w-none px-6 py-1 relative h-full">
           <div className="flex items-center justify-between h-full">
-            {/* Social Media Icons - Left */}
-            <div className="flex items-center space-x-2">
+            {/* Social Media Icons - Left - Hidden on mobile */}
+            <div className="hidden lg:flex items-center space-x-2">
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
                   <Instagram className="h-5 w-5" />
@@ -47,15 +47,15 @@ const Header = () => {
               </Button>
             </div>
             
-            {/* Announcement Text - Center */}
-            <div className="text-center transition-all duration-500 ease-in-out flex-1">
+            {/* Announcement Text - Centered on mobile, balanced on desktop */}
+            <div className="text-center transition-all duration-500 ease-in-out flex-1 lg:flex-1">
               <p className="text-sm font-semibold tracking-wide text-white/95 drop-shadow-sm truncate">
                 {announcements[currentAnnouncementIndex]}
               </p>
             </div>
             
-            {/* Empty space for balance */}
-            <div className="w-32"></div>
+            {/* Empty space for balance - Hidden on mobile */}
+            <div className="hidden lg:block w-32"></div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
