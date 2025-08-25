@@ -23,8 +23,8 @@ const Header = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
         <div className="w-full max-w-none px-6 py-1 relative h-full">
           <div className="flex items-center justify-between h-full">
-            {/* Social Media Icons - Left */}
-            <div className="flex items-center space-x-2">
+            {/* Social Media Icons - Left (Hidden on mobile) */}
+            <div className="hidden md:flex items-center space-x-2">
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
                   <Instagram className="h-5 w-5" />
