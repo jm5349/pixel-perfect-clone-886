@@ -59,7 +59,7 @@ const Categories = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
           {categories.map((category, index) => {
-            const isBodyKit = category.title.toLowerCase() === "body kit";
+            const isBodyKit = category.title.toLowerCase() === "body kits";
             const content = (
               <Card key={index} className="group relative overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 cursor-pointer h-40 md:h-72">
                 {/* Background Image */}
@@ -85,7 +85,7 @@ const Categories = () => {
               </Card>
             );
             return isBodyKit ? (
-              <Link to="/collections/body-kit" key={index}>
+              <Link to="/collections/body-kits" key={index}>
                 {content}
               </Link>
             ) : (
