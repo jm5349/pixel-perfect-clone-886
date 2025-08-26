@@ -272,6 +272,8 @@ const ProductPage: React.FC = () => {
             <ol className="flex items-center gap-2">
               <li><Link className="story-link" to="/">Home</Link></li>
               <li>/</li>
+              <li><Link className="story-link" to="/collections/body-kit">Body Kit</Link></li>
+              <li>/</li>
               <li className="text-foreground">Product Details</li>
             </ol>
           </nav>
