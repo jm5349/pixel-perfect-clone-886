@@ -76,14 +76,25 @@ const CollectionPage: React.FC = () => {
         }
         let prods: any[] = (colWithProducts?.products || col?.products || []);
         const extraIds: string[] = EXTRA_PRODUCTS[h] || [];
+        console.log('Collection handle:', h, 'Extra products for this handle:', extraIds);
         if (extraIds.length) {
           try {
             const fetched = await Promise.all(
-              extraIds.map(id => (client as any).product?.fetch?.(id.startsWith('gid://') ? id : `gid://shopify/Product/${id}`))
+              extraIds.map(id => {
+                const productId = id.startsWith('gid://') ? id : `gid://shopify/Product/${id}`;
+                console.log('Fetching product with ID:', productId);
+                return (client as any).product?.fetch?.(productId);
+              })
             );
+            console.log('Fetched extra products:', fetched);
             const byId = new Set(prods.map((p: any) => p.id));
             for (const item of fetched) {
-              if (item && !byId.has((item as any).id)) prods.push(item as any);
+              if (item && !byId.has((item as any).id)) {
+                console.log('Adding extra product:', (item as any).title);
+                prods.push(item as any);
+              } else {
+                console.log('Skipping duplicate or null product:', item);
+              }
             }
           } catch (e) {
             console.warn('Extra products fetch failed', e);
