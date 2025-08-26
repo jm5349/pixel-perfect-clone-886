@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "@/components/Header";
@@ -60,46 +61,89 @@ const CollectionPage: React.FC = () => {
       try {
         const rawHandle = (handle || "").trim();
         let h = (!rawHandle || rawHandle.startsWith(":")) ? "body-kits" : rawHandle;
+        
+        console.log('=== COLLECTION FETCH DEBUG ===');
+        console.log('Collection handle:', h);
+        
         // 1) Try fetch by handle to get collection id/title
         let col: any = null;
         try {
           // @ts-ignore - shopify-buy may not type this
           col = await (client as any).collection?.fetchByHandle?.(h);
-        } catch {}
+          console.log('Collection data:', col);
+        } catch (e) {
+          console.log('Collection fetch by handle failed:', e);
+        }
+        
         // 2) If we have id, fetch with products for up to 50 items
         let colWithProducts: any = null;
         if (col?.id) {
           try {
             // @ts-ignore
             colWithProducts = await (client as any).collection?.fetchWithProducts?.(col.id, { productsFirst: 50 });
-          } catch {}
+            console.log('Collection with products:', colWithProducts);
+          } catch (e) {
+            console.log('Collection with products fetch failed:', e);
+          }
         }
+        
         let prods: any[] = (colWithProducts?.products || col?.products || []);
+        console.log('Initial products from collection:', prods.length);
+        
         const extraIds: string[] = EXTRA_PRODUCTS[h] || [];
-        console.log('Collection handle:', h, 'Extra products for this handle:', extraIds);
+        console.log('Extra products for this handle:', extraIds);
+        
         if (extraIds.length) {
           try {
-            const fetched = await Promise.all(
-              extraIds.map(id => {
-                const productId = id.startsWith('gid://') ? id : `gid://shopify/Product/${id}`;
-                console.log('Fetching product with ID:', productId);
-                return (client as any).product?.fetch?.(productId);
-              })
-            );
-            console.log('Fetched extra products:', fetched);
+            // Try multiple ID formats for each product
+            const fetchPromises = extraIds.map(async (id) => {
+              const formats = [
+                id, // Original format
+                `gid://shopify/Product/${id}`, // With GID prefix
+                id.replace('gid://shopify/Product/', '') // Strip GID if present
+              ];
+              
+              console.log('Trying to fetch product with different formats:', formats);
+              
+              for (const formatId of formats) {
+                try {
+                  console.log('Attempting to fetch with ID:', formatId);
+                  const product = await (client as any).product?.fetch?.(formatId);
+                  if (product) {
+                    console.log('Successfully fetched product:', product.title, 'with ID format:', formatId);
+                    return product;
+                  }
+                } catch (e) {
+                  console.log('Failed to fetch with format:', formatId, 'Error:', e);
+                }
+              }
+              
+              console.log('All formats failed for ID:', id);
+              return null;
+            });
+
+            const fetched = await Promise.all(fetchPromises);
+            console.log('Fetched extra products results:', fetched);
+            
             const byId = new Set(prods.map((p: any) => p.id));
             for (const item of fetched) {
               if (item && !byId.has((item as any).id)) {
                 console.log('Adding extra product:', (item as any).title);
                 prods.push(item as any);
+              } else if (item) {
+                console.log('Skipping duplicate product:', (item as any).title);
               } else {
-                console.log('Skipping duplicate or null product:', item);
+                console.log('Skipping null product');
               }
             }
           } catch (e) {
             console.warn('Extra products fetch failed', e);
           }
         }
+        
+        console.log('Final products count:', prods.length);
+        console.log('Final products:', prods.map((p: any) => ({ id: p.id, title: p.title })));
+        
         if (!cancelled) {
           setProducts(prods as ShopifyProduct[]);
           // Better title fallback for collections without Shopify data
