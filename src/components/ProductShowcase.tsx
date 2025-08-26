@@ -6,7 +6,8 @@ const ProductShowcase = () => {
   // Your actual Shopify product IDs
   const featuredProductIds = [
     '9928328249637', // First product  
-    '9928841036069'  // Second product (verified working)
+    '9928841036069', // Second product (verified working)
+    '9947187478821'  // New product
   ];
   return <section className="relative py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
