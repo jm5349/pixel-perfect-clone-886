@@ -60,6 +60,7 @@ const Categories = () => {
         <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
           {categories.map((category, index) => {
             const isBodyKit = category.title.toLowerCase() === "body kits";
+            const isSpoilers = category.title.toLowerCase() === "spoilers";
             const content = (
               <Card key={index} className="group relative overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 cursor-pointer h-40 md:h-72">
                 {/* Background Image */}
@@ -84,13 +85,22 @@ const Categories = () => {
                 <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Card>
             );
-            return isBodyKit ? (
-              <Link to="/collections/body-kits" key={index}>
-                {content}
-              </Link>
-            ) : (
-              content
-            );
+            
+            if (isBodyKit) {
+              return (
+                <Link to="/collections/body-kits" key={index}>
+                  {content}
+                </Link>
+              );
+            } else if (isSpoilers) {
+              return (
+                <Link to="/collections/spoilers" key={index}>
+                  {content}
+                </Link>
+              );
+            } else {
+              return content;
+            }
           })}
         </div>
       </div>
