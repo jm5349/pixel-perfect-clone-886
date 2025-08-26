@@ -91,7 +91,11 @@ const CollectionPage: React.FC = () => {
         }
         if (!cancelled) {
           setProducts(prods as ShopifyProduct[]);
-          setTitle(col?.title || (h.replace(/-/g, " ")).replace(/\b\w/g, c => c.toUpperCase()));
+          // Better title fallback for collections without Shopify data
+          const fallbackTitle = h === 'spoilers' ? 'Spoilers' : 
+                               h === 'body-kits' ? 'Body Kits' :
+                               (h.replace(/-/g, " ")).replace(/\b\w/g, c => c.toUpperCase());
+          setTitle(col?.title || fallbackTitle);
         }
       } catch (e) {
         console.error("Collection load error:", e);
