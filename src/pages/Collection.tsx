@@ -33,7 +33,7 @@ const anyAvailable = (p: any) => (p?.variants || []).some((v: any) => !!v?.avail
 
 // Extra products to append by collection handle
 const EXTRA_PRODUCTS: Record<string, string[]> = {
-  'body-kit': ['9928841036069', '9928832876837', '9928328249637']
+  'body-kits': ['9947187478821', '9928841036069', '9928328249637', '9928832876837']
 };
 
 const CollectionPage: React.FC = () => {
@@ -58,7 +58,7 @@ const CollectionPage: React.FC = () => {
       setError(null);
       try {
         const rawHandle = (handle || "").trim();
-        let h = (!rawHandle || rawHandle.startsWith(":")) ? "body-kit" : rawHandle;
+        let h = (!rawHandle || rawHandle.startsWith(":")) ? "body-kits" : rawHandle;
         // 1) Try fetch by handle to get collection id/title
         let col: any = null;
         try {
