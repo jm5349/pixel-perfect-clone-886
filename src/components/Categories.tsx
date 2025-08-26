@@ -7,11 +7,11 @@ import wheelsImage from '@/assets/wheels-category.jpg';
 import accessoriesImage from '@/assets/accessories-category.jpg';
 const Categories = () => {
   const categories = [{
-    title: "Body Kit",
+    title: "Body Kits",
     image: aestheticsImage,
     description: "Front Bumper Lip, Side Skirt Extension & Rear Diffuser"
   }, {
-    title: "Spoiler",
+    title: "Spoilers",
     image: performanceImage,
     description: "Rear Roof Spoiler & Trunk Wing"
   }, {
