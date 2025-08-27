@@ -59,6 +59,33 @@ const CollectionPage: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
+        // TEST: First let's verify the specific product ID
+        console.log('🧪 TESTING SPECIFIC PRODUCT ID: 10029639041317');
+        const testFormats = [
+          '10029639041317',
+          'gid://shopify/Product/10029639041317',
+          `${10029639041317}`
+        ];
+        
+        for (const testId of testFormats) {
+          try {
+            console.log(`🔬 Testing format: "${testId}"`);
+            const testProduct = await (client as any).product?.fetch?.(testId);
+            if (testProduct) {
+              console.log(`✅ FOUND PRODUCT with format "${testId}":`, {
+                id: testProduct.id,
+                title: testProduct.title,
+                vendor: testProduct.vendor,
+                available: testProduct.availableForSale
+              });
+            } else {
+              console.log(`❌ No product returned for format: "${testId}"`);
+            }
+          } catch (e: any) {
+            console.log(`❌ Error testing format "${testId}":`, e?.message || e);
+          }
+        }
+        
         const rawHandle = (handle || "").trim();
         let h = (!rawHandle || rawHandle.startsWith(":")) ? "body-kits" : rawHandle;
         
