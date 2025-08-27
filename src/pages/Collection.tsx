@@ -96,44 +96,51 @@ const CollectionPage: React.FC = () => {
         if (extraIds.length) {
           try {
             // Try multiple ID formats for each product
-            const fetchPromises = extraIds.map(async (id) => {
+            const fetchPromises = extraIds.map(async (id, index) => {
               const formats = [
+                `gid://shopify/Product/${id}`, // Try GID format first (most likely to work)
                 id, // Original format
-                `gid://shopify/Product/${id}`, // With GID prefix
                 id.replace('gid://shopify/Product/', '') // Strip GID if present
               ];
               
-              console.log('Trying to fetch product with different formats:', formats);
+              console.log(`🔍 [${index + 1}/${extraIds.length}] Trying to fetch product ID: ${id}`);
               
-              for (const formatId of formats) {
+              for (let i = 0; i < formats.length; i++) {
+                const formatId = formats[i];
                 try {
-                  console.log('Attempting to fetch with ID:', formatId);
+                  console.log(`  📋 Format ${i + 1}/3: "${formatId}"`);
                   const product = await (client as any).product?.fetch?.(formatId);
                   if (product) {
-                    console.log('Successfully fetched product:', product.title, 'with ID format:', formatId);
+                    console.log(`  ✅ SUCCESS! Product: "${product.title}" (ID: ${product.id})`);
                     return product;
+                  } else {
+                    console.log(`  ❌ No product returned for format: "${formatId}"`);
                   }
-                } catch (e) {
-                  console.log('Failed to fetch with format:', formatId, 'Error:', e);
+                } catch (e: any) {
+                  console.log(`  ❌ FAILED format "${formatId}":`, e?.message || e);
                 }
               }
               
-              console.log('All formats failed for ID:', id);
+              console.log(`  🚨 ALL FORMATS FAILED for ID: ${id}`);
               return null;
             });
 
             const fetched = await Promise.all(fetchPromises);
-            console.log('Fetched extra products results:', fetched);
+            console.log('📊 Fetch results summary:', fetched.map((item, i) => ({
+              originalId: extraIds[i],
+              success: !!item,
+              title: item?.title || 'FAILED'
+            })));
             
             const byId = new Set(prods.map((p: any) => p.id));
             for (const item of fetched) {
               if (item && !byId.has((item as any).id)) {
-                console.log('Adding extra product:', (item as any).title);
+                console.log('➕ Adding extra product:', (item as any).title);
                 prods.push(item as any);
               } else if (item) {
-                console.log('Skipping duplicate product:', (item as any).title);
+                console.log('⚠️ Skipping duplicate product:', (item as any).title);
               } else {
-                console.log('Skipping null product');
+                console.log('⚠️ Skipping null product');
               }
             }
           } catch (e) {
