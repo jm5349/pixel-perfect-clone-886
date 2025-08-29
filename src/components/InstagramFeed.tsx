@@ -53,15 +53,25 @@ Transform your GR86 with our professional-grade aero components. Available for o
       url: "https://www.instagram.com/p/C_BfVnxtMqb/?img_index=1"
     },
     {
-      id: "sample3",
-      image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      caption: "Your favorite E92 M3 is currently loading…..⏳ We offer a WIDE range of services.",
-      fullDescription: "Your favorite E92 M3 is currently loading…..⏳ We offer a WIDE range of services including performance upgrades, aesthetic modifications, and complete vehicle transformations.",
+      id: "C2jEhj2L-Cv",
+      image: "/lovable-uploads/537ffc63-0e0d-4748-b91a-9351e2624e60.png",
+      caption: "2018 Toyota Camry SE (XV70) equipped with CTM Design Front Lip Spoiler and Side Skirts",
+      fullDescription: `2018 Toyota Camry SE (XV70) equipped with CTM Design Front Lip Spoiler and Side Skirts
+
+This clean white Camry showcases our premium aerodynamic enhancements:
+- CTM Design Front Lip Spoiler - enhances front-end aesthetics and aerodynamics
+- CTM Design Side Skirts - creates a cohesive, aggressive side profile
+- Lowered stance for that perfect fitment
+- Clean OEM+ styling that maintains the vehicle's sophisticated look
+
+Transform your Camry with our professional-grade aero components. Available for order now.
+
+#toyota #camry #xv70 #camryse #ctmdesign #aerokit #frontlip #sideskirts #jdm #modified #tuning #cuztomutuning`,
       username: "cuztomutuning",
-      date: "July 18, 2024",
-      likes: "203",
-      hashtags: ["#bmw", "#e92m3", "#m3", "#performance"],
-      url: "#"
+      date: "February 8, 2024",
+      likes: "187",
+      hashtags: ["#toyota", "#camry", "#xv70", "#camryse", "#ctmdesign", "#aerokit"],
+      url: "https://www.instagram.com/p/C2jEhj2L-Cv/"
     },
     {
       id: "sample4",
