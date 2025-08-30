@@ -76,17 +76,6 @@ Transform your 2022+ Civic with our complete Yofer Design V3 Body Kit. Available
       url: "https://www.instagram.com/p/C1LcxgkrxIK/"
     },
     {
-      id: "sample4",
-      image: "https://images.unsplash.com/photo-1617654112329-d9a11d7faa37?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      caption: "This Mercedes E450 came in for the full treatment. We completed a comprehensive makeover.",
-      fullDescription: "This Mercedes E450 came in for the full treatment. We completed a comprehensive makeover including exterior styling, performance enhancements, and premium interior upgrades.",
-      username: "cuztomutuning",
-      date: "July 15, 2024",
-      likes: "178",
-      hashtags: ["#mercedes", "#e450", "#luxury", "#makeover"],
-      url: "#"
-    },
-    {
       id: "sample5",
       image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       caption: "A90 Supra in for a full maintenance overhaul and fresh tires. Ready for the road ahead.",
