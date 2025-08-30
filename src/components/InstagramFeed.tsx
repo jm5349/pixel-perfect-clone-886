@@ -53,25 +53,27 @@ Transform your GR86 with our professional-grade aero components. Available for o
       url: "https://www.instagram.com/p/C_BfVnxtMqb/?img_index=1"
     },
     {
-      id: "C2jEhj2L-Cv",
-      image: "/lovable-uploads/537ffc63-0e0d-4748-b91a-9351e2624e60.png",
-      caption: "2018 Toyota Camry SE (XV70) equipped with CTM Design Front Lip Spoiler and Side Skirts",
-      fullDescription: `2018 Toyota Camry SE (XV70) equipped with CTM Design Front Lip Spoiler and Side Skirts
+      id: "C1LcxgkrxIK",
+      image: "/lovable-uploads/9ba40d9a-6dd3-4a3e-a379-28db606ac234.png",
+      caption: "2022+ Honda Civic equipped with Yofer Design V3 Body Kit - Complete transformation",
+      fullDescription: `2022+ Honda Civic equipped with Yofer Design V3 Body Kit
 
-This clean white Camry showcases our premium aerodynamic enhancements:
-- CTM Design Front Lip Spoiler - enhances front-end aesthetics and aerodynamics
-- CTM Design Side Skirts - creates a cohesive, aggressive side profile
-- Lowered stance for that perfect fitment
-- Clean OEM+ styling that maintains the vehicle's sophisticated look
+This stunning blue Civic showcases the complete Yofer Design V3 Body Kit transformation:
+- Yofer Design V3 Front Bumper with aggressive styling
+- Yofer Design V3 Side Skirts for enhanced aerodynamics
+- Yofer Design V3 Rear Diffuser for complete package
+- Custom wide body fender flares
+- Lowered stance with premium wheel setup
+- Professional paint finish in deep blue
 
-Transform your Camry with our professional-grade aero components. Available for order now.
+Transform your 2022+ Civic with our complete Yofer Design V3 Body Kit. Available for order now.
 
-#toyota #camry #xv70 #camryse #ctmdesign #aerokit #frontlip #sideskirts #jdm #modified #tuning #cuztomutuning`,
+#honda #civic #2022civic #yoferdesign #bodykit #widebody #jdm #modified #tuning #cuztomutuning #stance #aero`,
       username: "cuztomutuning",
-      date: "February 8, 2024",
-      likes: "187",
-      hashtags: ["#toyota", "#camry", "#xv70", "#camryse", "#ctmdesign", "#aerokit"],
-      url: "https://www.instagram.com/p/C2jEhj2L-Cv/"
+      date: "January 15, 2024",
+      likes: "342",
+      hashtags: ["#honda", "#civic", "#2022civic", "#yoferdesign", "#bodykit", "#widebody"],
+      url: "https://www.instagram.com/p/C1LcxgkrxIK/"
     },
     {
       id: "sample4",
