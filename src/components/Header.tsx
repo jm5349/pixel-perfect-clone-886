@@ -321,8 +321,15 @@ const Header = () => {
                  <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
                    <ShoppingCart className="h-10 w-10" />
                  </Button>
-                 <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
-                   <User className="h-10 w-10" />
+                 <Button variant="ghost" size="icon" asChild className="h-12 w-12 text-muted-foreground hover:text-primary">
+                   <a 
+                     href="https://d31c8d-3.myshopify.com/account" 
+                     target="_blank" 
+                     rel="noopener noreferrer"
+                     title="Customer Account"
+                   >
+                     <User className="h-10 w-10" />
+                   </a>
                  </Button>
               </div>
             </div>
@@ -566,8 +573,15 @@ const Header = () => {
                  <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
                    <ShoppingCart className="h-9 w-9" />
                  </Button>
-                 <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
-                   <User className="h-9 w-9" />
+                 <Button variant="ghost" size="icon" asChild className="h-12 w-12 text-muted-foreground hover:text-primary">
+                   <a 
+                     href="https://d31c8d-3.myshopify.com/account" 
+                     target="_blank" 
+                     rel="noopener noreferrer"
+                     title="Customer Account"
+                   >
+                     <User className="h-9 w-9" />
+                   </a>
                  </Button>
                </div>
             </div>
