@@ -9,11 +9,11 @@ const ProductShowcase = () => {
     '9928328249637', // First product  
     '9928841036069', // Second product (verified working)
     '9947187478821', // New product
+    '10029639172389', // New product requested by user
     '10029639368997', // Additional product
     '9928328249637', // First product (repeated for demo)
     '9928841036069', // Second product (repeated for demo)
     '9947187478821', // Third product (repeated for demo)
-    '10029639368997'  // Fourth product (repeated for demo)
   ];
   return <section className="relative py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
