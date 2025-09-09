@@ -76,15 +76,27 @@ Transform your 2022+ Civic with our complete Yofer Design V3 Body Kit. Available
       url: "https://www.instagram.com/p/C1LcxgkrxIK/"
     },
     {
-      id: "sample5",
-      image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      caption: "A90 Supra in for a full maintenance overhaul and fresh tires. Ready for the road ahead.",
-      fullDescription: "A90 Supra in for a full maintenance overhaul and fresh tires. Ready for the road ahead with enhanced performance and reliability upgrades.",
+      id: "DJXj_0bh8s3",
+      image: "/lovable-uploads/b4846425-c73d-4c1e-81a9-512fe130cd4c.png",
+      caption: "White Camry with aggressive stance and custom aero modifications - clean build showcase",
+      fullDescription: `White Camry Build Showcase
+
+This stunning white Camry features:
+- Aggressive lowered stance with air suspension
+- Custom wide-body aero kit
+- Premium aftermarket wheels with deep dish design
+- Sleek front lip and side skirts
+- Professional paint finish in pearl white
+- Blacked out trim and accents
+
+Complete transformation showcasing the perfect balance of style and performance. This build demonstrates how proper modifications can elevate any platform.
+
+#camry #toyota #stance #widebody #airsuspension #modified #tuning #cuztomutuning #clean #build`,
       username: "cuztomutuning",
-      date: "July 12, 2024",
-      likes: "245",
-      hashtags: ["#toyota", "#supra", "#a90", "#maintenance"],
-      url: "#"
+      date: "December 20, 2024",
+      likes: "428",
+      hashtags: ["#camry", "#toyota", "#stance", "#widebody", "#airsuspension", "#modified"],
+      url: "https://www.instagram.com/p/DJXj_0bh8s3/?img_index=1"
     },
     {
       id: "sample6",
