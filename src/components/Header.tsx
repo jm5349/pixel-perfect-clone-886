@@ -4,6 +4,7 @@ import TikTok from './icons/TikTok';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Link } from 'react-router-dom';
+import CustomerLogin from './CustomerLogin';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
@@ -321,16 +322,11 @@ const Header = () => {
                  <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
                    <ShoppingCart className="h-10 w-10" />
                  </Button>
-                 <Button variant="ghost" size="icon" asChild className="h-12 w-12 text-muted-foreground hover:text-primary">
-                   <a 
-                     href="https://d31c8d-3.myshopify.com/account" 
-                     target="_blank" 
-                     rel="noopener noreferrer"
-                     title="Customer Account"
-                   >
+                 <CustomerLogin>
+                   <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
                      <User className="h-10 w-10" />
-                   </a>
-                 </Button>
+                   </Button>
+                 </CustomerLogin>
               </div>
             </div>
 
@@ -573,16 +569,11 @@ const Header = () => {
                  <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
                    <ShoppingCart className="h-9 w-9" />
                  </Button>
-                 <Button variant="ghost" size="icon" asChild className="h-12 w-12 text-muted-foreground hover:text-primary">
-                   <a 
-                     href="https://d31c8d-3.myshopify.com/account" 
-                     target="_blank" 
-                     rel="noopener noreferrer"
-                     title="Customer Account"
-                   >
+                 <CustomerLogin>
+                   <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
                      <User className="h-9 w-9" />
-                   </a>
-                 </Button>
+                   </Button>
+                 </CustomerLogin>
                </div>
             </div>
           </div>
