@@ -145,12 +145,57 @@ const Header = () => {
                            </DropdownMenuContent>
                          </DropdownMenu>
                         
-                         <DropdownMenuItem asChild className="cursor-pointer group">
-                           <a href="#shop-by-category" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                             SHOP BY CATEGORY
-                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                           </a>
-                         </DropdownMenuItem>
+                         <DropdownMenu>
+                           <DropdownMenuTrigger asChild>
+                             <DropdownMenuItem className="cursor-pointer group">
+                               <div className="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                 SHOP BY CATEGORY
+                                 <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                               </div>
+                             </DropdownMenuItem>
+                           </DropdownMenuTrigger>
+                           <DropdownMenuContent 
+                             className="w-56 border border-border shadow-xl z-50 p-0 rounded-lg
+                                        data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
+                                        data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
+                                        data-[state=open]:duration-300 data-[state=closed]:duration-200"
+                             style={{
+                               background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
+                               backdropFilter: 'blur(20px)',
+                               WebkitBackdropFilter: 'blur(20px)',
+                               boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)',
+                               borderLeft: '3px solid hsl(var(--primary))'
+                             }}
+                             side="right"
+                             align="start"
+                             sideOffset={8}
+                           >
+                             <div className="py-4">
+                               <div className="space-y-1 px-2">
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#body-kits" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Body Kits
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#spoilers" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Spoilers
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#mirror-caps" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Mirror Caps
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#drls-others" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     DRLs & Others
+                                   </a>
+                                 </DropdownMenuItem>
+                               </div>
+                             </div>
+                           </DropdownMenuContent>
+                         </DropdownMenu>
                         
                          <DropdownMenuItem asChild className="cursor-pointer group">
                            <a href="#top-brands" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
@@ -317,12 +362,57 @@ const Header = () => {
                            </DropdownMenuContent>
                          </DropdownMenu>
                         
-                         <DropdownMenuItem asChild className="cursor-pointer group">
-                           <a href="#shop-by-category" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                             SHOP BY CATEGORY
-                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                           </a>
-                         </DropdownMenuItem>
+                         <DropdownMenu>
+                           <DropdownMenuTrigger asChild>
+                             <DropdownMenuItem className="cursor-pointer group">
+                               <div className="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                 SHOP BY CATEGORY
+                                 <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                               </div>
+                             </DropdownMenuItem>
+                           </DropdownMenuTrigger>
+                           <DropdownMenuContent 
+                             className="w-56 border border-border shadow-xl z-50 p-0 rounded-lg
+                                        data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
+                                        data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
+                                        data-[state=open]:duration-300 data-[state=closed]:duration-200"
+                             style={{
+                               background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
+                               backdropFilter: 'blur(20px)',
+                               WebkitBackdropFilter: 'blur(20px)',
+                               boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)',
+                               borderLeft: '3px solid hsl(var(--primary))'
+                             }}
+                             side="right"
+                             align="start"
+                             sideOffset={8}
+                           >
+                             <div className="py-4">
+                               <div className="space-y-1 px-2">
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#body-kits" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Body Kits
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#spoilers" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Spoilers
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#mirror-caps" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Mirror Caps
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#drls-others" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     DRLs & Others
+                                   </a>
+                                 </DropdownMenuItem>
+                               </div>
+                             </div>
+                           </DropdownMenuContent>
+                         </DropdownMenu>
                         
                          <DropdownMenuItem asChild className="cursor-pointer group">
                            <a href="#top-brands" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
