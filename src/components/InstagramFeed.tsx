@@ -280,7 +280,7 @@ More colors available. Professional installation recommended for best results.
         {/* Follow Button */}
         <div className="text-center mt-12">
           <a 
-            href="#" 
+            href="https://www.instagram.com/cuztomtuning/" 
             className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-full font-semibold tracking-wide transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
             <Instagram className="h-5 w-5" />
