@@ -103,31 +103,45 @@ const Header = () => {
                              </DropdownMenuItem>
                            </DropdownMenuTrigger>
                            <DropdownMenuContent 
-                             className="w-56 border border-border shadow-xl z-50 bg-background backdrop-blur-md"
+                             className="w-56 border border-border shadow-xl z-50 p-0 rounded-lg
+                                        data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
+                                        data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
+                                        data-[state=open]:duration-300 data-[state=closed]:duration-200"
+                             style={{
+                               background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
+                               backdropFilter: 'blur(20px)',
+                               WebkitBackdropFilter: 'blur(20px)',
+                               boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)',
+                               borderLeft: '3px solid hsl(var(--primary))'
+                             }}
                              side="right"
                              align="start"
                              sideOffset={8}
                            >
-                             <DropdownMenuItem asChild className="cursor-pointer">
-                               <a href="#toyota-camry" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors">
-                                 Toyota Camry
-                               </a>
-                             </DropdownMenuItem>
-                             <DropdownMenuItem asChild className="cursor-pointer">
-                               <a href="#toyota-corolla" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors">
-                                 Toyota Corolla
-                               </a>
-                             </DropdownMenuItem>
-                             <DropdownMenuItem asChild className="cursor-pointer">
-                               <a href="#honda-civic" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors">
-                                 Honda Civic
-                               </a>
-                             </DropdownMenuItem>
-                             <DropdownMenuItem asChild className="cursor-pointer">
-                               <a href="#honda-accord" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors">
-                                 Honda Accord
-                               </a>
-                             </DropdownMenuItem>
+                             <div className="py-4">
+                               <div className="space-y-1 px-2">
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#toyota-camry" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Toyota Camry
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#toyota-corolla" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Toyota Corolla
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#honda-civic" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Honda Civic
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#honda-accord" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Honda Accord
+                                   </a>
+                                 </DropdownMenuItem>
+                               </div>
+                             </div>
                            </DropdownMenuContent>
                          </DropdownMenu>
                         
@@ -261,31 +275,45 @@ const Header = () => {
                              </DropdownMenuItem>
                            </DropdownMenuTrigger>
                            <DropdownMenuContent 
-                             className="w-56 border border-border shadow-xl z-50 bg-background backdrop-blur-md"
+                             className="w-56 border border-border shadow-xl z-50 p-0 rounded-lg
+                                        data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
+                                        data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
+                                        data-[state=open]:duration-300 data-[state=closed]:duration-200"
+                             style={{
+                               background: 'linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%)',
+                               backdropFilter: 'blur(20px)',
+                               WebkitBackdropFilter: 'blur(20px)',
+                               boxShadow: '0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04)',
+                               borderLeft: '3px solid hsl(var(--primary))'
+                             }}
                              side="right"
                              align="start"
                              sideOffset={8}
                            >
-                             <DropdownMenuItem asChild className="cursor-pointer">
-                               <a href="#toyota-camry" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors">
-                                 Toyota Camry
-                               </a>
-                             </DropdownMenuItem>
-                             <DropdownMenuItem asChild className="cursor-pointer">
-                               <a href="#toyota-corolla" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors">
-                                 Toyota Corolla
-                               </a>
-                             </DropdownMenuItem>
-                             <DropdownMenuItem asChild className="cursor-pointer">
-                               <a href="#honda-civic" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors">
-                                 Honda Civic
-                               </a>
-                             </DropdownMenuItem>
-                             <DropdownMenuItem asChild className="cursor-pointer">
-                               <a href="#honda-accord" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors">
-                                 Honda Accord
-                               </a>
-                             </DropdownMenuItem>
+                             <div className="py-4">
+                               <div className="space-y-1 px-2">
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#toyota-camry" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Toyota Camry
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#toyota-corolla" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Toyota Corolla
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#honda-civic" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Honda Civic
+                                   </a>
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem asChild className="cursor-pointer">
+                                   <a href="#honda-accord" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                     Honda Accord
+                                   </a>
+                                 </DropdownMenuItem>
+                               </div>
+                             </div>
                            </DropdownMenuContent>
                          </DropdownMenu>
                         
