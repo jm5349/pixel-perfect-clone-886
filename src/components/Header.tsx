@@ -94,10 +94,26 @@ const Header = () => {
                       {/* Main Navigation Items */}
                       <div className="space-y-1 px-2">
                          <DropdownMenuItem asChild className="cursor-pointer group">
-                           <a href="#shop-by-vehicle" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                             SHOP BY VEHICLE
-                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                           </a>
+                           <div className="px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                             <div className="flex items-center justify-between">
+                               <span>SHOP BY VEHICLE</span>
+                               <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                             </div>
+                             <div className="mt-2 ml-4 space-y-1">
+                               <a href="#toyota-camry" className="block px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded transition-colors">
+                                 Toyota Camry
+                               </a>
+                               <a href="#toyota-corolla" className="block px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded transition-colors">
+                                 Toyota Corolla
+                               </a>
+                               <a href="#honda-civic" className="block px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded transition-colors">
+                                 Honda Civic
+                               </a>
+                               <a href="#honda-accord" className="block px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded transition-colors">
+                                 Honda Accord
+                               </a>
+                             </div>
+                           </div>
                          </DropdownMenuItem>
                         
                          <DropdownMenuItem asChild className="cursor-pointer group">
@@ -221,10 +237,26 @@ const Header = () => {
                       {/* Main Navigation Items */}
                       <div className="space-y-1 px-2">
                          <DropdownMenuItem asChild className="cursor-pointer group">
-                           <a href="#shop-by-vehicle" className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                             SHOP BY VEHICLE
-                             <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                           </a>
+                           <div className="px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                             <div className="flex items-center justify-between">
+                               <span>SHOP BY VEHICLE</span>
+                               <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                             </div>
+                             <div className="mt-2 ml-4 space-y-1">
+                               <a href="#toyota-camry" className="block px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded transition-colors">
+                                 Toyota Camry
+                               </a>
+                               <a href="#toyota-corolla" className="block px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded transition-colors">
+                                 Toyota Corolla
+                               </a>
+                               <a href="#honda-civic" className="block px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded transition-colors">
+                                 Honda Civic
+                               </a>
+                               <a href="#honda-accord" className="block px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded transition-colors">
+                                 Honda Accord
+                               </a>
+                             </div>
+                           </div>
                          </DropdownMenuItem>
                         
                          <DropdownMenuItem asChild className="cursor-pointer group">
