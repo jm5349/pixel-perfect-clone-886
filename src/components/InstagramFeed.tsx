@@ -123,6 +123,33 @@ Professional installation recommended. More colors available upon request.
       likes: "387",
       hashtags: ["#honda", "#accord", "#acrstyle", "#bodykit", "#aero", "#cuztomutuning"],
       url: "https://www.instagram.com/p/C03IoQ5LiVb/?img_index=1"
+    },
+    {
+      id: "C0nbgwBrlXx",
+      image: "/lovable-uploads/3e8f29e1-8924-4616-bbaa-8e156e512ffa.png",
+      caption: "Yofer Design Body Kit For 18-22 Accord - Stunning blue build with complete transformation",
+      fullDescription: `Yofer Design Body Kit For 18-22 Accord
+
+Showcasing this incredible blue Honda Accord equipped with the complete Yofer Design Body Kit package:
+
+Kit Features:
+- Yofer Design Front Lip with aggressive styling and perfect fitment
+- Yofer Design Side Skirts for enhanced aerodynamics and visual impact
+- Yofer Design Rear Diffuser with integrated design elements
+- Yofer Design Side Skirt Extensions for complete transformation
+- Professional grade construction with precise fitment
+- Available in multiple color options to match your build
+
+This stunning blue Accord demonstrates the perfect balance of aggressive styling and refined aesthetics. The Yofer Design kit completely transforms the vehicle's appearance while maintaining excellent build quality and attention to detail.
+
+More colors available. Professional installation recommended for best results.
+
+#honda #accord #yoferdesign #bodykit #2018accord #2019accord #2020accord #2021accord #2022accord #blue #modified #stance #aero #cuztomutuning #transformation`,
+      username: "cuztomutuning",
+      date: "December 5, 2023",
+      likes: "456",
+      hashtags: ["#honda", "#accord", "#yoferdesign", "#bodykit", "#blue", "#modified"],
+      url: "https://www.instagram.com/p/C0nbgwBrlXx/?img_index=1"
     }
   ];
 
