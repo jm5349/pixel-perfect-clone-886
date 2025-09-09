@@ -99,15 +99,30 @@ Complete transformation showcasing the perfect balance of style and performance.
       url: "https://www.instagram.com/p/DJXj_0bh8s3/?img_index=1"
     },
     {
-      id: "sample6",
-      image: "https://images.unsplash.com/photo-1617704548623-340376564e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      caption: "The journey officially begins. We're proud to finally reveal this incredible build.",
-      fullDescription: "The journey officially begins. We're proud to finally reveal this incredible build that showcases the pinnacle of automotive craftsmanship and attention to detail.",
+      id: "C03IoQ5LiVb",
+      image: "/lovable-uploads/514b54f8-15be-4bba-aafe-1f542b49ebd5.png",
+      caption: "ACR Style Body Kit For 18-22 Accord - Complete transformation package with aggressive styling",
+      fullDescription: `ACR Style Body Kit For 18-22 Accord
+
+Transform your 2018-2022 Honda Accord with our complete ACR Style Body Kit featuring:
+
+Kit Components:
+- ACR Style Front Lip Spoiler for aggressive front-end styling
+- ACR Style Side Skirts for enhanced aerodynamics and side profile
+- ACR Style Rear Diffuser with integrated LED accent lighting
+- Professional fitment designed specifically for 18-22 Accord models
+- Available in multiple color options to match your vehicle
+
+This comprehensive body kit completely transforms the look of your Accord, giving it an aggressive, race-inspired appearance while maintaining excellent build quality and fitment.
+
+Professional installation recommended. More colors available upon request.
+
+#honda #accord #2018accord #2019accord #2020accord #2021accord #2022accord #acrstyle #bodykit #aero #cuztomutuning #aggressive #stance #modified`,
       username: "cuztomutuning",
-      date: "July 10, 2024",
-      likes: "312",
-      hashtags: ["#build", "#reveal", "#craftsmanship", "#automotive"],
-      url: "#"
+      date: "December 8, 2023",
+      likes: "387",
+      hashtags: ["#honda", "#accord", "#acrstyle", "#bodykit", "#aero", "#cuztomutuning"],
+      url: "https://www.instagram.com/p/C03IoQ5LiVb/?img_index=1"
     }
   ];
 
