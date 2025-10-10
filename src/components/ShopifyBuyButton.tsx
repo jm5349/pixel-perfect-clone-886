@@ -164,7 +164,45 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                   "button": "Add to Cart"
                 }
               },
-              "option": {},
+              "option": {
+                "styles": {
+                  "label": {
+                    "font-family": "inherit",
+                    "font-size": "14px",
+                    "font-weight": "600",
+                    "color": "hsl(var(--foreground))",
+                    "margin-bottom": "8px",
+                    "display": "block"
+                  },
+                  "select": {
+                    "font-family": "inherit",
+                    "font-size": "14px",
+                    "padding": "12px 16px",
+                    "border": "2px solid hsl(var(--border))",
+                    "border-radius": "8px",
+                    "background-color": "hsl(var(--background))",
+                    "color": "hsl(var(--foreground))",
+                    "width": "100%",
+                    "cursor": "pointer",
+                    "transition": "all 0.2s ease",
+                    "margin-bottom": "16px",
+                    "appearance": "none",
+                    "background-image": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E\")",
+                    "background-repeat": "no-repeat",
+                    "background-position": "right 12px center",
+                    "padding-right": "40px",
+                    ":hover": {
+                      "border-color": "hsl(var(--primary))",
+                      "box-shadow": "0 0 0 3px hsl(var(--primary) / 0.1)"
+                    },
+                    ":focus": {
+                      "outline": "none",
+                      "border-color": "hsl(var(--primary))",
+                      "box-shadow": "0 0 0 3px hsl(var(--primary) / 0.2)"
+                    }
+                  }
+                }
+              },
               "cart": {
                 "text": {
                   "total": "Subtotal",
