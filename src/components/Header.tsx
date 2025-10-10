@@ -176,15 +176,20 @@ const Header = () => {
                                      Honda Civic
                                    </a>
                                  </DropdownMenuItem>
-                                 <DropdownMenuItem asChild className="cursor-pointer">
-                                   <a href="#honda-accord" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                                     Honda Accord
-                                   </a>
-                                 </DropdownMenuItem>
-                               </div>
-                             </div>
-                           </DropdownMenuContent>
-                         </DropdownMenu>
+                                  <DropdownMenuItem asChild className="cursor-pointer">
+                                    <a href="#honda-accord" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                      Honda Accord
+                                    </a>
+                                  </DropdownMenuItem>
+                                  <DropdownMenuItem asChild className="cursor-pointer">
+                                    <a href="#tesla-model-y" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                      Tesla Model Y
+                                    </a>
+                                  </DropdownMenuItem>
+                                </div>
+                              </div>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
                         
                          <DropdownMenu>
                            <DropdownMenuTrigger asChild>
@@ -462,6 +467,13 @@ const Header = () => {
                   className="block px-4 py-4 text-base font-medium text-foreground hover:bg-primary/10 rounded-lg transition-colors border-l-4 border-transparent hover:border-primary"
                 >
                   Honda Accord
+                </a>
+                <a
+                  href="#tesla-model-y"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-4 text-base font-medium text-foreground hover:bg-primary/10 rounded-lg transition-colors border-l-4 border-transparent hover:border-primary"
+                >
+                  Tesla Model Y
                 </a>
               </div>
             ) : activeSubMenu === 'SHOP BY CATEGORY' ? (
