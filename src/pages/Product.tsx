@@ -12,6 +12,7 @@ import { ShieldCheck, Truck, Wrench, BadgeCheck } from "lucide-react";
 import ProductTrustSignals from "@/components/product/ProductTrustSignals";
 import ProductHighlights from "@/components/product/ProductHighlights";
 import ProductPolicies from "@/components/product/ProductPolicies";
+import VariantSelector from "@/components/product/VariantSelector";
 import BeforeAfterCompare from "@/components/BeforeAfterCompare";
 import beforeImg from "@/assets/hero-car.jpg";
 import afterImg from "@/assets/aesthetics-category.jpg";
@@ -304,13 +305,16 @@ const ProductPage: React.FC = () => {
                 <span className="text-sm text-muted-foreground">{isAvailable ? "In stock" : "Out of stock"}</span>
               </div>
 
-              {/* Variant selector (simple) */}
-              {product.variants?.length > 1 && <div className="mb-4">
-                  <label className="block mb-2 text-sm text-muted-foreground">Select variant</label>
-                  <select className="w-full rounded-md border border-border bg-background px-3 py-2" value={selectedVariantId ?? product.variants[0].id} onChange={e => setSelectedVariantId(e.target.value)}>
-                    {product.variants.map(v => <option key={v.id} value={v.id}>{v.title}</option>)}
-                  </select>
-                </div>}
+              {/* Variant selector */}
+              {product.variants?.length > 1 && (
+                <div className="mb-6">
+                  <VariantSelector
+                    variants={product.variants}
+                    selectedVariantId={selectedVariantId ?? product.variants[0].id}
+                    onVariantChange={setSelectedVariantId}
+                  />
+                </div>
+              )}
 
               {/* Quantity */}
               <div className="mb-6 flex items-center gap-3">

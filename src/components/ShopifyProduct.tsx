@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import client from '@/lib/shopify';
 import type { ShopifyProduct } from '@/lib/shopify';
+import VariantSelector from '@/components/product/VariantSelector';
 
 interface ShopifyProductCardProps {
   productId: string;
@@ -14,6 +15,7 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
   const [product, setProduct] = useState<ShopifyProduct | null>(null);
   const [loading, setLoading] = useState(true);
   const [addingToCart, setAddingToCart] = useState(false);
+  const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -21,6 +23,7 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
       try {
         const fetchedProduct = await client.product.fetch(productId);
         setProduct(fetchedProduct as any);
+        setSelectedVariantId((fetchedProduct as any).variants?.[0]?.id || null);
       } catch (error) {
         console.error('Error fetching product:', error);
         toast({
@@ -37,7 +40,8 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
   }, [productId, toast]);
 
   const addToCart = async () => {
-    if (!product || !product.variants[0]) return;
+    const variant = product?.variants.find(v => v.id === selectedVariantId) || product?.variants[0];
+    if (!product || !variant) return;
 
     setAddingToCart(true);
     try {
@@ -46,7 +50,7 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
       
       // Add items to checkout
       const lineItemsToAdd = [{
-        variantId: product.variants[0].id,
+        variantId: variant.id,
         quantity: 1
       }];
 
@@ -92,7 +96,7 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
   }
 
   const mainImage = product.images[0]?.src || '';
-  const variant = product.variants[0];
+  const variant = product.variants.find(v => v.id === selectedVariantId) || product.variants[0];
   const price = variant ? `$${variant.price.amount}` : 'N/A';
   const isAvailable = variant?.available || false;
 
@@ -121,6 +125,17 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
         <h3 className="text-sm md:text-lg font-semibold text-foreground mb-2 md:mb-4 line-clamp-2 group-hover:text-primary transition-colors duration-300">
           {product.title}
         </h3>
+        
+        {/* Variant Selector */}
+        {product.variants?.length > 1 && (
+          <div className="mb-4">
+            <VariantSelector
+              variants={product.variants}
+              selectedVariantId={selectedVariantId || product.variants[0].id}
+              onVariantChange={setSelectedVariantId}
+            />
+          </div>
+        )}
         
         <div className="flex items-center justify-between">
           <span className="text-lg md:text-2xl font-automotive text-primary">
