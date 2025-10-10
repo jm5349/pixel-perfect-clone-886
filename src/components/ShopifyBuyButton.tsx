@@ -168,37 +168,44 @@ const ShopifyBuyButton: React.FC<ShopifyBuyButtonProps> = ({ productId, classNam
                 "styles": {
                   "label": {
                     "font-family": "inherit",
-                    "font-size": "14px",
-                    "font-weight": "600",
-                    "color": "hsl(var(--foreground))",
-                    "margin-bottom": "8px",
-                    "display": "block"
+                    "font-size": "15px",
+                    "font-weight": "700",
+                    "color": "#ffffff",
+                    "margin-bottom": "12px",
+                    "display": "block",
+                    "text-transform": "uppercase",
+                    "letter-spacing": "0.5px"
                   },
                   "select": {
                     "font-family": "inherit",
-                    "font-size": "14px",
-                    "padding": "12px 16px",
-                    "border": "2px solid hsl(var(--border))",
-                    "border-radius": "8px",
-                    "background-color": "hsl(var(--background))",
-                    "color": "hsl(var(--foreground))",
+                    "font-size": "15px",
+                    "font-weight": "600",
+                    "padding": "14px 20px",
+                    "border": "2px solid #dc2626",
+                    "border-radius": "10px",
+                    "background": "linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(185, 28, 28, 0.05) 100%)",
+                    "color": "#ffffff",
                     "width": "100%",
                     "cursor": "pointer",
-                    "transition": "all 0.2s ease",
-                    "margin-bottom": "16px",
+                    "transition": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    "margin-bottom": "20px",
                     "appearance": "none",
-                    "background-image": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E\")",
+                    "background-image": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='%23dc2626' stroke='%23dc2626' stroke-width='1' d='M12.293 4.293L7 9.586 1.707 4.293A1 1 0 00.293 5.707l6 6a1 1 0 001.414 0l6-6a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E\")",
                     "background-repeat": "no-repeat",
-                    "background-position": "right 12px center",
-                    "padding-right": "40px",
+                    "background-position": "right 16px center, left top",
+                    "padding-right": "48px",
+                    "box-shadow": "0 4px 12px rgba(220, 38, 38, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.1)",
                     ":hover": {
-                      "border-color": "hsl(var(--primary))",
-                      "box-shadow": "0 0 0 3px hsl(var(--primary) / 0.1)"
+                      "border-color": "#ef4444",
+                      "background": "linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(185, 28, 28, 0.1) 100%)",
+                      "box-shadow": "0 6px 20px rgba(220, 38, 38, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15)",
+                      "transform": "translateY(-2px)"
                     },
                     ":focus": {
                       "outline": "none",
-                      "border-color": "hsl(var(--primary))",
-                      "box-shadow": "0 0 0 3px hsl(var(--primary) / 0.2)"
+                      "border-color": "#ef4444",
+                      "background": "linear-gradient(135deg, rgba(220, 38, 38, 0.2) 0%, rgba(185, 28, 28, 0.15) 100%)",
+                      "box-shadow": "0 0 0 4px rgba(220, 38, 38, 0.2), 0 6px 20px rgba(220, 38, 38, 0.4)"
                     }
                   }
                 }
