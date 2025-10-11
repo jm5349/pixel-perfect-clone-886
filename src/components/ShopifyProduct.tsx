@@ -133,28 +133,28 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
         <img 
           src={mainImage} 
           alt={product.title}
-          className="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105" 
+          className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105" 
         />
         <Badge 
           variant="secondary" 
-          className="absolute top-3 right-3 bg-primary/10 text-primary border-primary/20 text-xs"
+          className="absolute top-4 right-4 bg-primary/10 text-primary border-primary/20"
         >
           {isAvailable ? 'In Stock' : 'Out of Stock'}
         </Badge>
       </div>
 
       {/* Product Info */}
-      <div className="p-4 md:p-6 space-y-3 md:space-y-4">
-        <p className="text-xs md:text-sm text-muted-foreground">
+      <div className="p-3 md:p-6">
+        <p className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">
           Vendor: <span className="text-primary">{product.vendor}</span>
         </p>
-        <h3 className="text-base md:text-lg font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-sm md:text-lg font-semibold text-foreground mb-2 md:mb-4 line-clamp-2 group-hover:text-primary transition-colors duration-300">
           {product.title}
         </h3>
         
         {/* Variant Selector */}
         {product.variants?.length > 1 && (
-          <div className="mb-3 md:mb-4">
+          <div className="mb-4">
             <VariantSelector
               variants={product.variants}
               selectedVariantId={selectedVariantId || product.variants[0].id}
@@ -163,15 +163,15 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
           </div>
         )}
         
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
-          <span className="text-xl md:text-2xl font-automotive text-primary">
+        <div className="flex items-center justify-between">
+          <span className="text-lg md:text-2xl font-automotive text-primary">
             {price}
           </span>
           <Button 
             size="sm" 
             onClick={addToCart}
             disabled={!isAvailable || addingToCart}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 md:transform md:translate-x-4 md:group-hover:translate-x-0 text-sm w-full sm:w-auto"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0 text-xs md:text-sm"
           >
             {addingToCart ? 'Adding...' : 'Buy Now'}
           </Button>
