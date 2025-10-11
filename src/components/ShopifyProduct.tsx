@@ -130,10 +130,12 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
     <Card className="group bg-background border-border hover:border-primary/50 transition-all duration-500 overflow-hidden">
       {/* Product Image */}
       <div className="relative overflow-hidden">
-        <img 
-          src={mainImage} 
-          alt={product.title}
-          className="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105" 
+        <img
+          src={mainImage}
+          alt={`${product.title} product image`}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-64 md:h-64 object-contain md:object-cover bg-muted p-2 transition-transform duration-700 md:group-hover:scale-105"
         />
         <Badge 
           variant="secondary" 
