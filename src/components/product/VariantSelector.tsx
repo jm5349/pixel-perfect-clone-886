@@ -42,6 +42,7 @@ export default function VariantSelector({
   selectedVariantId,
   onVariantChange,
 }: VariantSelectorProps) {
+  const uid = React.useId();
   if (!variants || variants.length <= 1) return null;
 
   return (
@@ -64,12 +65,12 @@ export default function VariantSelector({
             <div key={variant.id} className="relative">
               <RadioGroupItem
                 value={variant.id}
-                id={variant.id}
+                id={`${uid}-${variant.id}`}
                 className="peer sr-only"
                 disabled={!isAvailable}
               />
               <Label
-                htmlFor={variant.id}
+                htmlFor={`${uid}-${variant.id}`}
                 className={`
                   flex flex-col items-start gap-2 rounded-lg border-2 p-3 cursor-pointer
                   transition-all duration-200
