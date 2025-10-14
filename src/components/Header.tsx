@@ -161,11 +161,11 @@ const Header = () => {
                            >
                              <div className="py-4">
                                <div className="space-y-1 px-2">
-                                 <DropdownMenuItem asChild className="cursor-pointer">
-                                   <a href="#toyota-camry" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                                     Toyota Camry
-                                   </a>
-                                 </DropdownMenuItem>
+                                  <DropdownMenuItem asChild className="cursor-pointer">
+                                    <Link to="/collections/toyota-camry" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                      Toyota Camry
+                                    </Link>
+                                  </DropdownMenuItem>
                                  <DropdownMenuItem asChild className="cursor-pointer">
                                    <a href="#toyota-corolla" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
                                      Toyota Corolla
@@ -440,13 +440,13 @@ const Header = () => {
             ) : activeSubMenu === 'SHOP BY VEHICLE' ? (
               // Vehicle Submenu
               <div className="space-y-2">
-                <a
-                  href="#toyota-camry"
+                <Link
+                  to="/collections/toyota-camry"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block px-4 py-4 text-base font-medium text-foreground hover:bg-primary/10 rounded-lg transition-colors border-l-4 border-transparent hover:border-primary"
                 >
                   Toyota Camry
-                </a>
+                </Link>
                 <a
                   href="#toyota-corolla"
                   onClick={() => setIsMobileMenuOpen(false)}

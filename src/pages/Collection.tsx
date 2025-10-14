@@ -35,7 +35,8 @@ const anyAvailable = (p: any) => (p?.variants || []).some((v: any) => !!v?.avail
 // Extra products to append by collection handle
 const EXTRA_PRODUCTS: Record<string, string[]> = {
   'body-kits': ['9947187478821', '9928841036069', '9928328249637', '9928832876837', '10029639205157', '10029639041317', '10029639172389'],
-  'spoilers': ['10029639368997']
+  'spoilers': ['10029639368997'],
+  'toyota-camry': ['9928832876837', '9928328249637', '9947187478821', '10029639205157']
 };
 
 const CollectionPage: React.FC = () => {
