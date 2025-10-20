@@ -19,37 +19,24 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
   const { toast } = useToast();
 
   useEffect(() => {
-    const normalizeProductId = (id: string) => {
-      // If already a base64-encoded Shopify GID
-      try {
-        const decoded = atob(id);
-        if (decoded.startsWith('gid://shopify/Product/')) {
-          return id;
-        }
-      } catch {}
-
-      // If a gid URL, encode to base64 as expected by Storefront API
-      if (id.startsWith('gid://shopify/')) {
-        try {
-          return btoa(id);
-        } catch {}
-      }
-
-      // If plain numeric ID, build the gid and base64 encode it
-      if (/^\d+$/.test(id)) {
-        return btoa(`gid://shopify/Product/${id}`);
-      }
-
-      // Fallback: use as-is
-      return id;
-    };
-
     const fetchProduct = async () => {
       try {
-        const normalizedId = normalizeProductId(productId);
-        const fetchedProduct = await client.product.fetch(normalizedId);
-        setProduct(fetchedProduct as any);
-        setSelectedVariantId((fetchedProduct as any).variants?.[0]?.id || null);
+        // Convert numeric ID to base64-encoded GID format
+        let productIdToFetch = productId;
+        
+        // If it's a plain numeric ID, convert to base64-encoded GID
+        if (/^\d+$/.test(productId)) {
+          productIdToFetch = btoa(`gid://shopify/Product/${productId}`);
+        }
+        
+        const fetchedProduct = await client.product.fetch(productIdToFetch);
+        
+        if (fetchedProduct) {
+          setProduct(fetchedProduct as any);
+          setSelectedVariantId((fetchedProduct as any).variants?.[0]?.id || null);
+        } else {
+          console.error('Product not found:', productId);
+        }
       } catch (error) {
         console.error('Error fetching product:', error);
         toast({
