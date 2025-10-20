@@ -137,7 +137,7 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
         <p className="text-xs md:text-sm text-muted-foreground font-medium">
           Vendor: <span className="text-primary font-semibold">{product.vendor}</span>
         </p>
-        <h3 className="text-base md:text-xl font-bold text-foreground min-h-[3rem] flex items-center leading-tight group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-base md:text-lg font-bold text-foreground min-h-[3.5rem] leading-snug line-clamp-3 group-hover:text-primary transition-colors duration-300">
           {product.title}
         </h3>
         
