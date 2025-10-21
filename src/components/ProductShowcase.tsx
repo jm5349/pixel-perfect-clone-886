@@ -75,7 +75,7 @@ const ProductShowcase = () => {
             </div>
           </div>
           
-          <ScrollArea className="w-full whitespace-nowrap rounded-lg">
+          <ScrollArea className="w-full rounded-lg">
             <div className="flex space-x-6 p-4">
               {featuredProductIds.map((productId, index) => (
                 <div key={`${productId}-${index}`} className="flex-none w-72">
