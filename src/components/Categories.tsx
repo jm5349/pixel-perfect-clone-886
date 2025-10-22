@@ -99,6 +99,12 @@ const Categories = () => {
                   {content}
                 </Link>
               );
+            } else if (category.title.toLowerCase() === "mirror caps") {
+              return (
+                <Link to="/collections/mirror-caps" key={index}>
+                  {content}
+                </Link>
+              );
             } else {
               return content;
             }
