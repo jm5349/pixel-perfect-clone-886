@@ -105,6 +105,12 @@ const Categories = () => {
                   {content}
                 </Link>
               );
+            } else if (category.title.toLowerCase() === "drls & others") {
+              return (
+                <Link to="/collections/drls-and-others" key={index}>
+                  {content}
+                </Link>
+              );
             } else {
               return content;
             }
