@@ -5,6 +5,7 @@ import aestheticsImage from '@/assets/aesthetics-category.jpg';
 import performanceImage from '@/assets/performance-category.jpg';
 import wheelsImage from '@/assets/wheels-category.jpg';
 import accessoriesImage from '@/assets/accessories-category.jpg';
+import gfBodykitLogo from '@/assets/gf-bodykit-logo.jpg';
 const Categories = () => {
   const categories = [{
     title: "Body Kits",
@@ -28,7 +29,7 @@ const Categories = () => {
     description: "Authentic Yofer Design Parts"
   }, {
     title: "GF Bodykit®",
-    image: aestheticsImage,
+    image: gfBodykitLogo,
     description: "Premium GF Design Products"
   }];
   return <section className="py-6 bg-background">
