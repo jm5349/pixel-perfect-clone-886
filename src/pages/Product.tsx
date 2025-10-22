@@ -141,6 +141,21 @@ const ProductPage: React.FC = () => {
     if (!product) return null;
     return product.variants.find(v => v.id === selectedVariantId) || product.variants[0] || null;
   }, [product, selectedVariantId]);
+
+  // Update selected image when variant changes
+  useEffect(() => {
+    if (!variant || !product) return;
+    
+    // Check if variant has an associated image
+    const variantImage = (variant as any).image;
+    if (variantImage?.src) {
+      // Find the index of this image in the product images array
+      const imageIndex = product.images.findIndex(img => img.src === variantImage.src);
+      if (imageIndex !== -1) {
+        setSelectedImage(imageIndex);
+      }
+    }
+  }, [variant, product]);
   const priceLabel = variant ? currency(variant.price.amount, variant.price.currencyCode) : "—";
   const isAvailable = Boolean(variant?.available);
   const productLd = useMemo(() => {
