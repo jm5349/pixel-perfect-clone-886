@@ -6,12 +6,12 @@ import ShopifyProductCard from './ShopifyProduct';
 const ProductShowcase = () => {
   // Your actual Shopify product IDs
   const featuredProductIds = [
+    '10196292763941', // New product 1
+    '10196290437413', // New product 2
+    '10196289552677', // New product 3
+    '10196289192229', // New product 4
+    '10196287652133', // New product 5
     '9947187478821', // Featured product
-    '9928328249637', // First product  
-    '9928841036069', // Second product
-    '10029639172389', // New product
-    '10029639368997', // Additional product
-    '9947187478821', // Featured product (repeated)
   ];
   return <section className="relative py-16 bg-gradient-to-br from-background via-background/95 to-primary/5 overflow-hidden">
       {/* Background Elements */}
