@@ -310,7 +310,7 @@ const ProductPage: React.FC = () => {
             {/* Right: Info */}
             <div className="flex flex-col">
               <div className="mb-4">
-                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">GF Bodykit®</Badge>
+                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">{product.vendor || "Yofer Design"}</Badge>
               </div>
               <h1 className="text-2xl md:text-4xl font-automotive text-foreground mb-3 leading-tight">
                 {product.title}
@@ -411,7 +411,7 @@ const ProductPage: React.FC = () => {
                     <div className="grid grid-cols-3 gap-4">
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-medium mb-2">Brand</h4>
-                        <p className="text-muted-foreground text-sm">{product.vendor || "GF Bodykit"}</p>
+                        <p className="text-muted-foreground text-sm">{product.vendor || "Yofer Design"}</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-medium mb-2">Type</h4>
@@ -494,7 +494,7 @@ const ProductPage: React.FC = () => {
                 <div className="space-y-3">
                   <div className="bg-muted/30 rounded-lg p-3">
                     <h4 className="font-medium mb-1 text-sm">Brand</h4>
-                    <p className="text-muted-foreground text-sm">{product.vendor || "GF Bodykit"}</p>
+                    <p className="text-muted-foreground text-sm">{product.vendor || "Yofer Design"}</p>
                   </div>
                   <div className="bg-muted/30 rounded-lg p-3">
                     <h4 className="font-medium mb-1 text-sm">Type</h4>

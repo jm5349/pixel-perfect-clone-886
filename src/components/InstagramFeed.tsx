@@ -10,15 +10,15 @@ const InstagramFeed = () => {
     {
       id: "C908LggNB6j",
       image: "/lovable-uploads/acura-integra-square.png",
-      caption: "Unveiling the GF Bodykit V1 Aero Program For Acura Integra (DE4). The Kit Includes The Following:",
-      fullDescription: `Unveiling the GF Bodykit V1 Aero Program For Acura Integra (DE4).
+      caption: "Unveiling the Yofer Design V1 Aero Program For Acura Integra (DE4). The Kit Includes The Following:",
+      fullDescription: `Unveiling the Yofer Design V1 Aero Program For Acura Integra (DE4).
 
 The Kit Includes The Following:
-- GF Bodykit Painted Gloss Black Front Bumper Lip Kit
-- GF Bodykit Painted Gloss Black / White Pearl Side Skirt Extensions
-- GF Bodykit Painted Gloss Black Rear Bumper LED Diffuser
+- Yofer Design Painted Gloss Black Front Bumper Lip Kit
+- Yofer Design Painted Gloss Black / White Pearl Side Skirt Extensions
+- Yofer Design Painted Gloss Black Rear Bumper LED Diffuser
 
-In Addition to the GF Body Kit V1 DE4 Kit, The Car in the Post is Equipped With our Cuztomutuning Parts:
+In Addition to the Yofer Design V1 DE4 Kit, The Car in the Post is Equipped With our Cuztomutuning Parts:
 - Cuztomutuning M Horn Style Mirror Cap
 - Cuztomutuning Premium Low-Profile M Style Window Visor
 

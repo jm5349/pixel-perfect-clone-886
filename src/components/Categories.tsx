@@ -27,9 +27,9 @@ const Categories = () => {
     image: "/lovable-uploads/0f062cb7-f12f-45a4-9eae-c35a32d8dffe.png",
     description: "Authentic Yofer Design Parts"
   }, {
-    title: "GF Bodykit®",
+    title: "Yofer Design®",
     image: aestheticsImage,
-    description: "Premium GF Design Products"
+    description: "Premium Yofer Design Products"
   }];
   return <section className="py-6 bg-background">
       <div className="container mx-auto px-4">
