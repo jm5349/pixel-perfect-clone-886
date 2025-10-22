@@ -217,7 +217,7 @@ const CollectionPage: React.FC = () => {
       return products.filter((p: any) => p.productType === 'Mirror Caps');
     }
     if (handle === 'drls-and-others') {
-      return products.filter((p: any) => p.productType === 'Mirror Running Light');
+      return products;
     }
     if (handle === 'spoilers') {
       return products.filter((p: any) => p.productType !== 'Mirror Caps' && p.productType !== 'Mirror Running Light');
