@@ -204,19 +204,26 @@ const CollectionPage: React.FC = () => {
     };
   }, [title]);
 
-  // Derived data
-  const allVendors = useMemo(() => Array.from(new Set(products.map((p: any) => p.vendor).filter(Boolean))), [products]);
-  const allProductTypes = useMemo(() => Array.from(new Set(products.map((p: any) => p.productType).filter(Boolean))), [products]);
-  const minPrice = useMemo(() => (products.length ? Math.min(...products.map(p => getMinPrice(p))) : 0), [products]);
-  const maxPrice = useMemo(() => (products.length ? Math.max(...products.map(p => getMinPrice(p))) : 1000), [products]);
+  // Derived data - filter out Trunk Spoiler from body-kits collection
+  const filteredProducts = useMemo(() => {
+    if (handle === 'body-kits') {
+      return products.filter((p: any) => p.productType !== 'Trunk Spoiler');
+    }
+    return products;
+  }, [products, handle]);
+
+  const allVendors = useMemo(() => Array.from(new Set(filteredProducts.map((p: any) => p.vendor).filter(Boolean))), [filteredProducts]);
+  const allProductTypes = useMemo(() => Array.from(new Set(filteredProducts.map((p: any) => p.productType).filter(Boolean))), [filteredProducts]);
+  const minPrice = useMemo(() => (filteredProducts.length ? Math.min(...filteredProducts.map(p => getMinPrice(p))) : 0), [filteredProducts]);
+  const maxPrice = useMemo(() => (filteredProducts.length ? Math.max(...filteredProducts.map(p => getMinPrice(p))) : 1000), [filteredProducts]);
   useEffect(() => {
     // Reset range when products set
-    if (products.length) setPriceRange([Math.floor(minPrice), Math.ceil(maxPrice)]);
+    if (filteredProducts.length) setPriceRange([Math.floor(minPrice), Math.ceil(maxPrice)]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minPrice, maxPrice]);
 
   const filtered = useMemo(() => {
-    let list: any[] = [...products];
+    let list: any[] = [...filteredProducts];
     if (inStockOnly) list = list.filter(p => anyAvailable(p));
     if (selectedVendors.length) list = list.filter(p => selectedVendors.includes((p as any).vendor));
     if (selectedProductTypes.length) list = list.filter(p => selectedProductTypes.includes((p as any).productType));
@@ -239,7 +246,7 @@ const CollectionPage: React.FC = () => {
         break;
     }
     return list as ShopifyProduct[];
-  }, [products, inStockOnly, selectedVendors, selectedProductTypes, priceRange, sort]);
+  }, [filteredProducts, inStockOnly, selectedVendors, selectedProductTypes, priceRange, sort]);
 
   // ItemList structured data
   const itemListLd = useMemo(() => ({
