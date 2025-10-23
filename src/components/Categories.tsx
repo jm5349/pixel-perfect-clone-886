@@ -117,6 +117,12 @@ const Categories = () => {
                   {content}
                 </Link>
               );
+            } else if (category.title.toLowerCase() === "gf bodykit®") {
+              return (
+                <Link to="/collections/gf-bodykit" key={index}>
+                  {content}
+                </Link>
+              );
             } else {
               return content;
             }
