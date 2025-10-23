@@ -54,6 +54,7 @@ const CollectionPage: React.FC = () => {
   const [inStockOnly, setInStockOnly] = useState(false);
   const [selectedVendors, setSelectedVendors] = useState<string[]>([]);
   const [selectedProductTypes, setSelectedProductTypes] = useState<string[]>([]);
+  const [selectedVehicles, setSelectedVehicles] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
   const [sort, setSort] = useState<string>("featured");
 
@@ -229,6 +230,21 @@ const CollectionPage: React.FC = () => {
 
   const allVendors = useMemo(() => Array.from(new Set(filteredProducts.map((p: any) => p.vendor).filter(Boolean))), [filteredProducts]);
   const allProductTypes = useMemo(() => Array.from(new Set(filteredProducts.map((p: any) => p.productType).filter(Boolean))), [filteredProducts]);
+  
+  // Extract vehicles from product tags
+  const allVehicles = useMemo(() => {
+    const vehicleSet = new Set<string>();
+    filteredProducts.forEach((p: any) => {
+      const tags = p.tags || [];
+      tags.forEach((tag: string) => {
+        // Check if tag looks like a vehicle (contains year and make/model)
+        if (tag && typeof tag === 'string') {
+          vehicleSet.add(tag);
+        }
+      });
+    });
+    return Array.from(vehicleSet).sort();
+  }, [filteredProducts]);
   const minPrice = useMemo(() => (filteredProducts.length ? Math.min(...filteredProducts.map(p => getMinPrice(p))) : 0), [filteredProducts]);
   const maxPrice = useMemo(() => (filteredProducts.length ? Math.max(...filteredProducts.map(p => getMinPrice(p))) : 1000), [filteredProducts]);
   useEffect(() => {
@@ -242,6 +258,12 @@ const CollectionPage: React.FC = () => {
     if (inStockOnly) list = list.filter(p => anyAvailable(p));
     if (selectedVendors.length) list = list.filter(p => selectedVendors.includes((p as any).vendor));
     if (selectedProductTypes.length) list = list.filter(p => selectedProductTypes.includes((p as any).productType));
+    if (selectedVehicles.length) {
+      list = list.filter(p => {
+        const tags = (p as any).tags || [];
+        return selectedVehicles.some(v => tags.includes(v));
+      });
+    }
     list = list.filter(p => {
       const price = getMinPrice(p);
       return price >= priceRange[0] && price <= priceRange[1];
@@ -261,7 +283,7 @@ const CollectionPage: React.FC = () => {
         break;
     }
     return list as ShopifyProduct[];
-  }, [filteredProducts, inStockOnly, selectedVendors, selectedProductTypes, priceRange, sort]);
+  }, [filteredProducts, inStockOnly, selectedVendors, selectedProductTypes, selectedVehicles, priceRange, sort]);
 
   // ItemList structured data
   const itemListLd = useMemo(() => ({
@@ -315,6 +337,22 @@ const CollectionPage: React.FC = () => {
               {type}
             </label>
           )) : <p className="text-xs text-muted-foreground">No product types detected</p>}
+        </div>
+      </div>
+      <div>
+        <h3 className="text-sm font-medium text-foreground mb-3">Vehicle</h3>
+        <div className="space-y-2 max-h-48 overflow-auto pr-2">
+          {allVehicles.length ? allVehicles.map(vehicle => (
+            <label key={vehicle} className="flex items-center gap-3 text-sm text-muted-foreground">
+              <Checkbox
+                checked={selectedVehicles.includes(vehicle)}
+                onCheckedChange={(checked) => {
+                  setSelectedVehicles(prev => checked ? [...prev, vehicle] : prev.filter(x => x !== vehicle));
+                }}
+              />
+              {vehicle}
+            </label>
+          )) : <p className="text-xs text-muted-foreground">No vehicles detected</p>}
         </div>
       </div>
       <div>
