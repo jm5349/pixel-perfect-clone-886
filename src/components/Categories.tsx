@@ -111,6 +111,12 @@ const Categories = () => {
                   {content}
                 </Link>
               );
+            } else if (category.title.toLowerCase() === "yofer design®") {
+              return (
+                <Link to="/collections/yofer-design" key={index}>
+                  {content}
+                </Link>
+              );
             } else {
               return content;
             }
