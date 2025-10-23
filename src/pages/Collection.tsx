@@ -239,9 +239,18 @@ const CollectionPage: React.FC = () => {
     filteredProducts.forEach((p: any) => {
       const tags = p.tags || [];
       tags.forEach((tag: string) => {
-        // Check if tag looks like a vehicle (contains year and make/model)
+        // Check if tag looks like a vehicle (contains year pattern and make/model)
         if (tag && typeof tag === 'string') {
-          vehicleSet.add(tag);
+          // Match patterns like "2018-2024", "2021+", "2020-2023", etc.
+          const hasYearPattern = /(\d{4}[-+]\d{4}|\d{4}\+|\d{4}-\d{2})/.test(tag);
+          // Common car makes to identify vehicle tags
+          const carMakes = ['Honda', 'Toyota', 'Acura', 'Lexus', 'Nissan', 'Mazda', 'Subaru', 'BMW', 'Mercedes', 'Audi', 'Ford', 'Chevrolet', 'Dodge', 'Hyundai', 'Kia', 'Volkswagen'];
+          const hasCarMake = carMakes.some(make => tag.includes(make));
+          
+          // Only add if it looks like a vehicle tag
+          if (hasYearPattern && hasCarMake) {
+            vehicleSet.add(tag);
+          }
         }
       });
     });
