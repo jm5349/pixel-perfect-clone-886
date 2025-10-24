@@ -213,26 +213,26 @@ const Header = () => {
                            >
                              <div className="py-4">
                                <div className="space-y-1 px-2">
-                                 <DropdownMenuItem asChild className="cursor-pointer">
-                                   <a href="#body-kits" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                                     Body Kits
-                                   </a>
-                                 </DropdownMenuItem>
-                                 <DropdownMenuItem asChild className="cursor-pointer">
-                                   <a href="#spoilers" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                                     Spoilers
-                                   </a>
-                                 </DropdownMenuItem>
-                                 <DropdownMenuItem asChild className="cursor-pointer">
-                                   <a href="#mirror-caps" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                                     Mirror Caps
-                                   </a>
-                                 </DropdownMenuItem>
-                                 <DropdownMenuItem asChild className="cursor-pointer">
-                                   <a href="#drls-others" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                                     DRLs & Others
-                                   </a>
-                                 </DropdownMenuItem>
+                                  <DropdownMenuItem asChild className="cursor-pointer">
+                                    <Link to="/collections/body-kits" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                      Body Kits
+                                    </Link>
+                                  </DropdownMenuItem>
+                                  <DropdownMenuItem asChild className="cursor-pointer">
+                                    <Link to="/collections/spoilers" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                      Spoilers
+                                    </Link>
+                                  </DropdownMenuItem>
+                                  <DropdownMenuItem asChild className="cursor-pointer">
+                                    <Link to="/collections/mirror-caps" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                      Mirror Caps
+                                    </Link>
+                                  </DropdownMenuItem>
+                                  <DropdownMenuItem asChild className="cursor-pointer">
+                                    <Link to="/collections/drls-and-others" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                      DRLs & Others
+                                    </Link>
+                                  </DropdownMenuItem>
                                </div>
                              </div>
                            </DropdownMenuContent>
@@ -467,34 +467,34 @@ const Header = () => {
             ) : activeSubMenu === 'SHOP BY CATEGORY' ? (
               // Category Submenu
               <div className="space-y-2">
-                <a
-                  href="#body-kits"
+                <Link
+                  to="/collections/body-kits"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block px-4 py-4 text-base font-medium text-foreground hover:bg-primary/10 rounded-lg transition-colors border-l-4 border-transparent hover:border-primary"
                 >
                   Body Kits
-                </a>
-                <a
-                  href="#spoilers"
+                </Link>
+                <Link
+                  to="/collections/spoilers"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block px-4 py-4 text-base font-medium text-foreground hover:bg-primary/10 rounded-lg transition-colors border-l-4 border-transparent hover:border-primary"
                 >
                   Spoilers
-                </a>
-                <a
-                  href="#mirror-caps"
+                </Link>
+                <Link
+                  to="/collections/mirror-caps"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block px-4 py-4 text-base font-medium text-foreground hover:bg-primary/10 rounded-lg transition-colors border-l-4 border-transparent hover:border-primary"
                 >
                   Mirror Caps
-                </a>
-                <a
-                  href="#drls-others"
+                </Link>
+                <Link
+                  to="/collections/drls-and-others"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block px-4 py-4 text-base font-medium text-foreground hover:bg-primary/10 rounded-lg transition-colors border-l-4 border-transparent hover:border-primary"
                 >
                   DRLs & Others
-                </a>
+                </Link>
               </div>
             ) : activeSubMenu === 'TOP BRANDS' ? (
               // Brands Submenu
