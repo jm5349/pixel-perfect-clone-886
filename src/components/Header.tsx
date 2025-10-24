@@ -275,11 +275,11 @@ const Header = () => {
                                      Yofer Design
                                    </a>
                                  </DropdownMenuItem>
-                                  <DropdownMenuItem asChild className="cursor-pointer">
-                                    <a href="#yofer-design" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
-                                      Yofer Design
-                                    </a>
-                                  </DropdownMenuItem>
+                                   <DropdownMenuItem asChild className="cursor-pointer">
+                                     <Link to="/collections/gf-bodykit" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
+                                       GF Bodykit
+                                     </Link>
+                                   </DropdownMenuItem>
                                  <DropdownMenuItem asChild className="cursor-pointer">
                                    <a href="#akasaka-genuine-parts" className="flex items-center px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 rounded-md transition-colors border-l-2 border-transparent hover:border-primary">
                                      Akasaka Genuine Parts
