@@ -40,7 +40,8 @@ const EXTRA_PRODUCTS: Record<string, string[]> = {
   'mirror-caps': ['9947187478821', '9928841036069', '9928328249637', '9928832876837', '10029639205157', '10029639041317', '10029639172389', '10173382656293', '10029638975781', '10196292763941', '10196290437413', '10196289552677', '10196289192229', '10196287652133', '10029639008549'],
   'drls-and-others': ['10196289552677'],
   'yofer-design': [],
-  'gf-bodykit': []
+  'gf-bodykit': [],
+  'honda-civic': []
 };
 
 const CollectionPage: React.FC = () => {
@@ -170,6 +171,7 @@ const CollectionPage: React.FC = () => {
                                h === 'drls-and-others' ? 'DRLs & Others' :
                                h === 'yofer-design' ? 'Yofer Design®' :
                                h === 'gf-bodykit' ? 'GF Bodykit®' :
+                               h === 'honda-civic' ? 'Honda Civic' :
                                (h.replace(/-/g, " ")).replace(/\b\w/g, c => c.toUpperCase());
           setTitle(col?.title || fallbackTitle);
         }
