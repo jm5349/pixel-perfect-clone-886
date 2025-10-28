@@ -395,13 +395,32 @@ const ProductPage: React.FC = () => {
                 <TabsContent value="details" className="mt-6">
                   <Card className="p-6 bg-card border-border">
                     <h3 className="text-lg font-medium mb-4">Product Details</h3>
-                    <article className="prose prose-invert max-w-none text-foreground">
-                      <div 
-                        className="text-base leading-relaxed"
-                        dangerouslySetInnerHTML={{
-                        __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
-                      }} />
-                    </article>
+                    <div className="space-y-4 text-foreground">
+                      <div className="flex items-start gap-3">
+                        <span className="text-primary mt-1">•</span>
+                        <p className="text-base"><strong>100% Brand New</strong> - YF Original Design Front Bumper Lip Splitter Kit</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-primary mt-1">•</span>
+                        <p className="text-base"><strong>Complete Kit</strong> - 4 pieces (2 side splitters + 2 central lip splitters)</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-primary mt-1">•</span>
+                        <p className="text-base"><strong>Premium Material</strong> - Quality lightweight PP construction for durability</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-primary mt-1">•</span>
+                        <p className="text-base"><strong>Dual Purpose</strong> - Enhances aerodynamic look while protecting your bumper from road bumps and scratches</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-primary mt-1">•</span>
+                        <p className="text-base"><strong>Professional Finish</strong> - Special 2-tone color design for aggressive, sporty styling</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-primary mt-1">•</span>
+                        <p className="text-base"><strong>Installation</strong> - Professional installation recommended. Drilling required. Use larger washers and additional screws/tape for secure mounting.</p>
+                      </div>
+                    </div>
                   </Card>
                 </TabsContent>
                 
