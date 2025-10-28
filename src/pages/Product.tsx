@@ -395,32 +395,13 @@ const ProductPage: React.FC = () => {
                 <TabsContent value="details" className="mt-6">
                   <Card className="p-6 bg-card border-border">
                     <h3 className="text-lg font-medium mb-4">Product Details</h3>
-                    <div className="space-y-4 text-foreground">
-                      <div className="flex items-start gap-3">
-                        <span className="text-primary mt-1">•</span>
-                        <p className="text-base"><strong>100% Brand New</strong> - YF Original Design Front Bumper Lip Splitter Kit</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="text-primary mt-1">•</span>
-                        <p className="text-base"><strong>Complete Kit</strong> - 4 pieces (2 side splitters + 2 central lip splitters)</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="text-primary mt-1">•</span>
-                        <p className="text-base"><strong>Premium Material</strong> - Quality lightweight PP construction for durability</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="text-primary mt-1">•</span>
-                        <p className="text-base"><strong>Dual Purpose</strong> - Enhances aerodynamic look while protecting your bumper from road bumps and scratches</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="text-primary mt-1">•</span>
-                        <p className="text-base"><strong>Professional Finish</strong> - Special 2-tone color design for aggressive, sporty styling</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="text-primary mt-1">•</span>
-                        <p className="text-base"><strong>Installation</strong> - Professional installation recommended. Drilling required. Use larger washers and additional screws/tape for secure mounting.</p>
-                      </div>
-                    </div>
+                    <article className="prose prose-invert max-w-none text-foreground">
+                      <div 
+                        className="text-base leading-relaxed"
+                        dangerouslySetInnerHTML={{
+                        __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
+                      }} />
+                    </article>
                   </Card>
                 </TabsContent>
                 
@@ -453,21 +434,21 @@ const ProductPage: React.FC = () => {
                           <BadgeCheck className="w-4 h-4 text-primary" />
                           Compatibility
                         </h4>
-                        <p className="text-muted-foreground">YF Original Design Front Bumper Lip Splitter Kit. Verify your vehicle model and bumper style before ordering to ensure proper fitment.</p>
+                        <p className="text-muted-foreground">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
                           <Wrench className="w-4 h-4 text-primary" />
-                          Material & Construction
+                          Material & Finish
                         </h4>
-                        <p className="text-muted-foreground">Quality lightweight PP (Polypropylene) material with special 2-tone color finish for enhanced durability and aesthetics.</p>
+                        <p className="text-muted-foreground">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
                           <ShieldCheck className="w-4 h-4 text-primary" />
-                          Installation Requirements
+                          Installation Note
                         </h4>
-                        <p className="text-muted-foreground">Professional installation recommended. Drilling required. Use larger washers and additional screws/tape for secure mounting. Always test-fit before final installation.</p>
+                        <p className="text-muted-foreground">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
                       </div>
                     </div>
                   </Card>
