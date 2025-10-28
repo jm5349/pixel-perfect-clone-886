@@ -453,21 +453,21 @@ const ProductPage: React.FC = () => {
                           <BadgeCheck className="w-4 h-4 text-primary" />
                           Compatibility
                         </h4>
-                        <p className="text-muted-foreground">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
+                        <p className="text-muted-foreground">YF Original Design Front Bumper Lip Splitter Kit. Verify your vehicle model and bumper style before ordering to ensure proper fitment.</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
                           <Wrench className="w-4 h-4 text-primary" />
-                          Material & Finish
+                          Material & Construction
                         </h4>
-                        <p className="text-muted-foreground">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
+                        <p className="text-muted-foreground">Quality lightweight PP (Polypropylene) material with special 2-tone color finish for enhanced durability and aesthetics.</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
                           <ShieldCheck className="w-4 h-4 text-primary" />
-                          Installation Note
+                          Installation Requirements
                         </h4>
-                        <p className="text-muted-foreground">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
+                        <p className="text-muted-foreground">Professional installation recommended. Drilling required. Use larger washers and additional screws/tape for secure mounting. Always test-fit before final installation.</p>
                       </div>
                     </div>
                   </Card>
