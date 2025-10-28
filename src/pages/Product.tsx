@@ -453,7 +453,7 @@ const ProductPage: React.FC = () => {
                           <BadgeCheck className="w-4 h-4 text-primary" />
                           Compatibility
                         </h4>
-                        <p className="text-muted-foreground">Fits 2022-2024 Honda Civic Sedan and Hatchback models. Verify your vehicle model and bumper style before ordering to ensure proper fitment.</p>
+                        <p className="text-muted-foreground">YF Original Design Front Bumper Lip Splitter Kit. Verify your vehicle model and bumper style before ordering to ensure proper fitment.</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
