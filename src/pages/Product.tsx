@@ -396,11 +396,28 @@ const ProductPage: React.FC = () => {
                   <Card className="p-6 bg-card border-border">
                     <h3 className="text-lg font-medium mb-4">Product Details</h3>
                     <article className="prose prose-invert max-w-none text-foreground">
-                      <div 
-                        className="text-base leading-relaxed"
-                        dangerouslySetInnerHTML={{
-                        __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
-                      }} />
+                      {product.title.includes("Honda Civic") ? (
+                        <div className="text-base leading-relaxed space-y-3">
+                          <p className="text-muted-foreground">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
+                          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                            <li>2 pieces side splitters + 2 pieces central lip splitters</li>
+                            <li>Special 2-tone color finish for enhanced aerodynamic look</li>
+                            <li>Quality lightweight PP (polypropylene) material</li>
+                            <li>Protects original bumper from road bumps and scratches</li>
+                            <li>Dramatically improves sporty appearance</li>
+                            <li>Professional installation recommended (drilling required)</li>
+                          </ul>
+                          <p className="text-sm text-muted-foreground mt-4">
+                            <strong>Installation Note:</strong> Use bigger washers and additional screws & tape for secure mounting.
+                          </p>
+                        </div>
+                      ) : (
+                        <div 
+                          className="text-base leading-relaxed"
+                          dangerouslySetInnerHTML={{
+                          __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
+                        }} />
+                      )}
                     </article>
                   </Card>
                 </TabsContent>
@@ -434,21 +451,36 @@ const ProductPage: React.FC = () => {
                           <BadgeCheck className="w-4 h-4 text-primary" />
                           Compatibility
                         </h4>
-                        <p className="text-muted-foreground">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
+                        <p className="text-muted-foreground">
+                          {product.title.includes("Honda Civic") 
+                            ? "Fits 2022-2024 Honda Civic Sedan and Hatchback models. Verify your vehicle model and bumper style before ordering to ensure proper fitment."
+                            : "Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering."
+                          }
+                        </p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
                           <Wrench className="w-4 h-4 text-primary" />
-                          Material & Finish
+                          Material & Construction
                         </h4>
-                        <p className="text-muted-foreground">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
+                        <p className="text-muted-foreground">
+                          {product.title.includes("Honda Civic")
+                            ? "Quality lightweight PP (polypropylene) material with special 2-tone color finish for aerodynamic design and durability."
+                            : "Premium ABS/FRP or carbon fiber depending on selected variant."
+                          }
+                        </p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
                           <ShieldCheck className="w-4 h-4 text-primary" />
-                          Installation Note
+                          Installation Requirements
                         </h4>
-                        <p className="text-muted-foreground">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
+                        <p className="text-muted-foreground">
+                          {product.title.includes("Honda Civic")
+                            ? "Professional installation recommended. Drilling required. Use larger washers and additional screws & tape for secure mounting."
+                            : "Always test-fit prior to paint or PPF; minor adjustments may be required."
+                          }
+                        </p>
                       </div>
                     </div>
                   </Card>
@@ -478,11 +510,28 @@ const ProductPage: React.FC = () => {
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   Product Details
                 </h3>
-                <div 
-                  className="text-sm leading-relaxed text-muted-foreground"
-                  dangerouslySetInnerHTML={{
-                  __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
-                }} />
+                {product.title.includes("Honda Civic") ? (
+                  <div className="text-sm leading-relaxed space-y-3">
+                    <p className="text-muted-foreground">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
+                    <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                      <li>2 pieces side splitters + 2 pieces central lip splitters</li>
+                      <li>Special 2-tone color finish for enhanced aerodynamic look</li>
+                      <li>Quality lightweight PP (polypropylene) material</li>
+                      <li>Protects original bumper from road bumps and scratches</li>
+                      <li>Dramatically improves sporty appearance</li>
+                      <li>Professional installation recommended (drilling required)</li>
+                    </ul>
+                    <p className="text-xs text-muted-foreground mt-4">
+                      <strong>Installation Note:</strong> Use bigger washers and additional screws & tape for secure mounting.
+                    </p>
+                  </div>
+                ) : (
+                  <div 
+                    className="text-sm leading-relaxed text-muted-foreground"
+                    dangerouslySetInnerHTML={{
+                    __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
+                  }} />
+                )}
               </Card>
 
               {/* Specifications Section */}
@@ -519,21 +568,36 @@ const ProductPage: React.FC = () => {
                       <BadgeCheck className="w-4 h-4 text-primary" />
                       Compatibility
                     </h4>
-                    <p className="text-muted-foreground text-sm">Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering.</p>
+                    <p className="text-muted-foreground text-sm">
+                      {product.title.includes("Honda Civic") 
+                        ? "Fits 2022-2024 Honda Civic Sedan and Hatchback models. Verify your vehicle model and bumper style before ordering to ensure proper fitment."
+                        : "Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering."
+                      }
+                    </p>
                   </div>
                   <div className="bg-muted/30 rounded-lg p-3">
                     <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
                       <Wrench className="w-4 h-4 text-primary" />
-                      Material & Finish
+                      Material & Construction
                     </h4>
-                    <p className="text-muted-foreground text-sm">Premium ABS/FRP or carbon fiber depending on selected variant.</p>
+                    <p className="text-muted-foreground text-sm">
+                      {product.title.includes("Honda Civic")
+                        ? "Quality lightweight PP (polypropylene) material with special 2-tone color finish for aerodynamic design and durability."
+                        : "Premium ABS/FRP or carbon fiber depending on selected variant."
+                      }
+                    </p>
                   </div>
                   <div className="bg-muted/30 rounded-lg p-3">
                     <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
                       <ShieldCheck className="w-4 h-4 text-primary" />
-                      Installation Note
+                      Installation Requirements
                     </h4>
-                    <p className="text-muted-foreground text-sm">Always test-fit prior to paint or PPF; minor adjustments may be required.</p>
+                    <p className="text-muted-foreground text-sm">
+                      {product.title.includes("Honda Civic")
+                        ? "Professional installation recommended. Drilling required. Use larger washers and additional screws & tape for secure mounting."
+                        : "Always test-fit prior to paint or PPF; minor adjustments may be required."
+                      }
+                    </p>
                   </div>
                 </div>
               </Card>
