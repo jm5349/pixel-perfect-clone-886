@@ -229,6 +229,18 @@ const CollectionPage: React.FC = () => {
     if (handle === 'spoilers') {
       return products.filter((p: any) => p.productType !== 'Mirror Caps' && p.productType !== 'Mirror Running Light');
     }
+    if (handle === 'yofer-design') {
+      return products.filter((p: any) => {
+        const vendor = (p.vendor || '').toLowerCase();
+        return vendor.includes('yofer') || vendor.includes('yf');
+      });
+    }
+    if (handle === 'gf-bodykit') {
+      return products.filter((p: any) => {
+        const vendor = (p.vendor || '').toLowerCase();
+        return vendor.includes('gf') || vendor.includes('bodykit');
+      });
+    }
     return products;
   }, [products, handle]);
 
