@@ -12,6 +12,7 @@ export interface ShopifyProduct {
   id: string;
   title: string;
   description: string;
+  handle: string;
   images: Array<{
     src: string;
     altText?: string;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -115,32 +116,36 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
 
   return (
     <Card className="group bg-background border-border hover:border-primary/50 transition-all duration-500 overflow-hidden">
-      {/* Product Image */}
-      <div className="relative overflow-hidden">
-        <img
-          src={mainImage}
-          alt={`${product.title} product image`}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-64 md:h-64 object-contain md:object-cover bg-muted p-2 transition-transform duration-700 md:group-hover:scale-105"
-        />
-        <Badge 
-          variant="secondary" 
-          className="absolute top-3 right-3 bg-primary/10 text-primary border-primary/20 text-xs"
-        >
-          {isAvailable ? 'In Stock' : 'Out of Stock'}
-        </Badge>
-      </div>
+      <Link to={`/products/${product.handle}`}>
+        {/* Product Image */}
+        <div className="relative overflow-hidden">
+          <img
+            src={mainImage}
+            alt={`${product.title} product image`}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-64 md:h-64 object-contain md:object-cover bg-muted p-2 transition-transform duration-700 md:group-hover:scale-105"
+          />
+          <Badge 
+            variant="secondary" 
+            className="absolute top-3 right-3 bg-primary/10 text-primary border-primary/20 text-xs"
+          >
+            {isAvailable ? 'In Stock' : 'Out of Stock'}
+          </Badge>
+        </div>
 
-      {/* Product Info */}
-      <div className="p-4 md:p-6 space-y-3 md:space-y-4">
-        <p className="text-xs md:text-sm text-muted-foreground font-medium">
-          Vendor: <span className="text-primary font-semibold">{product.vendor}</span>
-        </p>
-        <h3 className="text-base md:text-lg font-bold text-foreground leading-snug break-words whitespace-normal group-hover:text-primary transition-colors duration-300">
-          {product.title}
-        </h3>
-        
+        {/* Product Info */}
+        <div className="p-4 md:p-6 space-y-3 md:space-y-4">
+          <p className="text-xs md:text-sm text-muted-foreground font-medium">
+            Vendor: <span className="text-primary font-semibold">{product.vendor}</span>
+          </p>
+          <h3 className="text-base md:text-lg font-bold text-foreground leading-snug break-words whitespace-normal group-hover:text-primary transition-colors duration-300">
+            {product.title}
+          </h3>
+        </div>
+      </Link>
+      
+      <div className="px-4 md:px-6 pb-4 md:pb-6 space-y-3 md:space-y-4">
         {/* Variant Selector */}
         {product.variants?.length > 1 && (
           <div className="mb-3 md:mb-4">
