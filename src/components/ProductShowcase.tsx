@@ -89,11 +89,17 @@ const ProductShowcase = () => {
         <div className="text-center mt-16">
           <div className="relative inline-block">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 blur-xl"></div>
-            <Button size="lg" className="relative bg-gradient-to-r from-primary via-primary/90 to-primary hover:from-primary/90 hover:via-primary hover:to-primary/90 text-white px-10 py-5 text-base font-bold tracking-wider shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:scale-105 border-2 border-primary/20 hover:border-primary/40">
-              <span className="flex items-center gap-3">
-                VIEW ALL PRODUCTS
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-              </span>
+            <Button 
+              size="lg" 
+              asChild
+              className="relative bg-gradient-to-r from-primary via-primary/90 to-primary hover:from-primary/90 hover:via-primary hover:to-primary/90 text-white px-10 py-5 text-base font-bold tracking-wider shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:scale-105 border-2 border-primary/20 hover:border-primary/40"
+            >
+              <a href="/collections/all-products">
+                <span className="flex items-center gap-3">
+                  VIEW ALL PRODUCTS
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                </span>
+              </a>
             </Button>
           </div>
         </div>

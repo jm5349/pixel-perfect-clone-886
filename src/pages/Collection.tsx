@@ -34,6 +34,7 @@ const anyAvailable = (p: any) => (p?.variants || []).some((v: any) => !!v?.avail
 
 // Extra products to append by collection handle
 const EXTRA_PRODUCTS: Record<string, string[]> = {
+  'all-products': ['9947187478821', '9928841036069', '9928328249637', '9928832876837', '10029639205157', '10029639041317', '10029639172389', '10173382656293', '10029638975781', '10196292763941', '10196290437413', '10196289552677', '10196289192229', '10196287652133', '10029639008549', '10029639368997', '10199197810981', '10199197712677', '10199197679909', '10199197548837', '10199197352229'],
   'body-kits': ['9947187478821', '9928841036069', '9928328249637', '9928832876837', '10029639205157', '10029639041317', '10029639172389', '10173382656293', '10029638975781', '10196292763941', '10196290437413', '10196289192229', '10196287652133', '10029639008549', '10199197810981', '10199197712677', '10199197679909', '10199197548837', '10199197352229'],
   'spoilers': ['10029639368997', '10173382656293', '10199197810981', '10199197712677', '10199197679909', '10199197548837', '10199197352229'],
   'toyota-camry': ['9928841036069', '10029639172389', '10173382656293', '10029639368997', '10029638975781', '10196292763941', '10196290437413', '10196289552677', '10196289192229', '10196287652133', '10029639008549', '10199197810981', '10199197712677', '10199197679909', '10199197548837', '10199197352229'],
@@ -165,7 +166,8 @@ const CollectionPage: React.FC = () => {
         if (!cancelled) {
           setProducts(prods as ShopifyProduct[]);
           // Better title fallback for collections without Shopify data
-          const fallbackTitle = h === 'spoilers' ? 'Spoilers' : 
+          const fallbackTitle = h === 'all-products' ? 'All Products' :
+                               h === 'spoilers' ? 'Spoilers' : 
                                h === 'body-kits' ? 'Body Kits' :
                                h === 'mirror-caps' ? 'Mirror Caps' :
                                h === 'drls-and-others' ? 'DRLs & Others' :
@@ -217,6 +219,9 @@ const CollectionPage: React.FC = () => {
 
   // Derived data - filter products based on collection
   const filteredProducts = useMemo(() => {
+    if (handle === 'all-products') {
+      return products; // Show all products
+    }
     if (handle === 'body-kits') {
       return products.filter((p: any) => p.productType !== 'Trunk Spoiler' && p.productType !== 'Mirror Caps' && p.productType !== 'Mirror Running Light');
     }
