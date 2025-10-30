@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import bodyKitsImage from '@/assets/body-kits-category.jpg';
 import spoilersImage from '@/assets/spoilers-category.jpg';
 import mirrorCapsImage from '@/assets/mirror-caps-category.jpg';
-import accessoriesImage from '@/assets/accessories-category.jpg';
+import drlsImage from '@/assets/drls-category.jpg';
 import gfBodykitLogo from '@/assets/gf-bodykit-logo.jpg';
 const Categories = () => {
   const categories = [{
@@ -21,7 +21,7 @@ const Categories = () => {
     description: "Direct Add-on Overlay & Replacement Mirror Covers"
   }, {
     title: "DRLs & Others",
-    image: accessoriesImage,
+    image: drlsImage,
     description: "Sequential DRLs & other Accessories"
   }, {
     title: "Yofer Design®",
