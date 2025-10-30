@@ -32,104 +32,18 @@ const getMinPrice = (p: any) => {
 
 const anyAvailable = (p: any) => (p?.variants || []).some((v: any) => !!v?.available);
 
-// Fetch all products from Shopify store
-const fetchAllProducts = async () => {
-  try {
-    // Use GraphQL to fetch all products
-    const query = (client as any).graphQLClient.query((root: any) => {
-      root.addConnection('products', { args: { first: 250 } }, (product: any) => {
-        product.add('id');
-        product.add('title');
-        product.add('handle');
-        product.add('productType');
-        product.add('vendor');
-        product.add('tags');
-      });
-    });
-    
-    const { model } = await (client as any).graphQLClient.send(query);
-    return model?.products || [];
-  } catch (e) {
-    console.error('Failed to fetch all products:', e);
-    return [];
-  }
+// Extra products to append by collection handle
+const EXTRA_PRODUCTS: Record<string, string[]> = {
+  'all-products': ['9947187478821', '9928841036069', '9928328249637', '9928832876837', '10029639205157', '10029639041317', '10029639172389', '10173382656293', '10029638975781', '10196292763941', '10196290437413', '10196289552677', '10196289192229', '10196287652133', '10029639008549', '10029639368997', '10199197810981', '10199197712677', '10199197679909', '10199197548837', '10199197352229'],
+  'body-kits': ['9928328249637', '9928832876837', '10029639205157', '10029639041317', '10029639172389', '10029638975781', '10196290437413', '10196287652133', '10029639008549'],
+  'spoilers': ['10029639368997', '10173382656293'],
+  'toyota-camry': ['9928841036069', '10029639172389', '10173382656293', '10029639368997', '10029638975781', '10196292763941', '10196290437413', '10196289552677', '10196289192229', '10196287652133', '10029639008549'],
+  'mirror-caps': ['9947187478821', '9928841036069', '10196290437413'],
+  'drls-and-others': ['10196289552677', '10196292763941', '10196289192229'],
+  'yofer-design': ['10199197810981', '10199197712677', '10199197679909', '10199197548837', '10199197352229'],
+  'gf-bodykit': ['9928328249637', '9928832876837', '10029639205157', '10029639041317'],
+  'honda-civic': ['10199197810981', '10199197712677', '10199197679909', '10199197548837', '10199197352229']
 };
-
-// Function to categorize products dynamically
-const categorizeProducts = (products: any[]) => {
-  const categories: Record<string, string[]> = {
-    'all-products': [],
-    'body-kits': [],
-    'spoilers': [],
-    'mirror-caps': [],
-    'drls-and-others': [],
-    'yofer-design': [],
-    'gf-bodykit': [],
-    'toyota-camry': [],
-    'honda-civic': []
-  };
-
-  products.forEach(product => {
-    const productId = product.id.replace('gid://shopify/Product/', '');
-    const productType = (product.productType || '').toLowerCase();
-    const vendor = (product.vendor || '').toLowerCase();
-    const tags = (product.tags || []).map((t: string) => t.toLowerCase());
-    
-    // Add to all products
-    categories['all-products'].push(productId);
-    
-    // Categorize by product type
-    if (productType.includes('trunk spoiler') || productType.includes('spoiler')) {
-      categories['spoilers'].push(productId);
-    } else if (productType.includes('mirror caps') || productType.includes('mirror cap')) {
-      categories['mirror-caps'].push(productId);
-    } else if (productType.includes('mirror running light') || productType.includes('drl')) {
-      categories['drls-and-others'].push(productId);
-    } else if (productType.includes('body kit') || productType.includes('bodykit')) {
-      categories['body-kits'].push(productId);
-    }
-    
-    // Categorize by vendor
-    if (vendor.includes('yofer') || vendor.includes('yf')) {
-      categories['yofer-design'].push(productId);
-    }
-    if (vendor.includes('gf') || vendor.includes('bodykit')) {
-      categories['gf-bodykit'].push(productId);
-    }
-    
-    // Categorize by vehicle tags
-    if (tags.some((t: string) => t.includes('toyota') && t.includes('camry'))) {
-      categories['toyota-camry'].push(productId);
-    }
-    if (tags.some((t: string) => t.includes('honda') && t.includes('civic'))) {
-      categories['honda-civic'].push(productId);
-    }
-  });
-  
-  return categories;
-};
-
-// Initialize with empty - will be populated dynamically
-let EXTRA_PRODUCTS: Record<string, string[]> = {
-  'all-products': [],
-  'body-kits': [],
-  'spoilers': [],
-  'mirror-caps': [],
-  'drls-and-others': [],
-  'yofer-design': [],
-  'gf-bodykit': [],
-  'toyota-camry': [],
-  'honda-civic': []
-};
-
-// Fetch and categorize products on module load
-(async () => {
-  const allProducts = await fetchAllProducts();
-  if (allProducts.length > 0) {
-    EXTRA_PRODUCTS = categorizeProducts(allProducts);
-    console.log('✅ Auto-categorized products:', EXTRA_PRODUCTS);
-  }
-})();
 
 const CollectionPage: React.FC = () => {
   const { handle = "" } = useParams();
