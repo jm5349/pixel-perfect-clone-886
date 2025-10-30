@@ -32,59 +32,122 @@ const getMinPrice = (p: any) => {
 
 const anyAvailable = (p: any) => (p?.variants || []).some((v: any) => !!v?.available);
 
-// Extra products to append by collection handle
-// Products are cross-listed in all qualified categories (by type, brand, and vehicle)
-const EXTRA_PRODUCTS: Record<string, string[]> = {
-  'all-products': [
-    '9947187478821', '9928841036069', '9928328249637', '9928832876837', 
-    '10029639205157', '10029639041317', '10029639172389', '10173382656293', 
-    '10029638975781', '10196292763941', '10196290437413', '10196289552677', 
-    '10196289192229', '10196287652133', '10029639008549', '10029639368997', 
-    '10199197810981', '10199197712677', '10199197679909', '10199197548837', '10199197352229'
-  ],
-  'body-kits': [
-    '9928328249637', '9928832876837', '10029639205157', '10029639041317',  // GF Bodykit products
-    '10029639172389', '10029638975781', '10196287652133', '10029639008549',  // Other body kits
-    '10196290437413'  // Mirror covers (add-on body kit accessory)
-  ],
-  'spoilers': [
-    '10029639368997', '10173382656293'  // Trunk spoilers
-  ],
-  'toyota-camry': [
-    '9928841036069',      // Mirror caps for Camry
-    '10029639172389',     // Body kit for Camry
-    '10173382656293',     // Spoiler for Camry
-    '10029639368997',     // Spoiler for Camry
-    '10029638975781',     // Body kit for Camry
-    '10196292763941',     // DRL for Camry
-    '10196290437413',     // Mirror cover for Camry
-    '10196289552677',     // DRL for Camry
-    '10196289192229',     // DRL for Camry
-    '10196287652133',     // Body kit for Camry
-    '10029639008549'      // Body kit for Camry
-  ],
-  'mirror-caps': [
-    '9947187478821',      // Mirror caps
-    '9928841036069',      // Mirror caps for Camry
-    '10196290437413'      // Mirror covers for Camry
-  ],
-  'drls-and-others': [
-    '10196289552677',     // DRL for Camry
-    '10196292763941',     // DRL for Camry
-    '10196289192229'      // DRL for Camry
-  ],
-  'yofer-design': [
-    '10199197810981', '10199197712677', '10199197679909', 
-    '10199197548837', '10199197352229'  // All Yofer Design products
-  ],
-  'gf-bodykit': [
-    '9928328249637', '9928832876837', '10029639205157', '10029639041317'  // All GF Bodykit products
-  ],
-  'honda-civic': [
-    '10199197810981', '10199197712677', '10199197679909', 
-    '10199197548837', '10199197352229'  // All Honda Civic products (Yofer Design)
-  ]
+// Fetch all products from Shopify and categorize them dynamically
+const fetchAndCategorizeProducts = async (): Promise<Record<string, string[]>> => {
+  try {
+    console.log('🔄 Fetching all products from Shopify...');
+    
+    // Fetch all products using GraphQL
+    const query = (client as any).graphQLClient.query((root: any) => {
+      root.addConnection('products', { args: { first: 250 } }, (product: any) => {
+        product.add('id');
+        product.add('title');
+        product.add('handle');
+        product.add('productType');
+        product.add('vendor');
+        product.add('tags');
+      });
+    });
+    
+    const response = await (client as any).graphQLClient.send(query);
+    const allProducts = response?.model?.products || [];
+    
+    console.log(`✅ Fetched ${allProducts.length} products from Shopify`);
+    
+    // Initialize categories
+    const categories: Record<string, Set<string>> = {
+      'all-products': new Set(),
+      'body-kits': new Set(),
+      'spoilers': new Set(),
+      'mirror-caps': new Set(),
+      'drls-and-others': new Set(),
+      'yofer-design': new Set(),
+      'gf-bodykit': new Set(),
+      'toyota-camry': new Set(),
+      'honda-civic': new Set()
+    };
+    
+    // Categorize each product
+    allProducts.forEach((product: any) => {
+      const productId = product.id.replace('gid://shopify/Product/', '');
+      const productType = (product.productType || '').toLowerCase();
+      const vendor = (product.vendor || '').toLowerCase();
+      const title = (product.title || '').toLowerCase();
+      const tags = (product.tags || []).map((t: string) => t.toLowerCase());
+      
+      // Add to all products
+      categories['all-products'].add(productId);
+      
+      // Categorize by product type
+      if (productType.includes('body kit') || productType.includes('bodykit') || title.includes('body kit')) {
+        categories['body-kits'].add(productId);
+      }
+      
+      if (productType.includes('spoiler') || productType.includes('trunk spoiler') || title.includes('spoiler')) {
+        categories['spoilers'].add(productId);
+      }
+      
+      if (productType.includes('mirror cap') || productType.includes('mirror cover') || title.includes('mirror cap') || title.includes('mirror cover')) {
+        categories['mirror-caps'].add(productId);
+      }
+      
+      if (productType.includes('drl') || productType.includes('running light') || productType.includes('mirror running light') || title.includes('drl') || title.includes('running light')) {
+        categories['drls-and-others'].add(productId);
+      }
+      
+      // Categorize by vendor/brand
+      if (vendor.includes('yofer') || vendor.includes('yf') || title.includes('yofer')) {
+        categories['yofer-design'].add(productId);
+      }
+      
+      if (vendor.includes('gf') || vendor.includes('bodykit') || title.includes('gf bodykit')) {
+        categories['gf-bodykit'].add(productId);
+      }
+      
+      // Categorize by vehicle - check tags and title
+      const isToyotaCamry = tags.some(t => t.includes('toyota') && t.includes('camry')) || 
+                           title.includes('toyota camry') || title.includes('camry');
+      const isHondaCivic = tags.some(t => t.includes('honda') && t.includes('civic')) || 
+                          title.includes('honda civic') || title.includes('civic');
+      
+      if (isToyotaCamry) {
+        categories['toyota-camry'].add(productId);
+      }
+      
+      if (isHondaCivic) {
+        categories['honda-civic'].add(productId);
+      }
+      
+      console.log(`📦 Product: "${product.title}" → Categories: ${Object.keys(categories).filter(k => categories[k].has(productId)).join(', ')}`);
+    });
+    
+    // Convert Sets to Arrays
+    const result: Record<string, string[]> = {};
+    Object.keys(categories).forEach(key => {
+      result[key] = Array.from(categories[key]);
+      console.log(`📊 ${key}: ${result[key].length} products`);
+    });
+    
+    return result;
+  } catch (error) {
+    console.error('❌ Failed to fetch and categorize products:', error);
+    // Return empty categories on error
+    return {
+      'all-products': [],
+      'body-kits': [],
+      'spoilers': [],
+      'mirror-caps': [],
+      'drls-and-others': [],
+      'yofer-design': [],
+      'gf-bodykit': [],
+      'toyota-camry': [],
+      'honda-civic': []
+    };
+  }
 };
+
+// Store for dynamically loaded product categories
+let DYNAMIC_PRODUCTS: Record<string, string[]> = {};
 
 const CollectionPage: React.FC = () => {
   const { handle = "" } = useParams();
@@ -111,9 +174,14 @@ const CollectionPage: React.FC = () => {
         const rawHandle = (handle || "").trim();
         let h = (!rawHandle || rawHandle.startsWith(":")) ? "body-kits" : rawHandle;
         
+        // Fetch and categorize all products if not already done
+        if (Object.keys(DYNAMIC_PRODUCTS).length === 0) {
+          DYNAMIC_PRODUCTS = await fetchAndCategorizeProducts();
+        }
+        
         // Log collection and extra products for debugging
         console.log(`🔍 Fetching collection: "${h}"`);
-        console.log(`🔍 Extra products for this collection:`, EXTRA_PRODUCTS[h] || []);
+        console.log(`🔍 Products for this collection:`, DYNAMIC_PRODUCTS[h] || []);
         
         console.log('=== COLLECTION FETCH DEBUG ===');
         console.log('Collection handle:', h);
@@ -143,7 +211,7 @@ const CollectionPage: React.FC = () => {
         let prods: any[] = (colWithProducts?.products || col?.products || []);
         console.log('Initial products from collection:', prods.length);
         
-        const extraIds: string[] = EXTRA_PRODUCTS[h] || [];
+        const extraIds: string[] = DYNAMIC_PRODUCTS[h] || [];
         console.log('Extra products for this handle:', extraIds);
         
         if (extraIds.length) {
