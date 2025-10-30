@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import aestheticsImage from '@/assets/aesthetics-category.jpg';
+import bodyKitsImage from '@/assets/body-kits-category.jpg';
 import performanceImage from '@/assets/performance-category.jpg';
 import wheelsImage from '@/assets/wheels-category.jpg';
 import accessoriesImage from '@/assets/accessories-category.jpg';
@@ -9,7 +9,7 @@ import gfBodykitLogo from '@/assets/gf-bodykit-logo.jpg';
 const Categories = () => {
   const categories = [{
     title: "Body Kits",
-    image: aestheticsImage,
+    image: bodyKitsImage,
     description: "Front Bumper Lip, Side Skirt Extension & Rear Diffuser"
   }, {
     title: "Spoilers",
