@@ -229,12 +229,7 @@ const CollectionPage: React.FC = () => {
       return products.filter((p: any) => p.productType === 'Mirror Caps');
     }
     if (handle === 'drls-and-others') {
-      return products.filter((p: any) => 
-        p.productType === 'Mirror Running Light' || 
-        (p.productType !== 'Body Kit' && 
-         p.productType !== 'Trunk Spoiler' && 
-         p.productType !== 'Mirror Caps')
-      );
+      return products.filter((p: any) => p.productType === 'Mirror Running Light');
     }
     if (handle === 'spoilers') {
       return products.filter((p: any) => p.productType !== 'Mirror Caps' && p.productType !== 'Mirror Running Light');
