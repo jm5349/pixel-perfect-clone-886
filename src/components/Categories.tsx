@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import bodyKitsImage from '@/assets/body-kits-category.jpg';
 import spoilersImage from '@/assets/spoilers-category.jpg';
-import wheelsImage from '@/assets/wheels-category.jpg';
+import mirrorCapsImage from '@/assets/mirror-caps-category.jpg';
 import accessoriesImage from '@/assets/accessories-category.jpg';
 import gfBodykitLogo from '@/assets/gf-bodykit-logo.jpg';
 const Categories = () => {
@@ -17,7 +17,7 @@ const Categories = () => {
     description: "Rear Roof Spoiler & Trunk Wing"
   }, {
     title: "Mirror Caps",
-    image: wheelsImage,
+    image: mirrorCapsImage,
     description: "Direct Add-on Overlay & Replacement Mirror Covers"
   }, {
     title: "DRLs & Others",
