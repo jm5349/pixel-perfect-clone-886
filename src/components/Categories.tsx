@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import bodyKitsImage from '@/assets/body-kits-category.jpg';
-import performanceImage from '@/assets/performance-category.jpg';
+import spoilersImage from '@/assets/spoilers-category.jpg';
 import wheelsImage from '@/assets/wheels-category.jpg';
 import accessoriesImage from '@/assets/accessories-category.jpg';
 import gfBodykitLogo from '@/assets/gf-bodykit-logo.jpg';
@@ -13,7 +13,7 @@ const Categories = () => {
     description: "Front Bumper Lip, Side Skirt Extension & Rear Diffuser"
   }, {
     title: "Spoilers",
-    image: performanceImage,
+    image: spoilersImage,
     description: "Rear Roof Spoiler & Trunk Wing"
   }, {
     title: "Mirror Caps",
