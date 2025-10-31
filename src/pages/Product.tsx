@@ -462,7 +462,7 @@ const ProductPage: React.FC = () => {
                     </div>
                     <div className="max-w-none">
                       {product.title.includes("Honda Civic") ? (
-                        <div className="text-base leading-relaxed space-y-4">
+                        <div className="product-description text-base leading-relaxed space-y-4">
                           <p className="text-white font-semibold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
                           <ul className="space-y-3 text-white font-semibold">
                             <li className="flex items-start gap-3">
@@ -498,7 +498,7 @@ const ProductPage: React.FC = () => {
                         </div>
                       ) : (
                         <div 
-                        className="text-base leading-relaxed text-white font-semibold"
+                        className="product-description text-base leading-relaxed text-white font-semibold"
                         dangerouslySetInnerHTML={{
                         __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                       }} />
@@ -596,7 +596,7 @@ const ProductPage: React.FC = () => {
                   <h3 className="text-lg font-automotive font-bold text-foreground">Product Details</h3>
                 </div>
                 {product.title.includes("Honda Civic") ? (
-                  <div className="text-sm leading-relaxed space-y-3">
+                  <div className="product-description text-sm leading-relaxed space-y-3">
                     <p className="text-white font-semibold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
                     <ul className="space-y-2.5 text-white font-semibold">
                       <li className="flex items-start gap-2">
@@ -632,7 +632,7 @@ const ProductPage: React.FC = () => {
                   </div>
                 ) : (
                 <div 
-                  className="text-sm leading-relaxed text-white font-semibold"
+                  className="product-description text-sm leading-relaxed text-white font-semibold"
                   dangerouslySetInnerHTML={{
                   __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                 }} />

@@ -170,6 +170,23 @@ Premium dark theme with automotive-grade precision
   }
 }
 
+@layer components {
+  /* Force pure white text inside product description including Shopify HTML */
+  .product-description,
+  .product-description * {
+    color: hsl(0 0% 100%) !important;
+  }
+  .product-description a {
+    color: hsl(var(--primary)) !important;
+    text-underline-offset: 2px;
+    text-decoration: none;
+  }
+  .product-description a:hover {
+    text-decoration: underline;
+  }
+}
+
+
 @layer utilities {
   .clamp-2 {
     display: -webkit-box;
