@@ -396,13 +396,13 @@ const ProductPage: React.FC = () => {
                   <Card className="p-6 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                      <h3 className="text-2xl font-automotive font-extrabold text-white">Product Details</h3>
+                      <h3 className="text-xl font-automotive font-bold text-foreground">Product Details</h3>
                     </div>
                     <article className="prose prose-invert max-w-none">
                       {product.title.includes("Honda Civic") ? (
-                        <div className="text-lg leading-relaxed space-y-4">
-                          <p className="text-white font-bold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
-                          <ul className="space-y-3 text-white font-semibold">
+                        <div className="text-base leading-relaxed space-y-4">
+                          <p className="text-foreground font-semibold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
+                          <ul className="space-y-3 text-foreground font-medium">
                             <li className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
                               <span>2 pieces side splitters + 2 pieces central lip splitters</span>
@@ -429,14 +429,14 @@ const ProductPage: React.FC = () => {
                             </li>
                           </ul>
                           <div className="mt-6 p-4 bg-primary/10 border border-primary/20 rounded-lg">
-                            <p className="text-base text-white font-bold">
+                            <p className="text-sm text-foreground font-semibold">
                               <strong className="text-primary">Installation Note:</strong> Use bigger washers and additional screws & tape for secure mounting.
                             </p>
                           </div>
                         </div>
                       ) : (
                         <div 
-                          className="text-lg leading-relaxed text-white font-semibold"
+                          className="text-base leading-relaxed text-foreground font-medium"
                           dangerouslySetInnerHTML={{
                           __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                         }} />
@@ -449,20 +449,20 @@ const ProductPage: React.FC = () => {
                   <Card className="p-6 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                      <h3 className="text-2xl font-automotive font-extrabold text-white">Specifications</h3>
+                      <h3 className="text-xl font-automotive font-bold text-foreground">Specifications</h3>
                     </div>
                     <div className="grid grid-cols-3 gap-4">
                       <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                        <h4 className="font-automotive font-bold mb-2 text-primary text-base">Brand</h4>
-                        <p className="text-white font-bold text-base">{product.vendor || "Yofer Design"}</p>
+                        <h4 className="font-automotive font-bold mb-2 text-primary">Brand</h4>
+                        <p className="text-foreground font-semibold text-sm">{product.vendor || "Yofer Design"}</p>
                       </div>
                       <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                        <h4 className="font-automotive font-bold mb-2 text-primary text-base">Type</h4>
-                        <p className="text-white font-bold text-base">{product.productType || "Body Kit Component"}</p>
+                        <h4 className="font-automotive font-bold mb-2 text-primary">Type</h4>
+                        <p className="text-foreground font-semibold text-sm">{product.productType || "Body Kit Component"}</p>
                       </div>
                       <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                        <h4 className="font-automotive font-bold mb-2 text-primary text-base">SKU/Variant</h4>
-                        <p className="text-white font-bold text-base">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
+                        <h4 className="font-automotive font-bold mb-2 text-primary">SKU/Variant</h4>
+                        <p className="text-foreground font-semibold text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
                       </div>
                     </div>
                   </Card>
@@ -472,15 +472,15 @@ const ProductPage: React.FC = () => {
                   <Card className="p-6 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                      <h3 className="text-2xl font-automotive font-extrabold text-white">Fitment Information</h3>
+                      <h3 className="text-xl font-automotive font-bold text-foreground">Fitment Information</h3>
                     </div>
                     <div className="space-y-4">
                       <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4">
-                        <h4 className="font-automotive font-bold text-primary mb-3 flex items-center gap-2 text-lg">
+                        <h4 className="font-automotive font-bold text-primary mb-3 flex items-center gap-2">
                           <BadgeCheck className="w-5 h-5" />
                           Compatibility
                         </h4>
-                        <p className="text-white font-semibold text-base">
+                        <p className="text-foreground font-medium">
                           {product.title.includes("Honda Civic") 
                             ? "Fits 2022-2024 Honda Civic Sedan and Hatchback models. Verify your vehicle model and bumper style before ordering to ensure proper fitment."
                             : "Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering."
@@ -488,11 +488,11 @@ const ProductPage: React.FC = () => {
                         </p>
                       </div>
                       <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4">
-                        <h4 className="font-automotive font-bold text-primary mb-3 flex items-center gap-2 text-lg">
+                        <h4 className="font-automotive font-bold text-primary mb-3 flex items-center gap-2">
                           <Wrench className="w-5 h-5" />
                           Material & Construction
                         </h4>
-                        <p className="text-white font-semibold text-base">
+                        <p className="text-foreground font-medium">
                           {product.title.includes("Honda Civic")
                             ? "Quality lightweight PP (polypropylene) material with special 2-tone color finish for aerodynamic design and durability."
                             : "Premium ABS/FRP or carbon fiber depending on selected variant."
@@ -500,11 +500,11 @@ const ProductPage: React.FC = () => {
                         </p>
                       </div>
                       <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4">
-                        <h4 className="font-automotive font-bold text-primary mb-3 flex items-center gap-2 text-lg">
+                        <h4 className="font-automotive font-bold text-primary mb-3 flex items-center gap-2">
                           <ShieldCheck className="w-5 h-5" />
                           Installation Requirements
                         </h4>
-                        <p className="text-white font-semibold text-base">
+                        <p className="text-foreground font-medium">
                           {product.title.includes("Honda Civic")
                             ? "Professional installation recommended. Drilling required. Use larger washers and additional screws & tape for secure mounting."
                             : "Always test-fit prior to paint or PPF; minor adjustments may be required."
@@ -519,13 +519,13 @@ const ProductPage: React.FC = () => {
                   <Card className="p-6 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                      <h3 className="text-2xl font-automotive font-extrabold text-white">Frequently Asked Questions</h3>
+                      <h3 className="text-xl font-automotive font-bold text-foreground">Frequently Asked Questions</h3>
                     </div>
                     <Accordion type="single" collapsible className="w-full">
                       {faqItems.map((item, idx) => 
                         <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
-                          <AccordionTrigger className="text-left text-white hover:text-primary font-automotive font-bold text-base">{item.q}</AccordionTrigger>
-                          <AccordionContent className="text-white font-semibold text-base">{item.a}</AccordionContent>
+                          <AccordionTrigger className="text-left text-foreground hover:text-primary font-automotive font-semibold">{item.q}</AccordionTrigger>
+                          <AccordionContent className="text-foreground font-medium">{item.a}</AccordionContent>
                         </AccordionItem>
                       )}
                     </Accordion>
@@ -540,12 +540,12 @@ const ProductPage: React.FC = () => {
               <Card className="p-4 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-1 h-6 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                  <h3 className="text-lg font-automotive font-extrabold text-white">Product Details</h3>
+                  <h3 className="text-lg font-automotive font-bold text-foreground">Product Details</h3>
                 </div>
                 {product.title.includes("Honda Civic") ? (
-                  <div className="text-base leading-relaxed space-y-3">
-                    <p className="text-white font-bold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
-                    <ul className="space-y-2.5 text-white font-semibold">
+                  <div className="text-sm leading-relaxed space-y-3">
+                    <p className="text-foreground font-semibold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
+                    <ul className="space-y-2.5 text-foreground font-medium">
                       <li className="flex items-start gap-2">
                         <span className="w-1 h-1 bg-primary rounded-full mt-1.5 flex-shrink-0"></span>
                         <span>2 pieces side splitters + 2 pieces central lip splitters</span>
@@ -572,14 +572,14 @@ const ProductPage: React.FC = () => {
                       </li>
                     </ul>
                     <div className="mt-4 p-3 bg-primary/10 border border-primary/20 rounded-lg">
-                      <p className="text-sm text-white font-bold">
+                      <p className="text-xs text-foreground font-semibold">
                         <strong className="text-primary">Installation Note:</strong> Use bigger washers and additional screws & tape for secure mounting.
                       </p>
                     </div>
                   </div>
                 ) : (
                   <div 
-                    className="text-base leading-relaxed text-white font-semibold"
+                    className="text-sm leading-relaxed text-foreground font-medium"
                     dangerouslySetInnerHTML={{
                     __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                   }} />
@@ -590,20 +590,20 @@ const ProductPage: React.FC = () => {
               <Card className="p-4 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-1 h-6 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                  <h3 className="text-lg font-automotive font-extrabold text-white">Specifications</h3>
+                  <h3 className="text-lg font-automotive font-bold text-foreground">Specifications</h3>
                 </div>
                 <div className="space-y-3">
                   <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-3">
                     <h4 className="font-automotive font-bold mb-1 text-sm text-primary">Brand</h4>
-                    <p className="text-white font-bold text-sm">{product.vendor || "Yofer Design"}</p>
+                    <p className="text-foreground font-semibold text-sm">{product.vendor || "Yofer Design"}</p>
                   </div>
                   <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-3">
                     <h4 className="font-automotive font-bold mb-1 text-sm text-primary">Type</h4>
-                    <p className="text-white font-bold text-sm">{product.productType || "Body Kit Component"}</p>
+                    <p className="text-foreground font-semibold text-sm">{product.productType || "Body Kit Component"}</p>
                   </div>
                   <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-3">
                     <h4 className="font-automotive font-bold mb-1 text-sm text-primary">SKU/Variant</h4>
-                    <p className="text-white font-bold text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
+                    <p className="text-foreground font-semibold text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
                   </div>
                 </div>
               </Card>
@@ -612,7 +612,7 @@ const ProductPage: React.FC = () => {
               <Card className="p-4 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-1 h-6 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                  <h3 className="text-lg font-automotive font-extrabold text-white">Fitment Information</h3>
+                  <h3 className="text-lg font-automotive font-bold text-foreground">Fitment Information</h3>
                 </div>
                 <div className="space-y-3">
                   <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-3">
@@ -620,7 +620,7 @@ const ProductPage: React.FC = () => {
                       <BadgeCheck className="w-4 h-4" />
                       Compatibility
                     </h4>
-                    <p className="text-white font-semibold text-sm">
+                    <p className="text-foreground font-medium text-sm">
                       {product.title.includes("Honda Civic") 
                         ? "Fits 2022-2024 Honda Civic Sedan and Hatchback models. Verify your vehicle model and bumper style before ordering to ensure proper fitment."
                         : "Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering."
@@ -632,7 +632,7 @@ const ProductPage: React.FC = () => {
                       <Wrench className="w-4 h-4" />
                       Material & Construction
                     </h4>
-                    <p className="text-white font-semibold text-sm">
+                    <p className="text-foreground font-medium text-sm">
                       {product.title.includes("Honda Civic")
                         ? "Quality lightweight PP (polypropylene) material with special 2-tone color finish for aerodynamic design and durability."
                         : "Premium ABS/FRP or carbon fiber depending on selected variant."
@@ -644,7 +644,7 @@ const ProductPage: React.FC = () => {
                       <ShieldCheck className="w-4 h-4" />
                       Installation Requirements
                     </h4>
-                    <p className="text-white font-semibold text-sm">
+                    <p className="text-foreground font-medium text-sm">
                       {product.title.includes("Honda Civic")
                         ? "Professional installation recommended. Drilling required. Use larger washers and additional screws & tape for secure mounting."
                         : "Always test-fit prior to paint or PPF; minor adjustments may be required."
@@ -658,13 +658,13 @@ const ProductPage: React.FC = () => {
               <Card className="p-4 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-1 h-6 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                  <h3 className="text-lg font-automotive font-extrabold text-white">Frequently Asked Questions</h3>
+                  <h3 className="text-lg font-automotive font-bold text-foreground">Frequently Asked Questions</h3>
                 </div>
                 <Accordion type="single" collapsible className="w-full">
                   {faqItems.map((item, idx) => 
                     <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
-                      <AccordionTrigger className="text-left text-sm hover:text-primary font-automotive font-bold text-white">{item.q}</AccordionTrigger>
-                      <AccordionContent className="text-white font-semibold text-sm">{item.a}</AccordionContent>
+                      <AccordionTrigger className="text-left text-sm hover:text-primary font-automotive font-semibold text-foreground">{item.q}</AccordionTrigger>
+                      <AccordionContent className="text-foreground font-medium text-sm">{item.a}</AccordionContent>
                     </AccordionItem>
                   )}
                 </Accordion>
