@@ -33,6 +33,71 @@ const currency = (amount?: string, code?: string) => {
   }
 };
 const slugToIsNumericId = (s: string) => /^\d+$/.test(s.trim());
+
+// Parse fitment information from product title
+const parseFitmentFromTitle = (title: string) => {
+  const lowerTitle = title.toLowerCase();
+  
+  // Extract year range or single year
+  const yearMatch = title.match(/\b(20\d{2})(?:[-–]\s?(20?\d{2}))?\b/);
+  const yearInfo = yearMatch ? (yearMatch[2] ? `${yearMatch[1]}-${yearMatch[2]}` : yearMatch[1]) : "";
+  
+  // Extract make and model
+  let make = "";
+  let model = "";
+  let trims = "";
+  
+  if (lowerTitle.includes("toyota camry")) {
+    make = "Toyota";
+    model = "Camry";
+    const trimMatch = title.match(/\b(LE|XLE|SE|XSE|TRD|Hybrid|Limited)\b/gi);
+    trims = trimMatch ? trimMatch.join(", ") : "";
+  } else if (lowerTitle.includes("honda civic")) {
+    make = "Honda";
+    model = "Civic";
+    const trimMatch = title.match(/\b(LX|EX|Sport|Touring|Type R|Si|Sedan|Hatchback)\b/gi);
+    trims = trimMatch ? trimMatch.join(", ") : "";
+  } else if (lowerTitle.includes("acura integra")) {
+    make = "Acura";
+    model = "Integra";
+    const trimMatch = title.match(/\b(A-Spec|Technology|Limited)\b/gi);
+    trims = trimMatch ? trimMatch.join(", ") : "";
+  }
+  
+  // Determine product type for specific installation guidance
+  let productType = "accessory";
+  if (lowerTitle.includes("door handle")) productType = "door_handle";
+  else if (lowerTitle.includes("body kit") || lowerTitle.includes("front lip") || lowerTitle.includes("splitter")) productType = "body_kit";
+  else if (lowerTitle.includes("spoiler") || lowerTitle.includes("wing")) productType = "spoiler";
+  else if (lowerTitle.includes("mirror")) productType = "mirror";
+  else if (lowerTitle.includes("grille") || lowerTitle.includes("grill")) productType = "grille";
+  
+  return { yearInfo, make, model, trims, productType };
+};
+
+const getFitmentInfo = (title: string) => {
+  const { yearInfo, make, model, trims, productType } = parseFitmentFromTitle(title);
+  
+  const vehicleInfo = `${yearInfo ? `${yearInfo} ` : ""}${make}${model ? ` ${model}` : ""}${trims ? ` (${trims})` : ""}`.trim() || "your vehicle";
+  
+  const compatibility = vehicleInfo === "your vehicle" 
+    ? "Please verify fitment compatibility with your specific vehicle model and year before ordering."
+    : `Designed specifically for ${vehicleInfo}. Please verify your exact model and trim before ordering to ensure proper fitment.`;
+  
+  const material = productType === "door_handle" 
+    ? "High-quality ABS plastic with automotive-grade finish. UV-resistant coating prevents fading and ensures long-lasting durability."
+    : productType === "body_kit"
+    ? "Premium ABS/FRP or carbon fiber depending on selected variant. Lightweight yet durable construction for aerodynamic design."
+    : "Quality automotive-grade materials designed for durability and long-lasting performance.";
+  
+  const installation = productType === "door_handle"
+    ? "Easy DIY installation with pre-applied 3M automotive tape. No drilling required. Clean surface thoroughly before application for best adhesion."
+    : productType === "body_kit"
+    ? "Professional installation recommended. May require drilling and minor adjustments. Always test-fit prior to paint or PPF application."
+    : "Professional installation recommended. Verify all fitment and clearances before final installation.";
+  
+  return { compatibility, material, installation };
+};
 const ProductPage: React.FC = () => {
   const {
     handle = ""
@@ -481,10 +546,7 @@ const ProductPage: React.FC = () => {
                           Compatibility
                         </h4>
                         <p className="text-foreground font-medium">
-                          {product.title.includes("Honda Civic") 
-                            ? "Fits 2022-2024 Honda Civic Sedan and Hatchback models. Verify your vehicle model and bumper style before ordering to ensure proper fitment."
-                            : "Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering."
-                          }
+                          {getFitmentInfo(product.title).compatibility}
                         </p>
                       </div>
                       <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4">
@@ -493,10 +555,7 @@ const ProductPage: React.FC = () => {
                           Material & Construction
                         </h4>
                         <p className="text-foreground font-medium">
-                          {product.title.includes("Honda Civic")
-                            ? "Quality lightweight PP (polypropylene) material with special 2-tone color finish for aerodynamic design and durability."
-                            : "Premium ABS/FRP or carbon fiber depending on selected variant."
-                          }
+                          {getFitmentInfo(product.title).material}
                         </p>
                       </div>
                       <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4">
@@ -505,10 +564,7 @@ const ProductPage: React.FC = () => {
                           Installation Requirements
                         </h4>
                         <p className="text-foreground font-medium">
-                          {product.title.includes("Honda Civic")
-                            ? "Professional installation recommended. Drilling required. Use larger washers and additional screws & tape for secure mounting."
-                            : "Always test-fit prior to paint or PPF; minor adjustments may be required."
-                          }
+                          {getFitmentInfo(product.title).installation}
                         </p>
                       </div>
                     </div>
@@ -621,10 +677,7 @@ const ProductPage: React.FC = () => {
                       Compatibility
                     </h4>
                     <p className="text-foreground font-medium text-sm">
-                      {product.title.includes("Honda Civic") 
-                        ? "Fits 2022-2024 Honda Civic Sedan and Hatchback models. Verify your vehicle model and bumper style before ordering to ensure proper fitment."
-                        : "Toyota Camry 2025–2026 SE/XSE (GF). Verify your bumper style before ordering."
-                      }
+                      {getFitmentInfo(product.title).compatibility}
                     </p>
                   </div>
                   <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-3">
@@ -633,10 +686,7 @@ const ProductPage: React.FC = () => {
                       Material & Construction
                     </h4>
                     <p className="text-foreground font-medium text-sm">
-                      {product.title.includes("Honda Civic")
-                        ? "Quality lightweight PP (polypropylene) material with special 2-tone color finish for aerodynamic design and durability."
-                        : "Premium ABS/FRP or carbon fiber depending on selected variant."
-                      }
+                      {getFitmentInfo(product.title).material}
                     </p>
                   </div>
                   <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-3">
@@ -645,10 +695,7 @@ const ProductPage: React.FC = () => {
                       Installation Requirements
                     </h4>
                     <p className="text-foreground font-medium text-sm">
-                      {product.title.includes("Honda Civic")
-                        ? "Professional installation recommended. Drilling required. Use larger washers and additional screws & tape for secure mounting."
-                        : "Always test-fit prior to paint or PPF; minor adjustments may be required."
-                      }
+                      {getFitmentInfo(product.title).installation}
                     </p>
                   </div>
                 </div>
