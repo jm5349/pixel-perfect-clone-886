@@ -463,8 +463,8 @@ const ProductPage: React.FC = () => {
                     <div className="max-w-none">
                       {product.title.includes("Honda Civic") ? (
                         <div className="product-description text-base leading-relaxed space-y-4">
-                          <p className="text-white font-semibold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
-                          <ul className="space-y-3 text-white font-semibold">
+                          <p className="text-white font-normal">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
+                          <ul className="space-y-3 text-white font-normal">
                             <li className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
                               <span>2 pieces side splitters + 2 pieces central lip splitters</span>
@@ -491,14 +491,14 @@ const ProductPage: React.FC = () => {
                             </li>
                           </ul>
                           <div className="mt-6 p-4 bg-primary/10 border border-primary/20 rounded-lg">
-                            <p className="text-sm text-white font-semibold">
+                            <p className="text-sm text-white font-normal">
                               <strong className="text-primary">Installation Note:</strong> Use bigger washers and additional screws & tape for secure mounting.
                             </p>
                           </div>
                         </div>
                       ) : (
                         <div 
-                        className="product-description text-base leading-relaxed text-white font-semibold"
+                        className="product-description text-base leading-relaxed text-white font-normal"
                         dangerouslySetInnerHTML={{
                         __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                       }} />
@@ -542,7 +542,7 @@ const ProductPage: React.FC = () => {
                           <BadgeCheck className="w-5 h-5" />
                           Compatibility
                         </h4>
-                        <p className="text-white font-semibold">
+                        <p className="text-white font-normal">
                           {getFitmentInfo(product.title).compatibility}
                         </p>
                       </div>
@@ -551,7 +551,7 @@ const ProductPage: React.FC = () => {
                           <Wrench className="w-5 h-5" />
                           Material & Construction
                         </h4>
-                        <p className="text-white font-semibold">
+                        <p className="text-white font-normal">
                           {getFitmentInfo(product.title).material}
                         </p>
                       </div>
@@ -560,7 +560,7 @@ const ProductPage: React.FC = () => {
                           <ShieldCheck className="w-5 h-5" />
                           Installation Requirements
                         </h4>
-                        <p className="text-white font-semibold">
+                        <p className="text-white font-normal">
                           {getFitmentInfo(product.title).installation}
                         </p>
                       </div>
@@ -578,7 +578,7 @@ const ProductPage: React.FC = () => {
                       {faqItems.map((item, idx) => 
                         <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
                           <AccordionTrigger className="text-left text-white hover:text-primary font-automotive font-semibold">{item.q}</AccordionTrigger>
-                          <AccordionContent className="text-white font-semibold">{item.a}</AccordionContent>
+                          <AccordionContent className="text-white font-normal">{item.a}</AccordionContent>
                         </AccordionItem>
                       )}
                     </Accordion>
@@ -597,8 +597,8 @@ const ProductPage: React.FC = () => {
                 </div>
                 {product.title.includes("Honda Civic") ? (
                   <div className="product-description text-sm leading-relaxed space-y-3">
-                    <p className="text-white font-semibold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
-                    <ul className="space-y-2.5 text-white font-semibold">
+                    <p className="text-white font-normal">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
+                    <ul className="space-y-2.5 text-white font-normal">
                       <li className="flex items-start gap-2">
                         <span className="w-1 h-1 bg-primary rounded-full mt-1.5 flex-shrink-0"></span>
                         <span>2 pieces side splitters + 2 pieces central lip splitters</span>
@@ -625,14 +625,14 @@ const ProductPage: React.FC = () => {
                       </li>
                     </ul>
                     <div className="mt-4 p-3 bg-primary/10 border border-primary/20 rounded-lg">
-                      <p className="text-xs text-white font-semibold">
+                      <p className="text-xs text-white font-normal">
                         <strong className="text-primary">Installation Note:</strong> Use bigger washers and additional screws & tape for secure mounting.
                       </p>
                     </div>
                   </div>
                 ) : (
                 <div 
-                  className="product-description text-sm leading-relaxed text-white font-semibold"
+                  className="product-description text-sm leading-relaxed text-white font-normal"
                   dangerouslySetInnerHTML={{
                   __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                 }} />
@@ -673,7 +673,7 @@ const ProductPage: React.FC = () => {
                       <BadgeCheck className="w-4 h-4" />
                       Compatibility
                     </h4>
-                    <p className="text-white font-semibold text-sm">
+                    <p className="text-white font-normal text-sm">
                       {getFitmentInfo(product.title).compatibility}
                     </p>
                   </div>
@@ -682,7 +682,7 @@ const ProductPage: React.FC = () => {
                       <Wrench className="w-4 h-4" />
                       Material & Construction
                     </h4>
-                    <p className="text-white font-semibold text-sm">
+                    <p className="text-white font-normal text-sm">
                       {getFitmentInfo(product.title).material}
                     </p>
                   </div>
@@ -691,7 +691,7 @@ const ProductPage: React.FC = () => {
                       <ShieldCheck className="w-4 h-4" />
                       Installation Requirements
                     </h4>
-                    <p className="text-white font-semibold text-sm">
+                    <p className="text-white font-normal text-sm">
                       {getFitmentInfo(product.title).installation}
                     </p>
                   </div>
@@ -708,7 +708,7 @@ const ProductPage: React.FC = () => {
                   {faqItems.map((item, idx) => 
                     <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
                       <AccordionTrigger className="text-left text-sm hover:text-primary font-automotive font-semibold text-white">{item.q}</AccordionTrigger>
-                      <AccordionContent className="text-white font-semibold text-sm">{item.a}</AccordionContent>
+                      <AccordionContent className="text-white font-normal text-sm">{item.a}</AccordionContent>
                     </AccordionItem>
                   )}
                 </Accordion>
