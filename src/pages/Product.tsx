@@ -360,11 +360,11 @@ const ProductPage: React.FC = () => {
             {/* Left: Gallery */}
             <div>
               <Card className="overflow-hidden bg-card border-border">
-                <img src={mainImage} alt={`${product.title} main image – front lip splitter`} className="w-full h-72 md:h-[520px] object-cover" loading="eager" />
+                <img src={mainImage} alt={`${product.title} main image – front lip splitter`} className="w-full h-72 md:h-[520px] object-contain bg-background" loading="eager" />
               </Card>
               {images.length > 1 && <div className="mt-3 grid grid-cols-5 gap-2">
-                  {images.map((img, i) => <button key={`${img.src}-${i}`} onClick={() => setSelectedImage(i)} className={`rounded-lg overflow-hidden border ${i === selectedImage ? "border-primary" : "border-border"}`} aria-label={`Thumbnail ${i + 1}`}>
-                      <img src={img.src} alt={img.altText || `${product.title} thumbnail ${i + 1}`} className="h-16 w-full object-cover" loading="lazy" />
+                  {images.map((img, i) => <button key={`${img.src}-${i}`} onClick={() => setSelectedImage(i)} className={`rounded-lg overflow-hidden border ${i === selectedImage ? "border-primary" : "border-border"} bg-background`} aria-label={`Thumbnail ${i + 1}`}>
+                      <img src={img.src} alt={img.altText || `${product.title} thumbnail ${i + 1}`} className="h-16 w-full object-contain" loading="lazy" />
                     </button>)}
                 </div>}
             </div>
