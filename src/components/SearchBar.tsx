@@ -52,12 +52,22 @@ const SearchBar = () => {
           const list = await (client as any).product.fetchAll(100);
           allProductsRef.current = Array.isArray(list) ? list : [];
         }
+        // Split query into individual words for better multi-word matching
         const q = query.toLowerCase();
+        const words = q.split(/\s+/).filter(w => w.length > 0);
+        
         const filtered = (allProductsRef.current || []).filter((p: any) => {
           const title = String(p?.title || '').toLowerCase();
           const vendor = String(p?.vendor || '').toLowerCase();
           const handle = String((p as any)?.handle || '').toLowerCase();
-          return title.includes(q) || vendor.includes(q) || handle.includes(q);
+          const productType = String(p?.productType || '').toLowerCase();
+          const tags = String(p?.tags || '').toLowerCase();
+          
+          // Combine all searchable fields
+          const searchText = `${title} ${vendor} ${handle} ${productType} ${tags}`;
+          
+          // Check if ALL words in the query appear somewhere in the product
+          return words.every(word => searchText.includes(word));
         }).slice(0, 8);
         setResults(filtered);
         setOpen(true);
