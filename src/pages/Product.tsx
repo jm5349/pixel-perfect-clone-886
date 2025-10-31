@@ -436,7 +436,7 @@ const ProductPage: React.FC = () => {
                         </div>
                       ) : (
                         <div 
-                        className="text-base leading-relaxed text-foreground font-bold"
+                        className="text-base leading-relaxed text-foreground font-medium"
                         dangerouslySetInnerHTML={{
                         __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                       }} />
@@ -579,7 +579,7 @@ const ProductPage: React.FC = () => {
                   </div>
                 ) : (
                 <div 
-                  className="text-sm leading-relaxed text-foreground font-bold"
+                  className="text-sm leading-relaxed text-foreground font-medium"
                   dangerouslySetInnerHTML={{
                   __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                 }} />
