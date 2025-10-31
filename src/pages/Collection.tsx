@@ -32,29 +32,12 @@ const getMinPrice = (p: any) => {
 
 const anyAvailable = (p: any) => (p?.variants || []).some((v: any) => !!v?.available);
 
-// Fetch all products from Shopify and categorize them dynamically
+// Fetch products/collections and categorize them robustly (cross-listing supported)
 const fetchAndCategorizeProducts = async (): Promise<Record<string, string[]>> => {
   try {
-    console.log('🔄 Fetching all products from Shopify...');
-    
-    // Fetch all products using GraphQL
-    const query = (client as any).graphQLClient.query((root: any) => {
-      root.addConnection('products', { args: { first: 250 } }, (product: any) => {
-        product.add('id');
-        product.add('title');
-        product.add('handle');
-        product.add('productType');
-        product.add('vendor');
-        product.add('tags');
-      });
-    });
-    
-    const response = await (client as any).graphQLClient.send(query);
-    const allProducts = response?.model?.products || [];
-    
-    console.log(`✅ Fetched ${allProducts.length} products from Shopify`);
-    
-    // Initialize categories
+    console.log('🔄 Building dynamic category map from Shopify collections and products…');
+
+    // Prepare category buckets (use Sets to avoid duplicates)
     const categories: Record<string, Set<string>> = {
       'all-products': new Set(),
       'body-kits': new Set(),
@@ -64,74 +47,116 @@ const fetchAndCategorizeProducts = async (): Promise<Record<string, string[]>> =
       'yofer-design': new Set(),
       'gf-bodykit': new Set(),
       'toyota-camry': new Set(),
-      'honda-civic': new Set()
+      'honda-civic': new Set(),
     };
-    
-    // Categorize each product
-    allProducts.forEach((product: any) => {
-      const productId = product.id.replace('gid://shopify/Product/', '');
-      const productType = (product.productType || '').toLowerCase();
-      const vendor = (product.vendor || '').toLowerCase();
-      const title = (product.title || '').toLowerCase();
-      const tags = (product.tags || []).map((t: string) => t.toLowerCase());
-      
-      // Add to all products
-      categories['all-products'].add(productId);
-      
-      // Categorize by product type
-      if (productType.includes('body kit') || productType.includes('bodykit') || title.includes('body kit')) {
-        categories['body-kits'].add(productId);
+
+    const addId = (key: string, id: string) => {
+      if (!key) return;
+      if (!categories[key]) categories[key] = new Set<string>();
+      categories[key].add(id);
+    };
+
+    const normalizeId = (gid: string) => gid?.replace?.('gid://shopify/Product/', '') || gid;
+    const includesAny = (text: string, terms: string[]) => terms.some(t => text.includes(t));
+
+    // 1) Fetch all collections with their products when possible
+    let collectionsWithProducts: any[] = [];
+    try {
+      if ((client as any).collection?.fetchAllWithProducts) {
+        collectionsWithProducts = await (client as any).collection.fetchAllWithProducts({ productsFirst: 250 });
+      } else if ((client as any).collection?.fetchAll) {
+        const cols = await (client as any).collection.fetchAll();
+        if (Array.isArray(cols) && cols.length) {
+          // Fetch products for each collection (in parallel)
+          collectionsWithProducts = await Promise.all(
+            cols.map(async (c: any) => {
+              try {
+                const full = await (client as any).collection.fetchWithProducts(c.id, { productsFirst: 250 });
+                return full || c;
+              } catch {
+                return c;
+              }
+            })
+          );
+        }
       }
-      
-      if (productType.includes('spoiler') || productType.includes('trunk spoiler') || title.includes('spoiler')) {
-        categories['spoilers'].add(productId);
+    } catch (e) {
+      console.warn('⚠️ Failed to fetch all collections with products, will rely more on product heuristics.', e);
+    }
+
+    // Map collections to our known handles and aliases
+    for (const col of collectionsWithProducts || []) {
+      const handle = String(col?.handle || '').toLowerCase();
+      const title = String(col?.title || '').toLowerCase();
+      const prods: any[] = Array.isArray(col?.products) ? col.products : [];
+
+      // Known-handle passthrough
+      const knownHandleKeys: string[] = [];
+      if (handle) knownHandleKeys.push(handle);
+
+      // Aliases to our app routes
+      if (includesAny(handle + ' ' + title, ['body kit', 'bodykit', 'body-kits', 'kits'])) knownHandleKeys.push('body-kits');
+      if (includesAny(handle + ' ' + title, ['spoiler', 'trunk spoiler'])) knownHandleKeys.push('spoilers');
+      if (includesAny(handle + ' ' + title, ['mirror cap', 'mirror cover'])) knownHandleKeys.push('mirror-caps');
+      if (includesAny(handle + ' ' + title, ['drl', 'running light'])) knownHandleKeys.push('drls-and-others');
+      if (includesAny(handle + ' ' + title, ['yofer', 'yf'])) knownHandleKeys.push('yofer-design');
+      if (includesAny(handle + ' ' + title, ['gf', 'gf bodykit'])) knownHandleKeys.push('gf-bodykit');
+
+      for (const p of prods) {
+        const id = normalizeId(p.id);
+        addId('all-products', id);
+        knownHandleKeys.forEach(k => addId(k, id));
       }
-      
-      if (productType.includes('mirror cap') || productType.includes('mirror cover') || title.includes('mirror cap') || title.includes('mirror cover')) {
-        categories['mirror-caps'].add(productId);
+
+      if (prods.length) {
+        console.log(`🗂️ Collection "${col?.title}" (${handle}) → ${prods.length} products mapped to: ${Array.from(new Set(knownHandleKeys)).join(', ')}`);
       }
-      
-      if (productType.includes('drl') || productType.includes('running light') || productType.includes('mirror running light') || title.includes('drl') || title.includes('running light')) {
-        categories['drls-and-others'].add(productId);
-      }
-      
-      // Categorize by vendor/brand
-      if (vendor.includes('yofer') || vendor.includes('yf') || title.includes('yofer')) {
-        categories['yofer-design'].add(productId);
-      }
-      
-      if (vendor.includes('gf') || vendor.includes('bodykit') || title.includes('gf bodykit')) {
-        categories['gf-bodykit'].add(productId);
-      }
-      
-      // Categorize by vehicle - check tags and title
-      const isToyotaCamry = tags.some(t => t.includes('toyota') && t.includes('camry')) || 
-                           title.includes('toyota camry') || title.includes('camry');
-      const isHondaCivic = tags.some(t => t.includes('honda') && t.includes('civic')) || 
-                          title.includes('honda civic') || title.includes('civic');
-      
-      if (isToyotaCamry) {
-        categories['toyota-camry'].add(productId);
-      }
-      
-      if (isHondaCivic) {
-        categories['honda-civic'].add(productId);
-      }
-      
-      console.log(`📦 Product: "${product.title}" → Categories: ${Object.keys(categories).filter(k => categories[k].has(productId)).join(', ')}`);
-    });
-    
-    // Convert Sets to Arrays
+    }
+
+    // 2) Fetch all products and fill/augment categories using product attributes
+    let allProducts: any[] = [];
+    try {
+      allProducts = await (client as any).product.fetchAll();
+      console.log(`✅ Fetched ${allProducts.length} products via product.fetchAll()`);
+    } catch (e) {
+      console.error('❌ product.fetchAll() failed:', e);
+      allProducts = [];
+    }
+
+    for (const product of allProducts) {
+      const id = normalizeId(product?.id);
+      const productType = String(product?.productType || '').toLowerCase();
+      const vendor = String(product?.vendor || '').toLowerCase();
+      const title = String(product?.title || '').toLowerCase();
+      const tags: string[] = Array.isArray(product?.tags) ? product.tags.map((t: string) => t.toLowerCase()) : [];
+
+      addId('all-products', id);
+
+      // Product-type/category heuristics (augment collection mapping)
+      if (includesAny(productType + ' ' + title, ['body kit', 'bodykit'])) addId('body-kits', id);
+      if (includesAny(productType + ' ' + title, ['spoiler', 'trunk spoiler'])) addId('spoilers', id);
+      if (includesAny(productType + ' ' + title, ['mirror cap', 'mirror cover'])) addId('mirror-caps', id);
+      if (includesAny(productType + ' ' + title, ['drl', 'running light', 'mirror running light'])) addId('drls-and-others', id);
+
+      if (includesAny(vendor + ' ' + title, ['yofer', 'yf'])) addId('yofer-design', id);
+      if (includesAny(vendor + ' ' + title, ['gf bodykit', 'gf'])) addId('gf-bodykit', id);
+
+      const isToyotaCamry = tags.some(t => t.includes('toyota') && t.includes('camry')) || title.includes('toyota camry') || title.includes('camry');
+      const isHondaCivic = tags.some(t => t.includes('honda') && t.includes('civic')) || title.includes('honda civic') || title.includes('civic');
+      if (isToyotaCamry) addId('toyota-camry', id);
+      if (isHondaCivic) addId('honda-civic', id);
+    }
+
+    // 3) Convert Sets → Arrays for export
     const result: Record<string, string[]> = {};
-    Object.keys(categories).forEach(key => {
+    for (const key of Object.keys(categories)) {
       result[key] = Array.from(categories[key]);
       console.log(`📊 ${key}: ${result[key].length} products`);
-    });
-    
+    }
+
     return result;
   } catch (error) {
-    console.error('❌ Failed to fetch and categorize products:', error);
-    // Return empty categories on error
+    console.error('❌ Failed to build dynamic categories:', error);
     return {
       'all-products': [],
       'body-kits': [],
@@ -141,7 +166,7 @@ const fetchAndCategorizeProducts = async (): Promise<Record<string, string[]>> =
       'yofer-design': [],
       'gf-bodykit': [],
       'toyota-camry': [],
-      'honda-civic': []
+      'honda-civic': [],
     };
   }
 };
