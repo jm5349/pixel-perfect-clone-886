@@ -13,9 +13,6 @@ import ProductTrustSignals from "@/components/product/ProductTrustSignals";
 import ProductHighlights from "@/components/product/ProductHighlights";
 import ProductPolicies from "@/components/product/ProductPolicies";
 import VariantSelector from "@/components/product/VariantSelector";
-import BeforeAfterCompare from "@/components/BeforeAfterCompare";
-import beforeImg from "@/assets/hero-car.jpg";
-import afterImg from "@/assets/aesthetics-category.jpg";
 import Header from "@/components/Header";
 import BusinessInfo from "@/components/BusinessInfo";
 import SearchBar from "@/components/SearchBar";
@@ -722,31 +719,6 @@ const ProductPage: React.FC = () => {
           <div className="mt-10 space-y-8">
             <ProductTrustSignals />
             <ProductHighlights product={product} />
-            <Card className="p-4 md:p-6 bg-card border-border">
-              <BeforeAfterCompare
-                beforeSrc={beforeImg}
-                afterSrc={afterImg}
-                title="Before & After Comparison"
-                description="Drag the slider to see the difference before and after installing the upgrade."
-                beforeLabel="Before"
-                afterLabel="After"
-                beforeAlt="Vehicle appearance before upgrade"
-                afterAlt="Vehicle appearance after upgrade"
-                shopLabel="Shop the look"
-                hotspots={[
-                  {
-                    id: "main-product",
-                    x: 72,
-                    y: 62,
-                    title: product.title,
-                    price: `${priceLabel}`,
-                    handle: (product as any).handle || (handle || ""),
-                    imageSrc: mainImage,
-                    description: "The main upgrade part shown can be purchased directly."
-                  }
-                ]}
-              />
-            </Card>
             <ProductPolicies />
           </div>
         </div>
