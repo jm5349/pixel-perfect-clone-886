@@ -435,11 +435,11 @@ const ProductPage: React.FC = () => {
                           </div>
                         </div>
                       ) : (
-                        <div 
-                          className="text-base leading-relaxed text-foreground font-medium"
-                          dangerouslySetInnerHTML={{
-                          __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
-                        }} />
+                      <div 
+                        className="text-base leading-relaxed text-white font-semibold"
+                        dangerouslySetInnerHTML={{
+                        __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
+                      }} />
                       )}
                     </article>
                   </Card>
@@ -578,11 +578,11 @@ const ProductPage: React.FC = () => {
                     </div>
                   </div>
                 ) : (
-                  <div 
-                    className="text-sm leading-relaxed text-foreground font-medium"
-                    dangerouslySetInnerHTML={{
-                    __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
-                  }} />
+                <div 
+                  className="text-sm leading-relaxed text-white font-semibold"
+                  dangerouslySetInnerHTML={{
+                  __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
+                }} />
                 )}
               </Card>
 
