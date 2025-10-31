@@ -199,10 +199,8 @@ const CollectionPage: React.FC = () => {
         const rawHandle = (handle || "").trim();
         let h = (!rawHandle || rawHandle.startsWith(":")) ? "body-kits" : rawHandle;
         
-        // Fetch and categorize all products if not already done
-        if (Object.keys(DYNAMIC_PRODUCTS).length === 0) {
-          DYNAMIC_PRODUCTS = await fetchAndCategorizeProducts();
-        }
+        // Always fetch fresh products to ensure new items from Shopify appear
+        DYNAMIC_PRODUCTS = await fetchAndCategorizeProducts();
         
         // Log collection and extra products for debugging
         console.log(`🔍 Fetching collection: "${h}"`);
