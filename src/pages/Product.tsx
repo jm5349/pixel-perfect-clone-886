@@ -464,7 +464,7 @@ const ProductPage: React.FC = () => {
                       {product.title.includes("Honda Civic") ? (
                         <div className="text-base leading-relaxed space-y-4">
                           <p className="text-foreground font-semibold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
-                          <ul className="space-y-3 text-foreground font-medium">
+                          <ul className="space-y-3 text-foreground font-semibold">
                             <li className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
                               <span>2 pieces side splitters + 2 pieces central lip splitters</span>
@@ -498,7 +498,7 @@ const ProductPage: React.FC = () => {
                         </div>
                       ) : (
                         <div 
-                        className="text-base leading-relaxed text-foreground font-medium"
+                        className="text-base leading-relaxed text-foreground font-semibold"
                         dangerouslySetInnerHTML={{
                         __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                       }} />
@@ -542,7 +542,7 @@ const ProductPage: React.FC = () => {
                           <BadgeCheck className="w-5 h-5" />
                           Compatibility
                         </h4>
-                        <p className="text-foreground font-medium">
+                        <p className="text-foreground font-semibold">
                           {getFitmentInfo(product.title).compatibility}
                         </p>
                       </div>
@@ -551,7 +551,7 @@ const ProductPage: React.FC = () => {
                           <Wrench className="w-5 h-5" />
                           Material & Construction
                         </h4>
-                        <p className="text-foreground font-medium">
+                        <p className="text-foreground font-semibold">
                           {getFitmentInfo(product.title).material}
                         </p>
                       </div>
@@ -560,7 +560,7 @@ const ProductPage: React.FC = () => {
                           <ShieldCheck className="w-5 h-5" />
                           Installation Requirements
                         </h4>
-                        <p className="text-foreground font-medium">
+                        <p className="text-foreground font-semibold">
                           {getFitmentInfo(product.title).installation}
                         </p>
                       </div>
@@ -578,7 +578,7 @@ const ProductPage: React.FC = () => {
                       {faqItems.map((item, idx) => 
                         <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
                           <AccordionTrigger className="text-left text-foreground hover:text-primary font-automotive font-semibold">{item.q}</AccordionTrigger>
-                          <AccordionContent className="text-foreground font-medium">{item.a}</AccordionContent>
+                          <AccordionContent className="text-foreground font-semibold">{item.a}</AccordionContent>
                         </AccordionItem>
                       )}
                     </Accordion>
@@ -598,7 +598,7 @@ const ProductPage: React.FC = () => {
                 {product.title.includes("Honda Civic") ? (
                   <div className="text-sm leading-relaxed space-y-3">
                     <p className="text-foreground font-semibold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
-                    <ul className="space-y-2.5 text-foreground font-medium">
+                    <ul className="space-y-2.5 text-foreground font-semibold">
                       <li className="flex items-start gap-2">
                         <span className="w-1 h-1 bg-primary rounded-full mt-1.5 flex-shrink-0"></span>
                         <span>2 pieces side splitters + 2 pieces central lip splitters</span>
@@ -632,7 +632,7 @@ const ProductPage: React.FC = () => {
                   </div>
                 ) : (
                 <div 
-                  className="text-sm leading-relaxed text-foreground font-medium"
+                  className="text-sm leading-relaxed text-foreground font-semibold"
                   dangerouslySetInnerHTML={{
                   __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                 }} />
@@ -673,7 +673,7 @@ const ProductPage: React.FC = () => {
                       <BadgeCheck className="w-4 h-4" />
                       Compatibility
                     </h4>
-                    <p className="text-foreground font-medium text-sm">
+                    <p className="text-foreground font-semibold text-sm">
                       {getFitmentInfo(product.title).compatibility}
                     </p>
                   </div>
@@ -682,7 +682,7 @@ const ProductPage: React.FC = () => {
                       <Wrench className="w-4 h-4" />
                       Material & Construction
                     </h4>
-                    <p className="text-foreground font-medium text-sm">
+                    <p className="text-foreground font-semibold text-sm">
                       {getFitmentInfo(product.title).material}
                     </p>
                   </div>
@@ -691,7 +691,7 @@ const ProductPage: React.FC = () => {
                       <ShieldCheck className="w-4 h-4" />
                       Installation Requirements
                     </h4>
-                    <p className="text-foreground font-medium text-sm">
+                    <p className="text-foreground font-semibold text-sm">
                       {getFitmentInfo(product.title).installation}
                     </p>
                   </div>
@@ -708,7 +708,7 @@ const ProductPage: React.FC = () => {
                   {faqItems.map((item, idx) => 
                     <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
                       <AccordionTrigger className="text-left text-sm hover:text-primary font-automotive font-semibold text-foreground">{item.q}</AccordionTrigger>
-                      <AccordionContent className="text-foreground font-medium text-sm">{item.a}</AccordionContent>
+                      <AccordionContent className="text-foreground font-semibold text-sm">{item.a}</AccordionContent>
                     </AccordionItem>
                   )}
                 </Accordion>
