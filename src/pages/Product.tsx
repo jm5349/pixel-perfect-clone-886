@@ -394,7 +394,7 @@ const ProductPage: React.FC = () => {
                 
                 <TabsContent value="details" className="mt-6">
                   <Card className="p-6 bg-card border-border">
-                    <h3 className="text-lg font-medium mb-4">Product Details</h3>
+                    <h3 className="text-lg font-automotive mb-4">Product Details</h3>
                     <article className="prose prose-invert max-w-none text-foreground">
                       {product.title.includes("Honda Civic") ? (
                         <div className="text-base leading-relaxed space-y-3">
@@ -424,18 +424,18 @@ const ProductPage: React.FC = () => {
                 
                 <TabsContent value="specs" className="mt-6">
                   <Card className="p-6 bg-card border-border">
-                    <h3 className="text-lg font-medium mb-4">Specifications</h3>
+                    <h3 className="text-lg font-automotive mb-4">Specifications</h3>
                     <div className="grid grid-cols-3 gap-4">
                       <div className="bg-muted/30 rounded-lg p-4">
-                        <h4 className="font-medium mb-2">Brand</h4>
+                        <h4 className="font-automotive mb-2">Brand</h4>
                         <p className="text-muted-foreground text-sm">{product.vendor || "Yofer Design"}</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
-                        <h4 className="font-medium mb-2">Type</h4>
+                        <h4 className="font-automotive mb-2">Type</h4>
                         <p className="text-muted-foreground text-sm">{product.productType || "Body Kit Component"}</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
-                        <h4 className="font-medium mb-2">SKU/Variant</h4>
+                        <h4 className="font-automotive mb-2">SKU/Variant</h4>
                         <p className="text-muted-foreground text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
                       </div>
                     </div>
@@ -444,10 +444,10 @@ const ProductPage: React.FC = () => {
                 
                 <TabsContent value="fitment" className="mt-6">
                   <Card className="p-6 bg-card border-border">
-                    <h3 className="text-lg font-medium mb-4">Fitment Information</h3>
+                    <h3 className="text-lg font-automotive mb-4">Fitment Information</h3>
                     <div className="space-y-4">
                       <div className="bg-muted/30 rounded-lg p-4">
-                        <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                        <h4 className="font-automotive text-foreground mb-2 flex items-center gap-2">
                           <BadgeCheck className="w-4 h-4 text-primary" />
                           Compatibility
                         </h4>
@@ -459,7 +459,7 @@ const ProductPage: React.FC = () => {
                         </p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
-                        <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                        <h4 className="font-automotive text-foreground mb-2 flex items-center gap-2">
                           <Wrench className="w-4 h-4 text-primary" />
                           Material & Construction
                         </h4>
@@ -471,7 +471,7 @@ const ProductPage: React.FC = () => {
                         </p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
-                        <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                        <h4 className="font-automotive text-foreground mb-2 flex items-center gap-2">
                           <ShieldCheck className="w-4 h-4 text-primary" />
                           Installation Requirements
                         </h4>
@@ -488,7 +488,7 @@ const ProductPage: React.FC = () => {
                 
                 <TabsContent value="faq" className="mt-6">
                   <Card className="p-6 bg-card border-border">
-                    <h3 className="text-lg font-medium mb-4">Frequently Asked Questions</h3>
+                    <h3 className="text-lg font-automotive mb-4">Frequently Asked Questions</h3>
                     <Accordion type="single" collapsible className="w-full">
                       {faqItems.map((item, idx) => 
                         <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-muted/30">
@@ -506,7 +506,7 @@ const ProductPage: React.FC = () => {
             <div className="md:hidden space-y-6">
               {/* Details Section */}
               <Card className="p-4 bg-card border-border">
-                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-automotive mb-4 flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   Product Details
                 </h3>
@@ -536,21 +536,21 @@ const ProductPage: React.FC = () => {
 
               {/* Specifications Section */}
               <Card className="p-4 bg-card border-border">
-                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-automotive mb-4 flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   Specifications
                 </h3>
                 <div className="space-y-3">
                   <div className="bg-muted/30 rounded-lg p-3">
-                    <h4 className="font-medium mb-1 text-sm">Brand</h4>
+                    <h4 className="font-automotive mb-1 text-sm">Brand</h4>
                     <p className="text-muted-foreground text-sm">{product.vendor || "Yofer Design"}</p>
                   </div>
                   <div className="bg-muted/30 rounded-lg p-3">
-                    <h4 className="font-medium mb-1 text-sm">Type</h4>
+                    <h4 className="font-automotive mb-1 text-sm">Type</h4>
                     <p className="text-muted-foreground text-sm">{product.productType || "Body Kit Component"}</p>
                   </div>
                   <div className="bg-muted/30 rounded-lg p-3">
-                    <h4 className="font-medium mb-1 text-sm">SKU/Variant</h4>
+                    <h4 className="font-automotive mb-1 text-sm">SKU/Variant</h4>
                     <p className="text-muted-foreground text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
                   </div>
                 </div>
@@ -558,13 +558,13 @@ const ProductPage: React.FC = () => {
 
               {/* Fitment Section */}
               <Card className="p-4 bg-card border-border">
-                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-automotive mb-4 flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   Fitment Information
                 </h3>
                 <div className="space-y-3">
                   <div className="bg-muted/30 rounded-lg p-3">
-                    <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
+                    <h4 className="font-automotive mb-2 text-sm flex items-center gap-2">
                       <BadgeCheck className="w-4 h-4 text-primary" />
                       Compatibility
                     </h4>
@@ -576,7 +576,7 @@ const ProductPage: React.FC = () => {
                     </p>
                   </div>
                   <div className="bg-muted/30 rounded-lg p-3">
-                    <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
+                    <h4 className="font-automotive mb-2 text-sm flex items-center gap-2">
                       <Wrench className="w-4 h-4 text-primary" />
                       Material & Construction
                     </h4>
@@ -588,7 +588,7 @@ const ProductPage: React.FC = () => {
                     </p>
                   </div>
                   <div className="bg-muted/30 rounded-lg p-3">
-                    <h4 className="font-medium mb-2 text-sm flex items-center gap-2">
+                    <h4 className="font-automotive mb-2 text-sm flex items-center gap-2">
                       <ShieldCheck className="w-4 h-4 text-primary" />
                       Installation Requirements
                     </h4>
@@ -604,7 +604,7 @@ const ProductPage: React.FC = () => {
 
               {/* FAQ Section */}
               <Card className="p-4 bg-card border-border">
-                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-automotive mb-4 flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   Frequently Asked Questions
                 </h3>
