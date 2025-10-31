@@ -398,7 +398,7 @@ const ProductPage: React.FC = () => {
                       <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
                       <h3 className="text-xl font-automotive font-bold text-foreground">Product Details</h3>
                     </div>
-                    <article className="prose prose-invert max-w-none">
+                    <div className="max-w-none">
                       {product.title.includes("Honda Civic") ? (
                         <div className="text-base leading-relaxed space-y-4">
                           <p className="text-foreground font-semibold">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
@@ -435,13 +435,13 @@ const ProductPage: React.FC = () => {
                           </div>
                         </div>
                       ) : (
-                      <div 
-                        className="text-base leading-relaxed text-white font-semibold"
+                        <div 
+                        className="text-base leading-relaxed text-foreground font-bold"
                         dangerouslySetInnerHTML={{
                         __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                       }} />
                       )}
-                    </article>
+                    </div>
                   </Card>
                 </TabsContent>
                 
@@ -579,7 +579,7 @@ const ProductPage: React.FC = () => {
                   </div>
                 ) : (
                 <div 
-                  className="text-sm leading-relaxed text-white font-semibold"
+                  className="text-sm leading-relaxed text-foreground font-bold"
                   dangerouslySetInnerHTML={{
                   __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                 }} />
