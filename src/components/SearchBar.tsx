@@ -80,7 +80,7 @@ const SearchBar = () => {
 
   const ResultList = useMemo(() => (
     open && (results.length > 0 || loading) ? (
-      <div className="absolute left-0 right-0 top-full mt-2 z-50">
+      <div className="absolute left-0 right-0 top-full mt-2 z-[9999]">
         <div className="rounded-xl border border-border bg-popover/95 backdrop-blur supports-[backdrop-filter]:bg-popover/80 shadow-lg overflow-hidden">
           {loading && (
             <div className="flex items-center gap-2 px-4 py-3 text-sm text-muted-foreground">
