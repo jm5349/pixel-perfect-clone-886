@@ -127,7 +127,7 @@ const SearchBar = () => {
         {/* Desktop Search Bar */}
         <div className="hidden lg:block">
           <div className="flex items-center justify-center">
-            <div ref={containerRef} className="relative flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow w-full max-w-2xl pr-4">
+            <div ref={containerRef} className="relative flex items-center bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full transition-all duration-300 hover:shadow-glow w-full max-w-4xl pr-4">
               <Button 
                 variant="ghost" 
                 size="icon" 
