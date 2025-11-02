@@ -14,7 +14,6 @@ const Header = () => {
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const [cartItemCount, setCartItemCount] = useState(0);
-  const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
   
   const announcements = ["🚗 Free shipping on All Orders", "🏁 New Collection Now Available", "⚡ 10% OFF New Customers", "🛠️ Ship Internationally"];
   
@@ -32,7 +31,6 @@ const Header = () => {
       const checkoutId = localStorage.getItem('shopify_checkout_id');
       if (!checkoutId) {
         setCartItemCount(0);
-        setCheckoutUrl(null);
         return;
       }
 
@@ -42,17 +40,14 @@ const Header = () => {
           // Checkout is completed, reset
           localStorage.removeItem('shopify_checkout_id');
           setCartItemCount(0);
-          setCheckoutUrl(null);
         } else {
           const lineItems = (checkout as any).lineItems || [];
           const count = lineItems.reduce((total: number, item: any) => total + item.quantity, 0);
           setCartItemCount(count);
-          setCheckoutUrl((checkout as any).webUrl);
         }
       } catch (error) {
         console.error('Error fetching cart:', error);
         setCartItemCount(0);
-        setCheckoutUrl(null);
       }
     };
 
@@ -67,11 +62,6 @@ const Header = () => {
     };
   }, []);
 
-  const handleCartClick = () => {
-    if (checkoutUrl) {
-      window.open(checkoutUrl, '_blank');
-    }
-  };
   const navItems = ['AESTHETICS', 'PERFORMANCE', 'WHEELS', 'ACCESSORIES', 'BESPOKE SERVICES'];
   return <header className="relative z-50 w-full">
       {/* Auto-rotating Announcement Banner */}
@@ -152,16 +142,18 @@ const Header = () => {
                    variant="ghost" 
                    size="icon" 
                    className="h-12 w-12 text-muted-foreground hover:text-primary relative"
-                   onClick={handleCartClick}
+                   asChild
                  >
-                   <ShoppingCart className="h-10 w-10" />
-                   {cartItemCount > 0 && (
-                     <Badge 
-                       className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-primary text-primary-foreground"
-                     >
-                       {cartItemCount}
-                     </Badge>
-                   )}
+                   <Link to="/cart">
+                     <ShoppingCart className="h-10 w-10" />
+                     {cartItemCount > 0 && (
+                       <Badge 
+                         className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-primary text-primary-foreground"
+                       >
+                         {cartItemCount}
+                       </Badge>
+                     )}
+                   </Link>
                  </Button>
                  <CustomerLogin>
                    <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
@@ -411,16 +403,18 @@ const Header = () => {
                    variant="ghost" 
                    size="icon" 
                    className="h-12 w-12 text-muted-foreground hover:text-primary relative"
-                   onClick={handleCartClick}
+                   asChild
                  >
-                   <ShoppingCart className="h-9 w-9" />
-                   {cartItemCount > 0 && (
-                     <Badge 
-                       className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-primary text-primary-foreground"
-                     >
-                       {cartItemCount}
-                     </Badge>
-                   )}
+                   <Link to="/cart">
+                     <ShoppingCart className="h-9 w-9" />
+                     {cartItemCount > 0 && (
+                       <Badge 
+                         className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-primary text-primary-foreground"
+                       >
+                         {cartItemCount}
+                       </Badge>
+                     )}
+                   </Link>
                  </Button>
                  <CustomerLogin>
                    <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
