@@ -32,7 +32,7 @@ const Categories = () => {
     image: gfBodykitLogo,
     description: "Premium GF Design Products"
   }];
-  return <section className="py-6 bg-background">
+  return <section className="relative z-0 py-6 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-3 mb-6">
