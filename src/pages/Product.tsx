@@ -275,16 +275,38 @@ const ProductPage: React.FC = () => {
     if (!variant) return;
     setAddingToCart(true);
     try {
-      const checkout = await client.checkout.create();
+      // Get existing checkout from localStorage or create new one
+      let checkoutId = localStorage.getItem('shopify_checkout_id');
+      let checkout: any;
+      
+      if (checkoutId) {
+        try {
+          checkout = await client.checkout.fetch(checkoutId);
+          // If checkout is completed, create a new one
+          if ((checkout as any).completedAt) {
+            checkout = await client.checkout.create();
+            localStorage.setItem('shopify_checkout_id', checkout.id);
+          }
+        } catch {
+          // If fetch fails, create new checkout
+          checkout = await client.checkout.create();
+          localStorage.setItem('shopify_checkout_id', checkout.id);
+        }
+      } else {
+        checkout = await client.checkout.create();
+        localStorage.setItem('shopify_checkout_id', checkout.id);
+      }
+      
       const lineItemsToAdd = [{
         variantId: variant.id,
         quantity: Math.max(1, quantity)
       }];
-      const updatedCheckout = await client.checkout.addLineItems(checkout.id, lineItemsToAdd);
-      window.open(updatedCheckout.webUrl, "_blank");
+      
+      await client.checkout.addLineItems(checkout.id, lineItemsToAdd);
+      
       toast({
         title: "Added to cart",
-        description: `${product?.title ?? "Product"} has been added to your cart`
+        description: `${product?.title ?? "Product"} added to your cart successfully`
       });
     } catch (e) {
       console.error("Add to cart error:", e);
@@ -401,7 +423,7 @@ const ProductPage: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button size="lg" onClick={addToCart} disabled={!isAvailable || addingToCart} className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                  {addingToCart ? "Processing..." : "Add to cart & checkout"}
+                  {addingToCart ? "Adding..." : "Add to Cart"}
                 </Button>
               </div>
 
