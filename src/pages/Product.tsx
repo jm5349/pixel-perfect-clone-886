@@ -435,11 +435,11 @@ const ProductPage: React.FC = () => {
                 <div className="border border-border rounded-lg p-4 bg-card/50">
                   <h3 className="text-sm font-medium text-foreground mb-3">Secure Payment</h3>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <div className="w-8 h-5 bg-gradient-to-r from-blue-600 to-blue-400 rounded text-white flex items-center justify-center font-bold text-[8px]">VISA</div>
-                      <div className="w-8 h-5 bg-gradient-to-r from-red-600 to-orange-400 rounded text-white flex items-center justify-center font-bold text-[8px]">MC</div>
-                      <div className="w-8 h-5 bg-gradient-to-r from-blue-500 to-blue-300 rounded text-white flex items-center justify-center font-bold text-[8px]">AMEX</div>
-                      <div className="w-8 h-5 bg-gradient-to-r from-purple-600 to-purple-400 rounded text-white flex items-center justify-center font-bold text-[8px]">PP</div>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                      <div className="w-12 h-8 bg-gradient-to-r from-blue-600 to-blue-400 rounded text-white flex items-center justify-center font-bold text-xs">VISA</div>
+                      <div className="w-12 h-8 bg-gradient-to-r from-red-600 to-orange-400 rounded text-white flex items-center justify-center font-bold text-xs">MC</div>
+                      <div className="w-12 h-8 bg-gradient-to-r from-blue-500 to-blue-300 rounded text-white flex items-center justify-center font-bold text-xs">AMEX</div>
+                      <div className="w-12 h-8 bg-gradient-to-r from-purple-600 to-purple-400 rounded text-white flex items-center justify-center font-bold text-xs">PP</div>
                     </div>
                   </div>
                   <p className="text-xs text-muted-foreground">SSL encrypted • Your payment info is secure</p>
