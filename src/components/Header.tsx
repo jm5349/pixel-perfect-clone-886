@@ -6,12 +6,18 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
 import { Link } from 'react-router-dom';
 import CustomerLogin from './CustomerLogin';
+import client from '@/lib/shopify';
+import { Badge } from '@/components/ui/badge';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
+  const [cartItemCount, setCartItemCount] = useState(0);
+  const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
+  
   const announcements = ["🚗 Free shipping on All Orders", "🏁 New Collection Now Available", "⚡ 10% OFF New Customers", "🛠️ Ship Internationally"];
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentAnnouncementIndex(prev => (prev + 1) % announcements.length);
@@ -19,6 +25,53 @@ const Header = () => {
 
     return () => clearInterval(interval);
   }, [announcements.length]);
+
+  // Fetch cart count
+  useEffect(() => {
+    const fetchCartCount = async () => {
+      const checkoutId = localStorage.getItem('shopify_checkout_id');
+      if (!checkoutId) {
+        setCartItemCount(0);
+        setCheckoutUrl(null);
+        return;
+      }
+
+      try {
+        const checkout = await client.checkout.fetch(checkoutId);
+        if ((checkout as any).completedAt) {
+          // Checkout is completed, reset
+          localStorage.removeItem('shopify_checkout_id');
+          setCartItemCount(0);
+          setCheckoutUrl(null);
+        } else {
+          const lineItems = (checkout as any).lineItems || [];
+          const count = lineItems.reduce((total: number, item: any) => total + item.quantity, 0);
+          setCartItemCount(count);
+          setCheckoutUrl((checkout as any).webUrl);
+        }
+      } catch (error) {
+        console.error('Error fetching cart:', error);
+        setCartItemCount(0);
+        setCheckoutUrl(null);
+      }
+    };
+
+    fetchCartCount();
+
+    // Listen for cart updates
+    const handleCartUpdate = () => fetchCartCount();
+    window.addEventListener('cart-updated', handleCartUpdate);
+
+    return () => {
+      window.removeEventListener('cart-updated', handleCartUpdate);
+    };
+  }, []);
+
+  const handleCartClick = () => {
+    if (checkoutUrl) {
+      window.open(checkoutUrl, '_blank');
+    }
+  };
   const navItems = ['AESTHETICS', 'PERFORMANCE', 'WHEELS', 'ACCESSORIES', 'BESPOKE SERVICES'];
   return <header className="relative z-50 w-full">
       {/* Auto-rotating Announcement Banner */}
@@ -95,8 +148,20 @@ const Header = () => {
               
               {/* Actions - Right */}
               <div className="flex items-center space-x-2">
-                 <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
+                 <Button 
+                   variant="ghost" 
+                   size="icon" 
+                   className="h-12 w-12 text-muted-foreground hover:text-primary relative"
+                   onClick={handleCartClick}
+                 >
                    <ShoppingCart className="h-10 w-10" />
+                   {cartItemCount > 0 && (
+                     <Badge 
+                       className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-primary text-primary-foreground"
+                     >
+                       {cartItemCount}
+                     </Badge>
+                   )}
                  </Button>
                  <CustomerLogin>
                    <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
@@ -342,8 +407,20 @@ const Header = () => {
 
               {/* Actions - Right */}
               <div className="flex items-center space-x-4 absolute right-0">
-                 <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
+                 <Button 
+                   variant="ghost" 
+                   size="icon" 
+                   className="h-12 w-12 text-muted-foreground hover:text-primary relative"
+                   onClick={handleCartClick}
+                 >
                    <ShoppingCart className="h-9 w-9" />
+                   {cartItemCount > 0 && (
+                     <Badge 
+                       className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-primary text-primary-foreground"
+                     >
+                       {cartItemCount}
+                     </Badge>
+                   )}
                  </Button>
                  <CustomerLogin>
                    <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">

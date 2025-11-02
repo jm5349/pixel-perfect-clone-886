@@ -304,6 +304,9 @@ const ProductPage: React.FC = () => {
       
       await client.checkout.addLineItems(checkout.id, lineItemsToAdd);
       
+      // Dispatch custom event to update cart count in header
+      window.dispatchEvent(new Event('cart-updated'));
+      
       toast({
         title: "Added to cart",
         description: `${product?.title ?? "Product"} added to your cart successfully`
