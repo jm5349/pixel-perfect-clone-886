@@ -251,7 +251,7 @@ const ProductPage: React.FC = () => {
     a: "No. We don't offer in-store installation and we always recommend professional installation"
   }, {
     q: "How long does shipping take?",
-    a: "In-stock items ship within 24–48 business hours. back-ordered items vary; we’ll confirm by email."
+    a: "In-stock items ship within 24–48 business hours. back-ordered items vary; we'll confirm by email."
   }, {
     q: "Will this fit my vehicle?",
     a: "Designed for Toyota Camry 2025–2026 SE & XSE Models. You can always email us to verify your fitment."
@@ -448,7 +448,7 @@ const ProductPage: React.FC = () => {
                 <div className="grid grid-cols-2 gap-3 text-xs">
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span>Free shipping </span>
+                    <span>Worldwide shipping</span>
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
