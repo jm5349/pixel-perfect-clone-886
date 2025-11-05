@@ -460,7 +460,7 @@ const ProductPage: React.FC = () => {
                   <TabsTrigger value="details">Details</TabsTrigger>
                   <TabsTrigger value="specs">Specifications</TabsTrigger>
                   <TabsTrigger value="fitment">Fitment</TabsTrigger>
-                  <TabsTrigger value="faq">FAQ</TabsTrigger>
+                  <TabsTrigger value="faq">Customer Service</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="details" className="mt-6">
