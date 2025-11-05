@@ -13,9 +13,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <BusinessInfo />
-      <div className="relative z-[1000]">
-        <SearchBar />
-      </div>
+      <SearchBar />
       <Categories />
       <ProductShowcase />
       <About />
