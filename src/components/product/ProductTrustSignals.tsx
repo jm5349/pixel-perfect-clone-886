@@ -13,9 +13,9 @@ const trustItems = [
     desc: "30 day return policy for your peace of mind",
   },
   {
-    icon: Wrench,
-    title: "Easy Installation",
-    desc: "Basic hand tools and mounting hardware included",
+    icon: Truck,
+    title: "Fast Shipping",
+    desc: "In-stock items ship within 24-48 hours",
   },
   {
     icon: BadgeCheck,
