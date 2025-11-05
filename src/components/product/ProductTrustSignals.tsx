@@ -1,11 +1,11 @@
 import React from "react";
-import { ShieldCheck, Truck, Wrench, BadgeCheck } from "lucide-react";
+import { DollarSign, Truck, Wrench, BadgeCheck } from "lucide-react";
 
 const trustItems = [
   {
-    icon: ShieldCheck,
-    title: "Fitment Guarantee",
-    desc: "Designed for OEM-like fit on supported trims",
+    icon: DollarSign,
+    title: "Reasonable Pricing",
+    desc: "Competitive prices on premium quality parts",
   },
   {
     icon: Truck,
