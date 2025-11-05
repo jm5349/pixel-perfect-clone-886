@@ -456,9 +456,8 @@ const ProductPage: React.FC = () => {
             {/* Desktop Tabs */}
             <div className="hidden md:block">
               <Tabs defaultValue="details" className="w-full">
-                <TabsList className="grid grid-cols-4 w-full">
-                  <TabsTrigger value="details">Details</TabsTrigger>
-                  <TabsTrigger value="specs">Specifications</TabsTrigger>
+                <TabsList className="grid grid-cols-3 w-full">
+                  <TabsTrigger value="details">Overview</TabsTrigger>
                   <TabsTrigger value="fitment">Fitment</TabsTrigger>
                   <TabsTrigger value="faq">Customer Service</TabsTrigger>
                 </TabsList>
@@ -467,71 +466,70 @@ const ProductPage: React.FC = () => {
                   <Card className="p-6 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                      <h3 className="text-xl font-automotive font-bold text-foreground">Product Details</h3>
+                      <h3 className="text-xl font-automotive font-bold text-foreground">Product Overview</h3>
                     </div>
-                    <div className="max-w-none">
+                    
+                    {/* Product Description */}
+                    <div className="max-w-none mb-8">
                       {product.title.includes("Honda Civic") ? <div className="product-description text-base leading-relaxed space-y-4">
-                          <p className="text-white font-normal">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
+                          <p className="text-white font-normal">This comprehensive 4-piece YF Original Design Front Bumper Lip Splitter Kit transforms your vehicle's appearance while providing functional protection:</p>
                           <ul className="space-y-3 text-white font-normal">
                             <li className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                              <span>2 pieces side splitters + 2 pieces central lip splitters</span>
+                              <span>Complete 4-piece kit: 2 side splitters + 2 central lip splitters for full front coverage</span>
                             </li>
                             <li className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                              <span>Special 2-tone color finish for enhanced aerodynamic look</span>
+                              <span>Premium 2-tone finish creates an aggressive, race-inspired aesthetic</span>
                             </li>
                             <li className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                              <span>Quality lightweight PP (polypropylene) material</span>
+                              <span>Constructed from durable, lightweight polypropylene (PP) for long-lasting performance</span>
                             </li>
                             <li className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                              <span>Protects original bumper from road bumps and scratches</span>
+                              <span>Shields your factory bumper from curbs, speed bumps, and road debris</span>
                             </li>
                             <li className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                              <span>Dramatically improves sporty appearance</span>
+                              <span>Transforms your vehicle's front end with a bold, performance-oriented look</span>
                             </li>
                             <li className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                              <span>Professional installation recommended (drilling required)</span>
+                              <span>Requires professional installation with drilling for optimal fitment</span>
                             </li>
                           </ul>
                           <div className="mt-6 p-4 bg-primary/10 border border-primary/20 rounded-lg">
                             <p className="text-sm text-white font-normal">
-                              <strong className="text-primary">Installation Note:</strong> Use bigger washers and additional screws & tape for secure mounting.
+                              <strong className="text-primary">Pro Installation Tip:</strong> Ensure secure mounting by using larger washers along with additional screws and adhesive tape for maximum durability.
                             </p>
                           </div>
                         </div> : <div className="product-description text-base leading-relaxed text-white font-normal" dangerouslySetInnerHTML={{
-                        __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
+                        __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part engineered to enhance both performance and visual appeal of your vehicle."
                       }} />}
+                    </div>
+
+                    {/* Specifications */}
+                    <div className="border-t border-primary/20 pt-6">
+                      <h4 className="text-lg font-automotive font-bold text-foreground mb-4">Product Specifications</h4>
+                      <div className="grid grid-cols-3 gap-4">
+                        <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
+                          <h5 className="font-automotive font-bold mb-2 text-primary">Manufacturer</h5>
+                          <p className="text-foreground font-semibold text-sm">{product.vendor || "Yofer Design"}</p>
+                        </div>
+                        <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
+                          <h5 className="font-automotive font-bold mb-2 text-primary">Category</h5>
+                          <p className="text-foreground font-semibold text-sm">{product.productType || "Body Kit Component"}</p>
+                        </div>
+                        <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
+                          <h5 className="font-automotive font-bold mb-2 text-primary">Model/SKU</h5>
+                          <p className="text-foreground font-semibold text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
+                        </div>
+                      </div>
                     </div>
                   </Card>
                 </TabsContent>
                 
-                <TabsContent value="specs" className="mt-6">
-                  <Card className="p-6 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                      <h3 className="text-xl font-automotive font-bold text-foreground">Specifications</h3>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4">
-                      <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                        <h4 className="font-automotive font-bold mb-2 text-primary">Brand</h4>
-                        <p className="text-foreground font-semibold text-sm">{product.vendor || "Yofer Design"}</p>
-                      </div>
-                      <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                        <h4 className="font-automotive font-bold mb-2 text-primary">Type</h4>
-                        <p className="text-foreground font-semibold text-sm">{product.productType || "Body Kit Component"}</p>
-                      </div>
-                      <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                        <h4 className="font-automotive font-bold mb-2 text-primary">SKU/Variant</h4>
-                        <p className="text-foreground font-semibold text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
-                      </div>
-                    </div>
-                  </Card>
-                </TabsContent>
                 
                 <TabsContent value="fitment" className="mt-6">
                   <Card className="p-6 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
