@@ -28,8 +28,8 @@ const Footer = () => {
   ];
 
   const categories = [
-    'Aesthetics', 'Performance', 'Wheels', 'Accessories',
-    'BMW Parts', 'Tesla Parts', 'Bespoke Services'
+    'Body Kits', 'Spoilers', 'Mirror Caps', 'DRLs & Others',
+    'Yofer Design®', 'GF Bodykit®'
   ];
 
   return (
