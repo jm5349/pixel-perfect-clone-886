@@ -34,16 +34,15 @@ const slugToIsNumericId = (s: string) => /^\d+$/.test(s.trim());
 // Parse fitment information from product title
 const parseFitmentFromTitle = (title: string) => {
   const lowerTitle = title.toLowerCase();
-  
+
   // Extract year range or single year
   const yearMatch = title.match(/\b(20\d{2})(?:[-–]\s?(20?\d{2}))?\b/);
-  const yearInfo = yearMatch ? (yearMatch[2] ? `${yearMatch[1]}-${yearMatch[2]}` : yearMatch[1]) : "";
-  
+  const yearInfo = yearMatch ? yearMatch[2] ? `${yearMatch[1]}-${yearMatch[2]}` : yearMatch[1] : "";
+
   // Extract make and model
   let make = "";
   let model = "";
   let trims = "";
-  
   if (lowerTitle.includes("toyota camry")) {
     make = "Toyota";
     model = "Camry";
@@ -60,40 +59,35 @@ const parseFitmentFromTitle = (title: string) => {
     const trimMatch = title.match(/\b(A-Spec|Technology|Limited)\b/gi);
     trims = trimMatch ? trimMatch.join(", ") : "";
   }
-  
+
   // Determine product type for specific installation guidance
   let productType = "accessory";
-  if (lowerTitle.includes("door handle")) productType = "door_handle";
-  else if (lowerTitle.includes("body kit") || lowerTitle.includes("front lip") || lowerTitle.includes("splitter")) productType = "body_kit";
-  else if (lowerTitle.includes("spoiler") || lowerTitle.includes("wing")) productType = "spoiler";
-  else if (lowerTitle.includes("mirror")) productType = "mirror";
-  else if (lowerTitle.includes("grille") || lowerTitle.includes("grill")) productType = "grille";
-  
-  return { yearInfo, make, model, trims, productType };
+  if (lowerTitle.includes("door handle")) productType = "door_handle";else if (lowerTitle.includes("body kit") || lowerTitle.includes("front lip") || lowerTitle.includes("splitter")) productType = "body_kit";else if (lowerTitle.includes("spoiler") || lowerTitle.includes("wing")) productType = "spoiler";else if (lowerTitle.includes("mirror")) productType = "mirror";else if (lowerTitle.includes("grille") || lowerTitle.includes("grill")) productType = "grille";
+  return {
+    yearInfo,
+    make,
+    model,
+    trims,
+    productType
+  };
 };
-
 const getFitmentInfo = (title: string) => {
-  const { yearInfo, make, model, trims, productType } = parseFitmentFromTitle(title);
-  
+  const {
+    yearInfo,
+    make,
+    model,
+    trims,
+    productType
+  } = parseFitmentFromTitle(title);
   const vehicleInfo = `${yearInfo ? `${yearInfo} ` : ""}${make}${model ? ` ${model}` : ""}${trims ? ` (${trims})` : ""}`.trim() || "your vehicle";
-  
-  const compatibility = vehicleInfo === "your vehicle" 
-    ? "Please verify fitment compatibility with your specific vehicle model and year before ordering."
-    : `Designed specifically for ${vehicleInfo}. Please verify your exact model and trim before ordering to ensure proper fitment.`;
-  
-  const material = productType === "door_handle" 
-    ? "High-quality ABS plastic with automotive-grade finish. UV-resistant coating prevents fading and ensures long-lasting durability."
-    : productType === "body_kit"
-    ? "Premium ABS/FRP or carbon fiber depending on selected variant. Lightweight yet durable construction for aerodynamic design."
-    : "Quality automotive-grade materials designed for durability and long-lasting performance.";
-  
-  const installation = productType === "door_handle"
-    ? "Easy DIY installation with pre-applied 3M automotive tape. No drilling required. Clean surface thoroughly before application for best adhesion."
-    : productType === "body_kit"
-    ? "Professional installation recommended. May require drilling and minor adjustments. Always test-fit prior to paint or PPF application."
-    : "Professional installation recommended. Verify all fitment and clearances before final installation.";
-  
-  return { compatibility, material, installation };
+  const compatibility = vehicleInfo === "your vehicle" ? "Please verify fitment compatibility with your specific vehicle model and year before ordering." : `Designed specifically for ${vehicleInfo}. Please verify your exact model and trim before ordering to ensure proper fitment.`;
+  const material = productType === "door_handle" ? "High-quality ABS plastic with automotive-grade finish. UV-resistant coating prevents fading and ensures long-lasting durability." : productType === "body_kit" ? "Premium ABS/FRP or carbon fiber depending on selected variant. Lightweight yet durable construction for aerodynamic design." : "Quality automotive-grade materials designed for durability and long-lasting performance.";
+  const installation = productType === "door_handle" ? "Easy DIY installation with pre-applied 3M automotive tape. No drilling required. Clean surface thoroughly before application for best adhesion." : productType === "body_kit" ? "Professional installation recommended. May require drilling and minor adjustments. Always test-fit prior to paint or PPF application." : "Professional installation recommended. Verify all fitment and clearances before final installation.";
+  return {
+    compatibility,
+    material,
+    installation
+  };
 };
 const ProductPage: React.FC = () => {
   const {
@@ -207,7 +201,7 @@ const ProductPage: React.FC = () => {
   // Update selected image when variant changes
   useEffect(() => {
     if (!variant || !product) return;
-    
+
     // Check if variant has an associated image
     const variantImage = (variant as any).image;
     if (variantImage?.src) {
@@ -278,7 +272,6 @@ const ProductPage: React.FC = () => {
       // Get existing checkout from localStorage or create new one
       let checkoutId = localStorage.getItem('shopify_checkout_id');
       let checkout: any;
-      
       if (checkoutId) {
         try {
           checkout = await client.checkout.fetch(checkoutId);
@@ -296,17 +289,14 @@ const ProductPage: React.FC = () => {
         checkout = await client.checkout.create();
         localStorage.setItem('shopify_checkout_id', checkout.id);
       }
-      
       const lineItemsToAdd = [{
         variantId: variant.id,
         quantity: Math.max(1, quantity)
       }];
-      
       await client.checkout.addLineItems(checkout.id, lineItemsToAdd);
-      
+
       // Dispatch custom event to update cart count in header
       window.dispatchEvent(new Event('cart-updated'));
-      
       toast({
         title: "Added to cart",
         description: `${product?.title ?? "Product"} added to your cart successfully`
@@ -365,11 +355,11 @@ const ProductPage: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.04)_0%,transparent_50%)]" />
         <div className="relative container mx-auto px-6 lg:px-8">
           {productLd && <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productLd)
-        }} />}
+            __html: JSON.stringify(productLd)
+          }} />}
           {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqLd)
-        }} />}
+            __html: JSON.stringify(faqLd)
+          }} />}
           {/* Breadcrumbs */}
           <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2">
@@ -408,15 +398,9 @@ const ProductPage: React.FC = () => {
               </div>
 
               {/* Variant selector */}
-              {product.variants?.length > 1 && (
-                <div className="mb-6">
-                  <VariantSelector
-                    variants={product.variants}
-                    selectedVariantId={selectedVariantId ?? product.variants[0].id}
-                    onVariantChange={setSelectedVariantId}
-                  />
-                </div>
-              )}
+              {product.variants?.length > 1 && <div className="mb-6">
+                  <VariantSelector variants={product.variants} selectedVariantId={selectedVariantId ?? product.variants[0].id} onVariantChange={setSelectedVariantId} />
+                </div>}
 
               {/* Quantity */}
               <div className="mb-6 flex items-center gap-3">
@@ -460,7 +444,7 @@ const ProductPage: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    <span>Secure payment processing</span>
+                    <span>Verified and secured</span>
                   </div>
                 </div>
               </div>
@@ -476,7 +460,7 @@ const ProductPage: React.FC = () => {
                   <TabsTrigger value="details">Details</TabsTrigger>
                   <TabsTrigger value="specs">Specifications</TabsTrigger>
                   <TabsTrigger value="fitment">Fitment</TabsTrigger>
-                  <TabsTrigger value="faq">Customer Service</TabsTrigger>
+                  <TabsTrigger value="faq">FAQ</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="details" className="mt-6">
@@ -486,8 +470,7 @@ const ProductPage: React.FC = () => {
                       <h3 className="text-xl font-automotive font-bold text-foreground">Product Details</h3>
                     </div>
                     <div className="max-w-none">
-                      {product.title.includes("Honda Civic") ? (
-                        <div className="product-description text-base leading-relaxed space-y-4">
+                      {product.title.includes("Honda Civic") ? <div className="product-description text-base leading-relaxed space-y-4">
                           <p className="text-white font-normal">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
                           <ul className="space-y-3 text-white font-normal">
                             <li className="flex items-start gap-3">
@@ -520,14 +503,9 @@ const ProductPage: React.FC = () => {
                               <strong className="text-primary">Installation Note:</strong> Use bigger washers and additional screws & tape for secure mounting.
                             </p>
                           </div>
-                        </div>
-                      ) : (
-                        <div 
-                        className="product-description text-base leading-relaxed text-white font-normal"
-                        dangerouslySetInnerHTML={{
+                        </div> : <div className="product-description text-base leading-relaxed text-white font-normal" dangerouslySetInnerHTML={{
                         __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
-                      }} />
-                      )}
+                      }} />}
                     </div>
                   </Card>
                 </TabsContent>
@@ -600,12 +578,10 @@ const ProductPage: React.FC = () => {
                       <h3 className="text-xl font-automotive font-bold text-foreground">Frequently Asked Questions</h3>
                     </div>
                     <Accordion type="single" collapsible className="w-full">
-                      {faqItems.map((item, idx) => 
-                        <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
+                      {faqItems.map((item, idx) => <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
                           <AccordionTrigger className="text-left text-white hover:text-primary font-automotive font-semibold">{item.q}</AccordionTrigger>
                           <AccordionContent className="text-white font-normal">{item.a}</AccordionContent>
-                        </AccordionItem>
-                      )}
+                        </AccordionItem>)}
                     </Accordion>
                   </Card>
                 </TabsContent>
@@ -620,8 +596,7 @@ const ProductPage: React.FC = () => {
                   <div className="w-1 h-6 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
                   <h3 className="text-lg font-automotive font-bold text-foreground">Product Details</h3>
                 </div>
-                {product.title.includes("Honda Civic") ? (
-                  <div className="product-description text-sm leading-relaxed space-y-3">
+                {product.title.includes("Honda Civic") ? <div className="product-description text-sm leading-relaxed space-y-3">
                     <p className="text-white font-normal">4-piece YF Original Design Front Bumper Lip Splitter Kit featuring:</p>
                     <ul className="space-y-2.5 text-white font-normal">
                       <li className="flex items-start gap-2">
@@ -654,14 +629,9 @@ const ProductPage: React.FC = () => {
                         <strong className="text-primary">Installation Note:</strong> Use bigger washers and additional screws & tape for secure mounting.
                       </p>
                     </div>
-                  </div>
-                ) : (
-                <div 
-                  className="product-description text-sm leading-relaxed text-white font-normal"
-                  dangerouslySetInnerHTML={{
+                  </div> : <div className="product-description text-sm leading-relaxed text-white font-normal" dangerouslySetInnerHTML={{
                   __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
-                }} />
-                )}
+                }} />}
               </Card>
 
               {/* Specifications Section */}
@@ -730,12 +700,10 @@ const ProductPage: React.FC = () => {
                   <h3 className="text-lg font-automotive font-bold text-foreground">Frequently Asked Questions</h3>
                 </div>
                 <Accordion type="single" collapsible className="w-full">
-                  {faqItems.map((item, idx) => 
-                    <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
+                  {faqItems.map((item, idx) => <AccordionItem key={idx} value={`item-${idx + 1}`} className="border-primary/20">
                       <AccordionTrigger className="text-left text-sm hover:text-primary font-automotive font-semibold text-white">{item.q}</AccordionTrigger>
                       <AccordionContent className="text-white font-normal text-sm">{item.a}</AccordionContent>
-                    </AccordionItem>
-                  )}
+                    </AccordionItem>)}
                 </Accordion>
               </Card>
             </div>
