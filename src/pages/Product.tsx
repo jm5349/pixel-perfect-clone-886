@@ -429,22 +429,22 @@ const ProductPage: React.FC = () => {
                   <p className="text-xs text-muted-foreground">SSL encrypted • Your payment info is secure</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span>Worldwide shipping</span>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
+                    <div className="w-3 h-3 bg-gradient-to-br from-green-500 to-green-400 rounded-full flex-shrink-0"></div>
+                    <span className="text-sm font-medium text-foreground">Worldwide shipping</span>
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span>30-day returns</span>
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
+                    <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-blue-400 rounded-full flex-shrink-0"></div>
+                    <span className="text-sm font-medium text-foreground">30-day returns</span>
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                    <span>1-year warranty</span>
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
+                    <div className="w-3 h-3 bg-gradient-to-br from-orange-500 to-orange-400 rounded-full flex-shrink-0"></div>
+                    <span className="text-sm font-medium text-foreground">1-year warranty</span>
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    <span>US-base Customer Service</span>
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
+                    <div className="w-3 h-3 bg-gradient-to-br from-purple-500 to-purple-400 rounded-full flex-shrink-0"></div>
+                    <span className="text-sm font-medium text-foreground">US-base Customer Service</span>
                   </div>
                 </div>
               </div>
