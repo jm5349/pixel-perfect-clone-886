@@ -19,8 +19,8 @@ const trustItems = [
   },
   {
     icon: BadgeCheck,
-    title: "Quality Materials",
-    desc: "Premium ABS/FRP or carbon fiber construction",
+    title: "Premium Material",
+    desc: "High-quality construction for lasting durability",
   },
 ];
 
