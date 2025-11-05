@@ -167,7 +167,7 @@ const Cart = () => {
         <div className="relative z-[1000]">
           <SearchBar />
         </div>
-        <main className="min-h-screen bg-background py-16">
+        <main className="min-h-screen bg-background pt-32 pb-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="h-8 bg-muted animate-pulse rounded w-48 mb-8"></div>
@@ -191,7 +191,7 @@ const Cart = () => {
       <div className="relative z-[1000]">
         <SearchBar />
       </div>
-      <main className="min-h-screen bg-background py-16">
+      <main className="min-h-screen bg-background pt-32 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Header */}
