@@ -1,5 +1,5 @@
 import React from "react";
-import { DollarSign, Truck, Wrench, BadgeCheck } from "lucide-react";
+import { DollarSign, Truck, Wrench, BadgeCheck, ShieldCheck } from "lucide-react";
 
 const trustItems = [
   {
@@ -8,9 +8,9 @@ const trustItems = [
     desc: "Competitive prices on premium quality parts",
   },
   {
-    icon: Truck,
-    title: "Fast Shipping",
-    desc: "In-stock items ship within 24–48 hours",
+    icon: ShieldCheck,
+    title: "Money Back Guarantee",
+    desc: "30 day return policy for your peace of mind",
   },
   {
     icon: Wrench,
