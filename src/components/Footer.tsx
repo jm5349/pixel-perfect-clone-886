@@ -144,7 +144,7 @@ const Footer = () => {
           <div className="flex flex-wrap items-center justify-center gap-8 text-muted-foreground">
             <div className="flex items-center gap-2">
               <Truck className="h-5 w-5 text-primary" />
-              <span className="text-sm">Free USA Shipping</span>
+              <span className="text-sm">Fast Shipping</span>
             </div>
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-primary" />
