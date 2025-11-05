@@ -522,8 +522,8 @@ const ProductPage: React.FC = () => {
                           <p className="text-foreground font-semibold text-sm">{product.productType || "Body Kit Component"}</p>
                         </div>
                         <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                          <h5 className="font-automotive font-bold mb-2 text-primary">Model/SKU</h5>
-                          <p className="text-foreground font-semibold text-sm">{variant?.title || product.variants?.[0]?.title || "Standard"}</p>
+                          <h5 className="font-automotive font-bold mb-2 text-primary">Install</h5>
+                          <p className="text-foreground font-semibold text-sm">Professional Recommended</p>
                         </div>
                       </div>
                     </div>
