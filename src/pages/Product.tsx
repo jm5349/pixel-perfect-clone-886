@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ShieldCheck, Truck, Wrench, BadgeCheck } from "lucide-react";
+import { ShieldCheck, Truck, Wrench, BadgeCheck, FileText, CheckCircle2, HelpCircle } from "lucide-react";
 import ProductTrustSignals from "@/components/product/ProductTrustSignals";
 import ProductHighlights from "@/components/product/ProductHighlights";
 import ProductPolicies from "@/components/product/ProductPolicies";
@@ -457,9 +457,18 @@ const ProductPage: React.FC = () => {
             <div className="hidden md:block">
               <Tabs defaultValue="details" className="w-full">
                 <TabsList className="grid grid-cols-3 w-full">
-                  <TabsTrigger value="details">Overview</TabsTrigger>
-                  <TabsTrigger value="fitment">Fitment</TabsTrigger>
-                  <TabsTrigger value="faq">Customer Service</TabsTrigger>
+                  <TabsTrigger value="details">
+                    <FileText className="w-5 h-5" />
+                    <span>Overview</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="fitment">
+                    <CheckCircle2 className="w-5 h-5" />
+                    <span>Fitment</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="faq">
+                    <HelpCircle className="w-5 h-5" />
+                    <span>Customer Service</span>
+                  </TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="details" className="mt-6">
