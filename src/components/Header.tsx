@@ -63,7 +63,7 @@ const Header = () => {
   }, []);
 
   const navItems = ['AESTHETICS', 'PERFORMANCE', 'WHEELS', 'ACCESSORIES', 'BESPOKE SERVICES'];
-  return <header className="relative z-50 w-full">
+  return <header className="relative z-[95] w-full">
       {/* Auto-rotating Announcement Banner */}
       <div className="relative overflow-hidden h-10" style={{ background: 'var(--gradient-accent)' }}>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
@@ -174,7 +174,7 @@ const Header = () => {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
-                    className="w-72 border border-border shadow-xl z-50 p-0 mt-2 rounded-lg
+                    className="w-72 border border-border shadow-xl z-[96] p-0 mt-2 rounded-lg
                                data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
                                data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
                                data-[state=open]:duration-300 data-[state=closed]:duration-200" 
@@ -200,8 +200,8 @@ const Header = () => {
                                </div>
                              </DropdownMenuItem>
                            </DropdownMenuTrigger>
-                           <DropdownMenuContent 
-                             className="w-56 border border-border shadow-xl z-50 p-0 rounded-lg
+                            <DropdownMenuContent 
+                              className="w-56 border border-border shadow-xl z-[97] p-0 rounded-lg
                                         data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
                                         data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
                                         data-[state=open]:duration-300 data-[state=closed]:duration-200"
@@ -252,8 +252,8 @@ const Header = () => {
                                </div>
                              </DropdownMenuItem>
                            </DropdownMenuTrigger>
-                           <DropdownMenuContent 
-                             className="w-56 border border-border shadow-xl z-50 p-0 rounded-lg
+                            <DropdownMenuContent 
+                              className="w-56 border border-border shadow-xl z-[97] p-0 rounded-lg
                                         data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
                                         data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
                                         data-[state=open]:duration-300 data-[state=closed]:duration-200"
@@ -304,8 +304,8 @@ const Header = () => {
                                </div>
                              </DropdownMenuItem>
                            </DropdownMenuTrigger>
-                           <DropdownMenuContent 
-                             className="w-56 border border-border shadow-xl z-50 p-0 rounded-lg
+                            <DropdownMenuContent 
+                              className="w-56 border border-border shadow-xl z-[97] p-0 rounded-lg
                                         data-[state=open]:animate-in data-[state=open]:slide-in-from-left-2 data-[state=open]:fade-in-0
                                         data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-2 data-[state=closed]:fade-out-0
                                         data-[state=open]:duration-300 data-[state=closed]:duration-200"
