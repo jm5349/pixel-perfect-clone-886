@@ -458,15 +458,15 @@ const ProductPage: React.FC = () => {
               <Tabs defaultValue="details" className="w-full">
                 <TabsList className="grid grid-cols-3 w-full">
                   <TabsTrigger value="details">
-                    <FileText className="w-5 h-5" />
+                    <FileText className="w-4 h-4" />
                     <span>Overview</span>
                   </TabsTrigger>
                   <TabsTrigger value="fitment">
-                    <CheckCircle2 className="w-5 h-5" />
+                    <CheckCircle2 className="w-4 h-4" />
                     <span>Fitment</span>
                   </TabsTrigger>
                   <TabsTrigger value="faq">
-                    <HelpCircle className="w-5 h-5" />
+                    <HelpCircle className="w-4 h-4" />
                     <span>Customer Service</span>
                   </TabsTrigger>
                 </TabsList>
