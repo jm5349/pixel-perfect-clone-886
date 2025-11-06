@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ShieldCheck, Truck, Wrench, BadgeCheck, FileText, CheckCircle2, HelpCircle } from "lucide-react";
+import { ShieldCheck, Truck, Wrench, BadgeCheck, FileText, CheckCircle2, HelpCircle, Package } from "lucide-react";
 import ProductTrustSignals from "@/components/product/ProductTrustSignals";
 import ProductHighlights from "@/components/product/ProductHighlights";
 import ProductPolicies from "@/components/product/ProductPolicies";
@@ -88,6 +88,55 @@ const getFitmentInfo = (title: string) => {
     material,
     installation
   };
+};
+
+const getPackageContents = (title: string) => {
+  const lowerTitle = title.toLowerCase();
+  
+  if (lowerTitle.includes("door handle")) {
+    const pieceCount = title.match(/(\d+)pc/i)?.[1] || "4";
+    return [
+      `${pieceCount} × Door handle covers`,
+      "Pre-applied 3M automotive adhesive tape",
+      "Installation instructions",
+      "Cleaning wipe for surface preparation"
+    ];
+  } else if (lowerTitle.includes("front lip") || lowerTitle.includes("splitter")) {
+    return [
+      "Front lip splitter components (as shown)",
+      "Mounting hardware kit",
+      "Installation instructions",
+      "Technical support access"
+    ];
+  } else if (lowerTitle.includes("body kit")) {
+    return [
+      "Complete body kit components",
+      "Mounting brackets and hardware",
+      "Installation guide",
+      "Fitment verification photos"
+    ];
+  } else if (lowerTitle.includes("spoiler") || lowerTitle.includes("wing")) {
+    return [
+      "Spoiler/wing assembly",
+      "Mounting hardware and brackets",
+      "Installation instructions",
+      "Gasket or seal (if applicable)"
+    ];
+  } else if (lowerTitle.includes("mirror")) {
+    return [
+      "Mirror cap covers (pair)",
+      "3M adhesive tape (pre-applied)",
+      "Installation guide",
+      "Surface preparation instructions"
+    ];
+  } else {
+    return [
+      "Product components (as described)",
+      "Mounting hardware (if required)",
+      "Installation instructions",
+      "Customer support access"
+    ];
+  }
 };
 const ProductPage: React.FC = () => {
   const {
@@ -518,6 +567,24 @@ const ProductPage: React.FC = () => {
                       }} />}
                     </div>
 
+                    {/* What's Included */}
+                    <div className="border-t border-primary/20 pt-6 mb-6">
+                      <h4 className="text-lg font-automotive font-bold text-foreground mb-4 flex items-center gap-2">
+                        <Package className="w-5 h-5 text-primary" />
+                        What's Included
+                      </h4>
+                      <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-lg p-5">
+                        <ul className="space-y-3">
+                          {getPackageContents(product.title).map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-white font-normal">
+                              <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
                     {/* Specifications */}
                     <div className="border-t border-primary/20 pt-6">
                       <h4 className="text-lg font-automotive font-bold text-foreground mb-4">Product Specifications</h4>
@@ -639,6 +706,27 @@ const ProductPage: React.FC = () => {
                   </div> : <div className="product-description text-sm leading-relaxed text-white font-normal" dangerouslySetInnerHTML={{
                   __html: (product as any).descriptionHtml || (product as any).description || "Premium automotive upgrade part designed for enhanced performance and aesthetics."
                 }} />}
+              </Card>
+
+              {/* What's Included Section */}
+              <Card className="p-4 bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 shadow-lg">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-1 h-6 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
+                  <h3 className="text-lg font-automotive font-bold text-foreground flex items-center gap-2">
+                    <Package className="w-4 h-4 text-primary" />
+                    What's Included
+                  </h3>
+                </div>
+                <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-lg p-4">
+                  <ul className="space-y-2.5">
+                    {getPackageContents(product.title).map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-white font-normal text-sm">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </Card>
 
               {/* Specifications Section */}
