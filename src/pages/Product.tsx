@@ -97,9 +97,7 @@ const getPackageContents = (title: string) => {
     const pieceCount = title.match(/(\d+)pc/i)?.[1] || "4";
     return [
       `${pieceCount} × Door handle covers`,
-      "Pre-applied 3M automotive adhesive tape",
-      "Installation instructions",
-      "Cleaning wipe for surface preparation"
+      "Pre-applied 3M automotive adhesive tape"
     ];
   } else if (lowerTitle.includes("front lip") || lowerTitle.includes("splitter")) {
     return [
