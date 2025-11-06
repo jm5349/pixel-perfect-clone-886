@@ -14,8 +14,8 @@ const trustItems = [
   },
   {
     icon: Headphones,
-    title: "Expert Support",
-    desc: "Dedicated team ready to help with any questions",
+    title: "US-Based Support",
+    desc: "Real people in the USA ready to assist you",
   },
   {
     icon: BadgeCheck,
