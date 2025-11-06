@@ -38,26 +38,36 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Company Info */}
+            {/* Contact Our Team */}
             <div className="lg:col-span-1">
-              <h3 className="text-2xl font-automotive text-primary mb-6 tracking-wider">
-                Cuztomtuning
-              </h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Premium aftermarket automotive parts and services. Setting the standard in automotive excellence for over a decade.
-              </p>
+              <h4 className="text-lg font-automotive text-foreground mb-6 tracking-wide">
+                CONTACT OUR TEAM
+              </h4>
               
-              {/* Contact Info */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <Mail className="h-4 w-4 text-primary" />
-                  <span>cuztomutuning@gmail.com</span>
+              <div className="space-y-4 text-muted-foreground">
+                <div>
+                  <p className="font-semibold text-foreground mb-2">Hours:</p>
+                  <p>Monday to Friday<br />10AM - 5PM PST</p>
                 </div>
-          
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <MapPin className="h-4 w-4 text-primary" />
+                
+                <div>
+                  <p className="font-semibold text-foreground mb-2">Questions?</p>
+                  <div className="flex items-start gap-2">
+                    <Mail className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                    <a href="mailto:cuztomtuning@gmail.com" className="hover:text-primary transition-colors">
+                      cuztomtuning@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <MapPin className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
                   <span>City of Industry, CA</span>
                 </div>
+                
+                <p className="text-sm leading-relaxed pt-2">
+                  For questions regarding existing orders, warranty claims, and other concerns please contact our team via email for the fastest response during business hours.
+                </p>
               </div>
             </div>
 
