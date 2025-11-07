@@ -72,7 +72,7 @@ const Header = () => {
             {/* Social Media Icons - Left - Hidden on mobile */}
             <div className="hidden lg:flex items-center space-x-2">
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
+                <a href="https://www.instagram.com/cuztomtuning/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
                   <Instagram className="h-5 w-5" />
                 </a>
               </Button>
