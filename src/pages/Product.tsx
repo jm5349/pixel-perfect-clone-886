@@ -93,7 +93,12 @@ const getFitmentInfo = (title: string) => {
 const getPackageContents = (title: string) => {
   const lowerTitle = title.toLowerCase();
   
-  if (lowerTitle.includes("louver")) {
+  if (lowerTitle.includes("bumper lip") || lowerTitle.includes("front bumper")) {
+    return [
+      "1 * 3-Piece Front Bumper Lip Kit",
+      "Mounting Hardware"
+    ];
+  } else if (lowerTitle.includes("louver")) {
     return [
       "1 Pair of Left & Right Window Louver Cover",
       "Adhesive Tape"
