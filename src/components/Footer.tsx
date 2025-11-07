@@ -1,39 +1,28 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Youtube, 
-  Mail, 
-  Phone, 
-  MapPin,
-  CreditCard,
-  Shield,
-  Truck
-} from 'lucide-react';
-
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, CreditCard, Shield, Truck } from 'lucide-react';
 const Footer = () => {
-  const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
-  ];
-
-  const quickLinks = [
-    'Search', 'About Us', 'Contact', 'Shipping Info', 
-    'Returns', 'Privacy Policy', 'Terms of Service'
-  ];
-
-  const categories = [
-    'Body Kits', 'Spoilers', 'Mirror Caps', 'DRLs & Others',
-    'Yofer Design®', 'GF Bodykit®'
-  ];
-
-  return (
-    <footer className="bg-card border-t border-border">
+  const socialLinks = [{
+    icon: Facebook,
+    href: '#',
+    label: 'Facebook'
+  }, {
+    icon: Twitter,
+    href: '#',
+    label: 'Twitter'
+  }, {
+    icon: Instagram,
+    href: '#',
+    label: 'Instagram'
+  }, {
+    icon: Youtube,
+    href: '#',
+    label: 'YouTube'
+  }];
+  const quickLinks = ['Search', 'About Us', 'Contact', 'Shipping Info', 'Returns', 'Privacy Policy', 'Terms of Service'];
+  const categories = ['Body Kits', 'Spoilers', 'Mirror Caps', 'DRLs & Others', 'Yofer Design®', 'GF Bodykit®'];
+  return <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4">
         {/* Main Footer Content */}
         <div className="py-16">
@@ -47,7 +36,8 @@ const Footer = () => {
               <div className="space-y-4 text-muted-foreground">
                 <div>
                   <p className="font-semibold text-foreground mb-2">Hours:</p>
-                  <p>Monday to Friday<br />10AM - 5PM PST</p>
+                  <p>Monday to Friday Except Public Holidays
+10AM - 5PM PST<br />10AM - 5PM PST</p>
                 </div>
                 
                 <div>
@@ -77,16 +67,11 @@ const Footer = () => {
                 QUICK LINKS
               </h4>
               <ul className="space-y-3">
-                {quickLinks.map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href="#" 
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                    >
+                {quickLinks.map((link, index) => <li key={index}>
+                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300">
                       {link}
                     </a>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
 
@@ -96,16 +81,11 @@ const Footer = () => {
                 CATEGORIES
               </h4>
               <ul className="space-y-3">
-                {categories.map((category, index) => (
-                  <li key={index}>
-                    <a 
-                      href="#" 
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                    >
+                {categories.map((category, index) => <li key={index}>
+                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300">
                       {category}
                     </a>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
 
@@ -119,11 +99,7 @@ const Footer = () => {
               </p>
               
               <div className="flex gap-2 mb-6">
-                <Input 
-                  type="email" 
-                  placeholder="Enter your email"
-                  className="bg-background border-border focus:border-primary"
-                />
+                <Input type="email" placeholder="Enter your email" className="bg-background border-border focus:border-primary" />
                 <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6">
                   Subscribe
                 </Button>
@@ -132,18 +108,11 @@ const Footer = () => {
               {/* Social Links */}
               <div className="flex gap-4">
                 {socialLinks.map((social, index) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={index}
-                      href={social.href}
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                      aria-label={social.label}
-                    >
+                const Icon = social.icon;
+                return <a key={index} href={social.href} className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label={social.label}>
                       <Icon className="h-5 w-5" />
-                    </a>
-                  );
-                })}
+                    </a>;
+              })}
               </div>
             </div>
           </div>
@@ -181,8 +150,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
