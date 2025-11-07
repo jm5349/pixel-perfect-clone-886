@@ -36,8 +36,7 @@ const Footer = () => {
               <div className="space-y-4 text-muted-foreground">
                 <div>
                   <p className="font-semibold text-foreground mb-2">Hours:</p>
-                  <p>Monday to Friday Except Public Holidays
-10AM - 5PM PST<br />10AM - 5PM PST</p>
+                  <p>Monday through Friday<br />10AM - 5PM PST<br />(Closed on Public Holidays)</p>
                 </div>
                 
                 <div>
