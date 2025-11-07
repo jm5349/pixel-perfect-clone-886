@@ -93,7 +93,11 @@ const getFitmentInfo = (title: string) => {
 const getPackageContents = (title: string) => {
   const lowerTitle = title.toLowerCase();
   
-  if (lowerTitle.includes("side skirt")) {
+  if (lowerTitle.includes("window visor") || lowerTitle.includes("rain guard")) {
+    return [
+      "1 Set of 4 Piece Window Visor Rain Guard"
+    ];
+  } else if (lowerTitle.includes("side skirt")) {
     return [
       "1 Set of Left & Right Side Skirt Extension",
       "Mounting Hardware"
