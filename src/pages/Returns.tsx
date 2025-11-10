@@ -121,6 +121,22 @@ const Returns = () => {
               </div>
             </Card>
 
+            {/* Damage and Defective Items */}
+            <Card className="p-6">
+              <div className="flex items-start gap-4">
+                <AlertCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h2 className="text-xl font-automotive text-foreground mb-3">8. Damage and Defective Items</h2>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Please inspect your order carefully upon receipt.</li>
+                    <li>• If you receive a defective, damaged, or incorrect item, contact us within 7 days of delivery at <a href="mailto:cuztomtuning@gmail.com" className="text-primary hover:underline">cuztomtuning@gmail.com</a>.</li>
+                    <li>• We will evaluate the issue and work with you to find an appropriate solution.</li>
+                    <li>• Once a product has been installed, it is considered accepted in its current condition, and returns, exchanges, or refunds will not be available.</li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+
             {/* Contact Information */}
             <Card className="p-6 bg-primary/5">
               <h2 className="text-xl font-automotive text-foreground mb-3">Contact Us</h2>
