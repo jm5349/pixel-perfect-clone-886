@@ -800,7 +800,26 @@ const ProductPage: React.FC = () => {
                       Compatibility
                     </h4>
                     <p className="text-white font-normal text-sm">
-                      {getFitmentInfo(product.title).compatibility}
+                      {getFitmentInfo(product.title).compatibility.split('cuztomtuning@gmail.com').map((part, index, array) => (
+                        <React.Fragment key={index}>
+                          {part}
+                          {index < array.length - 1 && (
+                            <a
+                              href="mailto:cuztomtuning@gmail.com"
+                              className="text-primary underline font-medium break-all inline-block touch-manipulation pointer-events-auto relative z-10"
+                              target="_self"
+                              rel="noopener noreferrer"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                window.location.href = 'mailto:cuztomtuning@gmail.com?subject=Fitment%20Verification&body=Hi%20CuztomTuning,%0A%0AMy%20vehicle%20details:%20[Year]%20[Make]%20[Model]%20[Trim]%0AProduct:%20' + encodeURIComponent(product?.title || '');
+                              }}
+                              aria-label="Email cuztomtuning@gmail.com"
+                            >
+                              cuztomtuning@gmail.com
+                            </a>
+                          )}
+                        </React.Fragment>
+                      ))}
                     </p>
                   </div>
                   <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-3">
