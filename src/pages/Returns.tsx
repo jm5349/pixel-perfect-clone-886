@@ -3,10 +3,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import { Package, Clock, Mail, Truck, AlertCircle, CheckCircle } from 'lucide-react';
-
 const Returns = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       <main className="container mx-auto px-4 py-16">
@@ -101,7 +99,7 @@ const Returns = () => {
                 <div>
                   <h2 className="text-xl font-automotive text-foreground mb-3">6. Non-Returnable Items</h2>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Certain items are non-returnable, including but not limited to custom-made or personalized products.</li>
+                    <li>• Certain items are non-returnable, please refer to the product page for details.</li>
                     <li>• For hygiene reasons, some products may not be eligible for return once opened.</li>
                   </ul>
                 </div>
@@ -141,8 +139,6 @@ const Returns = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Returns;
