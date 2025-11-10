@@ -641,7 +641,10 @@ const ProductPage: React.FC = () => {
                             <React.Fragment key={index}>
                               {part}
                               {index < array.length - 1 && (
-                                <a href="mailto:cuztomtuning@gmail.com" className="text-primary hover:underline">
+                                <a 
+                                  href="mailto:cuztomtuning@gmail.com" 
+                                  className="text-primary underline font-medium break-all inline-block touch-manipulation"
+                                >
                                   cuztomtuning@gmail.com
                                 </a>
                               )}
