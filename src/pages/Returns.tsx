@@ -99,7 +99,7 @@ const Returns = () => {
                 <div>
                   <h2 className="text-xl font-automotive text-foreground mb-3">6. Non-Returnable Items</h2>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Certain items are non-returnable, please refer to the product page for details.</li>
+                    <li>• Certain items are non-returnable, please refer to the product page for details. Or feel free to contact us to verify: <a href="mailto:cuztomtuning@gmail.com" className="text-primary hover:underline">cuztomtuning@gmail.com</a>.</li>
                     <li>• Items that have been improperly installed or used may not be eligible for return.</li>
                   </ul>
                 </div>
