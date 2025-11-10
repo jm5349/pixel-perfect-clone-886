@@ -100,7 +100,7 @@ const Returns = () => {
                   <h2 className="text-xl font-automotive text-foreground mb-3">6. Non-Returnable Items</h2>
                   <ul className="space-y-2 text-muted-foreground">
                     <li>• Certain items are non-returnable, please refer to the product page for details.</li>
-                    <li>• For hygiene reasons, some products may not be eligible for return once opened.</li>
+                    <li>• Items that have been improperly installed or used may not be eligible for return.</li>
                   </ul>
                 </div>
               </div>
