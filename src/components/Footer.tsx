@@ -20,7 +20,15 @@ const Footer = () => {
     href: '#',
     label: 'YouTube'
   }];
-  const quickLinks = ['Search', 'About Us', 'Contact', 'Shipping Info', 'Returns', 'Privacy Policy', 'Terms of Service'];
+  const quickLinks = [
+    { label: 'Search', href: '#' },
+    { label: 'About Us', href: '#' },
+    { label: 'Contact', href: '#' },
+    { label: 'Shipping Info', href: '#' },
+    { label: 'Returns', href: '/returns' },
+    { label: 'Privacy Policy', href: '#' },
+    { label: 'Terms of Service', href: '#' }
+  ];
   const categories = ['Body Kits', 'Spoilers', 'Mirror Caps', 'DRLs & Others', 'Yofer Design®', 'GF Bodykit®'];
   return <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4">
@@ -67,8 +75,8 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => <li key={index}>
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300">
-                      {link}
+                    <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors duration-300">
+                      {link.label}
                     </a>
                   </li>)}
               </ul>
