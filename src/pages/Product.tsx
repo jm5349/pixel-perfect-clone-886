@@ -637,7 +637,16 @@ const ProductPage: React.FC = () => {
                           Compatibility
                         </h4>
                         <p className="text-white font-normal">
-                          {getFitmentInfo(product.title).compatibility}
+                          {getFitmentInfo(product.title).compatibility.split('cuztomtuning@gmail.com').map((part, index, array) => (
+                            <React.Fragment key={index}>
+                              {part}
+                              {index < array.length - 1 && (
+                                <a href="mailto:cuztomtuning@gmail.com" className="text-primary hover:underline">
+                                  cuztomtuning@gmail.com
+                                </a>
+                              )}
+                            </React.Fragment>
+                          ))}
                         </p>
                       </div>
                       <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4">
