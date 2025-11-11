@@ -24,7 +24,7 @@ const Footer = () => {
     { label: 'Search', href: '#' },
     { label: 'About Us', href: '#' },
     { label: 'Contact', href: '#' },
-    { label: 'Shipping Info', href: '#' },
+    { label: 'Shipping Info', href: '/shipping' },
     { label: 'Returns', href: '/returns' },
     { label: 'Privacy Policy', href: '#' },
     { label: 'Terms of Service', href: '#' }

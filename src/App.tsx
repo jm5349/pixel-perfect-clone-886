@@ -9,6 +9,7 @@ import Product from "./pages/Product";
 import Collection from "./pages/Collection";
 import Cart from "./pages/Cart";
 import Returns from "./pages/Returns";
+import Shipping from "./pages/Shipping";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ function App() {
             <Route path="/collections/:handle" element={<Collection />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/returns" element={<Returns />} />
+            <Route path="/shipping" element={<Shipping />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
