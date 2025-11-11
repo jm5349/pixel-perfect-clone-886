@@ -20,7 +20,7 @@ const BusinessInfo = () => {
     },
     {
       label: 'Fast Shipping',
-      value: 'Same Day or Next Day Shipping',
+      value: 'Same or Next Business Shipping',
       icon: Truck
     }
   ];
