@@ -15,7 +15,7 @@ const Header = () => {
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const [cartItemCount, setCartItemCount] = useState(0);
   
-  const announcements = ["🚗 Free shipping on All Orders", "🏁 New Collection Now Available", "⚡ 10% OFF New Customers", "🛠️ Ship Internationally"];
+  const announcements = ["🚗 Free shipping on All Orders", "🏁 New Collection Now Available", "🛠️ Ship Internationally"];
   
   useEffect(() => {
     const interval = setInterval(() => {
