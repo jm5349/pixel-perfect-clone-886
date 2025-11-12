@@ -80,7 +80,7 @@ const getFitmentInfo = (title: string) => {
     productType
   } = parseFitmentFromTitle(title);
   const vehicleInfo = `${yearInfo ? `${yearInfo} ` : ""}${make}${model ? ` ${model}` : ""}${trims ? ` (${trims})` : ""}`.trim() || "your vehicle";
-  const compatibility = vehicleInfo === "your vehicle" ? "Please verify fitment compatibility with your specific vehicle model and year before ordering. Or feel free to contact us to verify: cuztomtuning@gmail.com" : `Designed specifically for ${vehicleInfo}. Please verify your exact model and trim before ordering to ensure proper fitment. Or feel free to contact us to verify: cuztomtuning@gmail.com`;
+  const compatibility = vehicleInfo === "your vehicle" ? "Please verify fitment compatibility with your specific vehicle model and year before ordering. Or feel free to contact us to verify: support@cuztomtuning.com" : `Designed specifically for ${vehicleInfo}. Please verify your exact model and trim before ordering to ensure proper fitment. Or feel free to contact us to verify: support@cuztomtuning.com`;
   const material = productType === "door_handle" ? "High-quality ABS plastic with automotive-grade finish. UV-resistant coating prevents fading and ensures long-lasting durability." : productType === "body_kit" ? "Premium ABS/FRP or carbon fiber depending on selected variant. Lightweight yet durable construction for aerodynamic design." : "Quality automotive-grade materials designed for durability and long-lasting performance.";
   const installation = productType === "door_handle" ? "Easy DIY installation with pre-applied 3M automotive tape. No drilling required. Clean surface thoroughly before application for best adhesion." : productType === "body_kit" ? "Professional installation recommended. May require drilling and minor adjustments. Always test-fit prior to paint or PPF application." : "Professional installation recommended. Verify all fitment and clearances before final installation.";
   return {
@@ -637,22 +637,22 @@ const ProductPage: React.FC = () => {
                           Compatibility
                         </h4>
                         <p className="text-white font-normal">
-                          {getFitmentInfo(product.title).compatibility.split('cuztomtuning@gmail.com').map((part, index, array) => (
+                          {getFitmentInfo(product.title).compatibility.split('support@cuztomtuning.com').map((part, index, array) => (
                             <React.Fragment key={index}>
                               {part}
                               {index < array.length - 1 && (
                                 <a 
-                                  href="mailto:cuztomtuning@gmail.com" 
+                                  href="mailto:support@cuztomtuning.com" 
                                   className="text-primary underline font-medium break-all inline-block touch-manipulation pointer-events-auto relative z-10"
                                   target="_self"
                                   rel="noopener noreferrer"
                                   onClick={(e) => {
                                     e.preventDefault();
-                                    window.location.href = 'mailto:cuztomtuning@gmail.com?subject=Fitment%20Verification&body=Hi%20CuztomTuning,%0A%0AMy%20vehicle%20details:%20[Year]%20[Make]%20[Model]%20[Trim]%0AProduct:%20' + encodeURIComponent(product?.title || '');
+                                    window.location.href = 'mailto:support@cuztomtuning.com?subject=Fitment%20Verification&body=Hi%20CuztomTuning,%0A%0AMy%20vehicle%20details:%20[Year]%20[Make]%20[Model]%20[Trim]%0AProduct:%20' + encodeURIComponent(product?.title || '');
                                   }}
-                                  aria-label="Email cuztomtuning@gmail.com"
+                                  aria-label="Email support@cuztomtuning.com"
                                 >
-                                  cuztomtuning@gmail.com
+                                  support@cuztomtuning.com
                                 </a>
                               )}
                             </React.Fragment>
@@ -800,22 +800,22 @@ const ProductPage: React.FC = () => {
                       Compatibility
                     </h4>
                     <p className="text-white font-normal text-sm">
-                      {getFitmentInfo(product.title).compatibility.split('cuztomtuning@gmail.com').map((part, index, array) => (
+                      {getFitmentInfo(product.title).compatibility.split('support@cuztomtuning.com').map((part, index, array) => (
                         <React.Fragment key={index}>
                           {part}
                           {index < array.length - 1 && (
                             <a
-                              href="mailto:cuztomtuning@gmail.com"
+                              href="mailto:support@cuztomtuning.com"
                               className="text-primary underline font-medium break-all inline-block touch-manipulation pointer-events-auto relative z-10"
                               target="_self"
                               rel="noopener noreferrer"
                               onClick={(e) => {
                                 e.preventDefault();
-                                window.location.href = 'mailto:cuztomtuning@gmail.com?subject=Fitment%20Verification&body=Hi%20CuztomTuning,%0A%0AMy%20vehicle%20details:%20[Year]%20[Make]%20[Model]%20[Trim]%0AProduct:%20' + encodeURIComponent(product?.title || '');
+                                window.location.href = 'mailto:support@cuztomtuning.com?subject=Fitment%20Verification&body=Hi%20CuztomTuning,%0A%0AMy%20vehicle%20details:%20[Year]%20[Make]%20[Model]%20[Trim]%0AProduct:%20' + encodeURIComponent(product?.title || '');
                               }}
-                              aria-label="Email cuztomtuning@gmail.com"
+                              aria-label="Email support@cuztomtuning.com"
                             >
-                              cuztomtuning@gmail.com
+                              support@cuztomtuning.com
                             </a>
                           )}
                         </React.Fragment>

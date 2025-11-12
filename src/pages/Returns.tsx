@@ -53,7 +53,7 @@ const Returns = () => {
                 <div>
                   <h2 className="text-xl font-automotive text-foreground mb-3">3. Return Request</h2>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• To initiate a return, please contact our customer support team at <a href="mailto:cuztomtuning@gmail.com" className="text-primary hover:underline">cuztomtuning@gmail.com</a>.</li>
+                    <li>• To initiate a return, please contact our customer support team at <a href="mailto:support@cuztomtuning.com" className="text-primary hover:underline">support@cuztomtuning.com</a>.</li>
                     <li>• Our team will guide you through the return process and provide you with the necessary instructions.</li>
                     <li>• Items returned without prior authorization may not be accepted.</li>
                   </ul>
@@ -114,7 +114,7 @@ const Returns = () => {
                   <h2 className="text-xl font-automotive text-foreground mb-3">7. Exchanges</h2>
                   <p className="text-muted-foreground">
                     If you wish to exchange an item for a different size, color, or model, please contact our customer 
-                    support team at <a href="mailto:cuztomtuning@gmail.com" className="text-primary hover:underline">cuztomtuning@gmail.com</a>. 
+                    support team at <a href="mailto:support@cuztomtuning.com" className="text-primary hover:underline">support@cuztomtuning.com</a>. 
                     We will do our best to accommodate your request, subject to product availability.
                   </p>
                 </div>
@@ -129,7 +129,7 @@ const Returns = () => {
                   <h2 className="text-xl font-automotive text-foreground mb-3">8. Damage and Defective Items</h2>
                   <ul className="space-y-2 text-muted-foreground">
                     <li>• Please inspect your order carefully upon receipt.</li>
-                    <li>• If you receive a defective, damaged, or incorrect item, contact us within 7 days of delivery at <a href="mailto:cuztomtuning@gmail.com" className="text-primary hover:underline">cuztomtuning@gmail.com</a>.</li>
+                    <li>• If you receive a defective, damaged, or incorrect item, contact us within 7 days of delivery at <a href="mailto:support@cuztomtuning.com" className="text-primary hover:underline">support@cuztomtuning.com</a>.</li>
                     <li>• We will evaluate the issue and work with you to find an appropriate solution.</li>
                     <li>• Once a product has been installed, it is considered accepted in its current condition, and returns, exchanges, or refunds will not be available.</li>
                   </ul>
@@ -145,8 +145,8 @@ const Returns = () => {
               </p>
               <div className="flex items-center gap-2 text-foreground">
                 <Mail className="h-5 w-5 text-primary" />
-                <a href="mailto:cuztomtuning@gmail.com" className="text-primary hover:underline">
-                  cuztomtuning@gmail.com
+                <a href="mailto:support@cuztomtuning.com" className="text-primary hover:underline">
+                  support@cuztomtuning.com
                 </a>
               </div>
             </Card>

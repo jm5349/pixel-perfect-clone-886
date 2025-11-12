@@ -103,14 +103,14 @@ const Shipping = () => {
                   <p className="text-muted-foreground">
                     If you wish to change or cancel an order after you've submitted it, please contact us at{' '}
                     <a 
-                      href="mailto:cuztomtuning@gmail.com?subject=Order Modification Request&body=Please include your order number and details about the changes you'd like to make."
+                      href="mailto:support@cuztomtuning.com?subject=Order Modification Request&body=Please include your order number and details about the changes you'd like to make."
                       onClick={(e) => {
                         e.preventDefault();
-                        window.location.href = "mailto:cuztomtuning@gmail.com?subject=Order Modification Request&body=Please include your order number and details about the changes you'd like to make.";
+                        window.location.href = "mailto:support@cuztomtuning.com?subject=Order Modification Request&body=Please include your order number and details about the changes you'd like to make.";
                       }}
                       className="text-primary underline font-medium break-all inline-block touch-manipulation pointer-events-auto relative z-10"
                     >
-                      cuztomtuning@gmail.com
+                      support@cuztomtuning.com
                     </a>{' '}
                     and we'll do our best to find the best solution.
                   </p>
@@ -133,14 +133,14 @@ const Shipping = () => {
                   <p className="text-muted-foreground mb-4">
                     If you received your item damaged from shipping or the product is defective, please take as many photos of the box and product as possible. Email photos to{' '}
                     <a 
-                      href="mailto:cuztomtuning@gmail.com?subject=Damage Claim&body=Please include your order ID and attach photos of the damaged item and packaging."
+                      href="mailto:support@cuztomtuning.com?subject=Damage Claim&body=Please include your order ID and attach photos of the damaged item and packaging."
                       onClick={(e) => {
                         e.preventDefault();
-                        window.location.href = "mailto:cuztomtuning@gmail.com?subject=Damage Claim&body=Please include your order ID and attach photos of the damaged item and packaging.";
+                        window.location.href = "mailto:support@cuztomtuning.com?subject=Damage Claim&body=Please include your order ID and attach photos of the damaged item and packaging.";
                       }}
                       className="text-primary underline font-medium break-all inline-block touch-manipulation pointer-events-auto relative z-10"
                     >
-                      cuztomtuning@gmail.com
+                      support@cuztomtuning.com
                     </a>{' '}
                     with your order ID, and we will determine if this was a shipping issue or quality control issue.
                   </p>
@@ -175,10 +175,10 @@ const Shipping = () => {
                   <p className="text-muted-foreground">
                     If returned goods do not get to us for any reason, we cannot be held liable and reserve the right not to issue a refund for the goods. If you wish to cancel your order at any time before shipping, please{' '}
                     <a 
-                      href="mailto:cuztomtuning@gmail.com?subject=Order Cancellation Request&body=Please include your order number."
+                      href="mailto:support@cuztomtuning.com?subject=Order Cancellation Request&body=Please include your order number."
                       onClick={(e) => {
                         e.preventDefault();
-                        window.location.href = "mailto:cuztomtuning@gmail.com?subject=Order Cancellation Request&body=Please include your order number.";
+                        window.location.href = "mailto:support@cuztomtuning.com?subject=Order Cancellation Request&body=Please include your order number.";
                       }}
                       className="text-primary underline font-medium break-all inline-block touch-manipulation pointer-events-auto relative z-10"
                     >
@@ -197,10 +197,10 @@ const Shipping = () => {
                 Our team is here to help with any shipping inquiries.
               </p>
               <a 
-                href="mailto:cuztomtuning@gmail.com?subject=Shipping Inquiry&body=Please describe your question or concern."
+                href="mailto:support@cuztomtuning.com?subject=Shipping Inquiry&body=Please describe your question or concern."
                 onClick={(e) => {
                   e.preventDefault();
-                  window.location.href = "mailto:cuztomtuning@gmail.com?subject=Shipping Inquiry&body=Please describe your question or concern.";
+                  window.location.href = "mailto:support@cuztomtuning.com?subject=Shipping Inquiry&body=Please describe your question or concern.";
                 }}
                 className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors touch-manipulation pointer-events-auto relative z-10"
               >
