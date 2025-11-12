@@ -29,11 +29,15 @@ export const CartDrawer = () => {
 
   const handleCheckout = async () => {
     try {
-      await createCheckout();
-      const checkoutUrl = useCartStore.getState().checkoutUrl;
-      if (checkoutUrl) {
-        window.open(checkoutUrl, '_blank');
+      const url = await createCheckout();
+      if (url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
         setIsOpen(false);
+      } else {
+        toast({
+          title: "Cart is empty",
+          description: "Add items to your cart before checking out.",
+        });
       }
     } catch (error) {
       console.error('Checkout failed:', error);
@@ -163,7 +167,7 @@ export const CartDrawer = () => {
                   ) : (
                     <>
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      Checkout
+                      Checkout with Shopify
                     </>
                   )}
                 </Button>
