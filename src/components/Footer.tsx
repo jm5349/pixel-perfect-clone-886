@@ -1,15 +1,16 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Twitter, Instagram, Youtube, Mail, Phone, MapPin, CreditCard, Shield, Truck } from 'lucide-react';
+import { Instagram, Youtube, Mail, Phone, MapPin, CreditCard, Shield, Truck } from 'lucide-react';
+import TikTok from './icons/TikTok';
 const Footer = () => {
   const socialLinks = [{
-    icon: Twitter,
-    href: '#',
-    label: 'Twitter'
+    icon: TikTok,
+    href: 'https://www.tiktok.com/@cuztomtuning',
+    label: 'TikTok'
   }, {
     icon: Instagram,
-    href: '#',
+    href: 'https://www.instagram.com/cuztomtuning/',
     label: 'Instagram'
   }, {
     icon: Youtube,
