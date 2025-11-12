@@ -602,24 +602,6 @@ const ProductPage: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Specifications */}
-                    <div className="border-t border-primary/20 pt-6">
-                      <h4 className="text-lg font-automotive font-bold text-foreground mb-4">Product Specifications</h4>
-                      <div className="grid grid-cols-3 gap-4">
-                        <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                          <h5 className="font-automotive font-bold mb-2 text-primary">Brand</h5>
-                          <p className="text-foreground font-semibold text-sm">{product.vendor || "Yofer Design"}</p>
-                        </div>
-                        <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                          <h5 className="font-automotive font-bold mb-2 text-primary">Category</h5>
-                          <p className="text-foreground font-semibold text-sm">{product.productType || "Body Kit Component"}</p>
-                        </div>
-                        <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-4 hover:shadow-md transition-all">
-                          <h5 className="font-automotive font-bold mb-2 text-primary">Install</h5>
-                          <p className="text-foreground font-semibold text-sm">Professional Recommended</p>
-                        </div>
-                      </div>
-                    </div>
                   </Card>
                 </TabsContent>
                 
