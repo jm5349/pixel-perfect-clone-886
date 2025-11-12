@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -44,6 +44,12 @@ export const CartDrawer = () => {
       });
     }
   };
+
+  useEffect(() => {
+    const open = () => setIsOpen(true);
+    window.addEventListener('open-cart', open);
+    return () => window.removeEventListener('open-cart', open);
+  }, []);
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>

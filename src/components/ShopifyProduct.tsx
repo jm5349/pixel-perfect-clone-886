@@ -78,6 +78,9 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
       description: `${product.title} has been added to your cart`,
       duration: 2000,
     });
+
+    // Open cart drawer for immediate feedback
+    window.dispatchEvent(new Event('open-cart'));
   };
 
   if (loading) {
