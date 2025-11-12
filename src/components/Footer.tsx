@@ -19,7 +19,7 @@ const Footer = () => {
   }];
   const quickLinks = [
     { label: 'Search', href: '#' },
-    { label: 'About Us', href: '#' },
+    { label: 'About Us', href: '/about' },
     { label: 'Warranty Policy', href: '#' },
     { label: 'Shipping Info', href: '/shipping' },
     { label: 'Returns', href: '/returns' },
