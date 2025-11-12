@@ -77,7 +77,7 @@ const Header = () => {
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
-                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
+                <a href="https://www.tiktok.com/@cuztomtuning" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
                   <TikTok className="h-5 w-5" />
                 </a>
               </Button>
