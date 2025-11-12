@@ -521,15 +521,15 @@ const ProductPage: React.FC = () => {
           <div className="mt-8 md:mt-12">
             {/* Desktop Tabs */}
             <div className="hidden md:block">
-              <Tabs defaultValue="details" className="w-full">
+              <Tabs defaultValue="fitment" className="w-full">
                 <TabsList className="grid grid-cols-3 w-full">
-                  <TabsTrigger value="details">
-                    <FileText className="w-4 h-4" />
-                    <span>Overview</span>
-                  </TabsTrigger>
                   <TabsTrigger value="fitment">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Fitment</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="details">
+                    <FileText className="w-4 h-4" />
+                    <span>Overview</span>
                   </TabsTrigger>
                   <TabsTrigger value="faq">
                     <HelpCircle className="w-4 h-4" />
