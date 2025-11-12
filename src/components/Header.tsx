@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import CustomerLogin from './CustomerLogin';
 import client from '@/lib/shopify';
 import { Badge } from '@/components/ui/badge';
-import { CartDrawer } from './CartDrawer';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
@@ -139,7 +138,23 @@ const Header = () => {
               
               {/* Actions - Right */}
               <div className="flex items-center space-x-2">
-                 <CartDrawer />
+                 <Button 
+                   variant="ghost" 
+                   size="icon" 
+                   className="h-12 w-12 text-muted-foreground hover:text-primary relative"
+                   asChild
+                 >
+                   <Link to="/cart">
+                     <ShoppingCart className="h-10 w-10" />
+                     {cartItemCount > 0 && (
+                       <Badge 
+                         className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-primary text-primary-foreground"
+                       >
+                         {cartItemCount}
+                       </Badge>
+                     )}
+                   </Link>
+                 </Button>
                  <CustomerLogin>
                    <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
                      <User className="h-10 w-10" />
@@ -384,7 +399,23 @@ const Header = () => {
 
               {/* Actions - Right */}
               <div className="flex items-center space-x-4 absolute right-0">
-                 <CartDrawer />
+                 <Button 
+                   variant="ghost" 
+                   size="icon" 
+                   className="h-12 w-12 text-muted-foreground hover:text-primary relative"
+                   asChild
+                 >
+                   <Link to="/cart">
+                     <ShoppingCart className="h-9 w-9" />
+                     {cartItemCount > 0 && (
+                       <Badge 
+                         className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-primary text-primary-foreground"
+                       >
+                         {cartItemCount}
+                       </Badge>
+                     )}
+                   </Link>
+                 </Button>
                  <CustomerLogin>
                    <Button variant="ghost" size="icon" className="h-12 w-12 text-muted-foreground hover:text-primary">
                      <User className="h-9 w-9" />

@@ -2,8 +2,8 @@ import Client from 'shopify-buy';
 
 // Your actual Shopify store credentials
 const client = Client.buildClient({
-  domain: 'pixel-perfect-clone-886-bjhhb.myshopify.com',
-  storefrontAccessToken: '6469c791d394e23f61342d800848312c'
+  domain: 'd31c8d-3.myshopify.com',
+  storefrontAccessToken: 'd49b034ec729dadfb98376a9f41b7a63'
 });
 
 export default client;

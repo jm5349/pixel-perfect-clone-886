@@ -17,7 +17,6 @@ import Header from "@/components/Header";
 import BusinessInfo from "@/components/BusinessInfo";
 import SearchBar from "@/components/SearchBar";
 import Footer from "@/components/Footer";
-import { useCartStore } from "@/stores/cartStore";
 const currency = (amount?: string, code?: string) => {
   if (!amount) return "—";
   const value = Number(amount);
@@ -170,7 +169,6 @@ const ProductPage: React.FC = () => {
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
-  const addItem = useCartStore(state => state.addItem);
   useEffect(() => {
     let cancelled = false;
     const fetchProduct = async () => {
@@ -334,35 +332,41 @@ const ProductPage: React.FC = () => {
     }))
   }), []);
   const addToCart = async () => {
-    if (!variant || !product) return;
+    if (!variant) return;
     setAddingToCart(true);
     try {
-      const productSummary = {
-        id: product.id,
-        title: product.title,
-        handle: product.handle,
-        images: (product.images || []).map(img => img.src),
-        vendor: product.vendor,
-      };
-
-      const cartItem = {
-        product: productSummary,
+      // Get existing checkout from localStorage or create new one
+      let checkoutId = localStorage.getItem('shopify_checkout_id');
+      let checkout: any;
+      if (checkoutId) {
+        try {
+          checkout = await client.checkout.fetch(checkoutId);
+          // If checkout is completed, create a new one
+          if ((checkout as any).completedAt) {
+            checkout = await client.checkout.create();
+            localStorage.setItem('shopify_checkout_id', checkout.id);
+          }
+        } catch {
+          // If fetch fails, create new checkout
+          checkout = await client.checkout.create();
+          localStorage.setItem('shopify_checkout_id', checkout.id);
+        }
+      } else {
+        checkout = await client.checkout.create();
+        localStorage.setItem('shopify_checkout_id', checkout.id);
+      }
+      const lineItemsToAdd = [{
         variantId: variant.id,
-        variantTitle: variant.title,
-        price: variant.price,
-        quantity: Math.max(1, quantity),
-        selectedOptions: []
-      };
+        quantity: Math.max(1, quantity)
+      }];
+      await client.checkout.addLineItems(checkout.id, lineItemsToAdd);
 
-      addItem(cartItem);
-
+      // Dispatch custom event to update cart count in header
+      window.dispatchEvent(new Event('cart-updated'));
       toast({
         title: "Added to cart",
-        description: `${product.title} x${Math.max(1, quantity)} added to your cart`,
+        description: `${product?.title ?? "Product"} added to your cart successfully`
       });
-
-      // Open cart drawer for immediate feedback
-      window.dispatchEvent(new Event('open-cart'));
     } catch (e) {
       console.error("Add to cart error:", e);
       toast({

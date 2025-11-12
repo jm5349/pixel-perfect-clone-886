@@ -7,7 +7,6 @@ import { useToast } from '@/hooks/use-toast';
 import client from '@/lib/shopify';
 import type { ShopifyProduct } from '@/lib/shopify';
 import VariantSelector from '@/components/product/VariantSelector';
-import { useCartStore } from '@/stores/cartStore';
 
 interface ShopifyProductCardProps {
   productId: string;
@@ -16,9 +15,9 @@ interface ShopifyProductCardProps {
 const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) => {
   const [product, setProduct] = useState<ShopifyProduct | null>(null);
   const [loading, setLoading] = useState(true);
+  const [addingToCart, setAddingToCart] = useState(false);
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
   const { toast } = useToast();
-  const addItem = useCartStore(state => state.addItem);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -54,39 +53,40 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
     fetchProduct();
   }, [productId, toast]);
 
-  const addToCart = () => {
+  const addToCart = async () => {
     const variant = product?.variants.find(v => v.id === selectedVariantId) || product?.variants[0];
     if (!product || !variant) return;
 
-    console.log('Adding to cart:', { product, variant });
-    const productSummary = {
-      id: product.id,
-      title: product.title,
-      handle: product.handle,
-      images: (product.images || []).map(img => img.src),
-      vendor: product.vendor,
-    };
+    setAddingToCart(true);
+    try {
+      // Create checkout
+      const checkout = await client.checkout.create();
+      
+      // Add items to checkout
+      const lineItemsToAdd = [{
+        variantId: variant.id,
+        quantity: 1
+      }];
 
-    const cartItem = {
-      product: productSummary,
-      variantId: variant.id,
-      variantTitle: variant.title,
-      price: variant.price,
-      quantity: 1,
-      selectedOptions: []
-    };
-    addItem(cartItem);
-    
-    console.log('Cart updated, current items:', useCartStore.getState().items);
-    
-    toast({
-      title: "Added to Cart",
-      description: `${product.title} has been added to your cart`,
-      duration: 2000,
-    });
-
-    // Open cart drawer for immediate feedback
-    window.dispatchEvent(new Event('open-cart'));
+      const updatedCheckout = await client.checkout.addLineItems(checkout.id, lineItemsToAdd);
+      
+      // Redirect to checkout
+      window.open(updatedCheckout.webUrl, '_blank');
+      
+      toast({
+        title: "Added to Cart",
+        description: `${product.title} has been added to your cart`,
+      });
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      toast({
+        title: "Error",
+        description: "Failed to add item to cart",
+        variant: "destructive"
+      });
+    } finally {
+      setAddingToCart(false);
+    }
   };
 
   if (loading) {
@@ -164,10 +164,10 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
           <Button 
             size="sm" 
             onClick={addToCart}
-            disabled={!isAvailable}
+            disabled={!isAvailable || addingToCart}
             className="bg-primary hover:bg-primary/90 text-primary-foreground md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 md:transform md:translate-x-4 md:group-hover:translate-x-0 text-sm w-full sm:w-auto"
           >
-            Add to Cart
+            {addingToCart ? 'Adding...' : 'Buy Now'}
           </Button>
         </div>
       </div>
