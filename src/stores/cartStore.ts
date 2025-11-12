@@ -40,9 +40,9 @@ interface CartStore {
 
 // Shopify Storefront API configuration
 const SHOPIFY_API_VERSION = '2025-07';
-const SHOPIFY_STORE_PERMANENT_DOMAIN = 'd31c8d-3.myshopify.com';
+const SHOPIFY_STORE_PERMANENT_DOMAIN = 'pixel-perfect-clone-886-bjhhb.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
-const SHOPIFY_STOREFRONT_TOKEN = 'd49b034ec729dadfb98376a9f41b7a63';
+const SHOPIFY_STOREFRONT_TOKEN = '6469c791d394e23f61342d800848312c';
 
 const CART_CREATE_MUTATION = `
   mutation cartCreate($input: CartInput!) {
