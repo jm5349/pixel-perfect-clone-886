@@ -58,6 +58,8 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
     const variant = product?.variants.find(v => v.id === selectedVariantId) || product?.variants[0];
     if (!product || !variant) return;
 
+    console.log('Adding to cart:', { product, variant });
+
     const cartItem = {
       product,
       variantId: variant.id,
@@ -69,9 +71,12 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
     
     addItem(cartItem);
     
+    console.log('Cart updated, current items:', useCartStore.getState().items);
+    
     toast({
       title: "Added to Cart",
       description: `${product.title} has been added to your cart`,
+      duration: 2000,
     });
   };
 
