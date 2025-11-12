@@ -50,14 +50,14 @@ const About = () => {
         
         <main className="flex-1">
           {/* Hero Section */}
-          <section className="relative py-20 overflow-hidden" style={{ background: 'var(--gradient-accent)' }}>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+          <section className="relative py-20 overflow-hidden bg-gradient-to-br from-muted via-background to-card">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5"></div>
             <div className="container mx-auto px-4 relative z-10">
               <div className="max-w-3xl mx-auto text-center">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                   About Cuztomtuning
                 </h1>
-                <p className="text-xl text-white/90 leading-relaxed">
+                <p className="text-xl text-muted-foreground leading-relaxed">
                   Your trusted partner in automotive customization and performance enhancement
                 </p>
               </div>
