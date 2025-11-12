@@ -337,8 +337,16 @@ const ProductPage: React.FC = () => {
     if (!variant || !product) return;
     setAddingToCart(true);
     try {
+      const productSummary = {
+        id: product.id,
+        title: product.title,
+        handle: product.handle,
+        images: (product.images || []).map(img => img.src),
+        vendor: product.vendor,
+      };
+
       const cartItem = {
-        product,
+        product: productSummary,
         variantId: variant.id,
         variantTitle: variant.title,
         price: variant.price,
