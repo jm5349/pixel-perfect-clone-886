@@ -1,8 +1,16 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
+export interface CartProductSummary {
+  id: string;
+  title: string;
+  handle: string;
+  images: string[];
+  vendor?: string;
+}
+
 export interface CartItem {
-  product: any;
+  product: CartProductSummary;
   variantId: string;
   variantTitle: string;
   price: {
@@ -10,10 +18,7 @@ export interface CartItem {
     currencyCode: string;
   };
   quantity: number;
-  selectedOptions: Array<{
-    name: string;
-    value: string;
-  }>;
+  selectedOptions: { name: string; value: string }[];
 }
 
 interface CartStore {

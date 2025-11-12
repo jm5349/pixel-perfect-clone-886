@@ -89,7 +89,7 @@ export const CartDrawer = () => {
                       <div className="w-16 h-16 bg-muted rounded-md overflow-hidden flex-shrink-0">
                         {item.product?.images?.[0] && (
                           <img
-                            src={typeof item.product.images[0] === 'string' ? item.product.images[0] : item.product.images[0].src}
+                            src={item.product.images[0]}
                             alt={item.product.title}
                             className="w-full h-full object-cover"
                           />

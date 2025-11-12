@@ -59,16 +59,22 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = ({ productId }) =>
     if (!product || !variant) return;
 
     console.log('Adding to cart:', { product, variant });
+    const productSummary = {
+      id: product.id,
+      title: product.title,
+      handle: product.handle,
+      images: (product.images || []).map(img => img.src),
+      vendor: product.vendor,
+    };
 
     const cartItem = {
-      product,
+      product: productSummary,
       variantId: variant.id,
       variantTitle: variant.title,
       price: variant.price,
       quantity: 1,
       selectedOptions: []
     };
-    
     addItem(cartItem);
     
     console.log('Cart updated, current items:', useCartStore.getState().items);
