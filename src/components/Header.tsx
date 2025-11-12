@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingCart, User, Menu, X, ChevronDown, ChevronLeft, Instagram, Facebook, Mail } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, ChevronDown, ChevronLeft, Instagram, Mail } from 'lucide-react';
 import TikTok from './icons/TikTok';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -74,11 +74,6 @@ const Header = () => {
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">
                 <a href="https://www.instagram.com/cuztomtuning/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
                   <Instagram className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild className="h-8 w-8">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors duration-200">
-                  <Facebook className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild className="h-8 w-8">

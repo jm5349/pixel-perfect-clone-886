@@ -1,13 +1,9 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, CreditCard, Shield, Truck } from 'lucide-react';
+import { Twitter, Instagram, Youtube, Mail, Phone, MapPin, CreditCard, Shield, Truck } from 'lucide-react';
 const Footer = () => {
   const socialLinks = [{
-    icon: Facebook,
-    href: '#',
-    label: 'Facebook'
-  }, {
     icon: Twitter,
     href: '#',
     label: 'Twitter'
