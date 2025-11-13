@@ -8,7 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ShieldCheck, Truck, Wrench, BadgeCheck, FileText, CheckCircle2, HelpCircle, Package } from "lucide-react";
+import { ShieldCheck, Truck, Wrench, BadgeCheck, FileText, CheckCircle2, HelpCircle, Package, ZoomIn, ZoomOut, Maximize2, X } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import ProductTrustSignals from "@/components/product/ProductTrustSignals";
 import ProductHighlights from "@/components/product/ProductHighlights";
 import ProductPolicies from "@/components/product/ProductPolicies";
@@ -169,6 +170,8 @@ const ProductPage: React.FC = () => {
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
   useEffect(() => {
     let cancelled = false;
     const fetchProduct = async () => {
@@ -507,13 +510,13 @@ const ProductPage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-6 md:gap-12">
             {/* Left: Gallery */}
             <div>
-              <Card className="overflow-hidden bg-card border-border">
+              <Card className="overflow-hidden bg-card border-border relative group">
                 {isVideo ? (
                   <div className="w-full h-72 md:h-[520px] bg-background flex items-center justify-center">
                     {currentMedia.sources?.[0]?.url ? (
                       <video 
                         controls 
-                        className="w-full h-full object-contain"
+                        className="w-full h-72 md:h-[520px] object-contain"
                         poster={currentMedia.previewImage?.url}
                       >
                         <source src={currentMedia.sources[0].url} type={currentMedia.sources[0].mimeType || "video/mp4"} />
@@ -522,7 +525,7 @@ const ProductPage: React.FC = () => {
                     ) : (currentMedia.embedUrl || currentMedia.embeddedUrl || currentMedia.originUrl) ? (
                       <iframe
                         src={currentMedia.embedUrl || currentMedia.embeddedUrl || currentMedia.originUrl}
-                        className="w-full h-full"
+                        className="w-full h-72 md:h-[520px]"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                       />
@@ -531,7 +534,51 @@ const ProductPage: React.FC = () => {
                     )}
                   </div>
                 ) : (
-                  <img src={mainImage} alt={`${product.title} main image – front lip splitter`} className="w-full h-72 md:h-[520px] object-contain bg-background" loading="eager" />
+                  <div className="relative w-full h-72 md:h-[520px] bg-background overflow-hidden flex items-center justify-center">
+                    <img 
+                      src={mainImage} 
+                      alt={`${product.title} main image – front lip splitter`} 
+                      className="w-full h-full object-contain cursor-zoom-in" 
+                      loading="eager"
+                      onClick={() => setIsFullscreen(true)}
+                      style={{ transform: `scale(${zoomLevel})`, transition: 'transform 0.2s' }}
+                    />
+                    <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Button
+                        size="icon"
+                        variant="secondary"
+                        className="h-9 w-9 shadow-lg"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setZoomLevel(prev => Math.min(prev + 0.25, 3));
+                        }}
+                      >
+                        <ZoomIn className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        size="icon"
+                        variant="secondary"
+                        className="h-9 w-9 shadow-lg"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setZoomLevel(prev => Math.max(prev - 0.25, 1));
+                        }}
+                      >
+                        <ZoomOut className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        size="icon"
+                        variant="secondary"
+                        className="h-9 w-9 shadow-lg"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsFullscreen(true);
+                        }}
+                      >
+                        <Maximize2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
                 )}
               </Card>
               {allMedia.length > 1 && <div className="mt-3 grid grid-cols-5 gap-2">
@@ -965,6 +1012,82 @@ const ProductPage: React.FC = () => {
       </section>
     </main>
     <Footer />
+
+    {/* Fullscreen Image Modal */}
+    <Dialog open={isFullscreen} onOpenChange={setIsFullscreen}>
+      <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden">
+        <div className="relative w-full h-[95vh] bg-black/95 flex items-center justify-center">
+          <Button
+            size="icon"
+            variant="ghost"
+            className="absolute top-4 right-4 z-50 text-white hover:bg-white/20"
+            onClick={() => setIsFullscreen(false)}
+          >
+            <X className="h-6 w-6" />
+          </Button>
+          
+          <div className="absolute top-4 left-4 z-50 flex gap-2">
+            <Button
+              size="icon"
+              variant="secondary"
+              onClick={() => setZoomLevel(prev => Math.min(prev + 0.5, 5))}
+            >
+              <ZoomIn className="h-5 w-5" />
+            </Button>
+            <Button
+              size="icon"
+              variant="secondary"
+              onClick={() => setZoomLevel(prev => Math.max(prev - 0.5, 0.5))}
+            >
+              <ZoomOut className="h-5 w-5" />
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => setZoomLevel(1)}
+            >
+              Reset
+            </Button>
+          </div>
+
+          <div className="w-full h-full overflow-auto flex items-center justify-center p-8">
+            <img 
+              src={mainImage} 
+              alt={product.title}
+              className="max-w-full max-h-full object-contain"
+              style={{ 
+                transform: `scale(${zoomLevel})`,
+                transition: 'transform 0.2s',
+                transformOrigin: 'center'
+              }}
+            />
+          </div>
+
+          {/* Thumbnail Navigation in Fullscreen */}
+          {allMedia.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/60 p-3 rounded-lg max-w-[90vw] overflow-x-auto">
+              {allMedia.map((media: any, i: number) => {
+                const isThumbVideo = media.mediaContentType === 'VIDEO' || media.mediaContentType === 'EXTERNAL_VIDEO';
+                const thumbSrc = isThumbVideo ? (media.previewImage?.url || media.image?.url) : media.image?.url || images[i]?.src;
+                
+                return (
+                  <button 
+                    key={`fullscreen-thumb-${i}`}
+                    onClick={() => {
+                      setSelectedImage(i);
+                      setZoomLevel(1);
+                    }}
+                    className={`w-16 h-16 border-2 rounded-md overflow-hidden hover:border-primary transition-colors flex-shrink-0 ${selectedImage === i ? 'border-primary' : 'border-white/30'}`}
+                  >
+                    <img src={thumbSrc} alt={`Thumbnail ${i + 1}`} className="w-full h-full object-cover" />
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
   </>;
 };
 export default ProductPage;
