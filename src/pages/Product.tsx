@@ -185,8 +185,37 @@ const ProductPage: React.FC = () => {
         if (slugToIsNumericId(slug)) {
           const gid = `gid://shopify/Product/${slug}`;
           try {
-            p = await (client as any).product.fetch(gid);
-          } catch {}
+            // Try to fetch with media first
+            const { fetchProductWithMedia } = await import('@/lib/shopify');
+            const productWithMedia = await fetchProductWithMedia(gid);
+            if (productWithMedia) {
+              // Transform the GraphQL response to match the SDK format
+              p = {
+                ...productWithMedia,
+                images: productWithMedia.images?.edges?.map((e: any) => ({
+                  src: e.node.url,
+                  altText: e.node.altText
+                })) || [],
+                variants: productWithMedia.variants?.edges?.map((e: any) => ({
+                  id: e.node.id,
+                  title: e.node.title,
+                  price: e.node.price,
+                  available: e.node.availableForSale,
+                  selectedOptions: e.node.selectedOptions,
+                  image: e.node.image
+                })) || []
+              };
+            }
+          } catch (err) {
+            console.log('Failed to fetch with media, trying standard fetch:', err);
+          }
+          
+          // Fallback to standard fetch if media fetch fails
+          if (!p) {
+            try {
+              p = await (client as any).product.fetch(gid);
+            } catch {}
+          }
           if (!p) {
             try {
               p = await (client as any).product.fetch(slug);
@@ -411,7 +440,18 @@ const ProductPage: React.FC = () => {
       </>;
   }
   const images = product.images || [];
-  const mainImage = images[selectedImage]?.src || images[0]?.src || "";
+  
+  // Check if product has media (including videos)
+  const media = (product as any).media?.edges || [];
+  const allMedia = media.length > 0 ? media.map((m: any) => m.node) : images.map((img: any) => ({ 
+    mediaContentType: 'IMAGE',
+    image: { url: img.src, altText: img.altText }
+  }));
+  
+  const currentMedia = allMedia[selectedImage] || allMedia[0];
+  const isVideo = currentMedia?.mediaContentType === 'VIDEO' || currentMedia?.mediaContentType === 'EXTERNAL_VIDEO';
+  const mainImage = isVideo ? '' : (currentMedia?.image?.url || images[selectedImage]?.src || images[0]?.src || "");
+  
   return <>
       <Header />
       <BusinessInfo />
@@ -441,12 +481,60 @@ const ProductPage: React.FC = () => {
             {/* Left: Gallery */}
             <div>
               <Card className="overflow-hidden bg-card border-border">
-                <img src={mainImage} alt={`${product.title} main image – front lip splitter`} className="w-full h-72 md:h-[520px] object-contain bg-background" loading="eager" />
+                {isVideo ? (
+                  <div className="w-full h-72 md:h-[520px] bg-background flex items-center justify-center">
+                    {currentMedia.sources?.[0]?.url ? (
+                      <video 
+                        controls 
+                        className="w-full h-full object-contain"
+                        poster={currentMedia.previewImage?.url}
+                      >
+                        <source src={currentMedia.sources[0].url} type={currentMedia.sources[0].mimeType || "video/mp4"} />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : currentMedia.embedUrl ? (
+                      <iframe
+                        src={currentMedia.embedUrl}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <p className="text-muted-foreground">Video unavailable</p>
+                    )}
+                  </div>
+                ) : (
+                  <img src={mainImage} alt={`${product.title} main image – front lip splitter`} className="w-full h-72 md:h-[520px] object-contain bg-background" loading="eager" />
+                )}
               </Card>
-              {images.length > 1 && <div className="mt-3 grid grid-cols-5 gap-2">
-                  {images.map((img, i) => <button key={`${img.src}-${i}`} onClick={() => setSelectedImage(i)} className={`rounded-lg overflow-hidden border ${i === selectedImage ? "border-primary" : "border-border"} bg-background`} aria-label={`Thumbnail ${i + 1}`}>
-                      <img src={img.src} alt={img.altText || `${product.title} thumbnail ${i + 1}`} className="h-16 w-full object-contain" loading="lazy" />
-                    </button>)}
+              {allMedia.length > 1 && <div className="mt-3 grid grid-cols-5 gap-2">
+                  {allMedia.map((media: any, i: number) => {
+                    const isThumbVideo = media.mediaContentType === 'VIDEO' || media.mediaContentType === 'EXTERNAL_VIDEO';
+                    const thumbSrc = isThumbVideo ? (media.previewImage?.url || media.image?.url) : media.image?.url || images[i]?.src;
+                    
+                    return (
+                      <button 
+                        key={`media-${i}`} 
+                        onClick={() => setSelectedImage(i)} 
+                        className={`rounded-lg overflow-hidden border ${i === selectedImage ? "border-primary" : "border-border"} bg-background relative`} 
+                        aria-label={`Thumbnail ${i + 1}`}
+                      >
+                        <img 
+                          src={thumbSrc} 
+                          alt={media.alt || `${product.title} thumbnail ${i + 1}`} 
+                          className="h-16 w-full object-contain" 
+                          loading="lazy" 
+                        />
+                        {isThumbVideo && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                            </svg>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>}
             </div>
 
