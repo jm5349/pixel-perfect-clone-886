@@ -513,20 +513,33 @@ const ProductPage: React.FC = () => {
               <Card className="overflow-hidden bg-card border-border relative group">
                 {isVideo ? (
                   <div className="w-full h-72 md:h-[520px] bg-background flex items-center justify-center">
-                    {currentMedia.sources?.[0]?.url ? (
+                    {(currentMedia.sources?.length ?? 0) > 0 ? (
                       <video 
-                        controls 
-                        className="w-full h-72 md:h-[520px] object-contain"
+                        controls
+                        playsInline
+                        preload="metadata"
+                        crossOrigin="anonymous"
+                        className="w-full h-72 md:h-[520px] object-contain pointer-events-auto"
                         poster={currentMedia.previewImage?.url}
                       >
-                        <source src={currentMedia.sources[0].url} type={currentMedia.sources[0].mimeType || "video/mp4"} />
+                        {[...(currentMedia.sources || [])]
+                          .sort((a: any, b: any) => {
+                            const aMp4 = (a.mimeType || '').includes('mp4') ? 1 : 0;
+                            const bMp4 = (b.mimeType || '').includes('mp4') ? 1 : 0;
+                            return bMp4 - aMp4; // Prefer MP4 first for broad browser support
+                          })
+                          .map((src: any, idx: number) => (
+                            <source key={idx} src={src.url} type={src.mimeType || 'video/mp4'} />
+                          ))}
                         Your browser does not support the video tag.
                       </video>
                     ) : (currentMedia.embedUrl || currentMedia.embeddedUrl || currentMedia.originUrl) ? (
                       <iframe
                         src={currentMedia.embedUrl || currentMedia.embeddedUrl || currentMedia.originUrl}
                         className="w-full h-72 md:h-[520px]"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        title={`${product.title} video`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
                       />
                     ) : (
