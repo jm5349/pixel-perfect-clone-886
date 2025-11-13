@@ -192,6 +192,7 @@ const ProductPage: React.FC = () => {
               // Transform the GraphQL response to match the SDK format
               p = {
                 ...productWithMedia,
+                media: productWithMedia.media, // keep media edges structure
                 images: productWithMedia.images?.edges?.map((e: any) => ({
                   src: e.node.url,
                   altText: e.node.altText
@@ -222,9 +223,35 @@ const ProductPage: React.FC = () => {
             } catch {}
           }
         } else if ((client as any).product?.fetchByHandle) {
+          // Try GraphQL with media for handle first
           try {
-            p = await (client as any).product.fetchByHandle(slug);
+            const { fetchProductByHandleWithMedia } = await import('@/lib/shopify');
+            const productWithMedia = await fetchProductByHandleWithMedia(slug);
+            if (productWithMedia) {
+              p = {
+                ...productWithMedia,
+                media: productWithMedia.media,
+                images: productWithMedia.images?.edges?.map((e: any) => ({
+                  src: e.node.url,
+                  altText: e.node.altText
+                })) || [],
+                variants: productWithMedia.variants?.edges?.map((e: any) => ({
+                  id: e.node.id,
+                  title: e.node.title,
+                  price: e.node.price,
+                  available: e.node.availableForSale,
+                  selectedOptions: e.node.selectedOptions,
+                  image: e.node.image
+                })) || []
+              };
+            }
           } catch {}
+          // Fallback to Buy SDK if GraphQL fails
+          if (!p) {
+            try {
+              p = await (client as any).product.fetchByHandle(slug);
+            } catch {}
+          }
         }
         if (!p && (client as any).product?.fetchAll) {
           try {
@@ -492,9 +519,9 @@ const ProductPage: React.FC = () => {
                         <source src={currentMedia.sources[0].url} type={currentMedia.sources[0].mimeType || "video/mp4"} />
                         Your browser does not support the video tag.
                       </video>
-                    ) : currentMedia.embedUrl ? (
+                    ) : (currentMedia.embedUrl || currentMedia.embeddedUrl || currentMedia.originUrl) ? (
                       <iframe
-                        src={currentMedia.embedUrl}
+                        src={currentMedia.embedUrl || currentMedia.embeddedUrl || currentMedia.originUrl}
                         className="w-full h-full"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
