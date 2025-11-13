@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import client from "@/lib/shopify";
 import type { ShopifyProduct } from "@/lib/shopify";
@@ -18,6 +18,7 @@ import Header from "@/components/Header";
 import BusinessInfo from "@/components/BusinessInfo";
 import SearchBar from "@/components/SearchBar";
 import Footer from "@/components/Footer";
+import Hls from "hls.js";
 const currency = (amount?: string, code?: string) => {
   if (!amount) return "—";
   const value = Number(amount);
@@ -172,6 +173,7 @@ const ProductPage: React.FC = () => {
   const [addingToCart, setAddingToCart] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   useEffect(() => {
     let cancelled = false;
     const fetchProduct = async () => {
@@ -482,6 +484,24 @@ const ProductPage: React.FC = () => {
   const isVideo = currentMedia?.mediaContentType === 'VIDEO' || currentMedia?.mediaContentType === 'EXTERNAL_VIDEO';
   const mainImage = isVideo ? '' : (currentMedia?.image?.url || images[selectedImage]?.src || images[0]?.src || "");
   
+  // HLS playback support for .m3u8 Shopify video sources
+  useEffect(() => {
+    if (!isVideo || !videoRef.current) return;
+    const sources = (currentMedia as any)?.sources || [];
+    const hlsSource = sources.find((s: any) => ((s.mimeType || "").includes("mpegURL") || (s.url || "").includes(".m3u8")))?.url;
+    if (!hlsSource) return;
+    const el = videoRef.current as HTMLVideoElement;
+    let hls: Hls | null = null;
+    if (el.canPlayType('application/vnd.apple.mpegurl')) {
+      el.src = hlsSource;
+    } else if (Hls.isSupported()) {
+      hls = new Hls();
+      hls.loadSource(hlsSource);
+      hls.attachMedia(el);
+    }
+    return () => { if (hls) hls.destroy(); };
+  }, [isVideo, selectedImage, currentMedia]);
+  
   return <>
       <Header />
       <BusinessInfo />
@@ -515,6 +535,7 @@ const ProductPage: React.FC = () => {
                   <div className="w-full h-72 md:h-[520px] bg-background flex items-center justify-center">
                     {(currentMedia.sources?.length ?? 0) > 0 ? (
                       <video 
+                        ref={videoRef}
                         controls
                         playsInline
                         preload="metadata"
