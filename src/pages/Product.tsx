@@ -457,6 +457,36 @@ const ProductPage: React.FC = () => {
       </section>
       </>;
   }
+  // Extract media data before any early returns to avoid hooks violation
+  const images = product?.images || [];
+  const media = (product as any)?.media?.edges || [];
+  const allMedia = media.length > 0 ? media.map((m: any) => m.node) : images.map((img: any) => ({ 
+    mediaContentType: 'IMAGE',
+    image: { url: img.src, altText: img.altText }
+  }));
+  
+  const currentMedia = allMedia[selectedImage] || allMedia[0];
+  const isVideo = currentMedia?.mediaContentType === 'VIDEO' || currentMedia?.mediaContentType === 'EXTERNAL_VIDEO';
+  const mainImage = isVideo ? '' : (currentMedia?.image?.url || images[selectedImage]?.src || images[0]?.src || "");
+  
+  // HLS playback support for .m3u8 Shopify video sources - must be before any conditional returns
+  useEffect(() => {
+    if (!product || !isVideo || !videoRef.current) return;
+    const sources = (currentMedia as any)?.sources || [];
+    const hlsSource = sources.find((s: any) => ((s.mimeType || "").includes("mpegURL") || (s.url || "").includes(".m3u8")))?.url;
+    if (!hlsSource) return;
+    const el = videoRef.current as HTMLVideoElement;
+    let hls: Hls | null = null;
+    if (el.canPlayType('application/vnd.apple.mpegurl')) {
+      el.src = hlsSource;
+    } else if (Hls.isSupported()) {
+      hls = new Hls();
+      hls.loadSource(hlsSource);
+      hls.attachMedia(el);
+    }
+    return () => { if (hls) hls.destroy(); };
+  }, [product, isVideo, selectedImage, currentMedia]);
+
   if (error || !product) {
     return <>
       <Header />
@@ -471,36 +501,6 @@ const ProductPage: React.FC = () => {
       </section>
       </>;
   }
-  const images = product.images || [];
-  
-  // Check if product has media (including videos)
-  const media = (product as any).media?.edges || [];
-  const allMedia = media.length > 0 ? media.map((m: any) => m.node) : images.map((img: any) => ({ 
-    mediaContentType: 'IMAGE',
-    image: { url: img.src, altText: img.altText }
-  }));
-  
-  const currentMedia = allMedia[selectedImage] || allMedia[0];
-  const isVideo = currentMedia?.mediaContentType === 'VIDEO' || currentMedia?.mediaContentType === 'EXTERNAL_VIDEO';
-  const mainImage = isVideo ? '' : (currentMedia?.image?.url || images[selectedImage]?.src || images[0]?.src || "");
-  
-  // HLS playback support for .m3u8 Shopify video sources
-  useEffect(() => {
-    if (!isVideo || !videoRef.current) return;
-    const sources = (currentMedia as any)?.sources || [];
-    const hlsSource = sources.find((s: any) => ((s.mimeType || "").includes("mpegURL") || (s.url || "").includes(".m3u8")))?.url;
-    if (!hlsSource) return;
-    const el = videoRef.current as HTMLVideoElement;
-    let hls: Hls | null = null;
-    if (el.canPlayType('application/vnd.apple.mpegurl')) {
-      el.src = hlsSource;
-    } else if (Hls.isSupported()) {
-      hls = new Hls();
-      hls.loadSource(hlsSource);
-      hls.attachMedia(el);
-    }
-    return () => { if (hls) hls.destroy(); };
-  }, [isVideo, selectedImage, currentMedia]);
   
   return <>
       <Header />
