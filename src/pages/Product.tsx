@@ -465,27 +465,30 @@ const ProductPage: React.FC = () => {
     isVideo ? '' : (currentMedia?.image?.url || (images as any[])[selectedImage]?.src || (images as any[])[0]?.src || '')
   ), [isVideo, currentMedia, images, selectedImage]);
   
-  // Precompute HLS source if present
+  // Precompute sources, hasMp4, and HLS source (prefer MP4 over HLS)
+  const videoSources = useMemo(() => (currentMedia as any)?.sources || [], [currentMedia]);
+  const hasMp4 = useMemo(() => videoSources.some((s: any) => (s.mimeType || '').includes('mp4') || (s.url || '').endsWith('.mp4')), [videoSources]);
   const hlsSource = useMemo(() => {
-    const sources = (currentMedia as any)?.sources || [];
-    const h = sources.find((s: any) => ((s.mimeType || '').includes('mpegURL') || (s.url || '').includes('.m3u8')));
+    if (hasMp4) return undefined; // prefer MP4 when available
+    const h = videoSources.find((s: any) => ((s.mimeType || '').includes('mpegURL') || (s.url || '').includes('.m3u8')));
     return h?.url as string | undefined;
-  }, [currentMedia]);
+  }, [videoSources, hasMp4]);
 
   // HLS playback support for .m3u8 Shopify video sources - must be before any conditional returns
   useEffect(() => {
     if (!product || !isVideo || !videoRef.current || !hlsSource) return;
     const el = videoRef.current as HTMLVideoElement;
     let hls: Hls | null = null;
+    console.debug('[Video] Initializing HLS', { hlsSource, isVideo, hasMp4, mediaType: currentMedia?.mediaContentType });
     if (el.canPlayType('application/vnd.apple.mpegurl')) {
       el.src = hlsSource;
     } else if (Hls.isSupported()) {
-      hls = new Hls();
+      hls = new Hls({ enableWorker: true });
       hls.loadSource(hlsSource);
       hls.attachMedia(el);
     }
     return () => { if (hls) hls.destroy(); };
-  }, [product, isVideo, hlsSource]);
+  }, [product, isVideo, hlsSource, hasMp4, currentMedia]);
 
 
   if (error || !product) {
@@ -555,7 +558,7 @@ const ProductPage: React.FC = () => {
                   <div className="w-full h-72 md:h-[520px] bg-background flex items-center justify-center">
                     {(currentMedia.sources?.length ?? 0) > 0 ? (
                       <video 
-                        key={`${isVideo ? 'video' : 'image'}-${selectedImage}-${hlsSource ? 'hls' : 'std'}`}
+                        key={`${isVideo ? 'video' : 'image'}-${selectedImage}-${hlsSource ? 'hls' : (hasMp4 ? 'mp4' : 'none')}`}
                         ref={videoRef}
                         controls
                         playsInline
@@ -563,11 +566,19 @@ const ProductPage: React.FC = () => {
                         crossOrigin="anonymous"
                         className="w-full h-72 md:h-[520px] object-contain pointer-events-auto"
                         poster={currentMedia.previewImage?.url}
+                        onError={(e) => {
+                          const v = e.currentTarget as HTMLVideoElement;
+                          console.error('[Video] Error event', { networkState: v.networkState, error: (v as any).error, currentSrc: v.currentSrc });
+                        }}
+                        onLoadedMetadata={(e) => {
+                          const v = e.currentTarget as HTMLVideoElement;
+                          console.debug('[Video] Loaded metadata', { currentSrc: v.currentSrc, readyState: v.readyState });
+                        }}
                       >
-                        {[...(currentMedia.sources || [])]
+                        {[...videoSources]
                           .filter((s: any) => {
                             const isM3u8 = (s.mimeType || '').includes('mpegURL') || (s.url || '').includes('.m3u8');
-                            return hlsSource ? !isM3u8 : true; // omit HLS <source> tags when using hls.js
+                            return hlsSource ? !isM3u8 : true; // omit HLS <source> when using hls.js
                           })
                           .sort((a: any, b: any) => {
                             const aMp4 = (a.mimeType || '').includes('mp4') ? 1 : 0;
