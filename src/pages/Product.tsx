@@ -440,23 +440,41 @@ const ProductPage: React.FC = () => {
     }
   };
   // Extract media data before any early returns to avoid hooks violation
-  const images = product?.images || [];
-  const media = (product as any)?.media?.edges || [];
-  const allMedia = media.length > 0 ? media.map((m: any) => m.node) : images.map((img: any) => ({ 
-    mediaContentType: 'IMAGE',
-    image: { url: img.src, altText: img.altText }
-  }));
+  const images = useMemo(() => product?.images || [], [product]);
+  const allMedia = useMemo(() => {
+    const mediaEdges = (product as any)?.media?.edges || [];
+    return mediaEdges.length > 0
+      ? mediaEdges.map((m: any) => m.node)
+      : (images as any[]).map((img: any) => ({
+          mediaContentType: 'IMAGE',
+          image: { url: img.src, altText: img.altText }
+        }));
+  }, [product, images]);
   
-  const currentMedia = allMedia[selectedImage] || allMedia[0];
-  const isVideo = currentMedia?.mediaContentType === 'VIDEO' || currentMedia?.mediaContentType === 'EXTERNAL_VIDEO';
-  const mainImage = isVideo ? '' : (currentMedia?.image?.url || images[selectedImage]?.src || images[0]?.src || "");
+  const currentMedia = useMemo(() => {
+    if (!allMedia || allMedia.length === 0) return undefined;
+    const idx = Math.min(Math.max(0, selectedImage), allMedia.length - 1);
+    return allMedia[idx];
+  }, [allMedia, selectedImage]);
   
+  const isVideo = useMemo(() => (
+    currentMedia?.mediaContentType === 'VIDEO' || currentMedia?.mediaContentType === 'EXTERNAL_VIDEO'
+  ), [currentMedia]);
+  
+  const mainImage = useMemo(() => (
+    isVideo ? '' : (currentMedia?.image?.url || (images as any[])[selectedImage]?.src || (images as any[])[0]?.src || '')
+  ), [isVideo, currentMedia, images, selectedImage]);
+  
+  // Precompute HLS source if present
+  const hlsSource = useMemo(() => {
+    const sources = (currentMedia as any)?.sources || [];
+    const h = sources.find((s: any) => ((s.mimeType || '').includes('mpegURL') || (s.url || '').includes('.m3u8')));
+    return h?.url as string | undefined;
+  }, [currentMedia]);
+
   // HLS playback support for .m3u8 Shopify video sources - must be before any conditional returns
   useEffect(() => {
-    if (!product || !isVideo || !videoRef.current) return;
-    const sources = (currentMedia as any)?.sources || [];
-    const hlsSource = sources.find((s: any) => ((s.mimeType || "").includes("mpegURL") || (s.url || "").includes(".m3u8")))?.url;
-    if (!hlsSource) return;
+    if (!product || !isVideo || !videoRef.current || !hlsSource) return;
     const el = videoRef.current as HTMLVideoElement;
     let hls: Hls | null = null;
     if (el.canPlayType('application/vnd.apple.mpegurl')) {
@@ -467,7 +485,8 @@ const ProductPage: React.FC = () => {
       hls.attachMedia(el);
     }
     return () => { if (hls) hls.destroy(); };
-  }, [product, isVideo, selectedImage, currentMedia]);
+  }, [product, isVideo, hlsSource]);
+
 
   if (error || !product) {
     return <>
@@ -536,6 +555,7 @@ const ProductPage: React.FC = () => {
                   <div className="w-full h-72 md:h-[520px] bg-background flex items-center justify-center">
                     {(currentMedia.sources?.length ?? 0) > 0 ? (
                       <video 
+                        key={`${isVideo ? 'video' : 'image'}-${selectedImage}-${hlsSource ? 'hls' : 'std'}`}
                         ref={videoRef}
                         controls
                         playsInline
@@ -545,6 +565,10 @@ const ProductPage: React.FC = () => {
                         poster={currentMedia.previewImage?.url}
                       >
                         {[...(currentMedia.sources || [])]
+                          .filter((s: any) => {
+                            const isM3u8 = (s.mimeType || '').includes('mpegURL') || (s.url || '').includes('.m3u8');
+                            return hlsSource ? !isM3u8 : true; // omit HLS <source> tags when using hls.js
+                          })
                           .sort((a: any, b: any) => {
                             const aMp4 = (a.mimeType || '').includes('mp4') ? 1 : 0;
                             const bMp4 = (b.mimeType || '').includes('mp4') ? 1 : 0;
