@@ -439,24 +439,6 @@ const ProductPage: React.FC = () => {
       setAddingToCart(false);
     }
   };
-  if (loading) {
-    return <>
-      <Header />
-      <BusinessInfo />
-      <SearchBar />
-      <section className="container mx-auto px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="h-72 md:h-[480px] bg-muted animate-pulse rounded-xl" />
-          <div className="space-y-4">
-            <div className="h-6 bg-muted animate-pulse rounded w-2/3" />
-            <div className="h-10 bg-muted animate-pulse rounded w-1/3" />
-            <div className="h-10 bg-muted animate-pulse rounded w-1/2" />
-            <div className="h-12 bg-muted animate-pulse rounded w-full" />
-          </div>
-        </div>
-      </section>
-      </>;
-  }
   // Extract media data before any early returns to avoid hooks violation
   const images = product?.images || [];
   const media = (product as any)?.media?.edges || [];
@@ -502,6 +484,25 @@ const ProductPage: React.FC = () => {
       </>;
   }
   
+  if (loading) {
+    return <>
+      <Header />
+      <BusinessInfo />
+      <SearchBar />
+      <section className="container mx-auto px-6 lg:px-8 py-16">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="h-72 md:h-[480px] bg-muted animate-pulse rounded-xl" />
+          <div className="space-y-4">
+            <div className="h-6 bg-muted animate-pulse rounded w-2/3" />
+            <div className="h-10 bg-muted animate-pulse rounded w-1/3" />
+            <div className="h-10 bg-muted animate-pulse rounded w-1/2" />
+            <div className="h-12 bg-muted animate-pulse rounded w-full" />
+          </div>
+        </div>
+      </section>
+    </>;
+  }
+
   return <>
       <Header />
       <BusinessInfo />
